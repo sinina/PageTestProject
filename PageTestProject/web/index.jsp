@@ -6,22 +6,12 @@
 	<head>
 		<title>Introspect by TEMPLATED</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />	
 	</head>
 	<body>
 
 		<!-- Header -->
-			<header id="header">
-				<div class="inner">
-					<a href="index.html" class="logo">introspect</a>
-					<nav id="nav">
-						<a href="index.jsp">Home</a>
-						<a href="generic.html">Login</a>
-						<a href="elements.html">Join</a>
-					</nav>
-				</div>
-			</header>
+			<%@include file="/views/common/header.jsp"%>
 			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
 		<!-- Banner -->
