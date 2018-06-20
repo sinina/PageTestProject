@@ -7,6 +7,7 @@
 <title>회원 가입</title>
 </head>
 <body>
+	<!-- Header -->
 	<%@include file="../common/header.jsp" %>
 	<div class ="main-wrap">
 		<div class="form-wrap inner">
@@ -16,5 +17,8 @@
 			</form>
 		</div>
 	</div>
+	
+	<!-- Footer -->
+	<%@include file="../common/footer.jsp" %>
 </body>
 </html>
