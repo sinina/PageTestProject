@@ -17,7 +17,6 @@
 						<a href="views/member/memberLogin.jsp">Login</a>
 						<a href="views/member/join.jsp">Join</a>
 					</nav>
-					<div class="test"></div>
 				</div>
 	</header>
 </body>
