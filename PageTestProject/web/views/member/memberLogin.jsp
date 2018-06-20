@@ -19,6 +19,7 @@
 	width: 700px;
 	margin-left: auto;
 	margin-right: auto;
+	padding-top:200px;
 }
 
 .login-thum {
@@ -51,7 +52,8 @@
 	display: table-cell;
 	vertical-align: middle;
 	padding-top: 30px;
-	
+	background: rgb(255,255,204);
+
 }
 
 .login-form form {
@@ -80,6 +82,8 @@ form .form-control {
 	padding:0 35px 0 10px;
 	text-align: left;
 	margin:20px;
+	margin-left:auto;
+	margin-right:auto;
 }
 </style>
 </head>
@@ -104,6 +108,10 @@ form .form-control {
 						href="<%=request.getContextPath()%>/views/member/join.jsp">가입하기</a>
 				</p>
 			</form>
+			<!--현재 작업 영역  -->
+			<div class="login-tume">
+				<img class="image">
+			</div>
 		</div>
 	</div>
 
