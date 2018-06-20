@@ -14,7 +14,7 @@
 					<a href="index.html" class="logo">introspect</a>
 					<nav id="nav">
 						<a href="index.jsp">Home</a>
-						<a href="views/member/join.jsp">Login</a>
+						<a href="views/member/memberLogin.jsp">Login</a>
 						<a href="views/member/join.jsp">Join</a>
 					</nav>
 				</div>
