@@ -11,7 +11,7 @@
 <body>
 	<header id="header">
 				<div class="inner">
-					<a href="/ptp/index.jsp" class="logo">introspect</a>
+					<a href="/ptp/index.jsp" class="logo">pit-a-pet</a>
 					<nav id="nav">
 						<a href="<%=request.getContextPath() %>/index.jsp">Home</a>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>

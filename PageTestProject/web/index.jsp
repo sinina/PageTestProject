@@ -17,25 +17,56 @@
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>Introspect: <span>A free + fully responsive<br />
-					site template by TEMPLATED</span></h1>
+					<h1>pit-a-pet: <span>당신의 펫을 위한<br />
+					최선의 선택</span></h1>
 					<ul class="actions">
-						<li><a href="#" class="button alt">Get Started</a></li>
+						<li><a href="#" class="button alt">펫시터 집에 맡기기</a></li>
+						<li><a href="#" class="button alt">집으로 펫시터 부르기</a></li>
 					</ul>
 				</div>
 			</section>
 
 		<!-- One -->
-			<section id="one">
+			<section id="three">
 				<div class="inner">
-					<header>
-						<h2>Magna Etiam Lorem</h2>
-					</header>
-					<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante.</p>
-					<ul class="actions">
-						<li><a href="#" class="button alt">Learn More</a></li>
-					</ul>
+					<article>
+						<div class="content">
+							<span class="icon fa-car"></span>
+							<header>
+								<h3>믿을 수 있는 펫시터</h3>
+							</header>
+							<p>저희가 직접 검증한 믿을수 있는 펫시터를 만나보실수 있습니다.</p>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Learn More</a></li>
+							</ul> -->
+						</div>
+					</article>
+					<article>
+						<div class="content">
+							<span class="icon fa-diamond"></span>
+							<header>
+								<h3>1:1케어 서비스</h3>
+							</header>
+							<p>한 가정의 펫만 케어하기 때문에 내 반려동물만을 위한 펫시팅이 가능합니다.</p>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Learn More</a></li>
+							</ul> -->
+						</div>
+					</article>
+					<article>
+					<div class="content">
+							<span class="icon fa-laptop"></span>
+							<header>
+								<h3>세분화된 펫시터 서비스</h3>
+							</header>
+							<p>강아지 뿐만 아니라 다양한 동물들, 위탁/방문 등 세분화된 펫시터 서비스를 경험하실 수 있습니다.</p>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Learn More</a></li>
+							</ul> -->
+						</div>
+					</article>
 				</div>
+				 
 			</section>
 
 		<!-- Two -->
@@ -44,67 +75,38 @@
 					<article>
 						<div class="content">
 							<header>
-								<h3>Pellentesque adipis</h3>
+								<h3>애견호텔</h3>
 							</header>
 							<div class="image fit">
 								<img src="images/pic01.jpg" alt="" />
 							</div>
-							<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
+							<p>낯선 공간에 남겨져 스트레스를 받아요.<br>스트레스는 문제행동의 원인이 될수 있어요.<br>스트레스는 문제행동의 원인이 될 수 있어요</p>
 						</div>
 					</article>
 					<article class="alt">
 						<div class="content">
 							<header>
-								<h3>Morbi interdum mol</h3>
+								<h3>유치원</h3>
 							</header>
 							<div class="image fit">
 								<img src="images/pic02.jpg" alt="" />
 							</div>
-							<p>Cumsan mollis eros. Pellentesque a diam sit amet mi magna ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet lorem ipsum feugiat tempus.</p>
+							<p>다른 동물에게 괴롭힘을 당할 수 있어요.<br>다른 동물에게서 나쁜 습관을 배워올 수 있어요</p>
 						</div>
 					</article>
 				</div>
 			</section>
 
 		<!-- Three -->
-			<section id="three">
+			<section id="one">
 				<div class="inner">
-					<article>
-						<div class="content">
-							<span class="icon fa-laptop"></span>
-							<header>
-								<h3>Tempus Feugiat</h3>
-							</header>
-							<p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna lorem ullamcorper laoreet, lectus arcu.</p>
-							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul>
-						</div>
-					</article>
-					<article>
-						<div class="content">
-							<span class="icon fa-diamond"></span>
-							<header>
-								<h3>Aliquam Nulla</h3>
-							</header>
-							<p>Ut convallis, sem sit amet interdum consectetuer, odio augue aliquam leo, nec dapibus tortor nibh sed.</p>
-							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul>
-						</div>
-					</article>
-					<article>
-					<div class="content">
-							<span class="icon fa-laptop"></span>
-							<header>
-								<h3>Sed Magna</h3>
-							</header>
-							<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula.</p>
-							<ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul>
-						</div>
-					</article>
+					<header>
+						<h2>Magna Etiam Lorem</h2>
+					</header>
+					<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante.</p>
+					<ul class="actions">
+						<li><a href="#" class="button alt">서비스 이용 방법</a></li>
+					</ul>
 				</div>
 			</section>
 
