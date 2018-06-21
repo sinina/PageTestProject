@@ -21,9 +21,9 @@
                         <input class="form-control form-pwd" type="password" name="" placeholder="비밀번호" id="txtMEM_PASS">
 
                         <input class="checkbox" type="checkbox" name="chkEMAIL_SAVE" id="checkbox"/><label for="checkbox">이메일저장</label>
-                        <span class="forgot-pwd"><a href="/forgotpwd/">비밀번호 찾기</a></span>
+                        <span class="forgot-pwd"><a href="<%=request.getContextPath()%>/index.jsp">비밀번호 찾기</a></span>
                         <button class="btn-dogmate btn-orange login-btn" type="button" name="" id="btnLOGIN"><label>로그인</label></button>
-                        <p class="form-caption">아직도 도그메이트 계정이 없으세요? <a href="/signup/signup">가입하기</a></p>
+                        <p class="form-caption">아직도 도그메이트 계정이 없으세요? <a href="<%=request.getContextPath()%>/views/member/join.jsp">가입하기</a></p>
                     </form>
                 </div>
             </div>
