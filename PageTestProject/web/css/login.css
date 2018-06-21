@@ -1,0 +1,375 @@
+@charset "utf-8";
+/* CSS Document */
+
+/****************************************
+
+//로그인
+
+****************************************/
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+}
+.container {
+	height: 100%;
+}
+.inner {
+	height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	html {
+		width: 100%;
+		min-width: inherit;
+	}
+	.container {
+		min-width: inherit;
+	}
+	.inner {
+		width: 100%;
+		padding: 0 4%;
+		min-width: 285px;
+	}
+	.main-wrap {
+		min-height: 470px;
+		padding-top: 65px;
+	}
+
+
+	.header-bnr img.header-bnr-pc {
+		display: none;
+	}
+	.header-bnr img.header-bnr-sp {
+		display: block;
+	}
+	.header-bnr .inner {
+		width: 100% !important;
+		padding: 0 !important;
+	}
+	.sidebar_login_status {
+		display: block !important;
+	}
+	.top-header-wrap .hedaer-toggle-wrap {
+		margin: 0 -48% 0 0 !important;
+	}
+	.header-wrap {
+		padding: 0 !important;
+	}
+	.header-wrap .inner {
+		padding: 0 4% !important;
+		box-sizing: border-box;
+	}
+	.header-search {
+		width: 85%;
+		padding: 13px 0;
+	}
+	.header-search h1 {
+		width: 16%;
+		float: left;
+		padding: 0 3% 0 0;
+	}
+	.header-search h1 a {
+		padding-right: 0;
+		display: table-cell;
+		height: 37px;
+		vertical-align: middle;
+	}
+	.header-search h1 a img {
+		width: 100%;
+		max-width: 35px;
+	}
+	.header-search .select2-container {
+		width: 80% !important;
+	}
+	.header-menu div.header-signup,
+	.header-menu div.header-login {
+		display: none;
+	}
+	.header-sitter {
+		display: none !important;
+	}
+
+
+	/* PC,SP 로고 이미지 변경 */
+	.logo_h1_sp {
+		display: inline-block;
+	}
+	.logo_h1_pc {
+		display: none;
+	}
+
+
+	/* SP일경우 토글메뉴 닫기*/
+	.hedaer-toggle-wrap {
+		display: none;
+	}
+
+
+	/* SP 헤더 검색창 사이즈 조정 */
+	.header-search form {
+		width: 84%;
+	}
+	.header-search input {
+		width: 80% !important;
+		box-sizing: border-box;
+	}
+	.header-search .gnb-btn {
+		width: 20%;
+	}
+	.header-message {
+		margin-right: 0;
+	}
+	.header-menu div.header-member,
+	.header-menu div.header-help {
+		display: none;
+	}
+
+	.header-menu div a {
+		color: #ffffff;
+	}
+	.header-menu .header-signup a {
+		padding-right: 20px;
+	}
+	.header-menu .header-login a {
+		padding-right: 0;
+	}
+
+
+	.footer-wrap .footer {
+		margin: 30px 0 !important;
+		padding: 0 4% !important;
+		text-align: center;
+		border: none;
+	}
+	.footer-notice {
+		display: none;
+	}
+
+	form .form-control {
+		width: 89%;
+		padding: 8px 8% 8px 2%;
+	}
+
+
+
+
+	/* SP 슬라이드바 버튼 */
+	.header-menu {
+		width: 13%;
+		margin-left: 2%;
+		padding: 20px 0;
+		text-align: right;
+	}
+	#new-message-mail {
+		display: none;
+	}
+	.header-message-btn-sp {
+		display: block;
+	}
+	.header-message span {
+		height: 30px;
+	}
+	.header-message span img.new-message {
+		margin-top: -33px;
+	}
+
+	/* SP 슬라이드바 피씨용메시지 닫기 */
+	#ctlNewMessageCnt,
+	#ctlNewMessageList {
+		display: none;
+	}
+
+	/* SP 슬라이드바 닫기버튼 위치조정  */
+	#sidebar #sidebar-close {
+		vertical-align: top !important;
+		padding-top: 15px;
+		padding-right: 15px;
+	}
+
+	/* SP 슬라이드바 */
+	#sidebar {
+		background-color: #F5F5F5;
+	}
+	#sidebar>div {
+		position: relative;
+	}
+	#sidebar .sidebar-title {
+		height: auto !important;
+	}
+	.sidebar_sp_top {
+		display: block;
+		text-align: center;
+		padding: 20px 0;
+		box-sizing: border-box;
+		margin-left: 20px;
+	}
+	.sidebar_sp_top .sitter-thum {
+		width: 80px !important;
+		height: 80px;
+		display: block;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		border-radius: 50%;
+		background-color: #ffffff;
+		border: solid 1px #DCDCDC;
+		overflow: hidden;
+		float: none;
+		margin: 0 auto 15px !important;
+	}
+	.sidebar_sp_top .header-name {
+		font-weight: bold;
+	}
+
+	.sidebar_sp_main {
+		display: block;
+	}
+	.sidebar_sp_main ul {
+		padding: 15px 0;
+	}
+	.sidebar_sp_main li {
+		text-align: center;
+		padding: 10.5px;
+	}
+	.sidebar_sp_main li a {
+		text-decoration: none;
+		font-weight: bold;
+		color: #868686;
+	}
+	.sidebar_sp_main_logout {
+		position: absolute !important;
+		bottom: 0;
+		right: 0;
+		margin: 0 !important;
+		width: 100%;
+		height: auto;
+		background-color: #D8D8D8;
+		text-align: center;
+		padding: 15px 0;
+	}
+	.sidebar_sp_main_logout a {
+		color: #ffffff;
+		font-weight: bold;
+		text-decoration: none;
+	}
+
+	.sidebar_sp_main_new {
+		width: 20px;
+		background-color: #fcbc4e;
+		color: #ffffff;
+		font-size: 12px;
+		font-weight: bold;
+		border-radius: 50%;
+		display: inline-block;
+		vertical-align: middle;
+		border: 2px solid #ffffff;
+		margin-top: -4px;
+	}
+}
+
+.login-wrap {
+	width: 800px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -400px;
+	margin-top: -257px;
+}
+.login-wrap .logo {
+	width: 175px;
+	margin-bottom: 25px;
+}
+.login-thum {
+	width: 399px;
+	height: 398px;
+	float: right;
+	/*background-image: url(../img/login/login_img.png);
+	background-image: url(../img/login/login_img_ie8.png)\9;*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.login-thum p {
+	position: absolute;
+	top: 50%;
+	margin: -4em 0 0 30px !important;
+	color: #ffffff;
+	font-size: 200%;
+	line-height: 200%;
+	text-shadow: #666666 1px 1px 3px;
+	-ms-filter:"progid:DXImageTransform.Microsoft.DropShadow(color=#666666,offx=1,offy=1)";
+	display:block;
+}
+.login-form {
+	width: 399px;
+	height: 398px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.login-form form {
+	padding: 0 30px;
+}
+.forgot-pwd a {
+	color: #6eb9b5;
+	font-weight: bold;
+	float: right;
+	margin-right: 10px;
+}
+.login-form .btn-dogmate {
+	margin: 20px 0 !important;
+}
+.login-form form p {
+	text-align: center;
+}
+@media screen and (max-width: 767px) {
+	.form-wrap {
+		width: 100%;
+		padding: 0;
+		margin: 0 0;
+		border: none;
+		background-color: inherit;
+	}
+
+	.form-wrap .form-control {
+		width: 100%;
+		padding: 8px 8% 8px 2%;
+		box-sizing: border-box;
+	}
+	.login-wrapInner {
+		min-width: inherit;
+		min-height: inherit;
+	}
+	.login-wrap {
+		width: 100%;
+		overflow: hidden;
+		position: static;
+		margin-top: 0;
+		margin: 20px auto !important;
+	}
+	.login-wrap .logo {
+		margin-bottom: 15px;
+	}
+	.login-thum {
+		display: none;
+	}
+	.login-thum p {
+		margin-left: 25px;
+	}
+	.login-form {
+		width: 100%;
+		height: auto;
+		float: left;
+		position: relative;
+	}
+	
+	.login-form form {
+		padding: 0;
+	}
+
+	.forgot-pwd a {
+		margin-right: 0;
+	}
+}
