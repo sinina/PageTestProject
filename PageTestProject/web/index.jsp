@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Introspect by TEMPLATED</title>
+		<title>Pit-a-Pet</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />	
 	</head>
@@ -31,14 +31,11 @@
 				<div class="inner">
 					<article>
 						<div class="content">
-							<span class="icon fa-car"></span>
+							<span class="icon fa-users"></span>
 							<header>
 								<h3>믿을 수 있는 펫시터</h3>
 							</header>
-							<p>저희가 직접 검증한 믿을수 있는 펫시터를 만나보실수 있습니다.</p>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul> -->
+							<p>저희가 직접 검증한 믿을수 있는 <br>펫시터를 만나보실수 있습니다.</p>
 						</div>
 					</article>
 					<article>
@@ -47,7 +44,7 @@
 							<header>
 								<h3>1:1케어 서비스</h3>
 							</header>
-							<p>한 가정의 펫만 케어하기 때문에 내 반려동물만을 위한 펫시팅이 가능합니다.</p>
+							<p>한 가정의 펫만 케어하기 때문에<br> 내 반려동물만을 위한 펫시팅이 가능합니다.</p>
 							<!-- <ul class="actions">
 								<li><a href="#" class="button alt">Learn More</a></li>
 							</ul> -->
@@ -55,14 +52,11 @@
 					</article>
 					<article>
 					<div class="content">
-							<span class="icon fa-laptop"></span>
+							<span class="icon fa-paw"></span>
 							<header>
 								<h3>세분화된 펫시터 서비스</h3>
 							</header>
-							<p>강아지 뿐만 아니라 다양한 동물들, 위탁/방문 등 세분화된 펫시터 서비스를 경험하실 수 있습니다.</p>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul> -->
+							<p>강아지 뿐만 아니라 다양한 동물들,<br> 위탁/방문 등 세분화된 펫시터 서비스를 경험하실 수 있습니다.</p>
 						</div>
 					</article>
 				</div>
@@ -98,15 +92,49 @@
 			</section>
 
 		<!-- Three -->
-			<section id="one">
-				<div class="inner">
-					<header>
-						<h2>Magna Etiam Lorem</h2>
-					</header>
-					<p>Suspendisse mauris. Fusce accumsan mollis eros. Pellentesque a diam sit amet mi ullamcorper vehicula. Integer adipiscin sem. Nullam quis massa sit amet nibh viverra malesuada. Nunc sem lacus, accumsan quis, faucibus non, congue vel, arcu, erisque hendrerit tellus. Integer sagittis. Vivamus a mauris eget arcu gravida tristique. Nunc iaculis mi in ante.</p>
+		<section id="one">
+			<div class="inner">
+				<header>
+						<h2>내가 원하는 펫시터를 찾아 믿고 맡겨보세요</h2>
+				</header>
 					<ul class="actions">
 						<li><a href="#" class="button alt">서비스 이용 방법</a></li>
 					</ul>
+			</div>
+		</section>
+			<section id="three_1">
+				<div class="inner">
+					<article>
+						<div class="content">
+							<span class="icon fa-calendar"></span>
+							<header>
+								<h3>예약 요청</h3>
+							</header>
+							<p>원하는 시간을 선택하여<br> 예약 요청을 보내세요!</p>
+							<!-- <ul class="actions">
+								<li><a href="#" class="button alt">Learn More</a></li>
+							</ul> -->
+						</div>
+					</article>
+					<article>
+						<div class="content">
+							<span class="icon fa-envelope"></span>
+							<header>
+								<h3>메시지</h3>
+							</header>
+							<p>메시지를 통해 예약승인/거절을<br> 확인하세요!</p>
+							
+						</div>
+					</article>
+					<article>
+					<div class="content">
+							<span class="icon fa-home"></span>
+							<header>
+								<h3>사전 만남</h3>
+							</header>
+							<p>맡기기전 펫시터와 사전만남을 통하여 조건에 충족하는지 확인하세요!</p>
+						</div>
+					</article>
 				</div>
 			</section>
 
