@@ -4,7 +4,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Pit-a-Pet</title>
+		<title>MATAZO</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />	
 	</head>
@@ -12,17 +12,25 @@
 
 		<!-- Header -->
 			<%@include file="/views/common/header.jsp"%>
-			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
 
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>pit-a-pet: <span>당신의 펫을 위한<br />
-					최선의 선택</span></h1>
-					<ul class="actions">
-						<li><a href="#" class="button alt">펫시터 집에 맡기기</a></li>
-						<li><a href="#" class="button alt">집으로 펫시터 부르기</a></li>
+					 <h1><br></h1> 
+					
+				<ul class="actions">
+						<li><a href="#" class="button alt">맡아조?</a></li>
+						<li><a href="#" class="button alt">맡겨조!</a></li>
 					</ul>
+					<!-- <div>
+					맡아조?
+					</div>
+					<div>
+					맡겨조!
+					</div> -->
+					
+					
+				
 				</div>
 			</section>
 
@@ -45,9 +53,6 @@
 								<h3>1:1케어 서비스</h3>
 							</header>
 							<p>한 가정의 펫만 케어하기 때문에<br> 내 반려동물만을 위한 펫시팅이 가능합니다.</p>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul> -->
 						</div>
 					</article>
 					<article>
@@ -111,9 +116,6 @@
 								<h3>예약 요청</h3>
 							</header>
 							<p>원하는 시간을 선택하여<br> 예약 요청을 보내세요!</p>
-							<!-- <ul class="actions">
-								<li><a href="#" class="button alt">Learn More</a></li>
-							</ul> -->
 						</div>
 					</article>
 					<article>
@@ -172,6 +174,5 @@
 			<script src="<%=request.getContextPath()%>/js/skel.min.js"></script>
 			<script src="<%=request.getContextPath()%>/js/util.js"></script>
 			<script src="<%=request.getContextPath()%>/js/main.js"></script>
-
 	</body>
 </html>

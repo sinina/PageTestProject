@@ -18,7 +18,7 @@
 	
 	<header id="header">
 				<div class="inner">
-					<a href="/ptp/index.jsp" class="logo">pit-a-pet</a>
+				<a href="/ptp/index.jsp" class="logo"><img src="/ptp/images/common/matajo_logo.png" height="85px"></a>
 					<nav id="nav">
 						<a href="<%=request.getContextPath() %>/index.jsp">Home</a>
 						<%if(member==null) {%>
