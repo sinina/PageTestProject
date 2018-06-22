@@ -9,12 +9,15 @@
 html {
 	height: 100%;
 }
+
 body {
 	height: 100%;
 }
+
 .container {
 	height: 100%;
 }
+
 .inner {
 	height: 100%;
 }
@@ -36,8 +39,6 @@ body {
 		min-height: 470px;
 		padding-top: 65px;
 	}
-
-
 	.header-bnr img.header-bnr-pc {
 		display: none;
 	}
@@ -83,14 +84,12 @@ body {
 	.header-search .select2-container {
 		width: 80% !important;
 	}
-	.header-menu div.header-signup,
-	.header-menu div.header-login {
+	.header-menu div.header-signup, .header-menu div.header-login {
 		display: none;
 	}
 	.header-sitter {
 		display: none !important;
 	}
-
 
 	/* PC,SP 로고 이미지 변경 */
 	.logo_h1_sp {
@@ -100,12 +99,10 @@ body {
 		display: none;
 	}
 
-
 	/* SP일경우 토글메뉴 닫기*/
 	.hedaer-toggle-wrap {
 		display: none;
 	}
-
 
 	/* SP 헤더 검색창 사이즈 조정 */
 	.header-search form {
@@ -121,11 +118,9 @@ body {
 	.header-message {
 		margin-right: 0;
 	}
-	.header-menu div.header-member,
-	.header-menu div.header-help {
+	.header-menu div.header-member, .header-menu div.header-help {
 		display: none;
 	}
-
 	.header-menu div a {
 		color: #ffffff;
 	}
@@ -135,8 +130,6 @@ body {
 	.header-menu .header-login a {
 		padding-right: 0;
 	}
-
-
 	.footer-wrap .footer {
 		margin: 30px 0 !important;
 		padding: 0 4% !important;
@@ -146,14 +139,10 @@ body {
 	.footer-notice {
 		display: none;
 	}
-
 	form .form-control {
 		width: 89%;
 		padding: 8px 8% 8px 2%;
 	}
-
-
-
 
 	/* SP 슬라이드바 버튼 */
 	.header-menu {
@@ -176,8 +165,7 @@ body {
 	}
 
 	/* SP 슬라이드바 피씨용메시지 닫기 */
-	#ctlNewMessageCnt,
-	#ctlNewMessageList {
+	#ctlNewMessageCnt, #ctlNewMessageList {
 		display: none;
 	}
 
@@ -221,7 +209,6 @@ body {
 	.sidebar_sp_top .header-name {
 		font-weight: bold;
 	}
-
 	.sidebar_sp_main {
 		display: block;
 	}
@@ -253,7 +240,6 @@ body {
 		font-weight: bold;
 		text-decoration: none;
 	}
-
 	.sidebar_sp_main_new {
 		width: 20px;
 		background-color: #fcbc4e;
@@ -278,10 +264,12 @@ body {
 	margin-left: -400px;
 	margin-top: -257px;
 }
+
 .login-wrap .logo {
 	width: 175px;
 	margin-bottom: 25px;
 }
+
 .login-thum {
 	width: 399px;
 	height: 398px;
@@ -292,6 +280,7 @@ body {
 	background-size: cover;
 	position: relative;
 }
+
 .login-thum p {
 	position: absolute;
 	top: 50%;
@@ -300,30 +289,37 @@ body {
 	font-size: 200%;
 	line-height: 200%;
 	text-shadow: #666666 1px 1px 3px;
-	-ms-filter:"progid:DXImageTransform.Microsoft.DropShadow(color=#666666,offx=1,offy=1)";
-	display:block;
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.DropShadow(color=#666666,offx=1,offy=1)";
+	display: block;
 }
+
 .login-form {
 	width: 399px;
 	height: 398px;
-    display: table-cell;
-    vertical-align: middle;
+	display: table-cell;
+	vertical-align: middle;
 }
+
 .login-form form {
 	padding: 0 30px;
 }
+
 .forgot-pwd a {
 	color: #6eb9b5;
 	font-weight: bold;
 	float: right;
 	margin-right: 10px;
 }
+
 .login-form .btn-dogmate {
 	margin: 20px 0 !important;
 }
+
 .login-form form p {
 	text-align: center;
 }
+
 @media screen and (max-width: 767px) {
 	.form-wrap {
 		width: 100%;
@@ -332,7 +328,6 @@ body {
 		border: none;
 		background-color: inherit;
 	}
-
 	.form-wrap .form-control {
 		width: 100%;
 		padding: 8px 8% 8px 2%;
@@ -364,12 +359,12 @@ body {
 		float: left;
 		position: relative;
 	}
-	
 	.login-form form {
 		padding: 0;
 	}
-
 	.forgot-pwd a {
 		margin-right: 0;
 	}
+	
+	
 }

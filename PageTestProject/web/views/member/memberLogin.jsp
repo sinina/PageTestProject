@@ -1,24 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<% String flag =String.valueOf(request.getAttribute("flag")); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>맡아줘 로그인</title>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css?ver=1">
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
+	<script>
+		$(function(){
+			$("#btnLOGIN").click(function(){
+				$("#loginForm").submit();
+			})
+		});
+	</script>
 </head>
 <body>
 	
  <div class="login-wrap">
-            <div class="logo"><a href="<%=request.getContextPath()%>/"><img src="../../images/common/matajo_logo.png" alt="Matajo"/></a></div>
+            <div class="logo"><a href="<%=request.getContextPath()%>/"><img src="<%=request.getContextPath()%>/images/common/matajo_logo.png" alt="Matajo"/></a></div>
             <div class="form-wrap">
                 <div class="login-thum">
-                <p>더이상<br />반려동물을<br />외롭게<br />하지마세요</p><img src="../../images/common/login_img1.jpg" />                </div>
+                <p>더이상<br />반려동물을<br />외롭게<br />하지마세요</p><img src="<%=request.getContextPath()%>/images/common/login_img1.jpg" />                </div>
                 <div class="login-form">
-                    <form>
-                        <input class="form-control form-mail" type="text" name="" placeholder="이메일" id="txtMEM_EMAIL" value="">
-                        <input class="form-control form-pwd" type="password" name="" placeholder="비밀번호" id="txtMEM_PASS">
+                	<%if(flag.equals("false")){%><p class="false-user"  style="color: red; text-align:center;">계정과 대소문자를 확인해 주세요</p><%}%>
+                    <form action="<%=request.getContextPath() %>/login.do" method="post" id="loginForm">
+                        <input class="form-control form-mail" type="text" name="userId" placeholder="이메일" id="txtMEM_EMAIL" value="">
+                        <input class="form-control form-pwd" type="password" name="userPwd" placeholder="비밀번호" id="txtMEM_PASS">
 
                         <input class="checkbox" type="checkbox" name="chkEMAIL_SAVE" id="checkbox"/><label for="checkbox">이메일저장</label>
                         <span class="forgot-pwd"><a href="<%=request.getContextPath()%>/index.jsp">비밀번호 찾기</a></span>
