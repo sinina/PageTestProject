@@ -3,15 +3,20 @@
 <!DOCTYPE html >
 <html>
 <head>
+
+
 <meta charset="UTF-8">
-<title>예약하기</title>
-
-
-
+<title>Insert title here</title>
 </head>
 <body>
-	<%@include file="../../views/common/header.jsp"%>
-	
-	
+	<%@include file="../common/header.jsp" %>
+	<ul>
+		<li>
+		<div>
+				
+		
+		</div>
+		</li>
+	</ul>
 </body>
 </html>
