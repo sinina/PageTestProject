@@ -19,8 +19,8 @@
 					 <h1><br></h1> 
 					
 				<ul class="actions">
-						<li><a href="#" class="button alt">맡아조?</a></li>
-						<li><a href="#" class="button alt">맡겨조!</a></li>
+						<li><a href="#" class="alt">맡아조?</a></li>
+						<li><a href="#" class="alt">맡겨조!</a></li>
 					</ul>
 					<!-- <div>
 					맡아조?

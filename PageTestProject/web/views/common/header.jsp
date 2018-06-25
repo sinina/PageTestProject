@@ -21,6 +21,8 @@
 				<a href="/ptp/index.jsp" class="logo"><img src="/ptp/images/common/matajo_logo.png" height="85px"></a>
 					<nav id="nav">
 						<a href="<%=request.getContextPath() %>/index.jsp">Home</a>
+						<!-- 관리자페이지 테스트위한 메뉴 -->
+						<a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자페이지</a>
 						<%if(member==null) {%>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
