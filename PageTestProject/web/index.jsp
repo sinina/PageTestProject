@@ -77,9 +77,9 @@
 								<h3>애견호텔</h3>
 							</header>
 							<div class="image fit">
-								<img src="images/pic01.jpg" alt="" />
+								<img src="images/pic001.png" alt="" />
 							</div>
-							<p>낯선 공간에 남겨져 스트레스를 받아요.<br>스트레스는 문제행동의 원인이 될수 있어요.<br>스트레스는 문제행동의 원인이 될 수 있어요</p>
+							<p>낯선 공간에 남겨져 스트레스를 받아요.<br>한 장소에서 이뤄지는 행동들은 괴로워요</p>
 						</div>
 					</article>
 					<article class="alt">
@@ -88,7 +88,7 @@
 								<h3>유치원</h3>
 							</header>
 							<div class="image fit">
-								<img src="images/pic02.jpg" alt="" />
+								<img src="images/pic002.png" alt="" />
 							</div>
 							<p>다른 동물에게 괴롭힘을 당할 수 있어요.<br>다른 동물에게서 나쁜 습관을 배워올 수 있어요</p>
 						</div>
