@@ -47,4 +47,32 @@ public class MemberDao {
 		return result;
 	}
 
+	public int insertMember(Connection con, MemberVo member) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		
+		query = "INSERT INTO MEMBER VALUES(?, ?, ?, ? , ?, ?, ?, SYSDATE, DEFAULT, SEQ_MEMBER.NEXTVAL)";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1,member.getId());
+			pstmt.setString(2, member.getPwd());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, String.valueOf(member.getGender()));
+			pstmt.setInt(5,  member.getAge());
+			pstmt.setString(6, member.getPhone());
+			pstmt.setString(7, member.getAddress());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

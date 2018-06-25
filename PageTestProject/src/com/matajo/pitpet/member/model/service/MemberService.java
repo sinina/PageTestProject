@@ -15,4 +15,21 @@ public class MemberService {
 		return member;
 	}
 
+	public int insertMember(MemberVo member) {
+		Connection con = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().insertMember(con, member);
+		System.out.println(result);
+		//결과 처리(트랜젝션)
+		if(0 < result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		//자원 반납
+		JDBCTemplate.close(con);
+		//결과 return
+		return result;
+	}
+
 }
