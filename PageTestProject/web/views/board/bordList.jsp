@@ -7,7 +7,10 @@
 <title>예약하기</title>
 </head>
 <body>
-	<!--https://www.dogmate.co.kr/reserve/search 참고-->
+	<ul>
+		<li role="presentation"><a href="#">전체<span>10</span></a></li>
+		
+	</ul>
 	
 	
 </body>

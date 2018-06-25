@@ -10,9 +10,9 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
- <!--   <listener>
-        <listener-class>com.matajo.pitpet.visitCounter.controller.SessionListener</listener-class>
-    </listener> -->
+    <listener>
+        <listener-class>com.matajo.pitpet.visitCounter.controller.SesstionListener</listener-class>
+    </listener> 
 
 
 </web-app>
