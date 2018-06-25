@@ -10,10 +10,19 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css?ver=1">
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
 	<script>
+	
 		$(function(){
-			$("#btnLOGIN").click(function(){
+					
+			$("#btnLOGIN").click(function() {
 				$("#loginForm").submit();
-			})
+			});
+			
+			$(".form-pwd").keypress(function(e){
+				if(e.which == 13){
+					$("#loginForm").submit();
+				}
+			});
+
 		});
 	</script>
 </head>
@@ -25,7 +34,7 @@
                 <div class="login-thum">
                 <p>더이상<br />반려동물을<br />외롭게<br />하지마세요</p><img src="<%=request.getContextPath()%>/images/common/login_img1.jpg" />                </div>
                 <div class="login-form">
-                	<%if(flag.equals("false")){%><p class="false-user"  style="color: red; text-align:center;">계정과 대소문자를 확인해 주세요</p><%}%>
+                	<%if(flag.equals("false")){%><p class="false-user"  style="color: red; text-align:center;">아이디와 비밀번호를 확인해 주세요</p><%}%>
                     <form action="<%=request.getContextPath() %>/login.do" method="post" id="loginForm">
                         <input class="form-control form-mail" type="text" name="userId" placeholder="이메일" id="txtMEM_EMAIL" value="">
                         <input class="form-control form-pwd" type="password" name="userPwd" placeholder="비밀번호" id="txtMEM_PASS">
