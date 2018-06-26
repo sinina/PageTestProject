@@ -19,9 +19,8 @@ public class BoardVo {
 		private int no;
 		private int memberNo;
 		private boolean delFlag;
-		private Date writeDate;
 		private String petonimal;
-		private char animalNo;
+		private int animalNo;
 		
 		
 	public BoardVo(){
@@ -47,7 +46,6 @@ public class BoardVo {
 		this.no = no;
 		this.memberNo = memberNo;
 		this.delFlag = delFlag;
-		this.writeDate = writeDate;
 		this.petonimal = petonimal;
 		this.animalNo = animalNo;
 	}
@@ -194,16 +192,6 @@ public class BoardVo {
 		}
 
 
-		public Date getWriteDate() {
-			return writeDate;
-		}
-
-
-		public void setWriteDate(Date writeDate) {
-			this.writeDate = writeDate;
-		}
-
-
 		public String getPetonimal() {
 			return petonimal;
 		}
@@ -214,12 +202,12 @@ public class BoardVo {
 		}
 
 
-		public char getAnimalNo() {
+		public int getAnimalNo() {
 			return animalNo;
 		}
 
 
-		public void setAnimalNo(char animalNo) {
+		public void setAnimalNo(int animalNo) {
 			this.animalNo = animalNo;
 		}
 
@@ -229,7 +217,7 @@ public class BoardVo {
 			return "BoardVo [title=" + title + ", price=" + price + ", place=" + place + ", sitterName=" + sitterName
 					+ ", baby=" + baby + ", family=" + family + ", animal=" + animal + ", interv=" + interv + ", info="
 					+ info + ", type=" + type + ", image=" + image + ", no=" + no + ", memberNo=" + memberNo
-					+ ", delFlag=" + delFlag + ", writeDate=" + writeDate + ", petonimal=" + petonimal + ", animalNo="
+					+ ", delFlag=" + delFlag + ", writeDate="  + ", petonimal=" + petonimal + ", animalNo="
 					+ animalNo + "]";
 		}
 
