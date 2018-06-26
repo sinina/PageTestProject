@@ -22,13 +22,6 @@
 						<li><a href="views/board/bordList.jsp" class="alt">맡아조?</a></li>
 						<li><a href="#" class="alt">맡겨조!</a></li>
 					</ul>
-					<!-- <div>
-					맡아조?
-					</div>
-					<div>
-					맡겨조!
-					</div> -->
-					
 					
 				
 				</div>
@@ -79,7 +72,7 @@
 							<div class="image fit">
 								<img src="images/pic001.png" alt="" />
 							</div>
-							<p>낯선 공간에 남겨져 스트레스를 받아요.<br>한 장소에서 이뤄지는 행동들은 괴로워요</p>
+							<p>낯선 공간에 남겨져 스트레스를 받아요.<br>한 장소에서 이뤄지는 행동들은 괴로워요.</p>
 						</div>
 					</article>
 					<article class="alt">
@@ -90,7 +83,7 @@
 							<div class="image fit">
 								<img src="images/pic002.png" alt="" />
 							</div>
-							<p>다른 동물에게 괴롭힘을 당할 수 있어요.<br>다른 동물에게서 나쁜 습관을 배워올 수 있어요</p>
+							<p>다른 동물에게 괴롭힘을 당할 수 있어요.<br>다른 동물에게서 나쁜 습관을 배워올 수 있어요.</p>
 						</div>
 					</article>
 				</div>
@@ -103,7 +96,7 @@
 						<h2>내가 원하는 펫시터를 찾아 믿고 맡겨보세요</h2>
 				</header>
 					<ul class="actions">
-						<li><a href="#" class="button alt">서비스 이용 방법</a></li>
+						<li><a href="views/common/serviceGuide.jsp" class="button alt">서비스 이용 방법</a></li>
 					</ul>
 			</div>
 		</section>

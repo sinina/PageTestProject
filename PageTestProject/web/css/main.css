@@ -2050,8 +2050,9 @@ ul.actions {
 ul.actions li {
 	display: inline-block;
 	/* padding: 0 1em 0 0; */
-	padding: 2em 24em 0 0;
+	padding: 0 16em 0 0;
 	vertical-align: middle;
+	font-weight: bold;
 }
 
 ul.actions li:last-child {
