@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.matajo.pitpet.board.model.service.BoardService;
 
 
-public class WriteBoardServlet {
-
+public class SelectBoardServlet {
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -19,6 +19,6 @@ public class WriteBoardServlet {
 		String keyword = request.getParameter("keyword");
 		
 		BoardService bs = new BoardService();
-		
+
 	}
 }
