@@ -10,17 +10,6 @@ import com.matajo.pitpet.common.JDBCTemplate;
 
 public class VisitCountDao {
 	
-private static VisitCountDao instance;
-	
-	/*// 싱글톤 패턴
-	private VisitCountDao(){}
-	
-	public static VisitCountDao getInstance(){
-		if(instance==null)
-			instance=new VisitCountDao();
-		return instance;
-	}*/
-	
 	public int setTotalCount(Connection con) {
 		//총방문자수 증가시키는 메소드
 		int result = 0;
@@ -31,7 +20,7 @@ private static VisitCountDao instance;
 				//1. 쿼리 전송 객체 생성
 				stmt= con.createStatement();
 				//2. 쿼리 작성
-				query= "insert into visitCount (visitDate) values (sysdate)";
+				query= "INSERT INTO VISITCOUNT (VISITDATE) VALUES (SYSDATE)";
 				//3. 쿼리 실행
 				result = stmt.executeUpdate(query);
 				//4. 결과 처리
@@ -53,7 +42,7 @@ private static VisitCountDao instance;
 		String query ="";
 		try {
 			stmt= con.createStatement();
-			query="SELECT COUNT(*) AS TotalCnt FROM VISIT";
+			query="SELECT COUNT(*) AS TOTALCNT FROM VISITCOUNT";
 			rs= stmt.executeQuery(query);
 			
 			if(rs.next()){
@@ -78,7 +67,7 @@ private static VisitCountDao instance;
 		String query ="";
 		try {
 			stmt= con.createStatement();
-			query="SELECT COUNT(*) AS TodayCnt FROM VISIT WHERE TO_DATE(visitDate, 'YYYY-MM-DD') = TO_DATE(sysdate, 'YYYY-MM-DD')";
+			query="SELECT COUNT(*) AS TODAYCNT FROM VISITCOUNT WHERE TO_DATE(VISITDATE, 'YYYY-MM-DD') = TO_DATE(SYSDATE, 'YYYY-MM-DD')";
 			rs= stmt.executeQuery(query);
 			
 			if(rs.next()){

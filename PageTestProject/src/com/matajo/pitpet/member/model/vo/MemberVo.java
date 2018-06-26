@@ -33,6 +33,21 @@ public class MemberVo {
 		this.no = no;
 	}
 
+	
+
+
+
+	public MemberVo(String id, String name, char gender, int age, String phone, Date enrollDate, int no) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.gender = gender;
+		this.age = age;
+		this.phone = phone;
+		this.enrollDate = enrollDate;
+		this.no = no;
+	}
+
 
 	public String getId() {
 		return id;

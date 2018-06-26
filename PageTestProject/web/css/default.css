@@ -1,3 +1,4 @@
+<style>
 html, body {
 	height: 100%;
 }
@@ -10,7 +11,6 @@ body {
 	font-size: 10pt;
 	color: #747474;
 }
-
 
 h1, h2, h3 {
 	margin: 0;
@@ -26,6 +26,7 @@ p {
 }
 
 strong {
+	
 }
 
 a {
@@ -41,6 +42,7 @@ a img {
 }
 
 img.border {
+	
 }
 
 img.alignleft {
@@ -59,33 +61,29 @@ hr {
 	display: none;
 }
 
-ul.style1
-{
+ul.style1 {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-ul.style1 li
-{
+ul.style1 li {
 	padding: 15px 0px 15px 0px;
 	border-top: 1px solid #E5E5E5;
 }
 
-ul.style1 a
-{
+ul.style1 a {
 	color: #747474;
 }
 
-ul.style1 .first
-{
+ul.style1 .first {
 	padding-top: 0;
 	border-top: none;
 }
 
 /** WRAPPER */
-
 #wrapper {
+	
 }
 
 .container {
@@ -98,7 +96,6 @@ ul.style1 .first
 }
 
 /* Header */
-
 #header-wrapper {
 	overflow: hidden;
 	height: 600px;
@@ -112,7 +109,6 @@ ul.style1 .first
 }
 
 /* Logo */
-
 #logo {
 	overflow: hidden;
 	padding: 3em 0em;
@@ -150,17 +146,14 @@ ul.style1 .first
 }
 
 /* Menu */
-
 #menu-wrapper {
-	overflow: hidden;
 	height: 52px;
-	margin-bottom: 2em;
+	margin-bottom: 4em;
 	border-top: 1px solid #D7CFAD;
 	border-bottom: 1px solid #D7CFAD;
 }
 
 #menu {
-	overflow: hidden;
 	height: 52px;
 }
 
@@ -190,18 +183,22 @@ ul.style1 .first
 	color: #706C53;
 }
 
-#menu a:hover, #menu .current_page_item a {
+#menu ul ul {
+	display: none;
+	position: absolute;
+}
+
+#menu ul li:hover ul {
+	display: block;
+}
+
+#menu a:hover {
 	background: #D7CFAD;
 	text-decoration: none;
 	color: #706C53;
 }
 
-#menu .current_page_item a {
-}
-
 /** PAGE */
-
-
 #page {
 	overflow: hidden;
 	width: 1100px;
@@ -211,69 +208,65 @@ ul.style1 .first
 	border: 1px solid #D9D2A5;
 }
 
-#page h2 a
-{
-	letter-spacing: -2px;
-	text-decoration: none;
-	font-size: 1.7em;
-	font-weight: 400;
-	color: #706C53;
-}
-
-
-#box1
-{
+.visitCount {
 	float: left;
 	width: 450px;
-	margin-right: 50px;
+	margin-right: 70px;
+	margin-bottom: 30px;
 }
 
-#box2
-{
+.visitToday {
 	float: left;
-	width: 300px;
+	width: 250px;
 }
 
-#box2 h2, #box3 h2
-{
-	padding-bottom: 1.2em;
-	font-weight: 400;
-	font-size: 1.7em;
-	font-weight: 400;
-	color: #706C53;
-}
-
-
-#box3
-{
+.visitTotal {
 	float: right;
 	width: 250px;
 }
 
-
-/** CONTENT */
-
-#content {
+/* 추가 css */
+.matching {
+	width: 450px;
+	height: 300px;
 }
 
-/** SIDEBAR */
-
-#sidebar {
+.sales {
+	width: 450px;
+	float: right;
 }
 
-/* Footer */
-
-#footer {
-	overflow: hidden;
-	padding: 3em 0em;
-	border-top: 1px solid #D9D2A5;
-	color: #7A7762;
-}
-
-#footer p {
+.count {
+	width: 200px;
+	height: 200px;
+	/* border: 1px solid; */
+	font-size: 80px;
 	text-align: center;
 }
 
-#footer a {
-	color: #7A7762;
+#chartVisit{
+	width: 450px;
+	height: 300px;
 }
+
+#salesChart{
+	width: 600px;
+	float: right;
+}
+
+#memberTable {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+#memberTable th, #memberTable td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  } 
+
+/** CONTENT */
+#content {
+	
+}
+
+</style>

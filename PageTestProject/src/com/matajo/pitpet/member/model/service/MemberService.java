@@ -1,6 +1,8 @@
 package com.matajo.pitpet.member.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.member.model.dao.MemberDao;
@@ -31,5 +33,27 @@ public class MemberService {
 		//결과 return
 		return result;
 	}
+
+	public List<MemberVo> getMemberList(int selectNo) {
+		//커넥션을 맺는 역할 -> 서비스 
+				//	-> 트랜젝션 관리를 해야 하기 때문에
+				Connection con = JDBCTemplate.getConnection();
+				ArrayList<MemberVo> list = new MemberDao().selectMemberList(con,selectNo);
+				JDBCTemplate.close(con);
+				return list;
+	}
+
+	public int deleteMember(int memberNo) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new MemberDao().deleteMember(con, memberNo);
+		if(0 < result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return result;
+	}
+
 
 }

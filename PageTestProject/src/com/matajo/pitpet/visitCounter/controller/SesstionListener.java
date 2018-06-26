@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSessionListener;
 
 import com.matajo.pitpet.visitCounter.model.service.VisitCountService;
 
-//web.xml에 listener 등록해야함-> 톰캣 실행되며녀서 리스너 실행 됨
+//web.xml에 listener 등록해야함-> 톰캣 실행되면서 리스너 실행 됨
 
 @WebListener
 public class SesstionListener implements HttpSessionListener {
@@ -22,7 +22,6 @@ public class SesstionListener implements HttpSessionListener {
         }
 
     }
-    
     
     private void execute(HttpSessionEvent sessionEve) 
     {
