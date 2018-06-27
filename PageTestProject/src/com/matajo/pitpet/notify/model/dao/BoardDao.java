@@ -37,7 +37,7 @@ public class BoardDao {
 				temp.setSitterName(rs.getString("bwriter"));
 				temp.setInfo(rs.getString("username"));
 				temp.setPrice(rs.getInt("bcount"));
-				temp.setWriteDate(rs.getDate("bdate"));
+				//temp.(rs.getDate("bdate"));
 				temp.setImage(rs.getString("boardfile"));
 				
 				list.add(temp);

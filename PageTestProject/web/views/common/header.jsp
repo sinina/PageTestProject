@@ -31,6 +31,7 @@
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
+							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp">펫시터 신청</a>
 						<%} %>
 					</nav>
 				</div>
