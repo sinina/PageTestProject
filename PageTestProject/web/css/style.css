@@ -83,7 +83,9 @@ var {
     font-weight: normal;
 }
 ol,
-ul {
+ul,
+li 
+{
     list-style: none;
 }
 caption,
