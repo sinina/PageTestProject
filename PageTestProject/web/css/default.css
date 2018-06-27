@@ -6,7 +6,7 @@ html, body {
 body {
 	margin: 0px;
 	padding: 0px;
-	background: #F1E9D4 url(images/bg01.jpg) repeat;
+	background: #F1E9D4 ;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 10pt;
 	color: #747474;

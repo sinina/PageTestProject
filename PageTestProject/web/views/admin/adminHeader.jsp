@@ -35,7 +35,7 @@
 					<li><a href="#">신고 관리</a></li>
 				</ul>
 			</li>
-			<li><a href="#">펫시터 승인</a></li>
+			<li><a href="/ptp/applyList.do">펫시터 승인</a></li>
 			<li><a href="#">예약 현황</a></li>
 		</ul>
 	</div>

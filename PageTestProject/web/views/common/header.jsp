@@ -11,11 +11,11 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
+<style>
+
+</style>
 </head>
-<body>
-	
-		
-	
+<body>	
 	<header id="header">
 				<div class="inner">
 				<a href="/ptp/index.jsp" class="logo"><img src="/ptp/images/common/matajo_logo.png" height="85px"></a>
@@ -28,10 +28,11 @@
 						<%if(member==null) {%>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
+						
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
-							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp">펫시터 신청</a>
+							<a href="<%=request.getContextPath() %>/views/member/petsiterApply.jsp" style="color:red">펫시터 신청</a>
 						<%} %>
 					</nav>
 				</div>
