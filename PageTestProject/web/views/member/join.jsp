@@ -41,7 +41,7 @@ li{
 	display:inline-block;
 }
 div.line{
-	width:135px;
+	width:130px;
 	list-style:none;
 	display:inline-block;
 }
@@ -55,6 +55,7 @@ form{
 	margin-left:auto;
 	margin-right:auto;
 	background:#e52770;
+
 }
 .jender{
 	position: relative;
@@ -99,6 +100,25 @@ form{
 div{
 	margin-top:-3px;
 }
+#messageDiv, #passMessageDiv, #NameMessageDiv{
+	height:auto;
+}
+.reverse{
+	background:black;
+}
+#patName, #jenderCheck, #patPhone{
+	margin-top:0px;
+}
+#jenderCheck{
+	padding-top:15px;
+	height:70px;
+}
+#man+label:before {
+     border-radius: 0%; 
+}
+#woman+label:before {
+     border-radius: 0%; 
+}
 
 </style>
 <!--정규표현식
@@ -112,6 +132,30 @@ div{
     	  alert("Error");
       }
       
+      -------------------------------------
+      나이정규표현식
+      /* //년 널값체크
+     var birVal = $("#yy").val();
+      if(birVal == ""){
+		return false;
+     }
+//월 널값체크
+     var mmVal = $("#mm").val();
+     if(mmVal == ""){
+		return false;
+     }
+//일 널값체크
+     var ddVal = $("#dd").val();
+     if(ddVal == ""){
+		return false;
+     } */
+     -------------------------------------
+     전화번호 정규표현식
+     /* //전화번호 널값체크
+     var patphoneVal = $("#patphone").val();
+     if(patphoneVal==""){
+		return false;
+     } */
 -->
 <script>
 <!--다음 우편번호api-->
@@ -158,7 +202,7 @@ function sample6_execDaumPostcode() {
 }
  
 
-$(function(){
+/* $(function(){
 	var pat = $("#patId");
 	pat.focus(function(){
 		//pat.val("포커스 얻음");
@@ -168,83 +212,124 @@ $(function(){
 	});
 	//$('input[name="sex"]').val();
 });
-
+ */
+ $(function(){
+	 
+	 $("#patId").change(function(){
+			var inputId = $("#patId").val();
+		 	var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		 	var patIdVal = $("#patId").val();
+		 	
+		 	if (regExp.test(inputId)) {
+		 	$.ajax({
+				url : "/ptp/idCheck.do",
+				type : "get",
+				data : {userId : inputId},
+				success : function(data){
+					if(data ==1){
+						$("#messageDiv").text("사용가능한 아이디입니다.");		
+						$("#messageDiv").css("color", "green");
+					}else{
+						$("#messageDiv").text("아이디가 중복 됨");		
+						$("#messageDiv").css("color", "red");						
+					}
+				},error : function(e){
+					console.log(e);
+				}
+			});
+		 	 }
+});
+	 
+	 //가입하기 이벤트
+	 $("#pat").hover(function(){
+		$("#pat").css("background", "#20d63b"); 
+		$("#pat").css("cursor","pointer" );
+	 }, function(){
+		 $("#pat").css("background", "#e52770");
+	 });
+	 
+	 //비밀번호 정규표현식
+	 $("#patpassword").change(function(){
+		var pass = $("#patpassword").val();
+ 		//비밀번호 최소 8자, 대문자 하나 이상, 소문자 하나 및 숫자 하나입니다.
+ 		var req = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+		 if(req.test(pass)){
+			 $("#passMessageDiv").text("사용가능한 비밀번호입니다.");
+		 }else{
+			 $("#passMessageDiv").text("비밀번호 최소 8자, 대문자 하나 이상, 소문자 하나 및 숫자 하나입니다..");			 
+		 }
+	 });
+	 
+	 //아이디 정규표현식
+	
+	 $("#patname").change(function(){
+		 var Name = $("#patname").val();
+		 var pattern = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+		 if(pattern.test(Name)){
+			 $("#NameMessageDiv").text("사용가능한 이름입니다.");
+		 }else{
+			 $("#NameMessageDiv").text("한글은 2 ~ 4글자(공백 없음) , 영문은 Firstname(2 ~ 10글자) (space) Lastname(2 ~10글자)");			 
+		 }
+	 });
+ });
  
  function validate(){
-	if($("#patpassword").val() != $("#patpasswordcheck").val()){
-		$("#passChkSpan").text("입력하신 비밀번호가 일치하지 않습니다.");
+
+	 //아이디 널값체크
+	 var patIdVal = $.trim($("#patId").val());
+	  if(patIdVal == "" || null == patIdVal){
+		  $("#messageDiv").text("아이디를 입력해주십시오");
+		  return false;
+	  }
+	//아이디 정규표현 리턴확인
+	 var inputId = $("#patId").val();
+	 var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	 var idMessage = $("#messageDiv").text();
+	 if (!regExp.test(inputId)||idMessage=="아이디가 중복 됨") {
+		 return false;
+		 }
+	 
+//아이디 정규표현식
+ 	 /*  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	  if (!regExp.test(patIdVal)) {
+		return false;
+	  } */
+	  
+ //비밀번호 널값 체크
+//비밀번호 일치여부
+     if($("#patpassword").val() != $("#patpasswordcheck").val()){
+		$("#passCheckMessDiv").text("입력하신 비밀번호가 일치하지 않습니다.");
 		$("#patpasswordcheck").focus();
 		return false;
+	}else{
+		$("#passCheckMessDiv").text("비밀번호가 일치합니다.");		
 	}
-	
-	 var patIdVal = $("#patId").val();
-
-	  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	  if (patIdVal.match(regExp) != null) {
-		    alert('Good!');
-		  }
-		  else {
-		    alert('Error');
-		  }
-	
-     var passVal = $("#patpassword").val();
-     var regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-     
-     if(passVal.match(regex) != null){
-   	  alert("패스워드 사용가능");
-     }else{
-   	  alert("패스워드를 다시 확인하십시오.");
-     }
-    
-     var birVal = $("#yy").val();
-     if(!birVal==""&&birVal!=null){
-   	  alert("년 입력확인");
-     }else{
-   	  alert("년 입력안함");
-     }
-     
-     var mmVal = $("#mm").val();
-     if(!mmVal==""&&mmVal!=null){
-   	  alert("월 입력확인");
-     }else{
-   	  alert("월 입력안함");
-     }
-     
-     var ddVal = $("#dd").val();
-     if(!ddVal==""&&ddVal!=null){
-   	  alert("일 입력확인");
-     }else{
-   	  alert("일 입력안함");
-     }
-     
+ 
+//이름 널값체크
      var patnameVal = $("#patname").val();
-     if(!patnameVal==""&&patnameVal!=null){
-   	  alert("이름 입력확인");
-     }else{
-   	  alert("이름 입력안함");
+     if(patnameVal==""){
+    	$("#patnameVal").focus();
+		return false;
      }
-     
-     var patphoneVal = $("#patphone").val();
-     if(!patphoneVal==""&&patphoneVal!=null){
-   	  alert("전화번호 입력확인");
-     }else{
-   	  alert("전화번호 입력안함");
-     }
-     
+//이름 정규표현 리턴 확인
+     var Name = $("#patname").val();
+	 var pattern = /^[가-힣]{2,4}|[a-zA-Z]{2,10}\s[a-zA-Z]{2,10}$/;
+	 if(!pattern.test(Name)){
+		return false
+	 }
+
+//우편번호 널값체크
      var sample6_postcodeVal = $("#sample6_postcode").val();
-     if(!sample6_postcodeVal==""&&sample6_postcodeVal!=null){
-   	  alert("우편번호 입력확인");
-     }else{
-   	  alert("우편번호 입력안함");
+     if(sample6_postcodeVal==""){
+    	$("#sample6_postcodeVal").focus();
+		return false;
      }
-     
+//상세주소 널값체크
      var sample6_address2Val = $("#sample6_address2").val();
-     if(!sample6_address2Val==""&&sample6_address2Val!=null){
-   	  alert("상세주소 입력확인");
-     }else{
-   	  alert("상세주소 입력안함");
+     if(sample6_address2Val==""){
+    	$("#sample6_address2Val").focus();
+		return false;
      }
-	
 	return true;
 } 
 
@@ -263,11 +348,25 @@ $(function(){
 	<div class="join_form">
 			<form id = "joinForm" method= "post" action = "/ptp/join.do" onsubmit = "return validate();">
 				<div id="ul">
-					<div class="ide"><div id="patIde"><input type="text"  id="patId" name="uid" placeholder="아이디"/></div></div>
-					<div><div id="pass"><input type="password" name="upass" maxlength="10" id="patpassword" placeholder="비밀번호"/></div></div>
-					<div><div id="passCheck"><input type="password" name="upassCheck" maxlength="10" id="patpasswordcheck" placeholder="비밀번호 확인"/></div><br></div>
+					<div class="ide">
+						<div id="patIde"><input type="text"  id="patId" name="uid" placeholder="아이디"/></div>
+						<div id="messageDiv"></div>
+					</div>
 					
-					<div><div id="patName"><input type="text" maxlength="15" name="patName" id="patname" placeholder="이름"/></div></div>
+					<div>
+						<div id="pass"><input type="password" name="upass" maxlength="10" id="patpassword" placeholder="비밀번호"/></div>
+						<div id="passMessageDiv"></div>
+					</div>
+					
+					<div>
+						<div id="passCheck"><input type="password" name="upassCheck" maxlength="10" id="patpasswordcheck" placeholder="비밀번호 확인"/></div>
+						<div id="passCheckMessDiv"></div>
+					<br></div>
+					
+					<div>
+						<div id="patName"><input type="text" maxlength="15" name="patName" id="patname" placeholder="이름"/></div>
+						<div id="NameMessageDiv"></div>	
+					</div>
 					<div><div id="jenderCheck">
 					<span class="jender">
 					<input type="radio" id="man" checked name="sex" value="0" ><label id="manLb" for="man">남자 </label>
@@ -281,9 +380,9 @@ $(function(){
 					<div><div id="patPhone"><input type="text" maxlength="13" name="patPhone" id="patphone" placeholder="전화번호"/></div><br></div>
 					
 					<div id="age" class="line"><input type="text" id="patage" name="patAge" placeholder="생일" readonly/></div>
-					<div class="line"><input type="text" id="yy" name="yy" maxlength="4" value="" onfocus="toggleLabel('yyLb','yy','in');" onblur="toggleLabel('yyLb','yy','out');checkBirthday('check')" placeholder="년(4자)" class="int"></div>
+					<div class="line"><input type="text" id="yy" name="yy" maxlength="4" value="" placeholder="년(4자)" class="int"></div>
 					<div class="line"><span>
-					<select id="mm" name="mm" title="월"class="sel" onchange="checkBirthday('check')">
+					<select id="mm" name="mm" title="월"class="sel">
 											<option value="">월</option>
 										  	 			<option value="1">1</option>
 										  	 			<option value="2">2</option>
@@ -299,11 +398,11 @@ $(function(){
 										  	 			<option value="12">12</option>
 										</select></span></div>
 					<div class="line"><span>
-					<input type="text" id="dd" name="dd" maxlength="2" value="" onfocus="toggleLabel('ddLb','dd','in');" onblur="toggleLabel('ddLb','dd','out');checkBirthday('check')" placeholder="일" class="int">
+					<input type="text" id="dd" name="dd" maxlength="2" value="" placeholder="일" class="int">
 					</span>			
 					</div>
 					<div id="addr"><input type="text" id="sample6_postcode" name="sample6_postcode" placeholder="우편번호"></div>
-					<div id="addr cc"><input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"></div>
+					<div id="addr cc"><input type="button" onclick="sample6_execDaumPostcode();" value="우편번호 찾기"></div>
 					<div><input type="text" id="sample6_address" name="sample6_address" placeholder="주소"></div>
 					<div><input type="text" id="sample6_address2" name="sample6_address2" placeholder="상세주소"></div>
 				</div>
