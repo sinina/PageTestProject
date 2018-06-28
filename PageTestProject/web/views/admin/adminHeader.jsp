@@ -30,13 +30,13 @@
 			</li>
 			<li><a href="#">게시글 관리</a>
 				<ul>
-					<li><a href="#">펫시팅 글 관리</a></li>
+					<li><a href="/ptp/boardList.do">펫시팅 글 관리</a></li>
 					<li><a href="#">후기글 관리</a></li>
 					<li><a href="#">신고 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="/ptp/applyList.do">펫시터 승인</a></li>
-			<li><a href="#">예약 현황</a></li>
+			<li><a href="<%=request.getContextPath() %>/views/admin/reservationCalendar.jsp">예약 현황</a></li>
 		</ul>
 	</div>
 </div>

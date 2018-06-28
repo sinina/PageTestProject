@@ -34,6 +34,7 @@ public class MemberService {
 		return result;
 	}
 
+	//관리자에서 회원 리스트 가져올때
 	public List<MemberVo> getMemberList(int selectNo) {
 		//커넥션을 맺는 역할 -> 서비스 
 				//	-> 트랜젝션 관리를 해야 하기 때문에
@@ -43,6 +44,7 @@ public class MemberService {
 				return list;
 	}
 
+	//관리자에서 회원 탈퇴 시킬때
 	public int deleteMember(int memberNo) {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().deleteMember(con, memberNo);
@@ -55,5 +57,18 @@ public class MemberService {
 		return result;
 	}
 
+
+	//관리자가 펫시터 승인(회원 코드 2)로 업데이트
+	public int updateMember(int memberNo, int selectNo) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new MemberDao().updateMember(con, memberNo,selectNo);
+		if(0 < result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return result;
+	}
 
 }

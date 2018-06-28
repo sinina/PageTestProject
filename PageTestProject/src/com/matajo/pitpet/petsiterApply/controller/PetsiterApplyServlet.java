@@ -42,7 +42,7 @@ public class PetsiterApplyServlet extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			
 			//오류-신청 완료후 인덱스 페이지로 안넘어감 
-			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='<%=request.getContextPath() %>/index.jsp';</script>"); 
+			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='/ptp/index.jsp';</script>"); 
 			out.close();
 			
 		}else{

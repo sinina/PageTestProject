@@ -29,7 +29,7 @@ public class DeleteMemberServlet extends HttpServlet {
 		if(0 < result){
 			if(selectNo==1){
 				response.sendRedirect("/ptp/omemberList.do");
-			}else{
+			}else if(selectNo==2){
 				response.sendRedirect("/ptp/pmemberList.do");
 			}
 		}else{

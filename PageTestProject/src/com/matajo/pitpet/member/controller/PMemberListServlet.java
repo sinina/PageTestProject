@@ -34,7 +34,7 @@ public class PMemberListServlet extends HttpServlet {
 			}*/
 			//4. 로직 결과 처리(응답 페이지 처리)
 			RequestDispatcher view = null;
-			if(list.size() != 0){
+			if(list != null){
 				request.setAttribute("list", list);
 				view = request.getRequestDispatcher("views/admin/pmManagement.jsp");
 			}else{

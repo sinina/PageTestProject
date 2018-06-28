@@ -40,7 +40,7 @@
 					<td><%=p.getLicense()%></td>			
 					<td><%=p.getInfo()%></td>			
 					<td>
-						<button onclick="">승인</button>
+						<button class="confirm">승인</button>
 						<button class="deleteMember">거절</button>
 						
 					</td>			
@@ -51,4 +51,15 @@
 	</div>
 </div>
 </body>
+<script>
+	$(".confirm").click(function(){
+		var conBtn=$(this);
+		var tr=conBtn.parent().parent();
+		var td = tr.children();
+		var memberNo = td.eq(0).text();
+		
+		location.href="/ptp/confirm.do?memberNo="+memberNo+"&selectNo=1";
+		/* console.log(memberNo); */
+	})	
+</script>
 </html>

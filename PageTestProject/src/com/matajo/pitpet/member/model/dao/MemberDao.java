@@ -148,5 +148,26 @@ public class MemberDao {
 		return result;
 	}
 
+	public int updateMember(Connection con, int memberNo, int selectNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		
+		query = "UPDATE MEMBER SET M_MEMBER_CODE='2' WHERE M_MEMBER_NO=?";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1,memberNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 
 }
