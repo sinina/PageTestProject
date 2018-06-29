@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
