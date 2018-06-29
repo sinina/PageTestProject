@@ -15,6 +15,20 @@
 <style>
 
 </style>
+<script>
+	function Petcheck() {
+		
+		<%if(member != null){%>
+			var memberCode = <%=member.getCode()%>;	
+		<%}%>
+		
+		if(memberCode==2){
+			alert("이미 펫시터 이십니다.");
+			return false;	
+		}
+		return true;
+	}
+</script>
 </head>
 <body>	
 	<header id="header">
@@ -29,11 +43,10 @@
 						<%if(member==null) {%>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
-						
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
-							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp" style="color:red">펫시터 신청</a>
+							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp" style="color:red" onclick="return Petcheck();">펫시터 신청</a>
 						<%} %>
 					</nav>
 				</div>

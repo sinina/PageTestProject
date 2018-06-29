@@ -1,6 +1,7 @@
 package com.matajo.pitpet.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,12 +32,12 @@ public class PetsitterJoinServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		MemberVo member = (MemberVo) session.getAttribute("user");
 		
-		System.out.println(member.toString());
-		
+	
 		int type = Integer.parseInt(request.getParameter("sitterType"));
 		int openarea = Integer.parseInt(request.getParameter("openArea"));
 		int jobstyle = Integer.parseInt(request.getParameter("fullTimeJob"));
@@ -76,11 +77,17 @@ public class PetsitterJoinServlet extends HttpServlet {
 		
 		PetsitterApplyVo petSitterInfo = new PetsitterApplyVo(member.getNo(), type, openarea, jobstyle, adComment, opportunity, activityHistory, long_term, pickup, prContext, sitterCareer, petSizecommon, petAgecommon, animalCheck, animalCount, child, camera, distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber);
 		int result = new PetsitterService().insertPetsitterInfo(petSitterInfo);
-		
+		PrintWriter out=null;
 		if(0<result){
-			
+			out = response.getWriter();
+			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='/ptp/index.jsp';</script>"); 
+			out.flush();
+			out.close();
 		}else{
-			
+			out =  response.getWriter();
+			out.println("<script>alert('신청중 문제가 발생하였습니다.'); location.href='/ptp/index.jsp';</script>"); 
+			out.flush();
+			out.close();
 		}
 		
 	}

@@ -15,7 +15,7 @@ public class PetsitterDao {
 		PreparedStatement pstmt=null;
 		
 		try {
-			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,petSitterInfo.getNo());
 			pstmt.setInt(2, petSitterInfo.getType());
@@ -41,7 +41,7 @@ public class PetsitterDao {
 			pstmt.setString(22, petSitterInfo.getBankNumber());
 			pstmt.setString(23, petSitterInfo.getPrContext());
 			result = pstmt.executeUpdate();
-			
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

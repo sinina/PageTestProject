@@ -24,6 +24,7 @@ public class PetsiterApplyServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		
 		String job = request.getParameter("job");
 		String license = request.getParameter("license");
 		String info = request.getParameter("info");
