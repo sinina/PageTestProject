@@ -25,10 +25,10 @@ public class ConfirmServlet extends HttpServlet {
 		
 		int result = new MemberService().updateMember(memberNo,selectNo);
 		
-		System.out.println(memberNo);
 		
 		//펫시터 승인 완료
 		if(0<result){
+			
 			response.sendRedirect("/ptp/applyList.do");
 		}
 		//펫시터 승인 실패

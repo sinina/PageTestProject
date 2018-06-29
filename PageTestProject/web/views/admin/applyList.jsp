@@ -41,7 +41,7 @@
 					<td><%=p.getInfo()%></td>			
 					<td>
 						<button class="confirm">승인</button>
-						<button class="deleteMember">거절</button>
+						<button class="reject">거절</button>
 						
 					</td>			
 				</tr>
@@ -60,6 +60,8 @@
 		
 		location.href="/ptp/confirm.do?memberNo="+memberNo+"&selectNo=1";
 		/* console.log(memberNo); */
-	})	
+	})
+	
+	
 </script>
 </html>

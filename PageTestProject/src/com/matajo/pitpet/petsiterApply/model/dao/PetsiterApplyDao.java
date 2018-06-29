@@ -49,7 +49,7 @@ public class PetsiterApplyDao {
 			//쿼리 전송 객체 생성
 			stmt = con.createStatement();
 				query = "SELECT P.PETS_A_JOB, M.M_MEMBER_NO, P.PETS_A_INFO, P.PETS_A_LICENSE, M.M_USERID, M.M_USERNAME, M.M_PHONE "+"FROM PETS_APPLY P "
-						+"JOIN MEMBER M ON(P.PETS_A_MEMBER_NO= M.M_MEMBER_NO)";
+						+"JOIN MEMBER M ON(P.PETS_A_MEMBER_NO= M.M_MEMBER_NO) WHERE M.M_MEMBER_CODE NOT IN 2";
 			//쿼리 실행
 			rs = stmt.executeQuery(query);
 			
