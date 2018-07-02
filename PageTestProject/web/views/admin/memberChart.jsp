@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-<%@ include file="/views/admin/adminHeader.jsp" %> //first
+<%@ include file="/views/admin/adminHeader.jsp" %> 
 <div id="map" style="width:1200px;height:600px; margin: 0px auto; margin-top: 100px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c25a804bedbc433c559b302df7e78e0f"></script>
 <script>

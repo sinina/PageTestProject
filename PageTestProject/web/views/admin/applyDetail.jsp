@@ -149,62 +149,70 @@
                                     </li>
 
                                     <li class="is_pet">
-                                        <label>반려동물유무</label>
-                                    <span class="radio-chk animal_layout"">
-                                       <input type="radio" id="yes3" name="animalCheck" value="0" checked/>
-                                        <label for="yes3">있음</label>
-                                        <span id="ok_pet" style="display: none;">
-                                            <input type="text" name="animalCount" style="width:50px; height:30px;" value="0">마리
-                                           <!--   <a href="../page/profile_pet.php" target="_blank"><span style="border:1px solid #FF94A8; color:#FF94A8; border-radius: 4px; padding: 4px; margin:0 40px 0 5px;">펫등록하러가기</span></a>-->
-                                            </span>
-                                        <input type="radio" id="no3" name="animalCheck" value="1"/>
-                                        <label for="no3">없음</label>
-                                    </span>
-                                    </li>
-                                    <li>
-                                        <label>13세 이하 아이 유무</label>
-                                    <span class="radio-chk">
-                                        <input type="radio" id="yes4" name="child" value="0" checked/>
-                                        <label for="yes4">있음</label>
-                                        <input type="radio" id="no4" name="child" value="1"/>
-                                        <label for="no4">없음</label>
-                                    </span>
-                                    </li>
-                                    <li>
-                                        <label>감시카메라</label>
-                                    <span class="radio-chk">
-                                        <input type="radio" id="yes5" name="camera" value="0" checked/>
-                                        <label for="yes5">있음</label>
-                                        <input type="radio" id="no5" name="camera" value="1"/>
-                                        <label for="no5">없음</label>
-                                    </span>
-                                    </li>
-                                    <li>
-                                        <label for="distance" class="dise1">인근 동물병원 거리</label>
-                                        <span><input type="text"  id="distance" name="distance" value=""/>분 거리</span>
-                                    </li>
-                                    <li>
-                                        <label for="hospital" class="dise2">인근 동물병원 정보</label>
-                                    <span>
-                                        <input type="text" id="hospital" name="hospital" placeholder="이름" value=""/>
-                                        <input type="text" id="hospitalPhoneNumber" name="hospitalPhoneNumber" value="" placeholder="숫자만 가능"/>
-                                    </span>
-                                    </li>
-                                    <li>
-                                        <label for="sitter">1일 최대 위탁가능 수</label>
-                                        <span><input type="text" id="oneDayCount" name="oneDayCount" value=""/>마리</span>
-                                    </li>
-                                </ul>
-                                <h4>입금 정보</h4>
-                                <ul class="info-list none address">
-                                    <li class="dub">
-                                        <label for="bank">계좌정보 입력 <br /><span>시터링 비용을 입금받을 계좌를 등록해주세요 (예금주와 펫시터 성함이 일치해야 합니다.) </span></label>
-                                        <select id="bank" name="bank">
-                                            <option value='0' selected='selected'>은행선택</option><option value='1'>NH은행</option><option value='2'>국민은행</option><option value='3'>우리은행</option><option value='4'>신한은행</option><option value='5'>하나은행</option><option value='6'>기업은행</option><option value='7'>SC은행</option><option value='8'>씨티은행</option><option value='9'>외환은행</option><option value='10'>대구은행</option><option value='11'>광주은행</option><option value='12'>전북은행</option><option value='13'>부산은행</option><option value='14'>경남은행</option><option value='15'>수협은행</option><option value='16'>새마을금고</option>                                        </select>
-                                        <input type="text" placeholder="예금주명" id="bankName" name="bankName" value="" style="margin-left:10px; width:150px;"/>
-                                        <input type="text" placeholder="계좌번호" id="bankNumber" name="bankNumber" value="" style="margin-left:10px; width:288px;"/>
-                                    </li>
-                                </ul> 
+              <label>반려동물유무</label>
+              <span class="radio-chk animal_layout"">
+               <%if(apply.getAnimalCheck()==0){ %>
+              <input type="radio" id="yes3" name="animalCheck" value="0" checked/>
+              <label for="yes3">있음</label><%}else{ %>
+              <span id="ok_pet" style="display: none;">
+              <input type="text" name="animalCount" style="width:50px; height:30px;" value="0">마리
+               </span>
+              <input type="radio" id="no3" name="animalCheck" value="1" checked/>
+              <label for="no3">없음</label><%} %>
+              </span>
+               </li>
+                <li>
+                <label>13세 이하 아이 유무</label>
+                 <span class="radio-chk">
+                  <%if(apply.getChild()==0){ %>
+               <input type="radio" id="yes4" name="child" value="0" checked/>
+              <label for="yes4">있음</label><%}else{ %>
+              <input type="radio" id="no4" name="child" value="1" checked/>
+              <label for="no4">없음</label><%} %>
+                  </span>
+                </li>
+                <li>
+                <label>감시카메라</label>
+                <span class="radio-chk">
+                <%if(apply.getCamera()==0){ %>
+                <input type="radio" id="yes5" name="camera" value="0" checked/>
+                <label for="yes5">있음</label><%}else{ %>
+                <input type="radio" id="no5" name="camera" value="1" checked/>
+                <label for="no5">없음</label><%} %>
+                </span>
+                </li>
+              <li>
+                <label for="distance" class="dise1">인근 동물병원 거리</label>
+                <span><input type="text"  id="distance" name="distance" value="<%=apply.getHospitalPhoneNumber()%>"/>분 거리</span>
+              </li>
+              <li>
+                <label for="hospital" class="dise2">인근 동물병원 정보</label>
+                <span>
+                  <input type="text" id="hospital" name="hospital" placeholder="이름" value="<%=apply.getHospital()%>"/>
+                  <input type="text" id="hospitalPhoneNumber" name="hospitalPhoneNumber" value="" placeholder="숫자만 가능"/>
+                </span>
+              </li>
+              <li>
+                  <label for="sitter">1일 최대 위탁가능 수</label>
+                  <span><input type="text" id="oneDayCount" name="oneDayCount" value="<%=apply.getOneDayCount()%>"/>마리</span>
+              </li>
+              </ul>
+                 <h4>입금 정보</h4>
+              <ul class="info-list none address">
+                 <li class="dub">
+                   <label for="bank">계좌정보 입력 <br /><span>시터링 비용을 입금받을 계좌를 등록해주세요 (예금주와 펫시터 성함이 일치해야 합니다.) </span></label>
+                   <%if(Integer.parseInt(apply.getBank())==1){ %><input type="text" value="NH은행"/><%}else if(Integer.parseInt(apply.getBank())==2){ %><input type="text" value="국민은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==3){ %><input type="text" value="우리은행"/><%}else if(Integer.parseInt(apply.getBank())==4){ %><input type="text" value="신한은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==5){ %><input type="text" value="하나은행"/><%}else if(Integer.parseInt(apply.getBank())==6){ %><input type="text" value="기업은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==7){ %><input type="text" value="SC은행"/><%}else if(Integer.parseInt(apply.getBank())==8){ %><input type="text" value="씨티은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==9){ %><input type="text" value="외환은행"/><%}else if(Integer.parseInt(apply.getBank())==10){ %><input type="text" value="대구은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==11){ %><input type="text" value="광주은행"/><%}else if(Integer.parseInt(apply.getBank())==12){ %><input type="text" value="전북은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==13){ %><input type="text" value="부산은행"/><%}else if(Integer.parseInt(apply.getBank())==14){ %><input type="text" value="경남은행"/>
+                   <%}else if(Integer.parseInt(apply.getBank())==15){ %><input type="text" value="수협은행"/><%}else { %><input type="text" value="새마을금고"/><%} %>
+                     <input type="text" id="bankName" name="bankName" value="<%=apply.getBankName()%>" style="margin-left:10px; width:150px;"/>
+                     <input type="text" id="bankNumber" name="bankNumber" value="<%=apply.getBankNumber()%>" style="margin-left:10px; width:288px;"/>
+                  </li>
+              </ul> 
 		</div>
 	</form>
 	
@@ -223,9 +231,12 @@
                                     </form>
                                 </li>
                             </ul>	
-                            <button onclick="validate();">제출</button>
-                          
-
+    	<button onclick="applyList();">목록으로</button>
 	</div>
 </body>
+<script>
+	function applyList(){
+		location.href="/ptp/applyList.do?okayN=0";
+	}
+</script>
 </html>
