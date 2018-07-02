@@ -26,6 +26,8 @@ public class PetsitterApplyVo {
 	private String bank ;
 	private String bankName ;
 	private String bankNumber ;
+	//관리자페이지에서 리스트 출력할때 이름도 출력하기위해 보람이가 넣음!
+	private String name;
 	
 	public PetsitterApplyVo() {
 	}
@@ -250,6 +252,16 @@ public class PetsitterApplyVo {
 
 	public void setBankNumber(String bankNumber) {
 		this.bankNumber = bankNumber;
+	}
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override

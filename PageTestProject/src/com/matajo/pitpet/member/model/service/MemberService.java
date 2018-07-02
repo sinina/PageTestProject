@@ -58,7 +58,7 @@ public class MemberService {
 	}
 
 
-	//관리자가 펫시터 승인(회원 코드 2)로 업데이트
+	
 	public int updateMember(int memberNo, int selectNo) {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().updateMember(con, memberNo,selectNo);

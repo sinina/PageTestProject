@@ -19,11 +19,19 @@ public class UpdateOkayNServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo=Integer.parseInt(request.getParameter("memberNo"));
+		int selectNo= Integer.parseInt(request.getParameter("selectNo"));
+		int result = new PetsitterService().updateOkayN(memberNo,selectNo);
 		
-		int result = new PetsitterService().updateOkayN(memberNo);
 		
 		if(0<result){
-			
+			//selectNo:(1)승인/(2)승인취소/(3)거절/(4)거절 취소
+			if(selectNo==1||selectNo==3){
+				response.sendRedirect("/ptp/applyList.do?okayN=0");
+			}else if(selectNo==2){
+				response.sendRedirect("/ptp/applyList.do?okayN=1");
+			}else{
+				response.sendRedirect("/ptp/applyList.do?okayN=2");
+			}
 		}else{
 			
 		}

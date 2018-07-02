@@ -21,6 +21,7 @@ public class ConfirmServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		//selectNo : 승인(1)/승인취소(2)를 구분하기위한 변수
 		int selectNo = Integer.parseInt(request.getParameter("selectNo"));
 		
 		int result = new MemberService().updateMember(memberNo,selectNo);
@@ -29,7 +30,8 @@ public class ConfirmServlet extends HttpServlet {
 		//펫시터 승인 완료
 		if(0<result){
 			
-			response.sendRedirect("/ptp/applyList.do");
+			//회원 코드 2로 변경후 리스트에서 안보이게 해야하므로 okayN 변경하는 서블릿으로 이동
+			response.sendRedirect("/ptp/updateOkayN.do?memberNo="+memberNo+"&selectNo="+selectNo);
 		}
 		//펫시터 승인 실패
 		else{

@@ -22,12 +22,12 @@ public class ApplyDetailServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int pNo = Integer.parseInt(request.getParameter("pNo"));
-		
-		PetsitterApplyVo apply = new PetsitterService().selectApply(pNo);
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		PetsitterApplyVo apply = new PetsitterService().selectApplyDetail(memberNo);
 		
 		String url="";
 		if(null!=apply){
+			request.setAttribute("apply", apply);
 			url = "views/admin/applyDetail.jsp";
 		}else{
 			url = "views/common/errorPage.jsp";

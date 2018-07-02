@@ -35,7 +35,13 @@
 					<li><a href="#">신고 관리</a></li>
 				</ul>
 			</li>
-			<li><a href="/ptp/applyList.do">펫시터 승인</a></li>
+			<li><a href="#">펫시터 신청자 관리</a>
+				<ul>
+					<li><a href="/ptp/applyList.do?okayN=0">미승인된 펫시터 신청자</a></li>
+					<li><a href="/ptp/applyList.do?okayN=1">승인된 펫시터 신청자</a></li>
+					<li><a href="/ptp/applyList.do?okayN=2">거절된 펫시터 신청자</a></li>
+				</ul>
+			</li>
 			<li><a href="<%=request.getContextPath() %>/views/admin/reservationCalendar.jsp">예약 현황</a></li>
 		</ul>
 	</div>

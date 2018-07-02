@@ -254,15 +254,36 @@ ul.style1 .first {
 	float: right;
 }
 
-#memberTable {
+#memberTable ,#applyTable{
     width: 100%;
     border-top: 1px solid #444444;
     border-collapse: collapse;
   }
-#memberTable th, #memberTable td {
+#memberTable th, #memberTable td ,#applyTable th, #applyTable td{
     border-bottom: 1px solid #444444;
     padding: 10px;
+    text-align: center;
   } 
+  
+#applyTable .no{
+	width:80px;
+}
+.name{
+	width:100px;
+}
+.type{
+	width:150px;
+}
+.title{
+	width:500px;
+}
+.admin{
+	width:150px;
+}
+
+button,.detail{
+	cursor: pointer;
+}
 
 /** CONTENT */
 #content {
