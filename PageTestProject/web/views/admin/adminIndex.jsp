@@ -1,8 +1,11 @@
+<%@page import="com.matajo.pitpet.visitCounter.model.vo.VisitCountVo"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%-- <% ArrayList<VisitCountVo> list = (ArrayList<VisitCountVo>)request.getAttribute("list"); %> --%>
 <title></title>
 <!-- 구글 차트 api 라이브러리 선언 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -19,10 +22,18 @@
 	function drawChart() {
       var data = google.visualization.arrayToDataTable([
           ['month', '방문자 수(명)'],
-          ['1월',  20],
+          ['1월', <%=session.getAttribute("list")%> ],
           ['2월',  10],
           ['3월',  5],
-          ['4월',  20]
+          ['4월',  20],
+          ['5월',  20],
+          ['6월',  20],
+          ['7월',  20],
+          ['8월',  20],
+          ['9월',  20],
+          ['10월',  20],
+          ['11월',  20],
+          ['12월',  20]
         ]);
 
         var options = {
@@ -42,7 +53,15 @@
           ['1월',  20],
           ['2월',  10],
           ['3월',  50],
-          ['4월',  15]
+          ['4월',  15],
+          ['5월',  20],
+          ['6월',  20],
+          ['7월',  20],
+          ['8월',  20],
+          ['9월',  20],
+          ['10월',  20],
+          ['11월',  20],
+          ['12월',  20]
         ]);
 
         var options = {
@@ -57,40 +76,6 @@
       }
 	
 </script>
-<!-- <script>
-	function lineChart(){
-		var data = {
-		        labels: ["월","화","수","목","금","토","일"],
-		        datasets: [
-		            {
-		                label: "",
-		                fillColor: "rgba(220,220,220,0.2)",
-		                strokeColor: "rgba(220,220,220,1)",
-		                pointColor: "rgba(220,220,220,1)",
-		                pointStrokeColor: "#fff",
-		                pointHighlightFill: "#fff",
-		                pointHighlightStroke: "rgba(220,220,220,1)",
-		                data: [2, 3, 5, 7, 11, 13, 17]
-		            },
-		            {
-		                label: "",
-		                fillColor: "rgba(151,187,205,0.2)",
-		                strokeColor: "rgba(151,187,205,1)",
-		                pointColor: "rgba(151,187,205,1)",
-		                pointStrokeColor: "#fff",
-		                pointHighlightFill: "#fff",
-		                pointHighlightStroke: "rgba(151,187,205,1)",
-		                data: [0, 1, 1, 2, 3, 5, 8]
-		            }
-		        ]
-		    };
-
-		    var ctx = document.getElementById("chartVisit").getContext("2d");
-		    var options = { };
-		    var lineChart = new Chart(ctx).Line(data, options);
-	}
-
-</script> -->
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %>
 <div id="page" class="container">

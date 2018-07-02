@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.matajo.pitpet.common.JDBCTemplate;
+import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
+import com.matajo.pitpet.visitCounter.model.vo.VisitCountVo;
 
 public class VisitCountDao {
 	
@@ -82,16 +85,63 @@ public class VisitCountDao {
 		return result;
 		
 	}
-	
-	
-	
-	
-	
-	/*
-	public int getCount1(){
-		//1월 방문자수 가져오는 메소드 쿼리문에 조건 1월
+
+	public ArrayList<VisitCountVo> selectMonthCount(Connection con) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<VisitCountVo> list = null;
+		String query="";
+		
+		try {
+			query="SELECT TO_CHAR(VISITDATE,'MM') AS \"MONTH\", COUNT(*) AS \"COUNT\" FROM VISITCOUNT "
+					+ "WHERE TO_CHAR(VISITDATE, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY') "
+					+ "GROUP BY TO_CHAR(VISITDATE,'MM')";
+			pstmt=con.prepareStatement(query);
+			rs=pstmt.executeQuery();
+			
+			list= new ArrayList<VisitCountVo>();
+			VisitCountVo temp = null;
+			while(rs.next()){
+				temp =new VisitCountVo();
+				if(Integer.parseInt(rs.getString("month"))==1){
+					temp.setJan(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==2){
+					temp.setFeb(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==3){
+					temp.setMar(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==4){
+					temp.setApr(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==5){
+					temp.setMay(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==6){
+					temp.setJun(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==7){
+					temp.setJul(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==8){
+					temp.setAug(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==9){
+					temp.setSep(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==10){
+					temp.setOut(rs.getInt("count"));
+				}else if(Integer.parseInt(rs.getString("month"))==11){
+					temp.setNov(rs.getInt("count"));
+				}else{
+					temp.setDec(rs.getInt("count"));
+				}
+				
+				list.add(temp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
-	*/
+	
+	
+	
+	
+	
 
 
 	
