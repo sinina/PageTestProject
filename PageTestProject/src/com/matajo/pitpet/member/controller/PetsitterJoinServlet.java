@@ -2,6 +2,8 @@ package com.matajo.pitpet.member.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
 import com.matajo.pitpet.member.model.service.PetsitterService;
 import com.matajo.pitpet.member.model.vo.MemberVo;
 import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
+import com.oreilly.servlet.MultipartRequest;
 
 /**
  * Servlet implementation class PetsitterJoinServlet
@@ -37,47 +42,92 @@ public class PetsitterJoinServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		MemberVo member = (MemberVo) session.getAttribute("user");
 		
-	
-		int type = Integer.parseInt(request.getParameter("sitterType"));
-		int openarea = Integer.parseInt(request.getParameter("openArea"));
-		int jobstyle = Integer.parseInt(request.getParameter("fullTimeJob"));
+		int maxSize = 1024 * 1024 * 10;
 		
-		String adComment = request.getParameter("adComment");
-		String opportunity = request.getParameter("opportunity");
-		String activityHistory = request.getParameter("activityHistory");
+		PrintWriter out=null;
 		
-		int long_term = Integer.parseInt(request.getParameter("long_term"));
-		int pickup = Integer.parseInt(request.getParameter("pickup"));
+		if(!ServletFileUpload.isMultipartContent(request)){
+			out = response.getWriter();
+			out.println("<script>alert('이미지 등록중 오류가 발생 했습니다.'); location.href='/ptp/index.jsp';</script>"); 
+			out.flush();
+			out.close();
+		}
+		String root = request.getServletContext().getRealPath("/");
+		String path = root + "upload/petsitter";
 		
-		String prContext = request.getParameter("prContext");
-		String sitterCareer = request.getParameter("sitterCareer");
+		MultipartRequest mRequest = new MultipartRequest(request,
+				path, maxSize, "UTF-8");
 		
-		String[] petSize = request.getParameterValues("petSize[]"); 
-		String[]petAge = request.getParameterValues("petAge[]");
+		ArrayList<String> list = new ArrayList<String>();
+		//Enumeration<String> fileNameEnum = mRequest.getFileNames();
+		String fileName1 = mRequest.getFilesystemName("petsitterImage1");
+		String fileName2 = mRequest.getFilesystemName("petsitterImage2");
+		String fileName3 = mRequest.getFilesystemName("petsitterImage3");
+		String fileName4 = mRequest.getFilesystemName("petsitterImage4");
+		
+		list.add(fileName1);
+		list.add(fileName2);	
+		list.add(fileName3);	
+		list.add(fileName4);	
+			
+		
+		
+		int type = Integer.parseInt(mRequest.getParameter("sitterType"));
+		int openarea = Integer.parseInt(mRequest.getParameter("openArea"));
+		int jobstyle = Integer.parseInt(mRequest.getParameter("fullTimeJob"));
+		
+		String adComment = mRequest.getParameter("adComment");
+		String opportunity = mRequest.getParameter("opportunity");
+		String activityHistory = mRequest.getParameter("activityHistory");
+		
+		int long_term = Integer.parseInt(mRequest.getParameter("long_term"));
+		int pickup = Integer.parseInt(mRequest.getParameter("pickup"));
+		
+		String prContext = mRequest.getParameter("prContext");
+		String sitterCareer = mRequest.getParameter("sitterCareer");
+		
+		String[] petSize = mRequest.getParameterValues("petSize[]"); 
+		String[]petAge = mRequest.getParameterValues("petAge[]");
 		
 		String petSizecommon=String.join(",", petSize);
 		String petAgecommon=String.join(",", petAge);
 		
 		
-		int animalCheck = Integer.parseInt(request.getParameter("animalCheck"));
-		int animalCount = Integer.parseInt(request.getParameter("animalCount"));
+		int animalCheck = Integer.parseInt(mRequest.getParameter("animalCheck"));
+		int animalCount = Integer.parseInt(mRequest.getParameter("animalCount"));
 		
-		int child = Integer.parseInt(request.getParameter("child"));
-		int camera = Integer.parseInt(request.getParameter("camera"));
+		int child = Integer.parseInt(mRequest.getParameter("child"));
+		int camera = Integer.parseInt(mRequest.getParameter("camera"));
 		
-		int distance = Integer.parseInt(request.getParameter("distance"));
-		String hospital = request.getParameter("hospital");
-		String hospitalPhoneNumber = request.getParameter("hospitalPhoneNumber");
+		int distance = Integer.parseInt(mRequest.getParameter("distance"));
+		String hospital = mRequest.getParameter("hospital");
+		String hospitalPhoneNumber = mRequest.getParameter("hospitalPhoneNumber");
 		
-		int oneDayCount = Integer.parseInt(request.getParameter("oneDayCount"));
+		int oneDayCount = Integer.parseInt(mRequest.getParameter("oneDayCount"));
 		
-		String bank = request.getParameter("bank");
-		String bankName = request.getParameter("bankName");
-		String bankNumber = request.getParameter("bankNumber");
+		String bank = mRequest.getParameter("bank");
+		String bankName = mRequest.getParameter("bankName");
+		String bankNumber = mRequest.getParameter("bankNumber");
 		
-		PetsitterApplyVo petSitterInfo = new PetsitterApplyVo(member.getNo(), type, openarea, jobstyle, adComment, opportunity, activityHistory, long_term, pickup, prContext, sitterCareer, petSizecommon, petAgecommon, animalCheck, animalCount, child, camera, distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber);
-		int result = new PetsitterService().insertPetsitterInfo(petSitterInfo);
-		PrintWriter out=null;
+		String license1 = mRequest.getParameter("license1");
+		String license2 = mRequest.getParameter("license2");
+		String license3 = mRequest.getParameter("license3");
+		String license4 = mRequest.getParameter("license4");
+		
+		String licenseInfo1 =mRequest.getParameter("licenseInfo1");
+		String licenseInfo2 =mRequest.getParameter("licenseInfo2");
+		String licenseInfo3 =mRequest.getParameter("licenseInfo3");
+		String licenseInfo4 =mRequest.getParameter("licenseInfo4");
+		
+		license1+=','+licenseInfo1;
+		license2+=','+licenseInfo2;
+		license3+=','+licenseInfo3;
+		license4+=','+licenseInfo4;
+		
+		
+		PetsitterApplyVo petSitterInfo = new PetsitterApplyVo(member.getNo(), type, openarea, jobstyle, adComment, opportunity, activityHistory, long_term, pickup, prContext, sitterCareer, petSizecommon, petAgecommon, animalCheck, animalCount, child, camera, distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber,license1,license2,license3,license4);
+		int result = new PetsitterService().insertPetsitterInfo(petSitterInfo,list);
+		
 		if(0<result){
 			out = response.getWriter();
 			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='/ptp/index.jsp';</script>"); 

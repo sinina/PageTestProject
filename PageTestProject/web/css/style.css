@@ -4427,7 +4427,7 @@ ul.msg-talk li.petsitter div em {
 .admin-pet dd .info-list.label-ico label { padding-left: 20px; width: 100px }
 .admin-pet dd span.radio-chk { display: inline-block; width: 419px; }
 .admin-pet dd .dub span.radio-chk { display: inline-block; width: 515px; }
-.admin-pet dd input { margin-right: 10px; padding: 0 10px; width: 127px; height: 34px; border: 1px solid #e5e5e5; }
+.admin-pet dd input { margin-right: 10px; padding: 0 10px; width: 150px; height: 34px; border: 1px solid #e5e5e5; }
 input.inputIDX {display: none;}
 .admin-pet dd input.inputKind { width:125px; }
 .admin-pet dd input.profile-name { width:60px; }

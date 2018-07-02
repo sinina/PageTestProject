@@ -15,7 +15,7 @@
 	color:black;
 	}
 	html .inner{
-		width:700px;
+		width:800px;
 		margin-left: auto;
 		margin-right: auto;
 		overflow: hidden;
@@ -43,7 +43,6 @@
 	}
 
 	.wrap{
-	
 		border: 2px solid skyblue;
 		border-radius: 20px;
 		width: 900px;
@@ -59,10 +58,15 @@
 	#head h4{
 		margin-left: 50px;
 		line-height: 2.5;
-		
+		border:none;
 	}
 	
-	
+	.bankInfo{
+		float:left;
+		margin-left: 1px;
+		margin-right: 109px;
+		padding:15;
+	}
 	/* body input[type="checkbox"]:checked+label:before, body input[type="radio"]:checked+label:before
 	{
 	content: ;
@@ -215,6 +219,7 @@
 	}
 
 	
+	
 </script>
 </head>
 <body>	
@@ -222,8 +227,8 @@
 	<div class="wrap">
 	<div id="head"><h4>펫시터 신청서</h4></div>
 		<div class="inner">			
-			<form id="petsitterProfile" action="/ptp/petsitterjoin.do"
-				method="post">
+			<form id="petsitterProfile" action="/ptp/petsitterjoin.do" method="post"  enctype ="multipart/form-data" > 
+				
 				<div>
 					<h4>기본정보</h4>
 					<ul>
@@ -321,7 +326,7 @@
 									가능)</span></label> <span class="input-chk"> <input type="checkbox"
 								id="baby" name="petAge[]" value="1" /> <label for="baby">베이비(1살미만)</label>
 								<input type="checkbox" id="junior" name="petAge[]" value="2" />
-								<label for="junior" style="width: 127px">주니어(1살~7살미만)</label> <input
+								<label for="junior" style="width: 127px; ">주니어(1~7살미만)</label> <input
 								type="checkbox" id="senior" name="petAge[]" value="3" /> <label
 								for="senior">시니어(7살 이상)</label>
 						</span></li>
@@ -335,7 +340,7 @@
 							</span> <input type="radio" id="no3" name="animalCheck" value="1" /> <label
 								for="no3">없음</label>
 						</span></li>
-						<li><label>13세 이하 아이 유무</label> <span class="radio-chk">
+						<li><label style="font-size:68%">13세 이하 아이 유무</label> <span class="radio-chk">
 								<input type="radio" id="yes4" name="child" value="0" checked />
 								<label for="yes4">있음</label> <input type="radio" id="no4"
 								name="child" value="1" /> <label for="no4">없음</label>
@@ -346,21 +351,23 @@
 								value="1" /> <label for="no5">없음</label>
 						</span></li>
 						<li><label for="distance" class="dise1">인근 동물병원 거리</label> <span><input
-								type="text" id="distance" name="distance" value="" />분 거리</span></li>
+								type="text" id="distance" name="distance" value=""  style="width:25px;"/>분 거리</span></li>
 						<li><label for="hospital" class="dise2">인근 동물병원 정보</label> <span>
 								<input type="text" id="hospital" name="hospital"
-								placeholder="이름" value="" /> <input type="text"
+								placeholder="이름" value="" style="width:100px;"/> <input style="width:100px" type="text"
 								id="hospitalPhoneNumber" name="hospitalPhoneNumber" value=""
 								placeholder="숫자만 가능" />
 						</span></li>
-						<li><label for="sitter">1일 최대 위탁가능 수</label> <span><input
-								type="text" id="oneDayCount" name="oneDayCount" value="" />마리</span></li>
+						<li><label for="sitter" style="font-size:13px">1일 최대 위탁가능 수</label> <span><input
+								style="width:25px" type="text" id="oneDayCount" name="oneDayCount" value="" />마리</span></li>
 					</ul>
 					<h4>입금 정보</h4>
-					<ul class="info-list none address">
-						<li class="dub"><label for="bank">계좌정보 입력 <br />
-							<span>시터링 비용을 입금받을 계좌를 등록해주세요 (예금주와 펫시터 성함이 일치해야 합니다.) </span></label> <select
-							id="bank" name="bank">
+					<ul class="bankInfo">
+						<li class="dub"><label>계좌정보 입력 <br />
+							<span>시터링 비용을 입금받을 계좌를 등록해주세요 (예금주와 펫시터 성함이 일치해야 합니다.) </span></label></li>
+							 <li>
+							 <select class="bankInfo"
+							id="bank" name="bank" style="width:90px;">
 								<option value='0' selected='selected'>은행선택</option>
 								<option value='1'>NH은행</option>
 								<option value='2'>국민은행</option>
@@ -379,34 +386,89 @@
 								<option value='15'>수협은행</option>
 								<option value='16'>새마을금고</option>
 						</select> <input type="text" placeholder="예금주명" id="bankName"
-							name="bankName" value="" style="margin-left: 10px; width: 150px;" />
+							name="bankName" value="" style="margin-left: 10px; width: 100px;" />
 							<input type="text" placeholder="계좌번호" id="bankNumber"
 							name="bankNumber" value=""
-							style="margin-left: 10px; width: 288px;" /></li>
+							style=" width: 288px;" /></li>
 					</ul>
+					<h4>펫시터 자격증</h4>
+					<ul class="file-data">
+                                <li>
+                                    <h5 class="title">
+                                        1) 관련학과 재학/휴학/졸업
+                                    </h5>
+                                    <div class="detail">
+                                        <select title="선택해주세요" name="license1" onchange="selectCheck()">
+                                            <option value='0' selected='selected'>- 선택 -</option><option value='1'>수의과</option><option value='2'>반려동물 관련학과</option><option value='3'>축산학과</option><option value='4'>야생동물학과</option><option value='5'>기타</option>                                        </select>
+                                        <input type="text" name="licenseInfo1" placeholder="'학교명'과 '학과명'을 입력해주세요." value=""/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h5 class="title">
+                                        2-1) 자격증 취득 정보
+                                    </h5>
+                                    <div class="detail">
+                                        <select title="선택해주세요" name="license2">
+                                            <option value='0' selected='selected'>- 선택 -</option><option value='1'>동물간호복지사</option><option value='2'>동물교감사</option><option value='3'>동물매개복지사</option><option value='4'>동물매개심리상담사</option><option value='5'>동물사육사</option><option value='6'>동물행동교정사</option><option value='7'>반려동물관리사</option><option value='8'>수의사</option><option value='9'>애견미용사 1/A급 이상</option><option value='10'>애견미용사 2/B급</option><option value='11'>애견미용사 3/C급</option><option value='12'>애견핸들러 1급 이상</option><option value='13'>애견핸들러 2급</option><option value='14'>애견핸들러 3급</option><option value='15'>애견훈련사 1급 이상</option><option value='16'>애견훈련사 2급</option><option value='17'>애견훈련사 3급</option><option value='18'>펫아로마상담사</option><option value='19'>펫케어상담사</option><option value='20'>기타</option>                                        </select>
+                                        <input type="text" name="licenseInfo2" placeholder="'자격번호'를 입력해주세요." value=""/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h5 class="title">
+                                        2-2) 자격증 취득 정보
+                                    </h5>
+                                    <div class="detail">
+                                        <select title="선택해주세요" name="license3">
+                                            <option value='0' selected='selected'>- 선택 -</option><option value='1'>동물간호복지사</option><option value='2'>동물교감사</option><option value='3'>동물매개복지사</option><option value='4'>동물매개심리상담사</option><option value='5'>동물사육사</option><option value='6'>동물행동교정사</option><option value='7'>반려동물관리사</option><option value='8'>수의사</option><option value='9'>애견미용사 1/A급 이상</option><option value='10'>애견미용사 2/B급</option><option value='11'>애견미용사 3/C급</option><option value='12'>애견핸들러 1급 이상</option><option value='13'>애견핸들러 2급</option><option value='14'>애견핸들러 3급</option><option value='15'>애견훈련사 1급 이상</option><option value='16'>애견훈련사 2급</option><option value='17'>애견훈련사 3급</option><option value='18'>펫아로마상담사</option><option value='19'>펫케어상담사</option><option value='20'>기타</option>                                        </select>
+                                        <input type="text" name="licenseInfo3" placeholder="'자격번호'를 입력해주세요."  value=""/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <h5 class="title">
+                                        2-3) 자격증 취득 정보
+                                    </h5>
+                                    <div class="detail">
+                                        <select title="선택해주세요" name="license4">
+                                            <option value='0' selected='selected'>- 선택 -</option><option value='1'>동물간호복지사</option><option value='2'>동물교감사</option><option value='3'>동물매개복지사</option><option value='4'>동물매개심리상담사</option><option value='5'>동물사육사</option><option value='6'>동물행동교정사</option><option value='7'>반려동물관리사</option><option value='8'>수의사</option><option value='9'>애견미용사 1/A급 이상</option><option value='10'>애견미용사 2/B급</option><option value='11'>애견미용사 3/C급</option><option value='12'>애견핸들러 1급 이상</option><option value='13'>애견핸들러 2급</option><option value='14'>애견핸들러 3급</option><option value='15'>애견훈련사 1급 이상</option><option value='16'>애견훈련사 2급</option><option value='17'>애견훈련사 3급</option><option value='18'>펫아로마상담사</option><option value='19'>펫케어상담사</option><option value='20'>기타</option>                                        </select>
+                                        <input type="text" name="licenseInfo4" placeholder="'자격번호'를 입력해주세요."  value=""/>
+                                    </div>
+                                </li>
+                            </ul>
+					
 				</div>
 			</form>
 
 			<h4>펫시터 활동 사진</h4>
 			<ul class="info-list none address">
-				<li class="dub"><label> 펫시터의 활동 사진을 등록해주세요. <br /> <span>최대
-							8장까지만 등록해주세요. 이미지 확장자는 꼭 <span style="color: #FF4A63;">jpg</span>로만
+				<li class="dub"><label> 펫시터의 활동 사진을 등록해주세요. <br /> <span>
+							이미지 확장자는 꼭 <span style="color: #FF4A63;">jpg</span>로만
 							등록해주세요. (예시) image.jpg
 					</span> <span>최적의 사이즈는 <span style="color: #FF4A63;">가로
 								376px 세로 320px</span> 입니다.
 					</span>
 				</label>
-					<form action="../php/uploadDrop.php" class="dropzone"
-						id="my-dropzone" style="height: 385px;">
-						<div class="fallback">
-							<input name="file" type="file" multiple />
-						</div>
-					</form></li>
+				
+						<div id="fileArea">
+				<input type="file" id="petsitterImage1" name="petsitterImage1" 
+							/> 
+				<input type="file" id="petsitterImage2" name="petsitterImage2" 
+							/> 
+				<input type="file" id="petsitterImage3" name="petsitterImage3" 
+							/> 
+				<input type="file" id="petsitterImage4" name="petsitterImage4" 
+							/> 
+				</div>	
+				<div class="btnArea" align="center">
+			
+			<button type="button" onclick="validate();">작성</button>
+			<button type="button" onclick="cancel();">취소</button>
+			</div>
+					</li>
 			</ul>
-			<button onclick="validate();">제출</button>
-
-
 		</div>
 	</div>
+	
+	
 </body>
+
 </html>

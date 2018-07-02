@@ -28,6 +28,10 @@ public class PetsitterApplyVo {
 	private String bankNumber ;
 	//관리자페이지에서 리스트 출력할때 이름도 출력하기위해 보람이가 넣음!
 	private String name;
+	private String license1;
+	private String license2;
+	private String license3;
+	private String license4;
 	
 	public PetsitterApplyVo() {
 	}
@@ -35,7 +39,7 @@ public class PetsitterApplyVo {
 	public PetsitterApplyVo(int no, int type, int openarea, int jobstyle, String adComment, String opportunity,
 			String activityHistory, int long_term, int pickup, String prContext, String sitterCareer, String petSize,
 			String petAge, int animalCheck, int animalCount, int child, int camera, int distance, String hospital,
-			String hospitalPhoneNumber, int oneDayCount, String bank, String bankName, String bankNumber) {
+			String hospitalPhoneNumber, int oneDayCount, String bank, String bankName, String bankNumber,String license1,String license2,String license3,String license4) {
 		this.no = no;
 		this.type = type;
 		this.openarea = openarea;
@@ -60,6 +64,42 @@ public class PetsitterApplyVo {
 		this.bank = bank;
 		this.bankName = bankName;
 		this.bankNumber = bankNumber;
+		this.license1 = license1;
+		this.license2 = license2;
+		this.license3 = license3;
+		this.license4 = license4;
+	}
+
+	public String getLicense1() {
+		return license1;
+	}
+
+	public void setLicense1(String license1) {
+		this.license1 = license1;
+	}
+
+	public String getLicense2() {
+		return license2;
+	}
+
+	public void setLicense2(String license2) {
+		this.license2 = license2;
+	}
+
+	public String getLicense3() {
+		return license3;
+	}
+
+	public void setLicense3(String license3) {
+		this.license3 = license3;
+	}
+
+	public String getLicense4() {
+		return license4;
+	}
+
+	public void setLicense4(String license4) {
+		this.license4 = license4;
 	}
 
 	public int getNo() {
@@ -266,15 +306,15 @@ public class PetsitterApplyVo {
 
 	@Override
 	public String toString() {
-		return "PetsitterApplyVo [nickname=" + no + ", type=" + type + ", openarea=" + openarea + ", jobstyle="
-				+ jobstyle + ", adComment=" + adComment + ", opportunity=" + opportunity + ", activityHistory="
-				+ activityHistory + ", long_term=" + long_term + ", pickup=" + pickup + ", prContext=" + prContext
-				+ ", sitterCareer=" + sitterCareer + ", petSize=" + petSize + ", petAge="
-				+ petAge + ", animalCheck=" + animalCheck + ", animalCount=" + animalCount + ", child="
-				+ child + ", camera=" + camera + ", distance=" + distance + ", hospital=" + hospital
-				+ ", hospitalPhoneNumber=" + hospitalPhoneNumber + ", oneDayCount=" + oneDayCount + ", bank=" + bank
-				+ ", bankName=" + bankName + ", bankNumber=" + bankNumber + "]";
+		return "PetsitterApplyVo [no=" + no + ", type=" + type + ", openarea=" + openarea + ", jobstyle=" + jobstyle
+				+ ", adComment=" + adComment + ", opportunity=" + opportunity + ", activityHistory=" + activityHistory
+				+ ", long_term=" + long_term + ", pickup=" + pickup + ", prContext=" + prContext + ", sitterCareer="
+				+ sitterCareer + ", petSize=" + petSize + ", petAge=" + petAge + ", animalCheck=" + animalCheck
+				+ ", animalCount=" + animalCount + ", child=" + child + ", camera=" + camera + ", distance=" + distance
+				+ ", hospital=" + hospital + ", hospitalPhoneNumber=" + hospitalPhoneNumber + ", oneDayCount="
+				+ oneDayCount + ", bank=" + bank + ", bankName=" + bankName + ", bankNumber=" + bankNumber + ", name="
+				+ name + ", license1=" + license1 + ", license2=" + license2 + ", license3=" + license3 + ", license4="
+				+ license4 + "]";
 	}
-	
-	
+
 }

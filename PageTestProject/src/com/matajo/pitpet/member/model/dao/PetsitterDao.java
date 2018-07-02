@@ -12,13 +12,13 @@ import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
 
 public class PetsitterDao {
 
-	public int insertPetsitterInfo(Connection con, PetsitterApplyVo petSitterInfo) {
+	public int insertPetsitterInfo(Connection con, PetsitterApplyVo petSitterInfo,ArrayList<String> list) {
 		int result=0;
 		String query="";
 		PreparedStatement pstmt=null;
 		
 		try {
-			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT)";
+			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,petSitterInfo.getNo());
 			pstmt.setInt(2, petSitterInfo.getType());
@@ -27,7 +27,7 @@ public class PetsitterDao {
 			pstmt.setString(5, petSitterInfo.getAdComment());
 			pstmt.setString(6, petSitterInfo.getOpportunity());
 			pstmt.setString(7, petSitterInfo.getActivityHistory());
-			pstmt.setInt(8,petSitterInfo.getLong_term() );
+			pstmt.setInt(8,petSitterInfo.getLong_term());
 			pstmt.setInt(9, petSitterInfo.getPickup());
 			pstmt.setString(10, petSitterInfo.getPetSize());
 			pstmt.setString(11, petSitterInfo.getPetAge());
@@ -43,6 +43,24 @@ public class PetsitterDao {
 			pstmt.setString(21, petSitterInfo.getBankName());
 			pstmt.setString(22, petSitterInfo.getBankNumber());
 			pstmt.setString(23, petSitterInfo.getPrContext());
+			pstmt.setString(24, petSitterInfo.getLicense1());
+			pstmt.setString(25, petSitterInfo.getLicense2());
+			pstmt.setString(26, petSitterInfo.getLicense3());
+			pstmt.setString(27, petSitterInfo.getLicense4());
+			if(list.size()!=0){
+				for(int i=0;i<list.size();i++){
+					pstmt.setString(27+(i+1), list.get(i+0));
+				}
+			}else{
+				pstmt.setString(28, "1");
+				pstmt.setString(29, "1");
+				pstmt.setString(30, "1");
+				pstmt.setString(31, "1");
+			}
+			
+				
+		
+			
 			result = pstmt.executeUpdate();
 		
 		} catch (SQLException e) {

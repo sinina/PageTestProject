@@ -3,6 +3,7 @@
         <wb-resource deploy-path="/" source-path="/web" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/web/config"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/web/WEB-INF/lib"/>
         <property name="context-root" value="ptp"/>
         <property name="java-output-path" value="/PageTestProject/web/WEB-INF/classes"/>
     </wb-module>

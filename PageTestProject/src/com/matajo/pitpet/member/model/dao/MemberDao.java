@@ -22,6 +22,7 @@ public class MemberDao {
 			pstmt = con.prepareStatement(qeury);
 			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()){
 				result = new MemberVo();
 				result.setPwd(rs.getString("m_password"));

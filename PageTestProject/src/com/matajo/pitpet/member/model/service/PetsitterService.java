@@ -10,9 +10,9 @@ import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
 
 public class PetsitterService {
 
-	public int insertPetsitterInfo(PetsitterApplyVo petSitterInfo) {
+	public int insertPetsitterInfo(PetsitterApplyVo petSitterInfo,ArrayList<String> list) {
 		Connection con = JDBCTemplate.getConnection();
-		int result = new PetsitterDao().insertPetsitterInfo(con,petSitterInfo);
+		int result = new PetsitterDao().insertPetsitterInfo(con,petSitterInfo,list);
 		if(0<result){
 			JDBCTemplate.commit(con);
 		}else{
