@@ -1784,6 +1784,17 @@ input[type="checkbox"], input[type="radio"] {
 	z-index: -1;
 }
 
+.wrap input[type="checkbox"]+label,.wrap input[type="radio"]+label {
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0.7em;
+	font-weight: 300;
+	padding-left: 2.4em;
+	padding-right: 0.75em;
+	position: relative;
+}
+
 input[type="checkbox"]+label, input[type="radio"]+label {
 	text-decoration: none;
 	cursor: pointer;
@@ -1804,6 +1815,21 @@ input[type="checkbox"]+label:before, input[type="radio"]+label:before {
 	text-transform: none !important;
 }
 
+.wrap input[type="checkbox"]+label:before, .wrap input[type="radio"]+label:before {
+	border-radius: 0;
+	border: solid 1px;
+	content: '';
+	display: inline-block;
+	height: 1em;
+	left: 0;
+	line-height: 1.58125em;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 1em;
+	margin-top: 4px;
+}
+
 input[type="checkbox"]+label:before, input[type="radio"]+label:before {
 	border-radius: 0;
 	border: solid 1px;
@@ -1818,6 +1844,11 @@ input[type="checkbox"]+label:before, input[type="radio"]+label:before {
 	width: 1.65em;
 }
 
+.wrap input[type="checkbox"]:checked+label:before,.wrap input[type="radio"]:checked+label:before
+	{
+	content: '';
+}
+
 input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:before
 	{
 	content: '\f00c';
@@ -1825,6 +1856,10 @@ input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:b
 
 input[type="checkbox"]+label:before {
 	border-radius: 0;
+}
+
+.wrap input[type="radio"]+label:before {
+	border-radius: 100%;
 }
 
 input[type="radio"]+label:before {
@@ -1874,10 +1909,20 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 input[type="checkbox"]+label, input[type="radio"]+label {
 	color: #111111;
 }
-
+.wrap input[type="checkbox"]+label:before,.wrap input[type="radio"]+label:before {
+	background: none;
+	border-color: skyblue;
+}
 input[type="checkbox"]+label:before, input[type="radio"]+label:before {
 	background: none;
 	border-color: #e5474b;
+}
+
+.wrap input[type="checkbox"]:checked+label:before, .wrap input[type="radio"]:checked+label:before
+	{
+	background-color: skyblue;
+	border-color: skyblue;
+	color: #ffffff;
 }
 
 input[type="checkbox"]:checked+label:before, input[type="radio"]:checked+label:before
