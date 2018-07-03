@@ -12,7 +12,7 @@
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %>
 <div id="page" class="container">
-    
+    <h1>펫시터 회원 관리</h1><br>
     <div id="memberTable">
 		<table align="center">
 			<tr>

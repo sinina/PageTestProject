@@ -331,6 +331,46 @@ public class BoardDao {
 		return result;
 	}
 
+
+
+	public ArrayList<BoardVo> selectBoardList(Connection con, int postN) {
+		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+
+		try {
+			query = "SELECT P.PETS_P_TITLE, P.PETS_P_NO, M.M_USERNAME "
+					+"FROM PETS_POST P JOIN MEMBER M ON(P.PETS_P_MEMBER_NO=M.M_MEMBER_NO) "
+					+"WHERE PETS_P_TYPE=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, postN);
+			rs= pstmt.executeQuery();
+			
+			BoardVo temp =null;
+			while(rs.next()){
+				temp= new BoardVo();
+				temp.setNo(rs.getInt("PETS_P_NO"));
+				temp.setTitle(rs.getString("PETS_P_TITLE"));
+				temp.setSitterName(rs.getString("M_USERNAME"));
+				/*int no = rs.getInt("PETS_P_NO");
+				String title = rs.getString("PETS_P_TITLE");
+				String sitterName =rs.getString("M_USERNAME");*/
+				
+				list.add(temp);
+			}
+			System.out.println(temp);
+			System.out.println(list.size());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+
 	
 }
 	

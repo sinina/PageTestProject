@@ -15,6 +15,7 @@ public class ReviewVo {
 	private int boardNo;
 	
 	private String memberName;
+	
 	public int getMemberNo() {
 		return memberNo;
 	}

@@ -30,7 +30,7 @@
 					<td colspan="5">조회 된 신고 글이 없습니다.</td>
 				</tr>
 			<%}else{ %>
-				<%for(notify n : list){ %>
+				<%for(notifyVo n : list){ %>
 				<tr>
 					<td><%=n.getNo()%></td>			
 					<td><%=n.getMemberName()%></td>	

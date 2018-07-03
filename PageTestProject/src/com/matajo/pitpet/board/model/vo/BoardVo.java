@@ -212,6 +212,7 @@ public class BoardVo {
 		}
 
 
+
 		@Override
 		public String toString() {
 			return "BoardVo [title=" + title + ", price=" + price + ", place=" + place + ", sitterName=" + sitterName
@@ -222,7 +223,15 @@ public class BoardVo {
 		}
 
 
-	
+		public BoardVo(String title, String sitterName, int no) {
+			super();
+			this.title = title;
+			this.sitterName = sitterName;
+			this.no = no;
+		}
+
+
+		
 		
 		
 		

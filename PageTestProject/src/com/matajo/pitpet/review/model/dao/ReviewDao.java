@@ -1,11 +1,13 @@
 package com.matajo.pitpet.review.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.matajo.pitpet.board.model.vo.BoardVo;
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.review.model.vo.ReviewVo;
 
@@ -44,6 +46,39 @@ public class ReviewDao {
 				JDBCTemplate.close(stmt);
 			}
 			//6. 결과 리턴
+			return list;
+		}
+
+		public ArrayList<ReviewVo> selectReviewList(Connection con, int postN) {
+			ArrayList<ReviewVo> list = new ArrayList<ReviewVo>();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String query = "";
+
+			try {
+				query = "SELECT R.R_POST_NO, M.M_USERNAME, R.R_POST_ENROLLDATE "
+						+"FROM REV_POST R JOIN MEMBER M ON(R.R_POST_MEMBER_NO=M.M_MEMBER_NO) "
+						+"WHERE R_POST_TYPE=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, postN);
+				rs= pstmt.executeQuery();
+				
+				ReviewVo temp =null;
+				while(rs.next()){
+					temp= new ReviewVo();
+					temp.setNo(rs.getInt("R_POST_NO"));
+					temp.setMemberName(rs.getString("M_USERNAME"));
+					temp.setEnrollDate(rs.getDate("R_POST_ENROLLDATE"));
+					
+					list.add(temp);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+			}
+			
 			return list;
 		}
 
