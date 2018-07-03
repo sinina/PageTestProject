@@ -16,7 +16,13 @@ public class MemberService {
 		JDBCTemplate.close(con);
 		return member;
 	}
-
+	public MemberVo searchMember(String name) {
+		Connection con = JDBCTemplate.getConnection();
+		MemberVo member = new MemberDao().selectSearchMember(con,name);
+		JDBCTemplate.close(con);
+		return member;
+	}
+	
 	public int insertMember(MemberVo member) {
 		Connection con = JDBCTemplate.getConnection();
 		
@@ -70,6 +76,18 @@ public class MemberService {
 		JDBCTemplate.close(con);
 		return result;
 	}
+	public int updatePass(String id, String tempPass) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new MemberDao().updateMember(con, id,tempPass);
+		if(0 < result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return result;
+	}
+	
 
 
 }

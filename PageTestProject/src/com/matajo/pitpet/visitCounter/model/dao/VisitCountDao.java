@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.matajo.pitpet.common.JDBCTemplate;
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
 import com.matajo.pitpet.visitCounter.model.vo.VisitCountVo;
 
 public class VisitCountDao {

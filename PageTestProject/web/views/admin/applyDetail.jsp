@@ -1,4 +1,4 @@
-<%@page import="com.matajo.pitpet.member.model.vo.PetsitterApplyVo"%>
+<%@page import="com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

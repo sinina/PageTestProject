@@ -1,4 +1,4 @@
-package com.matajo.pitpet.member.model.dao;
+package com.matajo.pitpet.petapply.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.matajo.pitpet.common.JDBCTemplate;
-import com.matajo.pitpet.member.model.service.PetsitterService;
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
+import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
+
 
 public class PetsitterDao {
 

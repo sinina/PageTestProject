@@ -1,13 +1,16 @@
-package com.matajo.pitpet.member.controller;
+package com.matajo.pitpet.petapply.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.matajo.pitpet.member.model.service.PetsitterService;
+import com.matajo.pitpet.petapply.model.service.PetsitterService;
+
+
 
 @WebServlet("/updateOkayN.do")
 public class UpdateOkayNServlet extends HttpServlet {

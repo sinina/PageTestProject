@@ -1,9 +1,8 @@
-package com.matajo.pitpet.member.controller;
+package com.matajo.pitpet.petapply.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
-import com.matajo.pitpet.member.model.service.PetsitterService;
 import com.matajo.pitpet.member.model.vo.MemberVo;
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
+import com.matajo.pitpet.petapply.model.service.PetsitterService;
+import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
 import com.oreilly.servlet.MultipartRequest;
 
 /**

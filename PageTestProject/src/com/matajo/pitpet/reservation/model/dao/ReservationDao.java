@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
 import com.matajo.pitpet.reservation.model.vo.ReservationVo;
 
 public class ReservationDao {

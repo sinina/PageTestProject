@@ -276,7 +276,7 @@ function sample6_execDaumPostcode() {
 					console.log(e);
 				}
 			});
-		 	 }
+	}
 });
 	 
 	 //가입하기 이벤트

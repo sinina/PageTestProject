@@ -1,4 +1,4 @@
-package com.matajo.pitpet.member.model.vo;
+package com.matajo.pitpet.petapply.model.vo;
 
 
 public class PetsitterApplyVo {

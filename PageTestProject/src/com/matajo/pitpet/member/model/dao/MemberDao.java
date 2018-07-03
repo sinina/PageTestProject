@@ -76,7 +76,9 @@ public class MemberDao {
 		
 		return result;
 	}
-
+	
+	
+	
 	public ArrayList<MemberVo> selectMemberList(Connection con, int selectNo) {
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -176,6 +178,66 @@ public class MemberDao {
 		
 		return result;
 	}
+
+	public MemberVo selectSearchMember(Connection con, String name) {
+		MemberVo result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String qeury="SELECT * FROM MEMBER WHERE M_USERNAME = ?";
+		
+		try {
+			pstmt = con.prepareStatement(qeury);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				result = new MemberVo();
+				result.setPwd(rs.getString("m_password"));
+				result.setAddress(rs.getString("m_address"));
+				result.setAge(rs.getInt("m_age"));
+				result.setCode(rs.getString("m_member_code").charAt(0));
+				result.setEnrollDate(rs.getDate("m_enrolldate"));
+				result.setGender(rs.getString("m_gender").charAt(0));
+				result.setId(rs.getString("m_userid"));
+				result.setName(rs.getString("m_username"));
+				result.setNo(rs.getInt("m_member_no"));
+				result.setPhone(rs.getString("m_phone"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		
+		return result;
+	}
+
+	public int updateMember(Connection con, String id, String tempPass) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = "UPDATE MEMBER SET M_PASSWORD=? WHERE M_USERID=? ";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,tempPass);
+			pstmt.setString(2,id);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	
 
 
 }

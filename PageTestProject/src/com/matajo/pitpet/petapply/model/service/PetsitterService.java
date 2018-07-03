@@ -1,12 +1,13 @@
-package com.matajo.pitpet.member.model.service;
+package com.matajo.pitpet.petapply.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.matajo.pitpet.common.JDBCTemplate;
-import com.matajo.pitpet.member.model.dao.PetsitterDao;
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
+import com.matajo.pitpet.petapply.model.dao.PetsitterDao;
+import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
+
 
 public class PetsitterService {
 

@@ -1,4 +1,4 @@
-package com.matajo.pitpet.member.controller;
+package com.matajo.pitpet.petapply.controller;
 
 import java.io.IOException;
 

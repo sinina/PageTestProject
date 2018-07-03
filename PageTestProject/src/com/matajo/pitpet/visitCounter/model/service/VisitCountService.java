@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.matajo.pitpet.common.JDBCTemplate;
-import com.matajo.pitpet.member.model.dao.PetsitterDao;
-import com.matajo.pitpet.member.model.vo.PetsitterApplyVo;
 import com.matajo.pitpet.visitCounter.model.dao.VisitCountDao;
 import com.matajo.pitpet.visitCounter.model.vo.VisitCountVo;
 
