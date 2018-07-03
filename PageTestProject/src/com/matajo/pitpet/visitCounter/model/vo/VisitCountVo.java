@@ -147,6 +147,13 @@ public class VisitCountVo {
 		this.nov = nov;
 		this.dec = dec;
 	}
+
+	@Override
+	public String toString() {
+		return "VisitCountVo [visitDate=" + visitDate + ", jan=" + jan + ", feb=" + feb + ", mar=" + mar + ", apr="
+				+ apr + ", may=" + may + ", jun=" + jun + ", jul=" + jul + ", aug=" + aug + ", sep=" + sep + ", out="
+				+ out + ", nov=" + nov + ", dec=" + dec + "]";
+	}
 	
 	
 	

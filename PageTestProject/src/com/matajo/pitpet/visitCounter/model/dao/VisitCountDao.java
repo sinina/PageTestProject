@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.visitCounter.model.vo.VisitCountVo;
@@ -99,9 +100,8 @@ public class VisitCountDao {
 			rs=pstmt.executeQuery();
 			
 			list= new ArrayList<VisitCountVo>();
-			VisitCountVo temp = null;
+			VisitCountVo temp = new VisitCountVo();
 			while(rs.next()){
-				temp =new VisitCountVo();
 				if(Integer.parseInt(rs.getString("month"))==1){
 					temp.setJan(rs.getInt("count"));
 				}else if(Integer.parseInt(rs.getString("month"))==2){
@@ -127,13 +127,12 @@ public class VisitCountDao {
 				}else{
 					temp.setDec(rs.getInt("count"));
 				}
-				
-				list.add(temp);
 			}
+			list.add(temp);
+			System.out.println(temp);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		return list;
 	}
 	

@@ -37,9 +37,6 @@ public class SesstionListener implements HttpSessionListener {
             // 오늘 방문자 수 가져오기
             int todayCount = new VisitCountService().getTodayCount();
             
-            List<VisitCountVo> list = new VisitCountService().getMonthCount();
-            
-            
             
             //db에 방문자수 insert 정상적으로 성공시, 세션에 방문자 수를 담는다
            if(0<visit){ 
@@ -48,7 +45,6 @@ public class SesstionListener implements HttpSessionListener {
             // 세션에 방문자 수를 담는다.
             session.setAttribute("totalCount", totalCount); 
             session.setAttribute("todayCount", todayCount);
-            session.setAttribute("list", list);
             
            }else{
         	   System.out.println("방문자 카운터 오류");

@@ -5,7 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%-- <% ArrayList<VisitCountVo> list = (ArrayList<VisitCountVo>)request.getAttribute("list"); %> --%>
+<% ArrayList<VisitCountVo> list = (ArrayList<VisitCountVo>)request.getAttribute("list"); 
+	System.out.println(list.size());
+%>
 <title></title>
 <!-- 구글 차트 api 라이브러리 선언 -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -19,22 +21,25 @@
 	google.charts.setOnLoadCallback(drawChart1);
 	
 	// 방문자 추이
-	function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-          ['month', '방문자 수(명)'],
-          ['1월', <%=session.getAttribute("list")%> ],
-          ['2월',  10],
-          ['3월',  5],
-          ['4월',  20],
-          ['5월',  20],
-          ['6월',  20],
-          ['7월',  20],
-          ['8월',  20],
-          ['9월',  20],
-          ['10월',  20],
-          ['11월',  20],
-          ['12월',  20]
-        ]);
+	
+	function drawChart(data) {
+    var data = google.visualization.arrayToDataTable([
+         <%for(VisitCountVo v:list){%>
+    	  ['month', '방문자 수(명)'],
+          ['1월', <%=v.getJan()%> ],
+          ['2월',  <%=v.getFeb()%>],
+          ['3월',  <%=v.getMar()%>],
+          ['4월',  <%=v.getApr()%>],
+          ['5월', <%=v.getMay()%>],
+          ['6월', <%=v.getJun()%>],
+          ['7월',  <%=v.getJul()%>],
+          ['8월',  <%=v.getAug()%>],
+          ['9월',  <%=v.getSep()%>],
+          ['10월',  <%=v.getOut()%>],
+          ['11월',  <%=v.getNov()%>],
+          ['12월',  <%=v.getDec()%>]
+    	  <%}%>
+        ]); 
 
         var options = {
           curveType: 'function',
@@ -44,7 +49,7 @@
         var chart = new google.visualization.LineChart(document.getElementById('chartVisit'));
 
         chart.draw(data, options);
-      }
+      } 
 	
 	//매출 현황
 	function drawChart1() {

@@ -39,7 +39,8 @@
 						<a href="#three">Our Service</a>
 						<a href="#one">How to Use</a>
 						<!-- 관리자페이지 테스트위한 메뉴 -->
-						<a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자페이지</a>
+						<%-- <a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자페이지</a> --%>
+						<a href="<%=request.getContextPath() %>/selectMonth.do">관리자 페이지</a>
 						<%if(member==null) {%>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>

@@ -29,12 +29,12 @@ public class SelectMonthServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		List<VisitCountVo> list = new VisitCountService().getMonthCount();
 		if(list!=null){
-			
-		}else{
+			request.setAttribute("list", list);
+			view=request.getRequestDispatcher("views/admin/adminIndex.jsp");
+			view.forward(request,response);
 			
 		}
 		
-		view.forward(request, response);
 		
 		
 	}
