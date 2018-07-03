@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+
+/****************************************
+
+//윈도우팝업배너전용
+
+****************************************/
+/* Overlay style */
+#simple-modal-overlay {
+  position: fixed;
+  display: block;
+  z-index: 99998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+	background-color: #000000;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/* Safari 4-5, Chrome 1-9 */ /* Can't specify a percentage size? Laaaaaame. */
+	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#FFF), to(#291A49));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(circle, #FFF, #291A49);
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(circle, #FFF, #291A49);
+	/* IE 10 */
+	background: -ms-radial-gradient(circle, #FFF, #291A49);
+	/* Opera cannot do radial gradients yet */
+}
+.simple-modal {
+  /* Style rewrite */
+
+  width: 500px;
+  left: auto;
+  top: auto;
+  /* */
+
+  position: absolute;
+  position: fixed;
+  margin: 0;
+  color: #808080;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  z-index: 99999;
+}
+.simple-modal .simple-modal-header {
+  padding: 5px 15px;
+  margin: 0;
+  border-bottom: 1px solid #EEEEEE;
+}
+.simple-modal .simple-modal-header h1 {
+  margin: 0;
+  color: #404040;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 36px;
+}
+.simple-modal a.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  color: #999;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 10px;
+  text-decoration: none;
+}
+.simple-modal a.close:hover {
+  color: #444;
+}
+.simple-modal .simple-modal-body {
+  padding: 10px;
+  /* Extra style */
+
+}
+.simple-modal .simple-modal-body div.contents {
+  overflow: hidden;
+  position: relative;
+}
+.simple-modal .simple-modal-body .contents img {
+}
+/* Loading style */
+.simple-modal.loading .simple-modal-body {
+  min-height: 60px;
+  background: transparent url("../images/loader.gif") no-repeat center center;
+}
+.simple-modal.loading .simple-modal-body div.contents {
+  display: none;
+}
+.simple-modal.loading .close, .simple-modal.loading .simple-modal-header, .simple-modal.loading .simple-modal-footer {
+  display: none;
+}
+.close_wrap a  {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -5.5em;
+	font-size: 14px;
+	color: #788180;
+	font-weight: bold;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+html,body {
+	height: 100%;
+}
+#popup_bnr_wrap {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+}
+* html .popup_bnr_bg,
+* html .popup_bnr {
+	position: absolute;
+}
+.popup_bnr_bg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	display: none;
+	cursor: pointer;
+	background: #000;
+}
+.popup_bnr {
+	display: none;
+	position: fixed;
+	left: 50%;
+	margin: 80px 0px 0px -250px;
+	text-align: center;
+	z-index: 2000;
+}
+.popup_bnr .bnr_sp {
+	display: none;
+}
+@media screen and (max-width: 767px) {
+.simple-modal {
+  width: 330px;
+}
+.simple-modal .simple-modal-body div.contents {
+	padding-bottom: 40px;
+}
+.popup_bnr {
+	margin: 50px 0px 0px -165px;
+}
+.popup_bnr .bnr_pc {
+	display: none;
+}
+.popup_bnr .bnr_sp {
+	display: block;
+}
+.close_wrap a {
+	bottom: 10px;
+	left: 50%;
+	margin-left: -25%;
+	color: #ffffff;
+}
+}
