@@ -12,13 +12,45 @@
 	<script>
 	
 		$(function(){
-					
+			var text = localStorage.getItem('id');
+			
+			if(text!=null){
+				$("#txtMEM_EMAIL").val(text);
+				$("#checkbox").attr("checked", true);
+			}
+			var localFlag=false;
+			
+			$("#checkbox").change(function(){
+				if($(this).prop("checked")){
+					if(null != localStorage){
+						localFlag=true;
+					}else{
+						alert("아이디를 저장할수 없는 브라우저 입니다. 다른 브라우저를 사용하여 주세요");
+					}
+				}
+			});		
+			
+			
 			$("#btnLOGIN").click(function() {
-				$("#loginForm").submit();
+				 if(localFlag){
+					var key = 'id';
+					var value = $("#txtMEM_EMAIL").val();
+					localStorage.setItem(key, value);
+				}else{
+					localStorage.clear();
+				}
+				$("#loginForm").submit(); 
 			});
 			
 			$(".form-pwd").keypress(function(e){
 				if(e.which == 13){
+					if(localFlag){
+						var key = 'id';
+						var value = $("#txtMEM_EMAIL").val();
+						localStorage.setItem(key, value);
+					}else{
+						localStorage.clear();
+					}
 					$("#loginForm").submit();
 				}
 			});

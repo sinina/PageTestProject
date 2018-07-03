@@ -17,7 +17,6 @@
 		width:800px;
 		margin-left: auto;
 		margin-right: auto;
-		line-height: 2em;
 	} 
 	
 	body li{
@@ -40,7 +39,6 @@
 		width :auto;
 		display: block;
 	}
-
 	#head{
 		background-repeat:repeat-x;
 		height:50px;
@@ -61,7 +59,6 @@
     margin-right: auto;
     margin-left: auto;
     } 
-
   .idsearchInner {
   	width:200px;
   }
@@ -153,7 +150,6 @@ $(function(){
     	
 	  
 });
-
 </script>
 
 
@@ -162,23 +158,31 @@ $(function(){
 <%@include file="../common/header.jsp" %>
 
 <div class="wrap">
-<div id="head"><h4>비밀번호 찾기</h4></div>
+<div id="head"><h4>아이디/비밀번호 찾기</h4></div>
 	<div class="inner">	
 	<div class="idsearch">
-	<div class="idsearchInner">
-		<div>아이디 찾기</div>  
-		<div style="float:left;">이름 :</div><div style="width:600px; float:right;"><input type="text" name="idSearch" id="idSearch"></div>
+	<div class="idsearchInner" style="width:100%;">
+		<div style="border-bottom:1px solid skyblue;">아이디 찾기</div>  
+		<div style="float:left; line-height:2em; padding-top:23px ">이름 :</div>
+		<div style=" width: 300px; float:left; line-height:2em; padding:25px"><input type="text" name="idSearch" id="idSearch" style="width:200px"></div>
+		<div  style="padding-top:15px"><button type="button" id="idSearchBtn" style="margin-bottom:20px;width:170px; text-align:center ">아이디 찾기</button></div>
 	</div>	
-	<div class="idsearchInner"><button type="button" id="idSearchBtn">아이디 찾기</button></div>
+		<div id="idDiv"></div>
 	</div>
-	
-	<div id="idDiv"></div>
-	비밀번호 찾기<br>
-	아이디:<input type="text" name="emailSearch" id="edamilSearch">
+	<div style="width:100%">
+			<div  style="width:100%;">
+					<div style="border-bottom:1px solid skyblue;  margin-top:30px;">비밀번호 찾기</div>  
+					<div style="float:left; line-height:2em; padding-top:23px  ">아이디:</div>
+					<div style="width:300px; padding:25px "><input type="text" name="emailSearch" id="edamilSearch" style="width:200px; "></div> 
+			</div>	
 	<div id="passDiv"></div>
-	비밀번호를 받을 이메일 <input type="text" name="reciveEmail" id="reciveEmail">
-	<button type="button" id="passSearchbtn"  disabled='disabled'>비밀번호 찾기</button>
-	
+			<div style="width:100%;">
+					<div  style="float:left; padding-top:23px;">이메일:</div> 
+					<div  style="width: 300px; float:left; line-height:2em; padding-top:25px"><input type="text" name="reciveEmail" id="reciveEmail" style="width:200px; "></div>
+					<div  style="padding-left:400px; padding-bottom:100px;"><button type="button" id="passSearchbtn"  disabled='disabled' style="width:170px;">비밀번호 찾기</button></div>		
+			</div>
+			
+	</div>
 	</div>
 	</div>
 </body>
