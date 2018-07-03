@@ -1,0 +1,66 @@
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<% ArrayList<MessageVo> list = (ArrayList<MessageVo>)request.getAttribute("list"); %>
+<title>Insert title here</title>
+</head>
+<body>
+<%@include file="/views/common/header.jsp"%>
+<div id="page" class="container">
+내 쪽지함
+<div id="messageTable">
+<table align="center">
+			<tr>
+				
+				<th class="name">보내는 사람</th>
+				<th class="type">내용</th>
+				<th class="title">날짜</th>
+				<th class="admin">수신확인</th>
+				<th class="admin">관리</th>
+				
+			</tr>
+			<%if(list.size() == 0){ %>
+				<tr>
+					<td colspan="5">조회 된 메시지가 없습니다.</td>
+				</tr>
+			<%}else{ %>
+				<%for(MessageVo m : list){ %>
+				<tr>
+				<input type="hidden" name="mno" value="<%=m.getMsgNo()%>"/>
+					<td><%=m.getSenderName()%></td>			
+					<td><a class="detail"><%=m.getContent()%></a></td>	
+					<td><%=m.getWriteDate() %></td>
+					<td><%=m.getMsgFlag() %></td>
+					<td>
+						<button class="delete">삭제</button>
+					</td>	
+				</tr>
+				<%}} %>
+		</table>
+</div>
+</div>
+</body>
+<script>
+$(".detail").click(function(){
+	var conBtn=$(this);
+	var tr=conBtn.parent().parent();
+	var td = tr.children();
+	var messageNo = td.eq(0).text();
+	
+	location.href="/ptp/applyDetail.do?messageNo="+messageNo;
+})
+
+$(".delete").click(function(){
+	var conBtn=$(this);
+	var tr=conBtn.parent().parent();
+	var td = tr.children();
+	var messageNo = td.eq(0).text();
+	
+	location.href="/ptp/messageDelete.do?messageNo="+messageNo;
+})
+</script>
+</html>

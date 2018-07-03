@@ -100,6 +100,10 @@ public class PetsitterDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			//6. 자원 반납
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
 		}
 		return list;
 	}

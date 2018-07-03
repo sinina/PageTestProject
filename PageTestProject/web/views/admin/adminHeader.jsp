@@ -17,7 +17,7 @@
 		<ul>
 			<li><a href="#">홈</a>
 				<ul>
-					<li><a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자 페이지 홈</a></li>
+					<li><a href="<%=request.getContextPath() %>/selectMonth.do">관리자 페이지 홈</a></li>
 					<li><a href="<%=request.getContextPath() %>/index.jsp">사용자 페이지 홈</a></li>
 				</ul>
 			</li>
@@ -30,8 +30,8 @@
 			</li>
 			<li><a href="#">게시글 관리</a>
 				<ul>
-					<li><a href="/ptp/boardList.do">펫시팅 글 관리</a></li>
-					<li><a href="#">후기글 관리</a></li>
+					<li><a href="/ptp/adminBoardList.do?postN=0">펫시팅 글 관리</a></li>
+					<li><a href="/ptp/adminReviewList.do?postN=1">후기글 관리</a></li>
 					<li><a href="#">신고 관리</a></li>
 				</ul>
 			</li>

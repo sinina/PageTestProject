@@ -2,10 +2,13 @@ package com.matajo.pitpet.board.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.matajo.pitpet.board.model.dao.BoardDao;
 import com.matajo.pitpet.board.model.vo.BoardVo;
 import com.matajo.pitpet.common.JDBCTemplate;
+import com.matajo.pitpet.petapply.model.dao.PetsitterDao;
+import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
 
 public class BoardService {
 
@@ -122,6 +125,14 @@ public class BoardService {
 		JDBCTemplate.close(con);
 		return result;
 		
+	}
+
+	//관리자 페이지에서 게시글관리하려고 리스트 불러올때
+	public List<BoardVo> getBoardList(int postN) {
+		Connection con = JDBCTemplate.getConnection();
+		ArrayList<BoardVo> list = new BoardDao().selectBoardList(con,postN);
+		JDBCTemplate.close(con);
+		return list;
 	}
 }
 	

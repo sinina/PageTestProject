@@ -48,7 +48,10 @@
 		
         var chart = new google.visualization.LineChart(document.getElementById('chartVisit'));
 
-        chart.draw(data, options);
+        chart.draw(data, {
+        	pointSize:5,
+        	left:10,top:20,width:"100%",height:"100%"
+        });
       } 
 	
 	//매출 현황
@@ -70,7 +73,6 @@
         ]);
 
         var options = {
-       /*    title: 'Company Performance', */
           curveType: 'function',
           legend: { position: 'bottom' }
         };
@@ -119,7 +121,7 @@
 				<td>결제완료</td><td>예약 취소</td><td>최종 매칭</td>
 			</tr>
 		</table>
-		<p><a href="메뉴중 예약현황페이지">더보기</a></p>
+		<p><a href="<%=request.getContextPath() %>/views/admin/reservationCalendar.jsp">더보기</a></p>
 	</div>
 	
 	<div class="sales">

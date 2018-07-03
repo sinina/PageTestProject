@@ -7,6 +7,8 @@
 <head>
 <meta charset=UTF-8>
 <% ArrayList<BoardVo> list = (ArrayList<BoardVo>)request.getAttribute("list"); %>
+
+<%int postN = (int)request.getAttribute("postN"); %>
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,7 +22,7 @@
 			<tr>
 				<th class="no">글번호</th>
 				<th class="name">이름</th>
-				<th class="type">유형</th>
+			<!-- 	<th class="type">유형</th> -->
 				<th class="title">제목</th>
 				<th class="admin">관리</th>
 				
@@ -34,19 +36,20 @@
 				<tr>
 					<td><%=b.getNo()%></td>			
 					<td><%=b.getMemberNo()%></td>	
-					<td>
+					<%-- <td>
 						<%if(Integer.parseInt(b.getType())==1){ %>
 							위탁 펫시터<%}else if(Integer.parseInt(b.getType())==2){%>
 							방문 펫시터<%}else{%>위탁,방문 펫시터<%}%>
-					</td>
+					</td> --%>
 					<td><a class="detail"><%=b.getTitle()%></a></td>
 					<td>
 						<button class="modify">수정</button>
 						<button class="delete">삭제</button>
 					</td>	
 				</tr>
-					<%} } %>	
-		</table>
+					<%} 
+				} %>	
+		</table> 
 	</div>
 	</div>
 </body>

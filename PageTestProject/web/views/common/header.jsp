@@ -1,8 +1,12 @@
+<%@page import="com.matajo.pitpet.message.model.vo.MessageVo"%>
 <%@ page import="com.matajo.pitpet.member.model.vo.MemberVo" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	MemberVo member = (MemberVo) session.getAttribute("user");	
+%>
+<%
+	MessageVo message = (MessageVo)request.getAttribute("message");
 %>
 <!DOCTYPE html>
 <html>
@@ -13,7 +17,9 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
-
+a.message{
+padding:0px;
+}
 </style>
 <script>
 	function Petcheck() {
@@ -46,6 +52,15 @@
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
+								<%-- <%if('N'==(message.getMsgFlag())){ %>--%>
+								<a href="<%=request.getContextPath() %>/views/message/message.jsp" style="padding:0">
+								<img src="/ptp/images/common/message.png" height="20px"/></a>
+								
+								
+								<%--<%}else{
+								 <%=request.getContextPath() %>/selectMessage.do
+								<a href="" style="padding:0"><img src="/ptp/images/common/message1.png" height="20px"/></a>
+								<%} %> --%>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
 							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp" style="color:red" onclick="return Petcheck();">펫시터 신청</a>
 						<%} %>

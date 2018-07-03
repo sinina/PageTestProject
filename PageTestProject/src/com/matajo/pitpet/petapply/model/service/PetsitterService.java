@@ -23,7 +23,7 @@ public class PetsitterService {
 		return result;
 	}
 
-	public List<PetsitterApplyVo> getApplyList(int okayN) {
+	public ArrayList<PetsitterApplyVo> getApplyList(int okayN) {
 		Connection con = JDBCTemplate.getConnection();
 		ArrayList<PetsitterApplyVo> list = new PetsitterDao().selectApplyList(con,okayN);
 		JDBCTemplate.close(con);

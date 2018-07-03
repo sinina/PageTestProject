@@ -9,6 +9,11 @@ public class MessageVo {
 	private String content;
 	private Date writeDate;
 	private char msgFlag;
+	
+	private String senderName;
+	private String resverName;
+	
+	
 	public int getMsgNo() {
 		return msgNo;
 	}
@@ -46,6 +51,20 @@ public class MessageVo {
 		this.msgFlag = msgFlag;
 	}
 	
+	
+	
+	public String getSenderName() {
+		return senderName;
+	}
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+	}
+	public String getResverName() {
+		return resverName;
+	}
+	public void setResverName(String resverName) {
+		this.resverName = resverName;
+	}
 	public MessageVo(){}
 	public MessageVo(int msgNo, int senderNo, int resverNo, String content, Date writeDate, char msgFlag) {
 		super();
