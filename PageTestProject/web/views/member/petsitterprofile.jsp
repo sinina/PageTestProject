@@ -3,6 +3,7 @@
 <!DOCTYPE html >
 <html>
 <head>
+<script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <meta charset="UTF-8">
 <title>돌보미등록하기</title>
 
@@ -90,7 +91,21 @@
 }
 </style>
 <script>
-
+	$(function(){
+		$("#adComment").val("sd");
+		$("#opportunity").val("sd");
+		$("#activityHistory").val("as");
+		$("#prContext").val("asd");
+		$("#sitterCareer").val(1);
+		$("#distance").val(1);
+		 $("#hospital").val("사랑");
+		 $("#hospitalPhoneNumber").val(1);
+		 $("#oneDayCount").val(3);
+		 $("#bank").val(4);
+			 $("#bankName").val("사람인");
+			 $("#bankNumber").val("110-22-1123");
+	});
+	
 	function validate(){
 		var $adComment = $("#adComment");
 		var $opportunity = $("#opportunity");
@@ -105,7 +120,7 @@
 		var $bankName = $("#bankName");
 		var $bankNumber = $("#bankNumber");
 		
-		if($adComment.val()==""){
+		 if($adComment.val()==""){
 			alert("펫시터 소개 제목을 입력해 주세요");
 			$adComment.focus();
 			return;
@@ -209,8 +224,29 @@
 		alert("계좌 번호를 입력해 주세요");
 		$bankNumber.focus();
 		return;
-	} 
-		console.log("submit");
+	}  
+	
+		if($("#petsitterImage1").val()==""){
+			alert("사진을 모두 동록 해야 합니다.");
+			$("#petsitterImage1").focus();
+			return;
+		}
+		if($("#petsitterImage2").val()==""){
+			alert("사진을 모두 동록 해야 합니다.");
+			$("#petsitterImage2").focus();
+			return;
+		}
+		if($("#petsitterImage3").val()==""){
+			alert("사진을 모두 동록 해야 합니다.");
+			$("#petsitterImage3").focus();
+			return;
+		}
+		if($("#petsitterImage4").val()==""){
+			alert("사진을 모두 동록 해야 합니다.");
+			$("#petsitterImage4").focus();
+			return;
+		}
+		
 		defaultProfile();
 	}
 	
@@ -436,7 +472,7 @@
                             </ul>
 					
 				</div>
-			</form>
+			
 
 			<h4>펫시터 활동 사진</h4>
 			<ul class="info-list none address">
@@ -462,10 +498,14 @@
 			
 			<button type="button" onclick="validate();">작성</button>
 			<button type="button" onclick="cancel();">취소</button>
+			
 			</div>
+			
 					</li>
 			</ul>
+			</form>
 		</div>
+		
 	</div>
 	
 	
