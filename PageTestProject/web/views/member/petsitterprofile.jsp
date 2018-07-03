@@ -368,7 +368,7 @@
 						</span></li>
 
 						<li class="is_pet"><label>반려동물유무</label> <span
-							class="radio-chk animal_layout""> <input type="radio"
+							class="radio-chk animal_layout"> <input type="radio"
 								id="yes3" name="animalCheck" value="0" checked /> <label
 								for="yes3">있음</label> <span id="ok_pet" style="display: none;">
 									<input type="text" name="animalCount"

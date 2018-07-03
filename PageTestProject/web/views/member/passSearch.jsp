@@ -5,6 +5,73 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+ html h4{
+	color:black;
+	border-bottom: 1px solid skyblue;	
+	}
+	html h5 ,html label{
+	color:black;
+	}
+	 body .inner{
+		width:800px;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 2em;
+	} 
+	
+	body li{
+		list-style: none;
+	
+	}
+	body label{
+		font-size:70%;
+		display:inline-block;
+		width: 120px;
+		
+	}
+	body input[type="text"]{
+		border : 1px solid black;
+		display:inline-block;
+		width:auto;
+	}
+	
+	.dub  input[type="text"],.dub label{
+		width :auto;
+		display: block;
+	}
+
+	#head{
+		background-repeat:repeat-x;
+		height:50px;
+		background: skyblue;
+		border-radius:  17px 17px 0 0;
+	}
+	#head h4{
+		margin-left: 50px;
+		line-height: 2.5;
+		border:none;
+	}
+	
+	
+	.wrap {
+    border: 2px solid skyblue;
+    border-radius: 20px;
+    width: 900px;
+    margin-right: auto;
+    margin-left: auto;
+    } 
+
+  .idsearchInner {
+  	width:200px;
+  }
+  .idsearchInner btn {
+  	width:150px;
+  }
+   .idsearchInner  {
+  	width:150px;
+  }
+</style>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
 <script type="text/javascript">
@@ -92,10 +159,19 @@ $(function(){
 
 </head>
 <body>
-	<%@include file="../common/header.jsp" %>
-	아이디 찾기<br>  
-	이름 :<input type="text" name="idSearch" id="idSearch">
-	<button type="button" id="idSearchBtn">아이디 찾기</button><br>
+<%@include file="../common/header.jsp" %>
+
+<div class="wrap">
+<div id="head"><h4>비밀번호 찾기</h4></div>
+	<div class="inner">	
+	<div class="idsearch">
+	<div class="idsearchInner">
+		<div>아이디 찾기</div>  
+		<div style="float:left;">이름 :</div><div style="width:600px; float:right;"><input type="text" name="idSearch" id="idSearch"></div>
+	</div>	
+	<div class="idsearchInner"><button type="button" id="idSearchBtn">아이디 찾기</button></div>
+	</div>
+	
 	<div id="idDiv"></div>
 	비밀번호 찾기<br>
 	아이디:<input type="text" name="emailSearch" id="edamilSearch">
@@ -103,5 +179,7 @@ $(function(){
 	비밀번호를 받을 이메일 <input type="text" name="reciveEmail" id="reciveEmail">
 	<button type="button" id="passSearchbtn"  disabled='disabled'>비밀번호 찾기</button>
 	
+	</div>
+	</div>
 </body>
 </html>
