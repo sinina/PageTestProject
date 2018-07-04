@@ -37,14 +37,26 @@
 
 	 
 	$(function(){
+		
 		<%for(int i=0;i<boardList.size();i++){%>
-		console.log("<%=boardList.get(i).toString()%>");
 		var str = <%=i%>+"";
 		var add = '.add'+str;
-		console.log($(add).length);
+		
+		var address = '<%=boardList.get(i).getAddress()%>';
+		
+		//console.log($(".hide").contents().eq(0));
+		//console.log();
 		
 		$(add).find(".content_img").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=boardList.get(i).getPhoto1()%>');
-	<%}%>
+		$(add).find(".content_location").append(address.substring(address.indexOf(",")+2,18));
+		$(add).find(".text_title").children().eq(0).append("["+address.substring(address.indexOf(",")+2,18)+"]"+'<%=boardList.get(i).getTitle()%>');
+		$(add).find(".text_pay_block").children().eq(0).append('day care / 20,000원');
+		$(add).find(".text_pay_block").children().eq(1).append('1박 / 30,000원');
+		$(add).find(".text_name_block").children().eq(0).append('우수회원');
+		$(add).find(".text_name_block").children().eq(1).append('<%=boardList.get(i).getName()%>');
+		
+		<%}%>
+		
 	})
 
 </script>
@@ -679,66 +691,70 @@
 	</div>
 	
 	<div class="content-tabs">
+	
+	 
+	
 	<div class="content add0">
 	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/201604141730140affddf6059f07df61e6e98b920afaab64575.jpg"/>
+		<img class="content_img" src=""/>
 		
 		<div class="content_location">
-	<%-- <img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/> --%>
-	경기 김포시 김포한강11로
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
 	</div>
 	</div>
 	<div class="content_text">
 	<div class="text_title">
 	
-				<dt>
-							[김포 운양동] 편안하고 안락한 시간</dt>
+				
+				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
 							
 			</div>		
 			<div class="text_pay_block">
 							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
+								</label>
 							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
+								</label>
 			</div>			
 			
 			<div class="text_name_block">	
 							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
+								</label>
 							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
-	</div>	
+								</label>
+			</div>	
 	</div>
-
-	</div>
+	 </div>
+	 
+	
 	
 	<div class="content add1">
 	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/20160408134614f0473e47d730422330c6443e0672993c68920.jpg"/>
+		<img class="content_img" src=""/>
 		<div class="content_location">
 	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	경기 김포시 김포한강11로
+	
 	</div>
 	</div>
 	<div class="content_text">
 	<div class="text_title">
 	
 				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							[김포 운양동] 편안하고 안락한 시간을 약속드려요 :)</a>
+							</a>
 							
 			</div>		
 			<div class="text_pay_block">
 							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
+								</label>
 							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
+								</label>
 			</div>			
 			
 			<div class="text_name_block">	
 							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
+								</label>
 							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
+								</label>
 	</div>	
 	</div>
 	
@@ -746,127 +762,422 @@
 	<div class="content add2">
 	
 	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/20160316190210308c9f3d4220a0f415727f4ffb379f3591719.jpg"/>
+		<img class="content_img" src=""/>
 		<div class="content_location">
 	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	경기 김포시 김포한강11로
+	
 	</div>
 	</div>
 	<div class="content_text">
 	<div class="text_title">
 
 				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							[김포 운양동] 편안하고 안락한 시간을 약속드려요 :)</a>
+							</a>
 							
 			</div>		
 			<div class="text_pay_block">
 							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
+								</label>
 							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
+								</label>
 			</div>
 			
 			<div class="text_name_block">	
 							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
+								</label>
 							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
+								</label>
 	</div>	
 	</div>
 	
 	</div>
-	<div class="content">
+	<div class="content add3">
 	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/2017072022035178db2ace03f15fdb77b29756954df5bd14932.jpg"/>
+		<img class="content_img" src=""/>
 		<div class="content_location">
 	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	경기 김포시 김포한강11로
+	
+	</div>
+	</div>
+	<div class="content_text ">
+	<div class="text_title">
+	
+				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	
+	</div>
+	<div class="content add4" >
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
 	</div>
 	</div>
 	<div class="content_text">
 	<div class="text_title">
 	
 				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							[김포 운양동] 편안하고 안락한 시간을 약속드려요 :)</a>
+						</a>
 							
 			</div>		
 			<div class="text_pay_block">
 							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
+								</label>
 							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
+								</label>
 			</div>			
 			
 			<div class="text_name_block">	
 							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
+								</label>
 							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
-	</div>	
-	</div>
-	
-	</div>
-	<div class="content">
-	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/20180518060416ee91e19bc093d4269ec808dd251ad95138089.jpg"/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	경기 김포시 김포한강11로
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							[김포 운양동] 편안하고 안락한 시간을 약속드려요 :)</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
+								</label>
 	</div>	
 	</div>
 	</div>
-	<div class="content">
+	<div class="content add5">
 	<div class= "img_wrapper" >
-		<img class="content_img" src="../../upload/petsitter/2018032910460208b2276808a2ebc4b1a2ab9d47e3ae6252715.jpg"/>
+		<img class="content_img" src=""/>
 		<div class="content_location">
 	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	경기 김포시 김포한강11로
+	
 	</div>
 	</div>
 	<div class="content_text">
 	<div class="text_title">
 	
 				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							[김포 운양동] 편안하고 안락한 시간을 약속드려요 :)</a>
+							</a>
 							
 			</div>		
 			<div class="text_pay_block">
 							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								day care / 20,000원</label>
+								</label>
 							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								1박 / 30,000원</label>
+								</label>
 			</div>			
 			
 			<div class="text_name_block">	
 							<label class="name1" style="color:#696969; margin-left:5px;">
-								우수회원</label>
+								</label>
 							<label class="name1" style="color:#696969; margin-left:145px;">
-								이주은</label>
+								</label>
 	</div>	
 	</div>
 	</div>
+	<div class ="hide"> 
+	<div class="content add6">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
 	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add5">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add6">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add7">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add8">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add9">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add10">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add11">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
+	
+	<div class ="hide">
+	<div class="content add12">
+	<div class= "img_wrapper" >
+		<img class="content_img" src=""/>
+		<div class="content_location">
+	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
+	
+	</div>
+	</div>
+	<div class="content_text">
+	<div class="text_title">
+	
+				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+							</a>
+							
+			</div>		
+			<div class="text_pay_block">
+							<label class="text_pay" style="color:#696969; margin-left:10px;">
+								</label>
+							<label class="text_pay" style="color:#fac058; margin-left:20px;">
+								</label>
+			</div>			
+			
+			<div class="text_name_block">	
+							<label class="name1" style="color:#696969; margin-left:5px;">
+								</label>
+							<label class="name1" style="color:#696969; margin-left:145px;">
+								</label>
+	</div>	
+	</div>
+	</div>
+	</div>
 	
 	</div>
 	</div>

@@ -37,7 +37,11 @@ public class BoardListAddServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		ArrayList<BoardVo> list = new BoardService().selectaddList();
 		RequestDispatcher view=null;
-		
+		/*if(0<list.size()){
+		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).toString());
+		}
+		}*/
 		if(0<list.size()){
 			request.setAttribute("boardList", list);
 			view = request.getRequestDispatcher("/views/board/boardList.jsp");

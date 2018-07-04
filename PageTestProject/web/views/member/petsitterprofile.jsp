@@ -126,8 +126,8 @@
 			return;
 		}
 		
-		if($adComment.val().length>50){
-			alert("펫시터 소개 제목은 50자를 넘을수 없습니다.");
+		if($adComment.val().length>200){
+			alert("펫시터 소개 제목은 20자를 넘을수 없습니다.");
 			$adComment.focus();
 			return;
 		}	
@@ -138,8 +138,8 @@
 			return;
 		}
 		
-		 if($opportunity.val().length>50){
-			alert("펫시터 소개는 50자를 넘을수 없습니다.");
+		 if($opportunity.val().length>200){
+			alert("펫시터 소개는 200자를 넘을수 없습니다.");
 			$opportunity.focus();
 			return;
 		}	 
@@ -150,8 +150,8 @@
 				return;
 		}
 			
-		if($activityHistory.length>50){
-				alert("펫시터 소개 제목은 50자를 넘을수 없습니다.");
+		if($activityHistory.length>200){
+				alert("펫시터 소개 제목은 200자를 넘을수 없습니다.");
 				$activityHistory.focus();
 				return;
 		}		

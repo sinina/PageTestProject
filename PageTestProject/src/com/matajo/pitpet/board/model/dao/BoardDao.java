@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.matajo.pitpet.board.model.vo.BoardVo;
+import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
 
 public class BoardDao {
@@ -96,13 +97,15 @@ public class BoardDao {
 				 String photo2=rs.getString("p_photo2");
 				 String photo3=rs.getString("p_photo3");
 				 String photo4=rs.getString("p_photo4");
-				 
 				 list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4));
 			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(stmt);
 		}
 		return list;
 	}
