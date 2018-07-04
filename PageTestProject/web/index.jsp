@@ -19,7 +19,7 @@
 					 <h1><br></h1> 
 					
 				<ul class="actions">
-						<li><a href="views/board/bordList.jsp" class="alt">맡아조?</a></li>
+						<li><a href="/ptp/boardListAdd.do" class="alt">맡아조?</a></li>
 						<li><a href="#" class="alt">맡겨조!</a></li>
 					</ul>
 					

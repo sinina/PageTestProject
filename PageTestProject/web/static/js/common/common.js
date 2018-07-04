@@ -193,12 +193,18 @@ function getInternetExplorerVersion() {
          }
      return rv;
 }
+window.onload = function(){
+	first();
+	
+}
 
-$(function(){
+function first(){
 
-	$('#popup_bnr_wrap').layerBoard({alpha:0.5});
+	//$('#popup_bnr_wrap').layerBoard({alpha:0.5});
 
 	//ie8,9 placeholder표시
+	
+
 	var supportsInputAttribute = function (attr) {
 	  var input = document.createElement('input');
 	  return attr in input;
@@ -254,14 +260,14 @@ $(function(){
 	});
 
 	// #으로 시작하는 앵커태그처리
-	$('a[href^=#anchor]').click(function() {
+	/*$('a[href^=#anchor]').click(function() {
 		var speed = 500;
 		var href= $(this).attr("href");
 		var target = $(href == "#" || href == "" ? 'html' : href);
 		var position = target.offset().top;
 		$('body,html').animate({scrollTop:position}, speed, 'swing');
 		return false;
-	});
+	});*/
 
 	//돌보미등록하기 썸네일 hover
 	$('.information-thum-wrap .thum-wrap:nth-child(3n+1)').addClass('thum-wrap-right');
@@ -278,18 +284,19 @@ $(function(){
 		$('.message-notice-open').slideToggle(100);
 		$('.message-notice-btn').toggleClass('message-notice-btn-close');
 	});
-
+	
+	
 	//사이드 메시지리스트
 	$('#sidebar').simplerSidebar({
 		opener: '#sidebar-btn',
-		animation: {
+		/*animation: {
 				easing: "easeOutQuint"
 			},
 			sidebar: {
 			align: 'right',
 			width: 400,
 			closingLinks: '#sidebar-close'
-		}
+		}*/
 	});
 
 	//사이드 메시지리스트 마우스오버처리
@@ -541,7 +548,8 @@ $(function(){
 			});
 		});
 	}
-});
+};
+
 
 var $openChat = function (orderNo) {
 		var param = {width: 500, height: 600};

@@ -83,15 +83,15 @@ public class PetsitterJoinServlet extends HttpServlet {
 		int pickup = Integer.parseInt(mRequest.getParameter("pickup"));
 		
 		String prContext = mRequest.getParameter("prContext");
-		String sitterCareer = mRequest.getParameter("sitterCareer");
+		int sitterCareer = Integer.parseInt(mRequest.getParameter("sitterCareer"));
 		
 		String[] petSize = mRequest.getParameterValues("petSize[]"); 
 		String[]petAge = mRequest.getParameterValues("petAge[]");
 		
 		String petSizecommon=String.join(",", petSize);
 		String petAgecommon=String.join(",", petAge);
-		
-		
+		System.out.println(petSizecommon);
+		System.out.println(petAgecommon);
 		int animalCheck = Integer.parseInt(mRequest.getParameter("animalCheck"));
 		int animalCount = Integer.parseInt(mRequest.getParameter("animalCount"));
 		
@@ -124,7 +124,7 @@ public class PetsitterJoinServlet extends HttpServlet {
 		license4+=','+licenseInfo4;
 		
 		
-		PetsitterApplyVo petSitterInfo = new PetsitterApplyVo(member.getNo(), type, openarea, jobstyle, adComment, opportunity, activityHistory, long_term, pickup, prContext, sitterCareer, petSizecommon, petAgecommon, animalCheck, animalCount, child, camera, distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber,license1,license2,license3,license4);
+		PetsitterApplyVo petSitterInfo = new PetsitterApplyVo(member.getNo(), type, openarea, jobstyle, adComment, opportunity, activityHistory, long_term, pickup, sitterCareer, petSizecommon, petAgecommon, animalCheck, animalCount, child, camera, distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber,prContext,license1,license2,license3,license4,fileName1,fileName2,fileName3,fileName4);
 		int result = new PetsitterService().insertPetsitterInfo(petSitterInfo,list);
 		
 		if(0<result){

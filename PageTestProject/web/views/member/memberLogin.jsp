@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<% String flag =String.valueOf(request.getAttribute("flag")); %>
+<% String flag =String.valueOf(request.getAttribute("flag")); %>
 <!DOCTYPE html>
 <html>
 <head>

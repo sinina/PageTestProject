@@ -12,19 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.matajo.pitpet.board.model.service.BoardService;
+import com.matajo.pitpet.board.model.vo.BoardVo;
 import com.matajo.pitpet.petapply.model.vo.PetsitterApplyVo;
 
 /**
- * Servlet implementation class BoardListServlet
+ * Servlet implementation class BoardListAddServlet
  */
-@WebServlet("/boardList.do")
-public class BoardListServlet extends HttpServlet {
+@WebServlet("/boardListAdd.do")
+public class BoardListAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BoardListServlet() {
+    public BoardListAddServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +33,9 @@ public class BoardListServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ArrayList<PetsitterApplyVo> list = new BoardService().selectList();
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		ArrayList<BoardVo> list = new BoardService().selectaddList();
 		RequestDispatcher view=null;
 		
 		if(0<list.size()){
@@ -48,9 +49,6 @@ public class BoardListServlet extends HttpServlet {
 			out.close();
 			
 		}
-			
-			
-			
 		
 	}
 

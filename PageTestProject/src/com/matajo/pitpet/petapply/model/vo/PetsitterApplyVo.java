@@ -1,45 +1,56 @@
 package com.matajo.pitpet.petapply.model.vo;
 
-
 public class PetsitterApplyVo {
-	private int no  ;
-	private int type ;
-	private int openarea ;
-	private int jobstyle ;
-	private String adComment ;
-	private String opportunity ;
-	private String activityHistory ;
-	private int long_term ;
-	private int pickup ;
-	private String prContext ;
-	private String sitterCareer ;
-	private String petSize; 
-	private String petAge ;
-	private int animalCheck ;
-	private int animalCount ;
-	private int child ;
-	private int camera ;
-	private int distance ;
-	private String hospital ;
-	private String hospitalPhoneNumber ;
-	private int oneDayCount ;
-	private String bank ;
-	private String bankName ;
-	private String bankNumber ;
-	//관리자페이지에서 리스트 출력할때 이름도 출력하기위해 보람이가 넣음!
+	private int no;
+	private int type;
+	private int openarea;
+	private int jobstyle;
+	private String adComment;
+	private String opportunity;
+	private String activityHistory;
+	private int long_term;
+	private int pickup;
+	private int sitterCareer;
+	
+	
+	private String petSize;
+	private String petAge;
+	private int animalCheck;
+	private int animalCount;
+	private int child;
+	private int camera;
+	private int distance;
+	private String hospital;
+	private String hospitalPhoneNumber;
+	private int oneDayCount;
+	
+	private String bank;
+	private String bankName;
+	private String bankNumber;
+	private String prContext;
+	// 관리자페이지에서 리스트 출력할때 이름도 출력하기위해 보람이가 넣음!
 	private String name;
 	private String license1;
 	private String license2;
 	private String license3;
 	private String license4;
 	
+	private String photo1;
+	private String photo2;
+	private String photo3;
+	private String photo4;
+	
+	private int okay;
 	public PetsitterApplyVo() {
 	}
-
+	
 	public PetsitterApplyVo(int no, int type, int openarea, int jobstyle, String adComment, String opportunity,
-			String activityHistory, int long_term, int pickup, String prContext, String sitterCareer, String petSize,
-			String petAge, int animalCheck, int animalCount, int child, int camera, int distance, String hospital,
-			String hospitalPhoneNumber, int oneDayCount, String bank, String bankName, String bankNumber,String license1,String license2,String license3,String license4) {
+			String activityHistory, int long_term, int pickup, int sitterCareer, String petSize, String petAge,
+			int animalCheck, int animalCount, int child, int camera, int distance, String hospital,
+			String hospitalPhoneNumber, int oneDayCount, String bank, String bankName, String bankNumber,
+			String prContext, String license1, String license2, String license3, String license4, String photo1,
+			String photo2, String photo3, String photo4) {
+		super();
 		this.no = no;
 		this.type = type;
 		this.openarea = openarea;
@@ -49,7 +60,6 @@ public class PetsitterApplyVo {
 		this.activityHistory = activityHistory;
 		this.long_term = long_term;
 		this.pickup = pickup;
-		this.prContext = prContext;
 		this.sitterCareer = sitterCareer;
 		this.petSize = petSize;
 		this.petAge = petAge;
@@ -64,12 +74,69 @@ public class PetsitterApplyVo {
 		this.bank = bank;
 		this.bankName = bankName;
 		this.bankNumber = bankNumber;
+		this.prContext = prContext;
 		this.license1 = license1;
 		this.license2 = license2;
 		this.license3 = license3;
 		this.license4 = license4;
+		this.photo1 = photo1;
+		this.photo2 = photo2;
+		this.photo3 = photo3;
+		this.photo4 = photo4;
 	}
 
+	
+	
+	
+
+	
+
+	
+
+	
+
+	
+
+	public int getOkay() {
+		return okay;
+	}
+
+	public void setOkay(int okay) {
+		this.okay = okay;
+	}
+	
+	public String getPhoto1() {
+		return photo1;
+	}
+
+	public void setPhoto1(String photo1) {
+		this.photo1 = photo1;
+	}
+
+	public String getPhoto2() {
+		return photo2;
+	}
+
+	public void setPhoto2(String photo2) {
+		this.photo2 = photo2;
+	}
+
+	public String getPhoto3() {
+		return photo3;
+	}
+
+	public void setPhoto3(String photo3) {
+		this.photo3 = photo3;
+	}
+
+	public String getPhoto4() {
+		return photo4;
+	}
+
+	public void setPhoto4(String photo4) {
+		this.photo4 = photo4;
+	}
+	
 	public String getLicense1() {
 		return license1;
 	}
@@ -182,11 +249,11 @@ public class PetsitterApplyVo {
 		this.prContext = prContext;
 	}
 
-	public String getSitterCareer() {
+	public int getSitterCareer() {
 		return sitterCareer;
 	}
 
-	public void setSitterCareer(String sitterCareer) {
+	public void setSitterCareer(int sitterCareer) {
 		this.sitterCareer = sitterCareer;
 	}
 
@@ -293,8 +360,6 @@ public class PetsitterApplyVo {
 	public void setBankNumber(String bankNumber) {
 		this.bankNumber = bankNumber;
 	}
-	
-	
 
 	public String getName() {
 		return name;
@@ -304,17 +369,23 @@ public class PetsitterApplyVo {
 		this.name = name;
 	}
 
+
+
 	@Override
 	public String toString() {
+		
 		return "PetsitterApplyVo [no=" + no + ", type=" + type + ", openarea=" + openarea + ", jobstyle=" + jobstyle
 				+ ", adComment=" + adComment + ", opportunity=" + opportunity + ", activityHistory=" + activityHistory
-				+ ", long_term=" + long_term + ", pickup=" + pickup + ", prContext=" + prContext + ", sitterCareer="
-				+ sitterCareer + ", petSize=" + petSize + ", petAge=" + petAge + ", animalCheck=" + animalCheck
-				+ ", animalCount=" + animalCount + ", child=" + child + ", camera=" + camera + ", distance=" + distance
-				+ ", hospital=" + hospital + ", hospitalPhoneNumber=" + hospitalPhoneNumber + ", oneDayCount="
-				+ oneDayCount + ", bank=" + bank + ", bankName=" + bankName + ", bankNumber=" + bankNumber + ", name="
+				+ ", long_term=" + long_term + ", pickup=" + pickup + ", sitterCareer=" + sitterCareer + ", petSize="
+				+ petSize + ", petAge=" + petAge + ", animalCheck=" + animalCheck + ", animalCount=" + animalCount
+				+ ", child=" + child + ", camera=" + camera + ", distance=" + distance + ", hospital=" + hospital
+				+ ", hospitalPhoneNumber=" + hospitalPhoneNumber + ", oneDayCount=" + oneDayCount + ", bank=" + bank
+				+ ", bankName=" + bankName + ", bankNumber=" + bankNumber + ", prContext=" + prContext + ", name="
 				+ name + ", license1=" + license1 + ", license2=" + license2 + ", license3=" + license3 + ", license4="
-				+ license4 + "]";
+				+ license4 + ", photo1=" + photo1 + ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4
+				+ ", okay=" + okay + "]";
 	}
+
+	
 
 }

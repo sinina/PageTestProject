@@ -18,7 +18,7 @@ public class PetsitterDao {
 		PreparedStatement pstmt=null;
 		
 		try {
-			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,DEFAULT,?,?,?,?,?,?,?,?)";
+			query="INSERT INTO PETS_APPLY VALUES(?,?,?,?,?,?,?,?,?,?, ?,?,?,?,?,?,?,?,?,?, ?,?,?,?,DEFAULT,?,?,?,?,?, ?,?,?)";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,petSitterInfo.getNo());
 			pstmt.setInt(2, petSitterInfo.getType());
@@ -29,38 +29,33 @@ public class PetsitterDao {
 			pstmt.setString(7, petSitterInfo.getActivityHistory());
 			pstmt.setInt(8,petSitterInfo.getLong_term());
 			pstmt.setInt(9, petSitterInfo.getPickup());
-			pstmt.setString(10, petSitterInfo.getPetSize());
-			pstmt.setString(11, petSitterInfo.getPetAge());
-			pstmt.setInt(12, petSitterInfo.getAnimalCheck());
-			pstmt.setInt(13, petSitterInfo.getAnimalCount());
-			pstmt.setInt(14, petSitterInfo.getChild());
-			pstmt.setInt(15, petSitterInfo.getCamera());
-			pstmt.setInt(16, petSitterInfo.getDistance());
-			pstmt.setString(17, petSitterInfo.getHospital());
-			pstmt.setString(18, petSitterInfo.getHospitalPhoneNumber());
-			pstmt.setInt(19, petSitterInfo.getOneDayCount());
-			pstmt.setString(20, petSitterInfo.getBank());
-			pstmt.setString(21, petSitterInfo.getBankName());
-			pstmt.setString(22, petSitterInfo.getBankNumber());
-			pstmt.setString(23, petSitterInfo.getPrContext());
-			pstmt.setString(24, petSitterInfo.getLicense1());
-			pstmt.setString(25, petSitterInfo.getLicense2());
-			pstmt.setString(26, petSitterInfo.getLicense3());
-			pstmt.setString(27, petSitterInfo.getLicense4());
-			if(list.size()!=0){
-				for(int i=0;i<list.size();i++){
-					pstmt.setString(27+(i+1), list.get(i+0));
-				}
-			}else{
-				pstmt.setString(28, "1");
-				pstmt.setString(29, "1");
-				pstmt.setString(30, "1");
-				pstmt.setString(31, "1");
-			}
+			pstmt.setInt(10, petSitterInfo.getSitterCareer());
 			
-				
-		
+			pstmt.setString(11, petSitterInfo.getPetSize());
+			pstmt.setString(12, petSitterInfo.getPetAge());
+			pstmt.setInt(13, petSitterInfo.getAnimalCheck());
+			pstmt.setInt(14, petSitterInfo.getAnimalCount());
+			pstmt.setInt(15, petSitterInfo.getChild());
+			pstmt.setInt(16, petSitterInfo.getCamera());
+			pstmt.setInt(17, petSitterInfo.getDistance());
+			pstmt.setString(18, petSitterInfo.getHospital());
+			pstmt.setString(19, petSitterInfo.getHospitalPhoneNumber());
+			pstmt.setInt(20, petSitterInfo.getOneDayCount());
 			
+			pstmt.setString(21, petSitterInfo.getBank());
+			pstmt.setString(22, petSitterInfo.getBankName());
+			pstmt.setString(23, petSitterInfo.getBankNumber());
+			pstmt.setString(24, petSitterInfo.getPrContext());
+			pstmt.setString(25, petSitterInfo.getLicense1());
+			pstmt.setString(26, petSitterInfo.getLicense2());
+			pstmt.setString(27, petSitterInfo.getLicense3());
+			pstmt.setString(28, petSitterInfo.getLicense4());
+			pstmt.setString(29, petSitterInfo.getPhoto1());
+			pstmt.setString(30, petSitterInfo.getPhoto2());
+			pstmt.setString(31, petSitterInfo.getPhoto3());
+			pstmt.setString(32, petSitterInfo.getPhoto4());
+			
+
 			result = pstmt.executeUpdate();
 		
 		} catch (SQLException e) {

@@ -83,7 +83,7 @@ $(function(){
 			type : "post",
 			data : {userName : name},
 			success : function(data){
-				$("#idDiv").text(data);
+				$("#idDiv").text(data(0));
 			},error : function(e){
 				console.log(e);
 			}
