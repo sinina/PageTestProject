@@ -1,7 +1,6 @@
-package com.matajo.pitpet.message.controller;
+package com.matajo.pitpet.message;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,29 +10,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.matajo.pitpet.message.model.service.MessageService;
-import com.matajo.pitpet.message.model.vo.MessageVo;
 
-@WebServlet("/selectMessage.do")
-public class SelectMessgaeServlet extends HttpServlet {
+@WebServlet("/selectMsgFlag.do")
+public class SelectMessageFlagServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SelectMessgaeServlet() {
+    public SelectMessageFlagServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int memberNo= Integer.parseInt(request.getParameter("memberNo"));
-		List<MessageVo> list = new MessageService().getMessageList(memberNo);
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		int count = new MessageService().getMessageFlag(memberNo);
 		RequestDispatcher view = null;
 		
-		if(null!=list){
-			request.setAttribute("list", list);
-			view = request.getRequestDispatcher("views/message/message.jsp");
-			view.forward(request, response);
-			
-		}else{
-			
+		String msg ="";
+		System.out.println(count+"서블릿");
+		//안읽은 메시지가 0개 이상일경우
+		if(count>0){
+			msg="ok";
 		}
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(msg);
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.matajo.pitpet.message.model.service;
 
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.message.model.dao.MessageDao;
@@ -19,9 +21,9 @@ public class MessageService {
 		return result;
 	}
 
-	public int updateMsg(int msgNo) {
+	public int updateMsg(int messageNo) {
 		Connection con = JDBCTemplate.getConnection();
-		int result = new MessageDao().updateMessage(con, msgNo);
+		int result = new MessageDao().updateMessage(con, messageNo);
 		if (0 < result) {
 			JDBCTemplate.commit(con);
 		} else {
@@ -29,5 +31,24 @@ public class MessageService {
 		}
 		JDBCTemplate.close(con);
 		return result;
+	}
+
+	public List<MessageVo> getMessageList(int memberNo) {
+		Connection con = JDBCTemplate.getConnection();
+		ArrayList<MessageVo> list = new MessageDao().selectMessageList(con,memberNo);
+		JDBCTemplate.close(con);
+		return list;
+	}
+
+	public int getMessageFlag(int memberNo) {
+		Connection con = JDBCTemplate.getConnection();
+		int count = new MessageDao().selectMessageFlag(con, memberNo);
+		if(count>0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return count;
 	}
 }

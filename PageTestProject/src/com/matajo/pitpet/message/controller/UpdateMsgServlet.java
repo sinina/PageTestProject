@@ -1,6 +1,8 @@
 package com.matajo.pitpet.message.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,21 +22,20 @@ public class UpdateMsgServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-		
-		int msgNo = Integer.parseInt(request.getParameter("msgNo"));
-		int result = new MessageService().updateMsg(msgNo);
-		
+	
+		int messageNo = Integer.parseInt(request.getParameter("messageNo"));
+		int result = new MessageService().updateMsg(messageNo);
+		RequestDispatcher view = null;
 		//정상적으로 mes_flag가 y로 변경 될경우
 		if(0<result){
+			System.out.println("플래그 변경 완료");
 			
+			//디테일 서블릿 구현 아직 안함
+			view = request.getRequestDispatcher("/ptp/messageDetail.do?messageNo="+messageNo);
+			view.forward(request, response);
 		}else{
 			
 		}
+	
 	}
-
 }

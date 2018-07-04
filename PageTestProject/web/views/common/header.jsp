@@ -34,6 +34,24 @@ padding:0px;
 		}
 		return true;
 	}
+	
+	$(function(){
+		$.ajax({
+			type:'get',
+			url:'/ptp/selectMsgFlag.do?memberNo=<%=member.getNo()%>',
+			success:function(data){
+				console.log("성공",data);
+				if(data=="ok"){
+				//	alert("성공!")
+					$("#msgIcon").attr("src","/ptp/images/common/message1.png")
+				}
+			},error:function(e){
+				console.log("에러",e);
+			}
+		});
+	})
+	
+	
 </script>
 </head>
 <body>	
@@ -45,22 +63,14 @@ padding:0px;
 						<a href="#three">Our Service</a>
 						<a href="#one">How to Use</a>
 						<!-- 관리자페이지 테스트위한 메뉴 -->
-						<%-- <a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자페이지</a> --%>
 						<a href="<%=request.getContextPath() %>/selectMonth.do">관리자 페이지</a>
 						<%if(member==null) {%>
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
-								<%-- <%if('N'==(message.getMsgFlag())){ %>--%>
-								<a href="<%=request.getContextPath() %>/views/message/message.jsp" style="padding:0">
-								<img src="/ptp/images/common/message.png" height="20px"/></a>
-								
-								
-								<%--<%}else{
-								 <%=request.getContextPath() %>/selectMessage.do
-								<a href="" style="padding:0"><img src="/ptp/images/common/message1.png" height="20px"/></a>
-								<%} %> --%>
+								<a href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>" >
+								<img src="/ptp/images/common/message.png" height="20px" id="msgIcon"/></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
 							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp" style="color:red" onclick="return Petcheck();">펫시터 신청</a>
 						<%} %>

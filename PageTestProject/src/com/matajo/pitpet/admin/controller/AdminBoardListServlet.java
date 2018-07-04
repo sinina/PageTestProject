@@ -23,7 +23,7 @@ public class AdminBoardListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int postN = Integer.parseInt(request.getParameter("postN"));
-		System.out.println(postN);
+		/*System.out.println(postN);*/
 		List<BoardVo> list = new BoardService().getBoardList(postN);
 		RequestDispatcher view = null;
 		
