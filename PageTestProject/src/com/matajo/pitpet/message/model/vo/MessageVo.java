@@ -12,6 +12,7 @@ public class MessageVo {
 	
 	private String senderName;
 	private String resverName;
+	private int nFlagCnt;
 	
 	
 	public int getMsgNo() {
@@ -53,6 +54,12 @@ public class MessageVo {
 	
 	
 	
+	public int getnFlagCnt() {
+		return nFlagCnt;
+	}
+	public void setnFlagCnt(int nFlagCnt) {
+		this.nFlagCnt = nFlagCnt;
+	}
 	public String getSenderName() {
 		return senderName;
 	}

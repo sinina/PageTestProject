@@ -36,20 +36,22 @@ padding:0px;
 	}
 	
 	$(function(){
-		$.ajax({
-			type:'get',
-			url:'/ptp/selectMsgFlag.do?memberNo=<%=member.getNo()%>',
-			success:function(data){
-				console.log("성공",data);
-				if(data=="ok"){
-				//	alert("성공!")
-					$("#msgIcon").attr("src","/ptp/images/common/message1.png")
+	<%if(member!=null){%>
+			$.ajax({
+				type:'get',
+				url:'/ptp/selectMsgFlag.do?memberNo=<%=member.getNo()%>',
+				success:function(data){
+					//console.log("성공",data);
+					if(data=="ok"){
+					//	alert("성공!")
+						$("#msgIcon").attr("src","/ptp/images/common/message.png")
+					}
+				},error:function(e){
+					console.log("에러",e);
 				}
-			},error:function(e){
-				console.log("에러",e);
-			}
-		});
-	})
+			});
+		<%}%>
+	}) 
 	
 	
 </script>
@@ -70,7 +72,7 @@ padding:0px;
 						<%}else{ %>
 							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
 								<a href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>" >
-								<img src="/ptp/images/common/message.png" height="20px" id="msgIcon"/></a>
+								<img src="/ptp/images/common/message1.jpg" height="20px" id="msgIcon"/></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>
 							<a href="<%=request.getContextPath() %>/views/member/petsitterJoin.jsp" style="color:red" onclick="return Petcheck();">펫시터 신청</a>
 						<%} %>

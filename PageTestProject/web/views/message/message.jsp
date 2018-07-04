@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <% ArrayList<MessageVo> list = (ArrayList<MessageVo>)request.getAttribute("list"); %>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -62,8 +63,8 @@ $(".delete").click(function(){
 	var tr=conBtn.parent().parent();
 	var td = tr.children();
 	var messageNo = td.eq(0).text();
-	
-	location.href="/ptp/messageDelete.do?messageNo="+messageNo;
+	//삭제 서블릿으로 이동
+	location.href="/ptp/deleteMsg.do?messageNo="+messageNo+"&memberNo="+<%=member.getNo() %>;
 })
 </script>
 </html>

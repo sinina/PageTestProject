@@ -40,15 +40,27 @@ public class MessageService {
 		return list;
 	}
 
-	public int getMessageFlag(int memberNo) {
+	public MessageVo getMessageFlag(int memberNo) {
 		Connection con = JDBCTemplate.getConnection();
-		int count = new MessageDao().selectMessageFlag(con, memberNo);
-		if(count>0){
+		MessageVo count = new MessageDao().selectMessageFlag(con, memberNo);
+		if(count!=null){
 			JDBCTemplate.commit(con);
 		}else{
 			JDBCTemplate.rollback(con);
 		}
 		JDBCTemplate.close(con);
 		return count;
+	}
+
+	public int deleteMsg(int messageNo) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new MessageDao().deleteMessage(con, messageNo);
+		if (0 < result) {
+			JDBCTemplate.commit(con);
+		} else {
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return result;
 	}
 }

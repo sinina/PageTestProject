@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.matajo.pitpet.common.JDBCTemplate;
+import com.matajo.pitpet.member.model.vo.MemberVo;
 import com.matajo.pitpet.message.model.vo.MessageVo;
 
 public class MessageDao {
@@ -94,28 +95,50 @@ public class MessageDao {
 		return list;
 	}
 
-	public int selectMessageFlag(Connection con, int memberNo) {
+	public MessageVo selectMessageFlag(Connection con, int memberNo) {
 			PreparedStatement pstmt  = null;
-			int count = 0;
+			MessageVo count = null;
+			ResultSet rs = null;
 			String query = "";
 			query = "SELECT COUNT(M1.MES_FLAG) "
 					+ "FROM MESSAGE M1 JOIN MEMBER M2 ON (M1.MES_RESVER_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_FLAG='N' AND M1.MES_RESVER_NO=?";
 			try {
-				//1. 쿼리 전송 객체 생성(preparedstmt)
 				pstmt = con.prepareStatement(query);
-				//2. 쿼리 파라미터 설정 - ?의 갯수만큼
 				pstmt.setInt(1, memberNo);
-				//3. 쿼리 실행
-				count = pstmt.executeUpdate();
+				rs = pstmt.executeQuery();
+				
+				/*MessageVo temp= null;*/
+				if(rs.next()){
+					count= new MessageVo();
+					count.setnFlagCnt(rs.getInt("COUNT(M1.MES_FLAG)"));
+					//System.out.println(count.getnFlagCnt());
+				}
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally{
-			//4. 자원 반납
+				JDBCTemplate.close(rs);
 				JDBCTemplate.close(pstmt);
 			}
-			//5. 결과 리턴
 			return count;
+	}
+
+	public int deleteMessage(Connection con, int messageNo) {
+		int result = -1;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = "delete MESSAGE WHERE MES_MSG_NO = ?";
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, messageNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 }

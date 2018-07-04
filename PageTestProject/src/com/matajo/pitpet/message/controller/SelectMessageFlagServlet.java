@@ -10,33 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.matajo.pitpet.message.model.service.MessageService;
+import com.matajo.pitpet.message.model.vo.MessageVo;
 
-
-
-@WebServlet("/updateMsg.do")
-public class UpdateMsgServlet extends HttpServlet {
+@WebServlet("/selectMsgFlag.do")
+public class SelectMessageFlagServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public UpdateMsgServlet() {
+    public SelectMessageFlagServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int messageNo = Integer.parseInt(request.getParameter("messageNo"));
-		int result = new MessageService().updateMsg(messageNo);
+		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
+		MessageVo count = new MessageService().getMessageFlag(memberNo);
 		RequestDispatcher view = null;
-		//정상적으로 mes_flag가 y로 변경 될경우
-		if(0<result){
-			System.out.println("플래그 변경 완료");
-			
-			//디테일 서블릿 구현 아직 안함
-			//view = request.getRequestDispatcher("/ptp/messageDetail.do?messageNo="+messageNo);
-			view = request.getRequestDispatcher("views/message/messageDetail.jsp");
-			view.forward(request, response);
-		}else{
-			
+		
+		String msg ="";
+		System.out.println(count.getnFlagCnt()+"서블릿");
+		//안읽은 메시지가 0개 이상일경우
+		if(count.getnFlagCnt()>0){
+			msg="ok";
 		}
-	
+		response.setCharacterEncoding("utf-8");
+		response.getWriter().print(msg);
 	}
+
 }

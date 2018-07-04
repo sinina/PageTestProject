@@ -1,4 +1,4 @@
-package com.matajo.pitpet.message;
+package com.matajo.pitpet.message.controller;
 
 import java.io.IOException;
 
@@ -11,27 +11,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.matajo.pitpet.message.model.service.MessageService;
 
-@WebServlet("/selectMsgFlag.do")
-public class SelectMessageFlagServlet extends HttpServlet {
+@WebServlet("/deleteMsg.do")
+public class DeleteMessageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public SelectMessageFlagServlet() {
+    public DeleteMessageServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int messageNo = Integer.parseInt(request.getParameter("messageNo"));
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
-		int count = new MessageService().getMessageFlag(memberNo);
+		int result = new MessageService().deleteMsg(messageNo);
 		RequestDispatcher view = null;
 		
-		String msg ="";
-		System.out.println(count+"서블릿");
-		//안읽은 메시지가 0개 이상일경우
-		if(count>0){
-			msg="ok";
+		if(0<result){
+			
+			view = request.getRequestDispatcher("/selectMessage.do?memberNo="+memberNo);
+			view.forward(request, response);
+		}else{
+			
 		}
-		response.setCharacterEncoding("utf-8");
-		response.getWriter().print(msg);
 	}
 
 }
