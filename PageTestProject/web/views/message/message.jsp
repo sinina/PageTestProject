@@ -23,6 +23,7 @@
 				<th class="title">날짜</th>
 				<th class="admin">수신확인</th>
 				<th class="admin">관리</th>
+				<th style="display:none">메시지코드</th>
 				
 			</tr>
 			<%if(list.size() == 0){ %>
@@ -32,7 +33,7 @@
 			<%}else{ %>
 				<%for(MessageVo m : list){ %>
 				<tr>
-				<td><%=m.getMsgNo()%></td>
+					<td><%=m.getMsgNo()%></td>
 					<td><%=m.getSenderName()%></td>			
 					<td><a class="detail"><%=m.getContent()%></a></td>	
 					<td><%=m.getWriteDate() %></td>
@@ -40,6 +41,7 @@
 					<td>
 						<button class="delete">삭제</button>
 					</td>	
+					<td style="display:none"><%=m.getMsgCode() %></td>
 				</tr>
 				<%}} %>
 		</table>
@@ -53,8 +55,10 @@ $(".detail").click(function(){
 	var td = tr.children();
 	var messageNo = td.eq(0).text(); 
 	
+	var msgCode = td.eq(6).text();
+	//alert(messageCode);
 	//플래그 바꾸는 서블릿으로 이동
-	location.href="/ptp/updateMsg.do?messageNo="+messageNo;
+	location.href="/ptp/updateMsg.do?messageNo="+messageNo+"&msgCode="+msgCode;
 	
 })
 

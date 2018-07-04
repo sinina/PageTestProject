@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.reservation.model.vo.ReservationVo;
 
 public class ReservationDao {
@@ -37,6 +39,54 @@ public class ReservationDao {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public ReservationVo selectResInfo(Connection con, int messageNo,int msgCode) {
+		ReservationVo res = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query="";
+		
+		if(msgCode==0){
+			query= "SELECT R.RES_START_TIME, R.RES_END_TIME, R.RES_PETO_ANIMAL_KINDS, "
+					+ "R.RES_PRICE, M2.M_USERNAME "
+					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETO_NO=M1.MES_SENDER_NO)"
+					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
+					+ "WHERE M1.MES_CODE=("
+					+ "SELECT MES_CODE FROM MESSAGE "
+					+ "WHERE MES_MSG_NO=?)";
+		}else{
+			query="SELECT R.RES_START_TIME, R.RES_END_TIME, R.RES_PETO_ANIMAL_KINDS, "
+					+ "R.RES_PRICE, M2.M_USERNAME "
+					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETS_NO=M1.MES_SENDER_NO)"
+					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
+					+ "WHERE M1.MES_CODE=("
+					+ "SELECT MES_CODE FROM MESSAGE "
+					+ "WHERE MES_MSG_NO=?)";
+			System.out.println("msgCode!=0");
+		}		
+		try {
+			
+			System.out.println(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, messageNo);
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()){
+				res = new ReservationVo();
+				res.setStartTime(rs.getTimestamp("RES_START_TIME"));
+				res.setEndTime(rs.getTimestamp("RES_END_TIME"));
+				res.setAnimalKind(rs.getString("RES_PETO_ANIMAL_KINDS"));
+				res.setPrice(rs.getInt("RES_PRICE"));
+				res.setPetoName(rs.getString("m_username"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+			JDBCTemplate.close(rs);
+		}
+		return res;
 	}
 
 }

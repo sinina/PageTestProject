@@ -16,7 +16,7 @@ public class MessageDao {
 		int result = 0;
 		String query = "";
 		//0. 쿼리 작성(쿼리 틀)
-		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT)";
+		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,?)";
 		try {
 			//1. 쿼리 전송 객체 생성(preparedstmt)
 			pstmt = con.prepareStatement(query);
@@ -24,6 +24,7 @@ public class MessageDao {
 			pstmt.setString(1, message.getContent());
 			pstmt.setInt(2, message.getSenderNo());
 			pstmt.setInt(3, message.getResverNo());
+			pstmt.setInt(4, message.getMsgCode());
 			//3. 쿼리 실행
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -66,7 +67,7 @@ public class MessageDao {
 		String query = "";
 		
 		try {
-			query = "SELECT  m1.mes_msg_no, M1.MES_CONTENTS, M1.MES_ENROLLDATE, M1.MES_FLAG, M2.M_USERNAME "
+			query = "SELECT M1.MES_CODE, M1.MES_MSG_NO, M1.MES_CONTENTS, M1.MES_ENROLLDATE, M1.MES_FLAG, M2.M_USERNAME "
 					+ "FROM MESSAGE M1 JOIN MEMBER M2 ON(M1.MES_SENDER_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_RESVER_NO = ?";
 
@@ -81,6 +82,7 @@ public class MessageDao {
 				temp.setSenderName(rs.getString("m_username"));
 				temp.setWriteDate(rs.getDate("MES_ENROLLDATE"));
 				temp.setContent(rs.getString("mes_contents"));
+				temp.setMsgCode(rs.getInt("mes_code"));
 				temp.setMsgFlag(rs.getString("mes_flag").charAt(0));
 			
 				list.add(temp);

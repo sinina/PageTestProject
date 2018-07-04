@@ -13,6 +13,7 @@ public class MessageVo {
 	private String senderName;
 	private String resverName;
 	private int nFlagCnt;
+	private int msgCode;
 	
 	
 	public int getMsgNo() {
@@ -54,6 +55,12 @@ public class MessageVo {
 	
 	
 	
+	public int getMsgCode() {
+		return msgCode;
+	}
+	public void setMsgCode(int msgCode) {
+		this.msgCode = msgCode;
+	}
 	public int getnFlagCnt() {
 		return nFlagCnt;
 	}

@@ -2,6 +2,7 @@ package com.matajo.pitpet.board.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.matajo.pitpet.board.model.dao.BoardDao;
 import com.matajo.pitpet.board.model.vo.BoardVo;
@@ -22,6 +23,7 @@ public class BoardService {
 		JDBCTemplate.close(con);
 		return list ;
 	}
+
 	
 	/*public ArrayList<BoardVo> selectBoardList(){
 		//1. 커넥션 연결

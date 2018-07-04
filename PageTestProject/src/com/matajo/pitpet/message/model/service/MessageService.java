@@ -7,6 +7,8 @@ import java.util.List;
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.message.model.dao.MessageDao;
 import com.matajo.pitpet.message.model.vo.MessageVo;
+import com.matajo.pitpet.reservation.model.dao.ReservationDao;
+import com.matajo.pitpet.reservation.model.vo.ReservationVo;
 
 public class MessageService {
 	public int writeMsg(MessageVo message) {
@@ -63,4 +65,14 @@ public class MessageService {
 		JDBCTemplate.close(con);
 		return result;
 	}
+
+
+	public ReservationVo getMessageDetail(int messageNo, int msgCode) {
+		Connection con= JDBCTemplate.getConnection();
+		ReservationVo res = new ReservationDao().selectResInfo(con, messageNo,msgCode);
+		JDBCTemplate.close(con);
+		return res;
+		
+	}
+
 }
