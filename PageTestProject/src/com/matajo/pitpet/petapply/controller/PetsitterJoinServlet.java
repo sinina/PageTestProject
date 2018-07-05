@@ -89,7 +89,8 @@ public class PetsitterJoinServlet extends HttpServlet {
 		String[]petAge = mRequest.getParameterValues("petAge[]");
 		
 		String petSizecommon=String.join(",", petSize);
-		String petAgecommon=String.join(",", petAge);
+		String petAgecommon=String.join("", petAge);
+		System.out.println(petAgecommon);
 		System.out.println(petSizecommon);
 		System.out.println(petAgecommon);
 		int animalCheck = Integer.parseInt(mRequest.getParameter("animalCheck"));

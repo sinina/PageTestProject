@@ -38,31 +38,41 @@
 	 
 	
 		$(function(){
-			
+			var $local_distribution = $("#local_distribution").children(":first").children().children();
+			 
+			if($local_distribution.text()==""){
+				 $.ajax({
+						url : "/ptp/localdistri.do",
+						type : "get",
+						data : null,
+						dataType: "json",
+						success : function(data){
+
+							 $local_distribution.append(data.all);
+							 $("#local_distribution").children().eq(1).children().children().append(data.soul);
+							 $("#local_distribution").children().eq(2).children().children().append(data.gyeonggi);
+							 $("#local_distribution").children().eq(3).children().children().append(data.incheon); 
+							 $("#local_distribution").children().eq(4).children().children().append(data.other); 
+						},error : function(e){
+							console.log(e);
+						}
+					}); 
+			}
 		
+			var iCheck=1;
 		
 		$(window).scroll(function(){
-			//alert("asd");
-			var iCheck=1;
-			console.log(Math.round($(window).scrollTop()));
-			console.log($(document).height());
-			console.log($(window).height());
-			console.log(Math.round($(window).scrollTop())==$(document).height()-$(window).height());
 			if(Math.round($(window).scrollTop()) + $(window).height() + 5 > $(document).height()){
-			//if(Math.round($(window).scrollTop()) == $(document).height()-$(window).height()){
-				
-				 if((iCheck*6)<<%=boardList.size()%>) console.log("갱신");
-					 
-					 
+				if((iCheck*6)>=<%=boardList.size()%>){ 
 				var $testhide = $(".hide");
-				
 				for(var i = 0 ;i<=$testhide.length;i++){
 					var $element = $testhide.eq(i);
 					if(i<5){
 						$element.removeClass("hide");	
 					}
 				}  
-			
+				iCheck++;
+				}
 			}
 		});
 		
@@ -82,7 +92,9 @@
 		
 		<%}%>
 		
-		
+		function vaildate(){
+			
+		}
 			  
 			
 	});
@@ -92,7 +104,7 @@
 
 .filter-tabs {
 	
-    padding: 0;
+    padding: 0;	
     margin: 0 auto;
     clear: both;
     position: relative;
@@ -639,13 +651,13 @@
 <div class= "main-wrap">
 <div class="filter-tabs">
 <div class="states-tabs inner2">
-      <ul class="nav nav-tabs" role="tablist">
-       <li role="presentation"><a href="" >전체<span>277</span></a></li>
-       <li role="presentation"><a href="">서울<span>277</span></a></li>
-       <li role="presentation"><a href="">경기<span>277</span></a></li>
-       <li role="presentation"><a href="">인천<span>277</span></a></li>
+      <ul class="nav nav-tabs" role="tablist" id="local_distribution">
+       <li role="presentation"><a href="boardFilter.do?index=0" >전체<span></span></a></li>
+       <li role="presentation"><a href="boardFilter.do?index=1">서울<span></span></a></li>
+       <li role="presentation"><a href="boardFilter.do?index=2">경기<span></span></a></li>
+       <li role="presentation"><a href="boardFilter.do?index=3">인천<span></span></a></li>
        
-      <li role="presentation" class="dropdown"><a id="stateTabDrop0" data-toggle="dropdown" aria-controls="stateTabDrop1-contents" class="dropdown-toggle">그 외 지역<span>111</span></a>
+      <li role="presentation" class="dropdown"><a id="stateTabDrop0" data-toggle="dropdown" aria-controls="stateTabDrop1-contents" class="dropdown-toggle">그 외 지역<span></span></a>
       <div id="stateTabDrop0-contents" role="menu" aria-controls="stateTabDrop0" class="dropdown-menu">
       <ul class="clearfix">
       <li class="pull-left"><input type="checkbox" name="states[]" id="state10" class="checkbox" value="10"><label for="state10">부산</label></li>
@@ -666,48 +678,49 @@
       
       </div></li>
       </ul>
-    	</form>
+    	
 			
 			
 	</div>
 	
 	<div class="info-tabs inner2">
-	<form action="/ptp/BoardFilter.do" method="get" onsubmit="return vaildate();">
+	<form action="/ptp/boardFilter.do" method="get" >
 	<div class="fix">
      <dt>서비스</dt>
 	<select class="fix-select" name="searchService">
-    <option class=fix-option; value="모든 서비스">모든 서비스</option>
-    <option class=fix-option; value="데이케어">데이케어</option>
-    <option class=fix-option; value="24시간 돌봄">24시간 돌봄</option>
+    <option class=fix-option; value="0">모든 서비스</option>
+    <option class=fix-option; value="1">데이케어</option>
+    <option class=fix-option; value="2">24시간 돌봄</option>
 	</select>
 	</div>
 	<div class="fix">
 	<dt>위탁 동물 종류</dt>
 	<select class="fix-select" name="searchPet">
-    <option class=fix-option; value="모든 반려동물">모든 반려동물</option>
-    <option class=fix-option; value="강아지">강아지</option>
-    <option class=fix-option; value="고양이">고양이</option>
-    <option class=fix-option; value="기타">기타</option>
+    <option class=fix-option; value="0">모든 반려동물</option>
+    <option class=fix-option; value="1">강아지</option>
+    <option class=fix-option; value="2">고양이</option>
+    <option class=fix-option; value="3">기타</option>
 	</select>
 	</div>
 	<div class="fix">
 	<dt>펫시터 등급</dt>
 	<select class="fix-select" name="searchGrade">
-    <option class=fix-option; value="모든 등급">모든 등급</option>
-    <option class=fix-option; value="우수회원">우수회원</option>
-    <option class=fix-option; value="일반회원">일반회원</option>
+    <option class=fix-option; value="0">모든 등급</option>
+    <option class=fix-option; value="1">신규회원</option>
+    <option class=fix-option; value="2">일반회원</option>
+    <option class=fix-option; value="3">우수회원</option>
 	</select>
 	</div>
 	
 	
 	<div class="price_range">
             <dt>가격 입력</dt>
-            <span class="range_input" ><input type="text"  class="price_input" title="최소가격 입력"  name="min_p" placeholder="원"></span>
+            <span class="range_input" ><input type="text"  class="price_input" title="최소가격 입력"  name="min_p" placeholder="원" readonly="readonly"></span>
             <span class="range_at">~</span>
-            <span class="range_input" ><input type="text"  class="price_input" title="최대가격 입력"  name="max_p" placeholder="원"></span>
+            <span class="range_input" ><input type="text"  class="price_input" title="최대가격 입력"  name="max_p" placeholder="원" readonly="readonly"></span>
      </div>
      <div class="fix">
-			<button type="submit" data-loading="검색 중..." class="btn btn-mint" style="margin: 18px;">펫시터 검색</button>
+			<button type="submit" data-loading="검색 중..." class="btn btn-mint" style="margin: 18px;" >펫시터 검색</button>
 			
 	</div>
 	</form>

@@ -8,13 +8,13 @@ public class BoardVo {
 	private String photo2;
 	private String photo3;
 	private String photo4;
-
+	private  int level;
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BoardVo(String name, String address, String title, String photo1, String photo2, String photo3,
-			String photo4) {
+			String photo4 ,int level) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -23,6 +23,15 @@ public class BoardVo {
 		this.photo2 = photo2;
 		this.photo3 = photo3;
 		this.photo4 = photo4;
+		this.level = level;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
 	}
 
 	public String getName() {
@@ -84,7 +93,8 @@ public class BoardVo {
 	@Override
 	public String toString() {
 		return "BoardVo [name=" + name + ", address=" + address + ", title=" + title + ", photo1=" + photo1
-				+ ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + "]";
+				+ ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", level=" + level + "]";
 	}
 
+	
 }

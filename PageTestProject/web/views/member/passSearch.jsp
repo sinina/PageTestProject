@@ -84,8 +84,9 @@ $(function(){
 			url : "/ptp/nameCheck.do",
 			type : "post",
 			data : {userName : name},
+			dataType: "text",
 			success : function(data){
-				$("#idDiv").text(data(0));
+				$("#idDiv").text(data);
 			},error : function(e){
 				console.log(e);
 			}
