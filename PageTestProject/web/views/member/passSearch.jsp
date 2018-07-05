@@ -73,6 +73,8 @@
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	 
+		
 	var emailFlag=false;
 	var tempPass="";
 	var id = "";

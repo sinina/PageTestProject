@@ -11,7 +11,8 @@
 	<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.min.js"></script>
 	<script>
 	
-		$(function(){
+		
+		$(function(){	
 			var text = localStorage.getItem('id');
 			
 			if(text!=null){

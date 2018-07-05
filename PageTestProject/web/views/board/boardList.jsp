@@ -17,14 +17,14 @@
 
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 
 	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/common/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/common/jquery-ui-1.11.4/jquery-ui.min.js"></script>
 	<script src="<%=request.getContextPath()%>/static/js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="<%=request.getContextPath()%>/static/js/bower_components/select2/dist/js/select2.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/common/common.js?v=1"></script>
+	<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/static/js/common/common.js?v=1"></script> --%>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/common/popup.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/dog_common.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/static/js/bower_components/slick-carousel/slick/slick.min.js"></script>
@@ -36,17 +36,37 @@
 <script type="text/javascript">
 
 	 
-	$(function(){
+	
+		$(function(){
+			
+		
+		
+		$(window).scroll(function(){
+			//alert("asd");
+			var iCheck=1;
+			if(Math.round($(window).scrollTop())==$(document).height()-$(window).height()){
+				
+				 if((iCheck*6)<<%=boardList.size()%>) console.log("갱신");
+					 
+					 
+				var $testhide = $(".hide");
+				
+				for(var i = 0 ;i<=$testhide.length;i++){
+					var $element = $testhide.eq(i);
+					if(i<5){
+						$element.removeClass("hide");	
+					}
+				}  
+			
+			}
+		});
 		
 		<%for(int i=0;i<boardList.size();i++){%>
 		var str = <%=i%>+"";
 		var add = '.add'+str;
 		
 		var address = '<%=boardList.get(i).getAddress()%>';
-		
-		//console.log($(".hide").contents().eq(0));
-		//console.log();
-		
+
 		$(add).find(".content_img").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=boardList.get(i).getPhoto1()%>');
 		$(add).find(".content_location").append(address.substring(address.indexOf(",")+2,18));
 		$(add).find(".text_title").children().eq(0).append("["+address.substring(address.indexOf(",")+2,18)+"]"+'<%=boardList.get(i).getTitle()%>');
@@ -57,8 +77,10 @@
 		
 		<%}%>
 		
-	})
-
+		
+			  
+			
+	});
 </script>
 <style>
 
@@ -613,7 +635,7 @@
 <div class="filter-tabs">
 <div class="states-tabs inner2">
       <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="" >전체<span>277</span></a></li>
+       <li role="presentation"><a href="" >전체<span>277</span></a></li>
        <li role="presentation"><a href="">서울<span>277</span></a></li>
        <li role="presentation"><a href="">경기<span>277</span></a></li>
        <li role="presentation"><a href="">인천<span>277</span></a></li>
@@ -860,7 +882,7 @@
 	
 	</div>
 	</div>
-	<div class="content_text">
+	<div class="content_text hi">
 	<div class="text_title">
 	
 				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
@@ -882,8 +904,9 @@
 	</div>	
 	</div>
 	</div>
-	<div class ="hide"> 
-	<div class="content add6">
+	
+	
+	<div class="content add6 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -913,10 +936,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
+		
 	
-	<div class ="hide">
-	<div class="content add5">
+	
+	<div class="content add7 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -946,10 +969,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add6">
+	
+	
+	<div class="content add8 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -979,10 +1002,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add7">
+	
+	
+	<div class="content add9 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1012,10 +1035,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add8">
+	
+	
+	<div class="content add10 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1045,10 +1068,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add9">
+	
+	
+	<div class="content add11 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1078,10 +1101,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add10">
+	
+	
+	<div class="content add12 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1111,10 +1134,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add11">
+	
+	
+	<div class="content add13 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1144,10 +1167,10 @@
 	</div>	
 	</div>
 	</div>
-	</div>
 	
-	<div class ="hide">
-	<div class="content add12">
+	
+	
+	<div class="content add14 hide">
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		<div class="content_location">
@@ -1177,7 +1200,7 @@
 	</div>	
 	</div>
 	</div>
-	</div>
+	
 	
 	</div>
 	</div>
