@@ -34,7 +34,7 @@
 		<ul>
 			<li><a href="#">홈</a>
 				<ul>
-					<li><a href="<%=request.getContextPath() %>/views/admin/adminIndex.jsp">관리자 페이지 홈</a></li>
+					<li><a href="<%=request.getContextPath() %>/selectMonth.do">관리자 페이지 홈</a></li>
 					<li><a href="<%=request.getContextPath() %>/index.jsp">사용자 페이지 홈</a></li>
 				</ul>
 			</li>

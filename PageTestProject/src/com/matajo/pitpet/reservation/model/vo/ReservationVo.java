@@ -16,6 +16,9 @@ public class ReservationVo {
 	private String start;
 	private String end;
 	private String title;
+	private String petoName;
+	private String petsName;
+	private String request;
 	
 	
 	
@@ -38,7 +41,6 @@ public class ReservationVo {
 		this.title = title;
 	}
 
-	private String petoName;
 	
 	public Date getStartTime() {
 		return startTime;
@@ -101,9 +103,21 @@ public class ReservationVo {
 	public void setPetoName(String petoName) {
 		this.petoName = petoName;
 	}
-
 	
 	
+	
+	public String getRequest() {
+		return request;
+	}
+	public void setRequest(String request) {
+		this.request = request;
+	}
+	public String getPetsName() {
+		return petsName;
+	}
+	public void setPetsName(String petsName) {
+		this.petsName = petsName;
+	}
 	@Override
 	public String toString() {
 		return "ReservationVo [start=" + start + ", end=" + end + ", title=" + title + "]";

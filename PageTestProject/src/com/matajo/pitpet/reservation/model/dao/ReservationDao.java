@@ -48,16 +48,16 @@ public class ReservationDao {
 		String query="";
 		
 		if(msgCode==0){
-			query= "SELECT R.RES_START_TIME, R.RES_END_TIME, R.RES_PETO_ANIMAL_KINDS, "
-					+ "R.RES_PRICE, M2.M_USERNAME "
+			query= "SELECT  SUBSTR(R.RES_START_TIME,1,14),  SUBSTR(R.RES_END_TIME,1,14), R.RES_PETO_ANIMAL_KINDS, "
+					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST  "
 					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETO_NO=M1.MES_SENDER_NO)"
 					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_CODE=("
 					+ "SELECT MES_CODE FROM MESSAGE "
 					+ "WHERE MES_MSG_NO=?)";
 		}else{
-			query="SELECT R.RES_START_TIME, R.RES_END_TIME, R.RES_PETO_ANIMAL_KINDS, "
-					+ "R.RES_PRICE, M2.M_USERNAME "
+			query="SELECT SUBSTR(R.RES_START_TIME,1,14),  SUBSTR(R.RES_END_TIME,1,14), R.RES_PETO_ANIMAL_KINDS, "
+					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST "
 					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETS_NO=M1.MES_SENDER_NO)"
 					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_CODE=("
@@ -74,11 +74,12 @@ public class ReservationDao {
 			
 			while(rs.next()){
 				res = new ReservationVo();
-				res.setStartTime(rs.getTimestamp("RES_START_TIME"));
-				res.setEndTime(rs.getTimestamp("RES_END_TIME"));
+				res.setStart(rs.getString("SUBSTR(R.RES_START_TIME,1,14)"));
+				res.setEnd(rs.getString("SUBSTR(R.RES_END_TIME,1,14)"));
 				res.setAnimalKind(rs.getString("RES_PETO_ANIMAL_KINDS"));
 				res.setPrice(rs.getInt("RES_PRICE"));
 				res.setPetoName(rs.getString("m_username"));
+				res.setRequest(rs.getString("RES_REQUEST"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

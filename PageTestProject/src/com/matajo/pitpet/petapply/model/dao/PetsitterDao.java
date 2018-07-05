@@ -161,6 +161,7 @@ public class PetsitterDao {
 				apply.setActivityHistory(rs.getString("p_activityhisotry"));
 				apply.setLong_term(rs.getInt("p_long_term"));
 				apply.setPickup(rs.getInt("p_pickup"));
+				apply.setSitterCareer(rs.getInt("p_sittercareer"));
 				apply.setPetSize(rs.getString("p_petsize"));
 				apply.setPetAge(rs.getString("p_petage"));
 				apply.setAnimalCheck(rs.getInt("p_animalcheck"));
@@ -172,9 +173,17 @@ public class PetsitterDao {
 				apply.setHospitalPhoneNumber(rs.getString("p_hospital_num"));
 				apply.setOneDayCount(rs.getInt("p_onedaycount"));
 				apply.setBank(rs.getString("p_bank"));
-				apply.setBankName(rs.getString("p_banknumber"));
+				apply.setBankNumber(rs.getString("p_banknumber"));
 				apply.setBankName(rs.getString("p_bankname"));
 				apply.setPrContext(rs.getString("p_prcontext"));
+				apply.setLicense1(rs.getString("p_license1"));
+				apply.setLicense2(rs.getString("p_license2"));
+				apply.setLicense3(rs.getString("p_license3"));
+				apply.setLicense4(rs.getString("p_license4"));
+				apply.setPhoto1(rs.getString("p_photo1"));
+				apply.setPhoto2(rs.getString("p_photo2"));
+				apply.setPhoto3(rs.getString("p_photo3"));
+				apply.setPhoto4(rs.getString("p_photo4"));
 				
 			}
 		} catch (SQLException e) {
