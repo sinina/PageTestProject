@@ -70,7 +70,7 @@ padding:0px;
 						<a href="<%=request.getContextPath() %>/views/member/memberLogin.jsp">Login</a>
 						<a href="<%=request.getContextPath() %>/views/member/join.jsp">Join</a>
 						<%}else{ %>
-							<a href="<%=request.getContextPath() %>/index.jsp" class="userName"><%=member.getName()%></a>
+							<a href="<%=request.getContextPath() %>/patjoinab.do?userId=<%=member.getId()%>"><%=member.getName()%></a>
 								<a href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>" >
 								<img src="/ptp/images/common/message1.jpg" height="20px" id="msgIcon"/></a>
 							<a href="<%=request.getContextPath() %>/logout.do">LogOut</a>

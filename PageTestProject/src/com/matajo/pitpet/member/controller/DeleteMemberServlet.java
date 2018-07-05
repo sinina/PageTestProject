@@ -24,7 +24,7 @@ public class DeleteMemberServlet extends HttpServlet {
 		
 		int selectNo = Integer.parseInt(request.getParameter("selectNo"));
 		
-	int result = new MemberService().deleteMember(memberNo);
+		int result = new MemberService().deleteMember(memberNo);
 		
 		if(0 < result){
 			if(selectNo==1){

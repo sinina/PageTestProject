@@ -237,7 +237,48 @@ public class MemberDao {
 		return result;
 	}
 
-	
+	public int updatepassMember(Connection con, MemberVo member) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = "UPDATE MEMBER SET M_USERID= ?, M_PASSWORD=?, M_USERNAME=?, M_GENDER=?, M_AGE=?, M_PHONE=?, M_ADDRESS=?, M_ENROLLDATE=SYSDATE, M_MEMBER_CODE=DEFAULT WHERE M_USERID = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPwd());
+			pstmt.setString(3, member.getName());
+			pstmt.setString(4, String.valueOf(member.getGender()));
+			pstmt.setInt(5, member.getAge());
+			pstmt.setString(6, member.getPhone());
+			pstmt.setString(7, member.getAddress());
+			pstmt.setString(8, member.getId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 
-
+	public int MemberDelete(Connection con, String id) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = "DELETE FROM MEMBER WHERE M_USERID='"+id+"'";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }
+
