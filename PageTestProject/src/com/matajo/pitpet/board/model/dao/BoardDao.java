@@ -1,6 +1,7 @@
 package com.matajo.pitpet.board.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -68,9 +69,9 @@ public class BoardDao {
 						long_term, pickup, sitterCareer, petSize, petAge, animalCheck, animalCount, child, camera,
 						distance, hospital, hospitalPhoneNumber, oneDayCount, bank, bankName, bankNumber, prContext,
 						license1, license2, license3, license4, photo1, photo2, photo3, photo4));
-				
+
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -83,31 +84,146 @@ public class BoardDao {
 		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query="select m_username  ,m_address,p_adcomment,p_photo1,p_photo2,p_photo3,p_photo4 from member m join pets_apply p on(p.p_no=m.M_MEMBER_NO)";
+		String query = "SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M INNER JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO)  WHERE P_OKAY =1";
 
 		try {
-			stmt =con.createStatement();
+			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
-			
-			while(rs.next()){
-				 String name=rs.getString("m_username");
-				 String address=rs.getString("m_address");
-				 String title=rs.getString("p_adcomment");
-				 String photo1=rs.getString("p_photo1");
-				 String photo2=rs.getString("p_photo2");
-				 String photo3=rs.getString("p_photo3");
-				 String photo4=rs.getString("p_photo4");
-				 list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4));
+
+			while (rs.next()) {
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(stmt);
 		}
 		return list;
+	}
+
+	public ArrayList<Integer> selectDistri(Connection con) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		String query = "";
+		try {
+			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 ";
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(query);
+
+			int all = 0;
+			while (rs.next()) {
+				all = Integer.parseInt(rs.getString("count"));
+			}
+			list.add(all);
+
+			JDBCTemplate.close(rs);
+
+			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%서울%')";
+			rs = stmt.executeQuery(query);
+
+			int soul = 0;
+			while (rs.next()) {
+				soul = Integer.parseInt(rs.getString("count"));
+			}
+			list.add(soul);
+
+			JDBCTemplate.close(rs);
+			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%경기%')";
+			rs = stmt.executeQuery(query);
+			int gyeonggi = 0;
+
+			while (rs.next()) {
+				gyeonggi = Integer.parseInt(rs.getString("count"));
+			}
+			list.add(gyeonggi);
+
+			JDBCTemplate.close(rs);
+
+			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%인천%')";
+			rs = stmt.executeQuery(query);
+			int incheon = 0;
+
+			while (rs.next()) {
+				incheon = Integer.parseInt(rs.getString("count"));
+			}
+			list.add(incheon);
+
+			JDBCTemplate.close(rs);
+
+			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address not like('%서울%') AND m_address not like('%인천%') AND m_address not like('%경기%')";
+			rs = stmt.executeQuery(query);
+			int other = 0;
+
+			while (rs.next()) {
+				other = Integer.parseInt(rs.getString("count"));
+			}
+			list.add(other);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(stmt);
+		}
+		return list;
+	}
+
+	public ArrayList<BoardVo> selectBoardAddList(Connection con, int searchService, int searchPet, int searchGrade) {
+		// 찾는 서비스 0 전체 1데이케어 2 장기
+		// 종류 모든0강아지1고양2그외3
+		// 등급 신규0 일반1 우수2
+		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query="";
+		
+		try {
+		if(searchService!=0&&searchPet!=0&&searchGrade!=0){
+			query  = 
+					"SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE P_LONG_TERM = ?  AND P_I_LEVEL=? AND ? in(P_PETAGE) AND P.P_OKAY =1";
+	
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchService );
+			pstmt.setString(2, String.valueOf(searchPet));
+			pstmt.setInt(3,searchGrade );
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+		}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		return list;
+		
+		
+		
 	}
 
 	/*

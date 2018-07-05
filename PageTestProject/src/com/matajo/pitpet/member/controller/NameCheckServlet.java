@@ -48,7 +48,8 @@ public class NameCheckServlet extends HttpServlet {
 		
 		
 		if(null != member){
-			response.getWriter().println(WrappName);
+			
+			response.getWriter().print(WrappName);
 		}else{
 			response.getWriter().println("계정이 존재하지 않습니다.");
 		}

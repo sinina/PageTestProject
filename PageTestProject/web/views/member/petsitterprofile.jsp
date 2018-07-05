@@ -358,13 +358,13 @@
 								for="mid">중형(5kg~10kg)</label> <input type="checkbox" id="big"
 								name="petSize[]" value="3" /> <label for="big">대형(10kg이상)</label>
 						</span></li>
-						<li><label class="pet name">수용 가능한 펫 연령<span>(복수선택
+						<li><label class="pet name">수용 가능한 펫 종류<span>(복수선택
 									가능)</span></label> <span class="input-chk"> <input type="checkbox"
-								id="baby" name="petAge[]" value="1" /> <label for="baby">베이비(1살미만)</label>
+								id="baby" name="petAge[]" value="1" /> <label for="baby">강아지</label>
 								<input type="checkbox" id="junior" name="petAge[]" value="2" />
-								<label for="junior" style="width: 127px; ">주니어(1~7살미만)</label> <input
+								<label for="junior" style="width: 127px; ">고양이</label> <input
 								type="checkbox" id="senior" name="petAge[]" value="3" /> <label
-								for="senior">시니어(7살 이상)</label>
+								for="senior">기타</label>
 						</span></li>
 
 						<li class="is_pet"><label>반려동물유무</label> <span

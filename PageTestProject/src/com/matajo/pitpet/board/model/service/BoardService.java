@@ -24,6 +24,20 @@ public class BoardService {
 		return list ;
 	}
 
+	public ArrayList<Integer> selectDistri() {
+		Connection con =JDBCTemplate.getConnection(); 
+		ArrayList<Integer> list = new BoardDao().selectDistri(con);
+		JDBCTemplate.close(con);
+		return list;
+	}
+
+	public ArrayList<BoardVo> selectaddList(int searchService, int searchPet, int searchGrade) {
+		Connection con =JDBCTemplate.getConnection(); 
+		ArrayList<BoardVo> list  = new BoardDao().selectBoardAddList(con,searchService,searchPet,searchGrade);
+		JDBCTemplate.close(con);
+		return list;
+	}
+
 	
 	/*public ArrayList<BoardVo> selectBoardList(){
 		//1. 커넥션 연결
