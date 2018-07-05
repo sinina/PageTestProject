@@ -44,7 +44,12 @@
 		$(window).scroll(function(){
 			//alert("asd");
 			var iCheck=1;
-			if(Math.round($(window).scrollTop())==$(document).height()-$(window).height()){
+			console.log(Math.round($(window).scrollTop()));
+			console.log($(document).height());
+			console.log($(window).height());
+			console.log(Math.round($(window).scrollTop())==$(document).height()-$(window).height());
+			if(Math.round($(window).scrollTop()) + $(window).height() + 5 > $(document).height()){
+			//if(Math.round($(window).scrollTop()) == $(document).height()-$(window).height()){
 				
 				 if((iCheck*6)<<%=boardList.size()%>) console.log("갱신");
 					 
