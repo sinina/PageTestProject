@@ -3806,7 +3806,8 @@ input:-webkit-autofill {
     margin: 0 auto;
     padding: 0 0 50px 520px;
     width: 440px;
-    background: url('http://clara051.cdn3.cafe24.com/petsitter_info/bg-join01.png') 50px bottom no-repeat;
+   /*  background: url('http://clara051.cdn3.cafe24.com/petsitter_info/bg-join01.png') 50px bottom no-repeat; */
+   background: url('../images/bg.png') 50px bottom no-repeat;
 }
 .petssiter-care > div h3 {
     text-align: left;

@@ -1,7 +1,6 @@
 package com.matajo.pitpet.admin.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,30 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.matajo.pitpet.admin.model.service.PetsitInfoService;
-import com.matajo.pitpet.admin.model.vo.PetsitInfoVo;
+import com.matajo.pitpet.admin.model.service.MemberChartService;
 
-@WebServlet("/gradeSitterList.do")
-public class GrageSitterListServlet extends HttpServlet {
+@WebServlet("/selectArea.do")
+public class MemberChartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public GrageSitterListServlet() {
+    public MemberChartServlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<PetsitInfoVo> pI = new PetsitInfoService().getGradePetsit();
 		RequestDispatcher view = null;
-		
-		
-		if(pI!=null){
-			request.setAttribute("pI", pI);
-			view = request.getRequestDispatcher("views/admin/gradePetsitList.jsp");
-			view.forward(request, response);
-			
-		}
-	
+		String area = request.getParameter("area");
+        int list = new MemberChartService().getTotalCount(area);
+        if(list != 0){
+            response.setContentType("application/json");
+            response.getWriter().print(list);
+        }
 	}
 
 }

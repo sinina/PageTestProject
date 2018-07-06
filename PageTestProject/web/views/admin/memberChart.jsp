@@ -28,13 +28,13 @@
 </head>
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %> 
-<div id="map" style="width:1200px;height:600px; margin: 0px auto; margin-top: 100px;"></div>
+<div id="map" style="width:1200px;height:600px; margin: 100px auto 0px;"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c25a804bedbc433c559b302df7e78e0f"></script>
 <script>
     // 지도에 폴리곤으로 표시할 영역데이터 배열입니다
     var areas = [
         {
-            name : 'S, I, Gg, Gw',
+            name : 'S, I, Gg, Gw', //31074712083
             path : [
                 new daum.maps.LatLng(38.5897706, 128.3714743),//기준1(오른 위)
                 new daum.maps.LatLng(38.3584588, 128.2039328),
@@ -73,7 +73,7 @@
                 new daum.maps.LatLng(37.1750488, 129.4683254)//기준4(오른 아래)
             ]
         }, {
-            name : 'Dg, Gb',
+            name : 'Dg, Gb',//21862959301
             path : [
                 new daum.maps.LatLng(37.1750488, 129.4683254),//기준1(오른 위)
                 new daum.maps.LatLng(37.0380627, 129.1941798),
@@ -101,7 +101,7 @@
                 new daum.maps.LatLng(35.6674753, 129.7349572)//기준4(오른 아래)
             ]
         }, {
-            name : 'Cn, Cb, Dj, Sj',
+            name : 'Cn, Cb, Dj, Sj',//19044292208
             path : [
                 new daum.maps.LatLng(36.8914270, 126.8388816),//기준1(왼 위)
                 new daum.maps.LatLng(36.9264177, 126.9827124),
@@ -134,17 +134,17 @@
                 new daum.maps.LatLng(37.0090815, 126.7076891)
             ]
         }, {
-            name : 'Jn, Jb, Gj',
+            name : 'Jn, Jb, Gj',//26324072812
             path : [
                 new daum.maps.LatLng(35.9053409, 127.8837475),//기준1(오른 위)
                 new daum.maps.LatLng(36.0634800, 126.8744098),
                 new daum.maps.LatLng(36.1311682, 126.8908893),
                 new daum.maps.LatLng(35.9895143, 126.6756701),//기준2(왼 위)
                 new daum.maps.LatLng(34.2574040, 125.7197552),//기준3(왼 아래)
-                new daum.maps.LatLng(34.5452792, 127.8669032),//기준4(오른 아래)
+                new daum.maps.LatLng(34.5452792, 127.8669032)//기준4(오른 아래)
             ]
         }, {
-            name : 'Kn, Bs, Us',
+            name : 'Kn, Bs, Us',//13742138150
             path : [
                 new daum.maps.LatLng(35.9053409, 127.8837475),//기준1(왼 위)
                 new daum.maps.LatLng(35.7707905, 128.1436626),
@@ -221,17 +221,61 @@
 
         // 다각형에 click 이벤트를 등록하고 이벤트가 발생하면 다각형의 이름과 면적을 인포윈도우에 표시합니다
         daum.maps.event.addListener(polygon, 'click', function(mouseEvent) {
-            var content = '<div class="info">' +
-                '   <div class="title">' + area.name + '</div>' +
-                '   <div class="size">PetSitter : ' + '2' + '</br>' + //2대신 펫시터 인원 넣기
-                '   <div class="size">PetOwner : ' + '2' + '</br>' + //2대신 반려주 인원 넣기
-                '</div>';
+            //var ownerCount = getOwnerCount();
 
-            infowindow.setContent(content);
-            infowindow.setPosition(mouseEvent.latLng);
-            infowindow.setMap(map);
+            
+            var location = "";
+            switch (Math.floor(polygon.getArea())) {
+                case 31074712083:
+                    location = "서울";
+                    break;
+
+                case 21862959301:
+                    location = "대전";
+                    break;
+
+                case 19044292208:
+                    location = "충청도";
+                    break;
+
+                case 26324072812:
+                    location = "전라도";
+                    break;
+
+                case 13742138150:
+                    location = "부산";
+                    break;
+            }
+
+            $.ajax({
+                url : "<%=request.getContextPath()%>/selectArea.do",
+                type : "get",
+                data : {area : location},
+                success : function(data){
+                    console.log(data);
+                    var content = '<div class="info">' +
+                    '   <div class="title">' + area.name + '</div>' +
+                    '   <div class="size">PetSitter : ' + Math.floor(polygon.getArea()) + '</br>' + // 펫시터 인원 넣기
+                    '   <div class="size">PetOwner : ' + data + '</br>' + // 반려주 인원 넣기 ajax success if flag parameter(Area)
+                    '</div>';
+
+                infowindow.setContent(content);
+                infowindow.setPosition(mouseEvent.latLng);
+                infowindow.setMap(map);
+                },error : function(data) {
+                    console.log(data);
+                }
+            });
+            
+            
         });
+
     }
+    function getOwnerCount(key){
+       
+
+    }
+
 </script>
 </body>
 </html>

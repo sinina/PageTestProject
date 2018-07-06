@@ -5,8 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<% ArrayList<VisitCountVo> list = (ArrayList<VisitCountVo>)request.getAttribute("list"); 
-	System.out.println(list.size());
+<% 
+	ArrayList<VisitCountVo> list = (ArrayList<VisitCountVo>)request.getAttribute("list"); 
 %>
 <title></title>
 <!-- 구글 차트 api 라이브러리 선언 -->
@@ -19,6 +19,7 @@
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
 	google.charts.setOnLoadCallback(drawChart1);
+	
 	
 	// 방문자 추이
 	
@@ -55,7 +56,7 @@
       } 
 	
 	//매출 현황
-	function drawChart1() {
+/* 	function drawChart1() {
         var data = google.visualization.arrayToDataTable([
           ['month', '매출(만원)'],
           ['1월',  20],
@@ -80,8 +81,61 @@
         var chart = new google.visualization.LineChart(document.getElementById('salesChart'));
 
         chart.draw(data, options);
-      }
+      } */
 	
+	
+	$(function(){
+			$.ajax({
+				url:"/ptp/matchingTable.do",
+				type:"get",
+				success:function(data){
+					console.log(data);
+					$table = $(".matchingT");
+					var resultStr = "<tr><th>기간</th><th>예약 요청</th><th>예약 승인</th><th>결제 완료</th></tr>"
+					//보낼때 설정한 키값이 for에서 나옴
+					for(var key in data){
+						console.log(key);
+						var matching = data[key];
+						resultStr+="<tr>";
+						resultStr+="<td>"+matching.date1+"</td>";
+						resultStr+="<td>"+matching.res+"</td>";
+						resultStr+="<td>"+matching.resC+"</td>";
+						resultStr+="<td>"+matching.resR+"</td>";
+						resultStr+="</tr>";
+						
+					}
+					$table.html(resultStr).css("text-align","center");
+				},error:function(e){
+					console.log(e);
+				}
+			});
+			
+			salesData();
+	});
+	
+	function salesData(){
+		$.ajax({
+			url:"",
+			type:"get",
+			success:function(data){
+				var dataChart=[['month','sales']];
+				if(data.length!=0){
+					$.each(data,function(i,item){
+						datachart.push([item.item, item,number]);
+					});
+				}
+				var data=google.visualization.arrayToDataTable(dataChart);
+				var view =new google.visualization.DataView(data);
+                var options = {
+                        title: "제목옵션",
+                        width: 900, // 넓이 옵션
+                        height: 300, // 높이 옵션
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(view, options);
+			}
+		})
+	}
 </script>
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %>
@@ -102,25 +156,8 @@
 	</div>
 	
 	 <div class="matching">
-		<h1>매칭 현황</h1>
-		<table border="1px solid ">
-			<tr>
-				<td>기간</td><td>예약 요청</td><td>예약 승인</td>
-				<td>결제완료</td><td>예약 취소</td><td>최종 매칭</td>
-			</tr>
-			<tr>
-				<td>기간</td><td>예약 요청</td><td>예약 승인</td>
-				<td>결제완료</td><td>예약 취소</td><td>최종 매칭</td>
-			</tr>
-			<tr>
-				<td>기간</td><td>예약 요청</td><td>예약 승인</td>
-				<td>결제완료</td><td>예약 취소</td><td>최종 매칭</td>
-			</tr>
-			<tr>
-				<td>기간</td><td>예약 요청</td><td>예약 승인</td>
-				<td>결제완료</td><td>예약 취소</td><td>최종 매칭</td>
-			</tr>
-		</table>
+		<h1>매칭 현황</h1><br>
+	 <table class="matchingT" border="1" cellpadding="5" cellspacing="3"></table>
 		<p><a href="<%=request.getContextPath() %>/views/admin/reservationCalendar.jsp">더보기</a></p>
 	</div>
 	

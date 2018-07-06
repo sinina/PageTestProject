@@ -41,7 +41,7 @@
 					<td><%=m.getPhone() %></td>			
 					<td><%=m.getEnrollDate() %></td>			
 					<td>
-						<button onclick="modifyMember();">수정</button>
+						<button class="modifyMember">수정</button>
 						<button class="deleteMember">삭제</button>
 						
 					</td>			
@@ -62,6 +62,15 @@
 		/* console.log(memberNo); */
 		//selectNo 는 회원탈퇴 시키고 난후 탈퇴시킨 페이지로 이동하기 위한 파라미터
 		location.href="/ptp/deleteMember.do?memberNo="+memberNo+"&selectNo=1";
+	});
+	
+	$(".modifyMember").click(function(){
+		var delBtn =$(this);
+		var tr = delBtn.parent().parent();
+		var td = tr.children();
+		var memberNo = td.eq(0).text();
+		
+		location.href="/ptp/modifyMember.do?memberNo="+memberNo+"&selectNo=1";
 	});
 	
 </script>

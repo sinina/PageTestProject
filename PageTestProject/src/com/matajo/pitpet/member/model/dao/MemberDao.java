@@ -104,7 +104,6 @@ public class MemberDao {
 			while(rs.next()){
 				temp=new MemberVo();
 				
-				System.out.println("test");
 				temp.setNo(rs.getInt("m_member_no")) ;
 				temp.setId(rs.getString("m_userid"));
 				temp.setName(rs.getString("m_username"));

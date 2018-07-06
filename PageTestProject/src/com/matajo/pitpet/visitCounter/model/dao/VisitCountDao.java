@@ -132,6 +132,9 @@ public class VisitCountDao {
 			System.out.println(temp);
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
 		}
 		return list;
 	}
