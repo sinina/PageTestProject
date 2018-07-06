@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.matajo.pitpet.board.model.vo.BoardVo" %>
+<%
+	BoardVo board =(BoardVo) request.getAttribute("board");
+%>
 <!DOCTYPE html >
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script src="/ptp/js/jquery-3.3.1.min.js"></script>
 
 
 <style>
@@ -350,11 +354,114 @@ dt {
 }
 </style>
 
+<script>
+	$(function(){
+		var address = '<%=board.getAddress()%>';
+		
+		$(".detail-content-top3").append('<%=board.getName()%>');
+		$(".detail-content-top4").append(address.substring(address.indexOf(",")+2,18));	
+		$(".detail-content-userImg").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
+		var $group3 = $(".group3");
+		for(var i = 0 ;i<$group3.length;i++){
+			var $element = $group3.eq(i);
+			 switch(i){
+				case 0 :
+					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
+					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
+					 break;
+				case 1 :
+					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto2()%>');
+					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto2()%>');
+					 break;
+				case 2 :
+					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto3()%>');
+					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto3()%>');
+					 break;
+				case 3 :
+					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto4()%>');
+					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto4()%>');
+					 break;		 
+			} 
+			 
+		}
+		$(".detail-content-intro-t").append('<%=board.getTitle()%>');
+		
+		$question =$(".question");
+		for(var i = 0 ;i<$group3.length;i++){
+			var $element = $question.eq(i);
+			switch(i){
+			case 0:
+				$element.append('<%=board.getOpportunity()%>');
+				break;
+			case 1:
+				$element.append('<%=board.getActivityhisotry()%>');
+				break;
+			case 2:
+				$element.append('<%=board.getPrcontext()%>');
+				break;
+				
+			}
+		}
+		$textright = $(".text-right");
+			
+		<%if(board.getPickup()==0){%>
+		$textright.eq(0).append('가능합니다.');
+		<%}else{%>
+		$textright.eq(0).append('불가능합니다.');
+		<%}%>
+	
+		<%if(board.getCamera()==0){%>
+		$textright.eq(1).append('있습니다.');
+		<%}else{%>
+		$textright.eq(1).append('없습니다.');
+		<%}%> 
+		
+		<%if(board.getChild()==0){%>
+		$textright.eq(3).append('있습니다.');
+		<%}else{%>
+		$textright.eq(3).append('없습니다.');
+		<%}%> 
+		
+		<%if(board.getJobstyle()==1){%>
+		$textright.eq(4).append('펫시터가 직업입니다.');
+		<%}else{%>
+		$textright.eq(4).append('펫시터는 부업입니다.');
+		<%}%> 
+		
+		<%if(board.getAnimalcheck()==0){%>
+		$textright.eq(5).append('있습니다.');
+		<%}else{%>
+		$textright.eq(5).append('없습니다.');
+		<%}%> 
+		
+		var licen2 = '<%=board.getLicense2()%>';
+		var licen3 = '<%=board.getLicense3()%>';
+		var licen4 = '<%=board.getLicense4()%>';		
+				
+		if(0<licen2.substring(0,licen2.indexOf(','))||0<licen3.substring(0,licen3.indexOf(','))||0<licen4.substring(4,licen3.indexOf(','))){
+			$textright.eq(2).append('있습니다.');
+		}else{
+			$textright.eq(2).append('없습니다.');
+		}		
+			
+				
+				
+		
+		 		
+		
 
+		
+		
+		
+	});
+</script>
 
 
 </head>
 <body>
+
+
+
 	<%@include file="../common/header.jsp"%>
 	<!-- %@include file="../board/side-reserv.jsp" %-->
 
@@ -367,12 +474,12 @@ dt {
 			<div class="detail-content-top">
 				<div class="detail-content-top2">
 					<img class="detail-content-userImg"
-						src="<%=request.getContextPath()%>/images/pic08.jpg">
+						src="">
 				</div>
-				<div class="detail-content-top3">이주은</div>
+				<div class="detail-content-top3"></div>
 				<div class="detail-content-top4">
 					<img src="<%=request.getContextPath()%>/images/common/pin_icon.png">
-					경기 김포시 김포한강11로
+					
 				</div>
 				<div class="detail-content-top5">
 					<!-- <button
@@ -391,9 +498,9 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 
 			<div class="detail-content-img">
 				<div class="detail-content-img-main">
-					<a class="group3" href="../../upload/petsitter/1.jpg"
+					<a class="group3" href=""
 						rel="example1"> <img class="detail-mainImg"
-						src="../../upload/petsitter/1.jpg" />
+						src="" />
 					</a>
 				</div>
 
@@ -424,52 +531,40 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 
 			<div class="detail-content-intro">
 				<h4>펫시터 소개</h4>
-				<div class="detail-content-intro-t">인공항 가까운집!!! 인천 서구 검암동 펫시터
-					입니다</div>
+				<div class="detail-content-intro-t"></div>
 				<div class="detail-content-intro-c">
 
-					Q. 왜 도그메이트 펫시터를 하게 되었나요?<br> A.<br> 1박이상 집을비우게될경우<br>
-					가족중에 스케쥴이 안맞아 지원요청이안되면<br> 정말 맡길곳이 없더라구요 <br> 사건사고많은 호텔이나
-					카페는 정말 못맡기겠고...저와같으신분들에게 도움이 되고싶다는 생각을하게되어 펫시터를 하게되었습니다.<br>
+					Q. 펫시터를 어떻게 시작하게 되었나요?<br> 
+					<div class="question"></div>
 					----------------------------------------------------------------------------------------<br>
-					<br> Q. 반려견을 키운 경험에 대해 알려주세요. 현재 반려견을 키우고 계시다면 자세히 소개해주세요!<br>
-					A.<br> 첫째.둥이<br> 진돗개+래브라도리트리버 믹스견 15.01.25일생 여자아이입니다.<br>
-					20kg나가요~집에 택배아저씨나 낯선사람이 오면 짖습니다.남자사람을 좋아하지않아요. 특히 나이있는 아저씨한테
-					낯가려요.젊은오빠는 좋아라함.<br> 처음에만 짖을뿐 사회성이 없는아이는 아닙니다~방문하셨을때 첫째가짖더라도
-					놀라지말아주세요~<br> 깔끔한 성격이라 비가오면 젖기싫어 테라스잘안나감.<br> 물을 별로 안좋아함.<br>
-					<br> 둘째.초코송이 <br> 래브라도리트리버 17.03.04일생 여자아이
-					입니다.36kg나가요~초특급순둥이 접대견입니다. 집에오는 사람이던 강아지던 가리지않고 좋아라합니다.짖는소릴 들어본게 손에
-					꼽혀요.<br> 테라스 텃밭 딸기를 잘훔쳐먹어요<br> 텃밭도둑!!!그래서 강제 유기농재배ㅎㅎㅎ텃밭
-					울타리치기.<br> 물을 너무좋아해서 비가와 뜯어말려도 테라스에나가놀아요<br> 덕분에 애들수건은 늘
-					만땅준비중.여름엔 수영장설치.<br> <br>
+					<br>  Q. 펫시터 활동 이력을 말씀해주세요. 처음시작하시는 분이라면 각오를 적어주세요.<br>
+					<div class="question"></div>
 					----------------------------------------------------------------------------------------<br>
 					<br> Q. 애견호텔이 아닌 저에게 맡겨주시면 아래와 같은 내용을 약속드립니다.<br> A.<br>
-					*내 아이들처럼 돌봐드리겠습니다~<br> *아이와 같이 열심히 놀겠습니다~<br> *건강하게
-					먹이겠습니다~<br> *안전하게 돌보겠습니다~원하시면 분리돌봄 가능합니다.<br> *넓은실외테라스와
-					실내 출입이 자유롭습니다~<br> *너무 멀지않다면 무료픽업 가능합니다~<br> <br> <br>
+					<div class="question"></div>
+					<br>
+					<br>
 					----------------------------------------------------------------------------------------<br>
-					<br> ※ 아래 유형의 아이들은 돌봄이 어려울 수 있습니다.<br> -전염성 질병이있는아이<br>
-					-공격성 또는 입질이 있는아이<br> -실내마킹이 심한 수컷<br>
-					----------------------------------------------------------------------------------------
+					
 				</div>
 			</div>
 			<div class="detail-content-env">
 				<h4>돌봄 환경</h4>
 				<dl class="col-sm-6 left" style="width: 50%; padding: 0 5px;">
-					<dt class="pull-left house-type shade">돌봄공간</dt>
-					<dd class="pull-right text-right shade">아파트</dd>
-					<dt class="pull-left neighbor-subway">인근지하철역</dt>
-					<dd class="pull-right text-right">없습니다.</dd>
-					<dt class="pull-left house-yard shade">마당유무</dt>
-					<dd class="pull-right text-right shade">없습니다</dd>
+					<dt class="pull-left house-type shade">픽업유무</dt>
+					<dd class="pull-right text-right shade"></dd>
+					<dt class="pull-left neighbor-subway">카메라유무</dt>
+					<dd class="pull-right text-right"></dd>
+					<dt class="pull-left house-yard shade">자격증유무</dt>
+					<dd class="pull-right text-right shade"></dd>
 				</dl>
 				<dl class="col-sm-6 right" style="width: 50%; padding: 0 5px;">
 					<dt class="pull-left kids shade">14세 미만 아동</dt>
-					<dd class="pull-right text-right shade">없습니다</dd>
-					<dt class="pull-left within-family">가족 동거 유무</dt>
-					<dd class="pull-right text-right">가족과 함께 살고 있어요</dd>
+					<dd class="pull-right text-right shade"></dd>
+					<dt class="pull-left within-family">전업유무</dt>
+					<dd class="pull-right text-right"></dd>
 					<dt class="pull-left other-animal shade">다른 동물 유무</dt>
-					<dd class="pull-right text-right shade">없습니다</dd>
+					<dd class="pull-right text-right shade"></dd>
 				</dl>
 			</div>
 			<div class="detail-content-review">
@@ -603,6 +698,7 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 <script>
 	$(document)
 			.ready(
+
 					function() {
 						//Examples of how to assign the Colorbox event to elements
 						$(".group3").colorbox({

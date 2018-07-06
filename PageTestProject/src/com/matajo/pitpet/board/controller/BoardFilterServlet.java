@@ -84,10 +84,7 @@ public class BoardFilterServlet extends HttpServlet {
 		 
 		
 		
-		
-		
-		
-		
+
 		RequestDispatcher view=null;
 		
 		if(0<list.size()){

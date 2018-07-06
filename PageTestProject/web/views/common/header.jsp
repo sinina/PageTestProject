@@ -44,7 +44,7 @@ padding:0px;
 			var memberCode = <%=member.getCode()%>;	
 		<%}%>
 		
-		if(memberCode==1){
+		if(memberCode==2){
 			alert("이미 펫시터 이십니다.");
 			return false;	
 		}

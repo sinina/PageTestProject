@@ -8,13 +8,28 @@ public class BoardVo {
 	private String photo2;
 	private String photo3;
 	private String photo4;
-	private  int level;
+	private int level;
+	private String opportunity;
+	private String activityhisotry;
+	private String prcontext;
+	private int pickup;
+	private int camera;
+	private String license1;
+	private String license2;
+	private String license3;
+	private String license4;
+	private int child;
+	private int jobstyle;
+	private int animalcheck;
+
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BoardVo(String name, String address, String title, String photo1, String photo2, String photo3,
-			String photo4 ,int level) {
+			String photo4, int level, String opportunity, String activityhisotry, String prcontext, int pickup,
+			int camera, String license1, String license2, String license3, String license4, int child, int jobstyle,
+			int animalcheck) {
 		super();
 		this.name = name;
 		this.address = address;
@@ -24,6 +39,115 @@ public class BoardVo {
 		this.photo3 = photo3;
 		this.photo4 = photo4;
 		this.level = level;
+		this.opportunity = opportunity;
+		this.activityhisotry = activityhisotry;
+		this.prcontext = prcontext;
+		this.pickup = pickup;
+		this.camera = camera;
+		this.license1 = license1;
+		this.license2 = license2;
+		this.license3 = license3;
+		this.license4 = license4;
+		this.child = child;
+		this.jobstyle = jobstyle;
+		this.animalcheck = animalcheck;
+	}
+
+	
+	public String getOpportunity() {
+		return opportunity;
+	}
+
+	public void setOpportunity(String opportunity) {
+		this.opportunity = opportunity;
+	}
+
+	public String getActivityhisotry() {
+		return activityhisotry;
+	}
+
+	public void setActivityhisotry(String activityhisotry) {
+		this.activityhisotry = activityhisotry;
+	}
+
+	public String getPrcontext() {
+		return prcontext;
+	}
+
+	public void setPrcontext(String prcontext) {
+		this.prcontext = prcontext;
+	}
+
+	public int getPickup() {
+		return pickup;
+	}
+
+	public void setPickup(int pickup) {
+		this.pickup = pickup;
+	}
+
+	public int getCamera() {
+		return camera;
+	}
+
+	public void setCamera(int camera) {
+		this.camera = camera;
+	}
+
+	public String getLicense1() {
+		return license1;
+	}
+
+	public void setLicense1(String license1) {
+		this.license1 = license1;
+	}
+
+	public String getLicense2() {
+		return license2;
+	}
+
+	public void setLicense2(String license2) {
+		this.license2 = license2;
+	}
+
+	public String getLicense3() {
+		return license3;
+	}
+
+	public void setLicense3(String license3) {
+		this.license3 = license3;
+	}
+
+	public String getLicense4() {
+		return license4;
+	}
+
+	public void setLicense4(String license4) {
+		this.license4 = license4;
+	}
+
+	public int getChild() {
+		return child;
+	}
+
+	public void setChild(int child) {
+		this.child = child;
+	}
+
+	public int getJobstyle() {
+		return jobstyle;
+	}
+
+	public void setJobstyle(int jobstyle) {
+		this.jobstyle = jobstyle;
+	}
+
+	public int getAnimalcheck() {
+		return animalcheck;
+	}
+
+	public void setAnimalcheck(int animalcheck) {
+		this.animalcheck = animalcheck;
 	}
 
 	public int getLevel() {
@@ -96,5 +220,4 @@ public class BoardVo {
 				+ ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", level=" + level + "]";
 	}
 
-	
 }

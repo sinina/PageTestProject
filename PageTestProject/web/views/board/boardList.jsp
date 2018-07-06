@@ -88,6 +88,7 @@
 		<%for(int i=0;i<boardList.size();i++){%>
 		var str = <%=i%>+"";
 		var add = '.add'+str;
+		var grade = (<%=boardList.get(i).getLevel()%>==0?'신규 회원':<%=boardList.get(i).getLevel()%>==1?'일반 회원':'우수 회원');
 		
 		var address = '<%=boardList.get(i).getAddress()%>';
 
@@ -96,9 +97,9 @@
 		$(add).find(".text_title").children().eq(0).append("["+address.substring(address.indexOf(",")+2,18)+"]"+'<%=boardList.get(i).getTitle()%>');
 		$(add).find(".text_pay_block").children().eq(0).append('day care / 20,000원');
 		$(add).find(".text_pay_block").children().eq(1).append('1박 / 30,000원');
-		$(add).find(".text_name_block").children().eq(0).append('우수회원');
+		$(add).find(".text_name_block").children().eq(0).append(grade);
 		$(add).find(".text_name_block").children().eq(1).append('<%=boardList.get(i).getName()%>');
-		
+		$(add).find(".text_title").children().eq(0).attr('onclick','callDetail('+<%=i%>+')');
 		<%}%>
 		
 		
@@ -110,7 +111,22 @@
 			$element.val(<%=indexList.get(i)%>);
 		<%}%>
 		<%}%>
+		
+		
 	});
+</script>
+<script>
+function callDetail(index){
+	
+	<%if(boardList!=null){%>
+	<%for(int i=0;i<boardList.size();i++){%>
+		if(index==<%=i%>){
+			console.log('<%=boardList.get(i).getPickup()%>');
+			location.href="<%=request.getContextPath()%>/selectBoard.do?name=<%=boardList.get(i).getName()%>&address=<%=boardList.get(i).getAddress()%>&title=<%=boardList.get(i).getTitle()%>&photo1=<%=boardList.get(i).getPhoto1()%>&photo2=<%=boardList.get(i).getPhoto2()%>&photo3=<%=boardList.get(i).getPhoto3()%>&photo4=<%=boardList.get(i).getPhoto4()%>&level=<%=boardList.get(i).getLevel()%>&opportunity=<%=boardList.get(i).getOpportunity()%>&activityhisotry=<%=boardList.get(i).getActivityhisotry()%>&prcontext=<%=boardList.get(i).getPrcontext()%>&pickup=<%=boardList.get(i).getPickup()%>&camera=<%=boardList.get(i).getCamera()%>&license1=<%=boardList.get(i).getLicense1()%>&license2=<%=boardList.get(i).getLicense2()%>&license3=<%=boardList.get(i).getLicense3()%>&license4=<%=boardList.get(i).getLicense4()%>&child=<%=boardList.get(i).getChild()%>&jobstyle=<%=boardList.get(i).getJobstyle()%>&animalcheck=<%=boardList.get(i).getAnimalcheck()%>";
+		}
+	<%}%>
+	<%}%>
+}
 </script>
 <style>
 
@@ -746,6 +762,7 @@
 	<div class="content-tabs">
 	
 	 
+
 	
 	<div class="content add0">
 	<div class= "img_wrapper" >
@@ -758,8 +775,8 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+					
+				<a href="javascript:void(0);"   class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -792,7 +809,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -824,7 +841,7 @@
 	<div class="content_text">
 	<div class="text_title">
 
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -855,7 +872,7 @@
 	<div class="content_text ">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -886,7 +903,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 						</a>
 							
 			</div>		
@@ -916,7 +933,7 @@
 	<div class="content_text hi">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -948,7 +965,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -981,7 +998,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1014,7 +1031,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1047,7 +1064,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1080,7 +1097,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1113,7 +1130,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1146,7 +1163,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1179,7 +1196,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1212,7 +1229,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		

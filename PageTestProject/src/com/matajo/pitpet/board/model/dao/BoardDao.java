@@ -1,11 +1,15 @@
 package com.matajo.pitpet.board.model.dao;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import com.matajo.pitpet.board.model.vo.BoardVo;
 import com.matajo.pitpet.common.JDBCTemplate;
@@ -84,12 +88,21 @@ public class BoardDao {
 		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
 		Statement stmt = null;
 		ResultSet rs = null;
-		String query = "SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M INNER JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO)  WHERE P_OKAY =1";
+		String query = "";
 
 		try {
+			//properties로 설정 정보를 분리
+			String filePath 
+					= JDBCTemplate.class.getResource("/oracleSql.properties").getPath();
+			Properties prop = new Properties();
+			prop.load(new FileReader(filePath));
+			String sql = prop.getProperty("selectboardlist");
 			stmt = con.createStatement();
+			query = sql+" WHERE P_OKAY =1";
+			
 			rs = stmt.executeQuery(query);
-
+			
+			
 			while (rs.next()) {
 				String name = rs.getString("m_username");
 				String address = rs.getString("m_address");
@@ -99,10 +112,28 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				 String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -117,8 +148,15 @@ public class BoardDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String query = "";
+		
 		try {
-			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 ";
+			String filePath 
+			= JDBCTemplate.class.getResource("/oracleSql.properties").getPath();
+			Properties prop = new Properties();
+			prop.load(new FileReader(filePath));
+			String sql = prop.getProperty("selectDistri");
+			
+			query = sql + " WHERE p_okay = 1 ";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 
@@ -130,7 +168,7 @@ public class BoardDao {
 
 			JDBCTemplate.close(rs);
 
-			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%서울%')";
+			query = sql+" WHERE p_okay = 1 AND m_address like('%서울%')";
 			rs = stmt.executeQuery(query);
 
 			int soul = 0;
@@ -140,7 +178,7 @@ public class BoardDao {
 			list.add(soul);
 
 			JDBCTemplate.close(rs);
-			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%경기%')";
+			query = sql +" WHERE p_okay = 1 AND m_address like('%경기%')";
 			rs = stmt.executeQuery(query);
 			int gyeonggi = 0;
 
@@ -151,7 +189,7 @@ public class BoardDao {
 
 			JDBCTemplate.close(rs);
 
-			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address like('%인천%')";
+			query = sql +" WHERE p_okay = 1 AND m_address like('%인천%')";
 			rs = stmt.executeQuery(query);
 			int incheon = 0;
 
@@ -162,7 +200,7 @@ public class BoardDao {
 
 			JDBCTemplate.close(rs);
 
-			query = "SELECT COUNT(*) as count FROM member m JOIN PETS_APPLY P ON(P.P_NO=M.M_MEMBER_NO) WHERE p_okay = 1 AND m_address not like('%서울%') AND m_address not like('%인천%') AND m_address not like('%경기%')";
+			query = sql +" WHERE p_okay = 1 AND m_address not like('%서울%') AND m_address not like('%인천%') AND m_address not like('%경기%')";
 			rs = stmt.executeQuery(query);
 			int other = 0;
 
@@ -171,6 +209,12 @@ public class BoardDao {
 			}
 			list.add(other);
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -188,12 +232,17 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query="";
+		String filePath 
+		= JDBCTemplate.class.getResource("/oracleSql.properties").getPath();
+		Properties prop = new Properties();
 		
 		
 		try {
+			prop.load(new FileReader(filePath));
+			String sql = prop.getProperty("selectboardlist");
 		if(searchService!=5&&searchPet!=5&&searchGrade!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ? and p.p_petage like ? "; 				
+			query  =sql +" WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ? and p.p_petage like ? "; 				
 	
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
@@ -211,14 +260,27 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		} if(searchGrade!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ?";
+			query  = sql +" WHERE i.P_I_LEVEL= ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchGrade );
 			
@@ -233,14 +295,27 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 			
 		} if(searchService!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ?";
+			query  =sql +" WHERE i.P_I_LEVEL= ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
 			
@@ -255,13 +330,26 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		} if(searchPet!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.p_petage like ?";
+			query  =sql +" WHERE p.p_petage like ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+searchPet+"%");
 			
@@ -276,13 +364,26 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		} if(searchService!=5&&searchGrade!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ?";
+			query  = sql +" WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
@@ -300,14 +401,27 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		}
 		if(searchService!=5&&searchPet!=5){
 			list = new ArrayList<BoardVo>();
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND p.p_petage like ?";
+			query  = sql + " WHERE p.P_LONG_TERM =? AND p.p_petage like ?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
@@ -325,7 +439,20 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -333,7 +460,7 @@ public class BoardDao {
 			//searchService!=5&&searchPet!=5&&searchGrade!=5
 			list = new ArrayList<BoardVo>();
 			//query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ? and p.p_petage like ? ";
-			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ? AND p.p_petage like ?";
+			query  = sql+" WHERE i.P_I_LEVEL= ? AND p.p_petage like ?";
 			//pstmt.setInt(1,searchService );
 			//pstmt.setInt(2,searchGrade );
 			//pstmt.setString(3, "%"+searchPet+"%");
@@ -354,11 +481,30 @@ public class BoardDao {
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
 				int level = rs.getInt("p_i_level");	
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			
 		}
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -375,8 +521,131 @@ public class BoardDao {
 	
 
 	public ArrayList<BoardVo> selectBoardAddList(Connection con, int index) {
+		ArrayList <BoardVo> list = new ArrayList<BoardVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query="";
+		String filePath 
+		= JDBCTemplate.class.getResource("/oracleSql.properties").getPath();
+		Properties prop = new Properties();
+		try {
+			prop.load(new FileReader(filePath));
+			String sql = prop.getProperty("selectboardlist");
+			if(index ==1){
+				query = sql+" WHERE m_address like ? ";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, "%서울%");
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {	
+					String name = rs.getString("m_username");
+					String address = rs.getString("m_address");
+					String title = rs.getString("p_adcomment");
+					String photo1 = rs.getString("p_photo1");
+					String photo2 = rs.getString("p_photo2");
+					String photo3 = rs.getString("p_photo3");
+					String photo4 = rs.getString("p_photo4");
+					int level = rs.getInt("p_i_level");	
+					String opportunity =rs.getString("p_opportunity");
+					 String activityhisotry=rs.getString("p_activityhisotry");
+					 String prcontext=rs.getString("p_prcontext");
+					 int pickup = rs.getInt("p_pickup");
+					 int camera= rs.getInt("p_camera");
+					 String license1=rs.getString("p_license1");
+					 String license2=rs.getString("p_license2");
+					 String license3=rs.getString("p_license3");
+					 String license4=rs.getString("p_license4");
+					 int child= rs.getInt("p_child");
+					 int jobstyle= rs.getInt("p_jobstyle");
+					 int animalcheck= rs.getInt("p_animalcheck");
+					 
+					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				}
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+			}
+			if(index==2){
+				query = sql +" WHERE m_address like ? ";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, "%경기%");
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {	
+					String name = rs.getString("m_username");
+					String address = rs.getString("m_address");
+					String title = rs.getString("p_adcomment");
+					String photo1 = rs.getString("p_photo1");
+					String photo2 = rs.getString("p_photo2");
+					String photo3 = rs.getString("p_photo3");
+					String photo4 = rs.getString("p_photo4");
+					int level = rs.getInt("p_i_level");	
+					String opportunity =rs.getString("p_opportunity");
+					 String activityhisotry=rs.getString("p_activityhisotry");
+					 String prcontext=rs.getString("p_prcontext");
+					 int pickup = rs.getInt("p_pickup");
+					 int camera= rs.getInt("p_camera");
+					 String license1=rs.getString("p_license1");
+					 String license2=rs.getString("p_license2");
+					 String license3=rs.getString("p_license3");
+					 String license4=rs.getString("p_license4");
+					 int child= rs.getInt("p_child");
+					 int jobstyle= rs.getInt("p_jobstyle");
+					 int animalcheck= rs.getInt("p_animalcheck");
+					 
+					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				}
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+			}
+			if(index==3){
+				query = sql +"  WHERE m_address not like ? AND m_address not like ?  ";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, "%서울%");
+				pstmt.setString(2, "%경기%");
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {	
+					String name = rs.getString("m_username");
+					String address = rs.getString("m_address");
+					String title = rs.getString("p_adcomment");
+					String photo1 = rs.getString("p_photo1");
+					String photo2 = rs.getString("p_photo2");
+					String photo3 = rs.getString("p_photo3");
+					String photo4 = rs.getString("p_photo4");
+					int level = rs.getInt("p_i_level");	
+					String opportunity =rs.getString("p_opportunity");
+					 String activityhisotry=rs.getString("p_activityhisotry");
+					 String prcontext=rs.getString("p_prcontext");
+					 int pickup = rs.getInt("p_pickup");
+					 int camera= rs.getInt("p_camera");
+					 String license1=rs.getString("p_license1");
+					 String license2=rs.getString("p_license2");
+					 String license3=rs.getString("p_license3");
+					 String license4=rs.getString("p_license4");
+					 int child= rs.getInt("p_child");
+					 int jobstyle= rs.getInt("p_jobstyle");
+					 int animalcheck= rs.getInt("p_animalcheck");
+					 
+					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				}
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
 		
-		return null;
+		return list;
 	}
 
 	/*
