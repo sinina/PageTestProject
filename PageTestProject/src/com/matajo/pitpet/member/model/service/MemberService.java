@@ -1,6 +1,8 @@
 package com.matajo.pitpet.member.model.service;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,19 +65,69 @@ public class MemberService {
 		return result;
 	}
 
-
-	
 	public int updateMember(int memberNo, int selectNo) {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().updateMember(con, memberNo,selectNo);
+		int result1 = 0;
+		int result2=0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		
+		if(selectNo == 1){
+			
+			query="INSERT INTO PETSIT_INFO(P_I_NO, P_I_LEVEL, P_I_UP) "
+					+ "VALUES ((SELECT M_MEMBER_NO FROM MEMBER WHERE M_MEMBER_NO=?),"
+					+ "DEFAULT,SYSDATE)";
+			try {
+				pstmt = con.prepareStatement(query);
+				
+				pstmt.setInt(1,memberNo);
+				
+				result1 = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				JDBCTemplate.close(pstmt);
+			}
+			
+			if(result1>0){
+				JDBCTemplate.commit(con);
+			}else{
+				JDBCTemplate.rollback(con);
+			}
+		}else if(selectNo==2){
+			query="DELETE FROM PETSIT_INFO WHERE P_I_NO=?";
+			try {
+				pstmt = con.prepareStatement(query);
+				
+				pstmt.setInt(1,memberNo);
+				
+				result2 = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				JDBCTemplate.close(pstmt);
+			}
+			
+			if(result2>0){
+				JDBCTemplate.commit(con);
+			}else{
+				JDBCTemplate.rollback(con);
+			}
+		}
+		
+		
 		if(0 < result){
 			JDBCTemplate.commit(con);
 		}else{
 			JDBCTemplate.rollback(con);
 		}
 		JDBCTemplate.close(con);
+		
 		return result;
 	}
+
+	
 	public int updatePass(String id, String tempPass) {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().updateMember(con, id,tempPass);
@@ -87,16 +139,7 @@ public class MemberService {
 		JDBCTemplate.close(con);
 		return result;
 	}
-	public int UpdateMember(MemberVo member) {
-		Connection con = JDBCTemplate.getConnection();
-		int result = new MemberDao().updatepassMember(con, member);
-		if(0 < result){
-			JDBCTemplate.commit(con);
-		}else{
-			JDBCTemplate.rollback(con);
-		}
-		return result;
-	}
+	
 
 	public int MemberDelete(String id) {
 		Connection con = JDBCTemplate.getConnection();
@@ -185,41 +228,7 @@ public class MemberService {
 
 
 	
-	public int updateMember(int memberNo, int selectNo) {
-		Connection con = JDBCTemplate.getConnection();
-		int result = new MemberDao().updateMember(con, memberNo,selectNo);
-		int result1 = 0;
-		
-		if(selectNo == 1){
-			다른 테이블에 insert;
-			PreparedStatement pstmt = null;
-			String query = "";
-			query="insert";
-			try {
-				pstmt = con.prepareStatement(query);
-				
-				pstmt.setInt(1,memberNo);
-				
-				result = pstmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally{
-				JDBCTemplate.close(pstmt);
-			}
-			
-			return result1;
-		}
-		
-		
-		
-		if(0 < result|| 0<result1){
-			JDBCTemplate.commit(con);
-		}else{
-			JDBCTemplate.rollback(con);
-		}
-		JDBCTemplate.close(con);
-		return result;
-	}
+	
 	public int updatePass(String id, String tempPass) {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().updateMember(con, id,tempPass);

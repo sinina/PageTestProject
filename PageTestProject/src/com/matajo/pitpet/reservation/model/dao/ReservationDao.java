@@ -90,4 +90,27 @@ public class ReservationDao {
 		return res;
 	}
 
+	public int updqteAccDny(Connection con, int resNo, int accDny) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="";
+		
+		query="UPDATE RESERVATION SET RES_ACC_DNY=? WHERE RES_NO=?";
+		try {
+			pstmt=con.prepareStatement(query);
+				if(accDny==1){
+					pstmt.setInt(1, 1);}
+				else{
+					pstmt.setInt(1, 2);
+				}
+			pstmt.setInt(2, resNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
+
 }

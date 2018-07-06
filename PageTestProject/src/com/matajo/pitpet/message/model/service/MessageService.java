@@ -75,4 +75,17 @@ public class MessageService {
 		
 	}
 
+	public int insertPetsMsg(int resNo, int accDny) {
+		Connection con= JDBCTemplate.getConnection();
+		int result = new MessageDao().insertPetsMsg(con,resNo, accDny);
+		if(0<result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		JDBCTemplate.close(con);
+		return 0;
+	}
+
 }

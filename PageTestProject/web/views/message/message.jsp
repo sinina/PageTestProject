@@ -8,6 +8,11 @@
 <% ArrayList<MessageVo> list = (ArrayList<MessageVo>)request.getAttribute("list"); %>
 
 <title>Insert title here</title>
+<style>
+	.detail{
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 <%@include file="/views/common/header.jsp"%>

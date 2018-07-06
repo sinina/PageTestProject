@@ -26,7 +26,7 @@ public class SelectMessageFlagServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		
 		String msg ="";
-		System.out.println(count.getnFlagCnt()+"서블릿");
+	/*	System.out.println(count.getnFlagCnt()+"서블릿");*/
 		//안읽은 메시지가 0개 이상일경우
 		if(count.getnFlagCnt()>0){
 			msg="ok";

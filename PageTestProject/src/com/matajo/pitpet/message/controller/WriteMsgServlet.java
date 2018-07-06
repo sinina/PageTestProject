@@ -26,6 +26,9 @@ public class WriteMsgServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//예약 요청시에만 쓰는 메시지 insert 서블릿
+		//반려주->펫시터
+		
 		doGet(request, response);
 		//insertReservationInfo 서블릿에서 넘어올때 getattribute("res"res); 해야함
 		ReservationVo res = (ReservationVo)request.getAttribute("res"); 

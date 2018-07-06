@@ -143,4 +143,19 @@ public class MessageDao {
 		
 		return result;
 	}
+
+	public int insertPetsMsg(Connection con, int resNo, int accDny) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query="";
+		query="insert into message(?,?,?,?,?,?,?,?)";
+		
+		try {
+			pstmt= con.prepareStatement(query);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 }

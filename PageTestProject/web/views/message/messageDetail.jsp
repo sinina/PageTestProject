@@ -6,34 +6,41 @@
 <head>
 <meta charset="UTF-8">
 <%ReservationVo res = (ReservationVo)request.getAttribute("res"); %>
+<%int msgCode = (int)request.getAttribute("msgCode"); %> 
 <title>쪽지 디테일</title>
 <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.7.js">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
 crossorigin="anonymous"></script>
 <style>
-	.btnWrapper{
-		
-	}
+	
 	
 </style>
 </head>
 <body>
 <%@include file="/views/common/header.jsp"%>
 <br>
-<h1 align="center">예약 승인이 되었습니다.</h1>
-<div class="inner" >
-반려주 이름:<%=res.getPetoName() %><br>
- 펫시팅 시간 :<%=res.getStart() %>~<%=res.getEnd() %><br>
-반려동물 종류: <%=res.getAnimalKind() %><br>
-결제 금액 : <%=res.getPrice() %><br>
-요청 사항 : <%=res.getRequest() %>
-<br><br>
-<div class="btnWrapper">
-<button onclick="kakaoPayment();">카카오 페이로 결제하기</button>
-<button onclick="payment();">결제하기</button>
-<button>취소</button>
-</div>
+	<%if(msgCode==0){%>
+		<h1 align="center">예약 승인이 되었습니다.</h1>
+	<%}else {%>
+	 	<h1 align="center">예약 요청이 들어왔습니다.</h1>
+		<% }%>
+	<div class="inner" >
+		반려주 이름:<%=res.getPetoName() %><br>
+		 펫시팅 시간 :<%=res.getStart() %>~<%=res.getEnd() %><br>
+		반려동물 종류: <%=res.getAnimalKind() %><br>
+		결제 금액 : <%=res.getPrice() %><br>
+		요청 사항 : <%=res.getRequest() %><br><br>
+	<div class="btnWrapper">
+		<%if(msgCode==0){ %>
+		<button onclick="kakaoPayment();">카카오 페이로 결제하기</button>
+		<button onclick="payment();">결제하기</button>
+		<button>취소</button>
+		<%}else{ %>
+		<button onclick="confirmRes();">승인</button>
+		<button onclick="rejectRes();">거절</button>		
+		<%} %>
+	</div>
 </div>
 <script>
 	function kakaoPayment(){
@@ -143,6 +150,16 @@ crossorigin="anonymous"></script>
 		        alert(msg);
 		    }
 		});
+	}
+	
+	function confirmRes(){
+		//예약 번호,승인거절 분별할수있는 번호 가지고 예약 승인하는 서블릿으로 이동
+		location.href="confirmRes.do?resNo="+<%=res.getResNo()%>+"&accDny=1";
+		
+	}
+	function rejectRes(){
+		//accDny -승인(1), 거절(2)
+		location.herf="confirmRes.do?resNo="+<%=res.getResNo()%>+"&accDny=2";
 	}
 </script>
 

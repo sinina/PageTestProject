@@ -26,13 +26,14 @@ public class MessageDetailServlet extends HttpServlet {
 		
 		int msgCode = Integer.parseInt(request.getParameter("msgCode"));
 		
-		System.out.println("디테일 서블릿"+msgCode);
 		int messageNo = Integer.parseInt(request.getParameter("messageNo"));
 		ReservationVo res = (ReservationVo)new MessageService().getMessageDetail(messageNo,msgCode);
 		RequestDispatcher view = null;
 		
 		if(res!=null){
 			request.setAttribute("res", res);
+			request.setAttribute("msgCode", msgCode);
+			System.out.println("디테일 서블릿"+msgCode);
 			view = request.getRequestDispatcher("views/message/messageDetail.jsp");
 			view.forward(request, response);
 		}

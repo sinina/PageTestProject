@@ -30,8 +30,8 @@
 			</li>
 			<li><a href="#">펫시터 등급 관리</a>
 				<ul>
-					<li><a href="/ptp/newSitterList.do">신규 펫시터 관리</a></li>
-					<li><a href="/ptp/goodSitterList.do">우수 펫시터 관리</a></li>
+					<li><a href="/ptp/gradeSitterList.do">신규 펫시터 관리</a></li>
+					<li><a href="#">우수 펫시터 관리</a></li>
 				</ul>
 			</li>
 			<li><a href="#">게시글 관리</a>

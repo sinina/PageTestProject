@@ -18,4 +18,16 @@ public class ReservationService {
 		return list;
 	}
 
+	public int updateAccDny(int resNo, int accDny) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new ReservationDao().updqteAccDny(con, resNo,accDny);
+		if(result>0){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		JDBCTemplate.close(con);
+		return 0;
+	}
+
 }
