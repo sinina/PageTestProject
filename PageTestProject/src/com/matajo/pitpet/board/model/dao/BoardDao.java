@@ -181,27 +181,28 @@ public class BoardDao {
 	}
 
 	public ArrayList<BoardVo> selectBoardAddList(Connection con, int searchService, int searchPet, int searchGrade) {
-		// 찾는 서비스 0 전체 1데이케어 2 장기
-		// 종류 모든0강아지1고양2그외3
-		// 등급 신규0 일반1 우수2
-		ArrayList<BoardVo> list = new ArrayList<BoardVo>();
+				//찾는 서비스 5 전체  0 장기 1데이케어 
+				//종류 모든5  강아지1고양2그외3
+				//모든 5 등급 신규0  일반1 우수2
+		ArrayList<BoardVo> list = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query="";
 		
+		
 		try {
-		if(searchService!=0&&searchPet!=0&&searchGrade!=0){
-			query  = 
-					"SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE P_LONG_TERM = ?  AND P_I_LEVEL=? AND ? in(P_PETAGE) AND P.P_OKAY =1";
+		if(searchService!=5&&searchPet!=5&&searchGrade!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ? and p.p_petage like ? "; 				
 	
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
-			pstmt.setString(2, String.valueOf(searchPet));
-			pstmt.setInt(3,searchGrade );
+			pstmt.setInt(2,searchGrade );
+			pstmt.setString(3, "%"+searchPet+"%");
 			
 			rs = pstmt.executeQuery();
 			
-			while (rs.next()) {
+			while (rs.next()) {	
 				String name = rs.getString("m_username");
 				String address = rs.getString("m_address");
 				String title = rs.getString("p_adcomment");
@@ -209,9 +210,153 @@ public class BoardDao {
 				String photo2 = rs.getString("p_photo2");
 				String photo3 = rs.getString("p_photo3");
 				String photo4 = rs.getString("p_photo4");
-				int level = rs.getInt("p_i_level");
+				int level = rs.getInt("p_i_level");	
 				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
 			}
+			
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		} if(searchGrade!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchGrade );
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+			
+		} if(searchService!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchService );
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		} if(searchPet!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.p_petage like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,"%"+searchPet+"%");
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		} if(searchService!=5&&searchGrade!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ?";
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchService );
+			pstmt.setInt(2,searchGrade );
+			
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		if(searchService!=5&&searchPet!=5){
+			list = new ArrayList<BoardVo>();
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND p.p_petage like ?";
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchService );
+			pstmt.setString(2, "%"+searchPet+"%");
+			
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		} if(searchGrade!=5&&searchPet!=5){
+			//searchService!=5&&searchPet!=5&&searchGrade!=5
+			list = new ArrayList<BoardVo>();
+			//query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE p.P_LONG_TERM =? AND i.P_I_LEVEL= ? and p.p_petage like ? ";
+			query  ="SELECT M_USERNAME ,M_ADDRESS,P_ADCOMMENT,P_PHOTO1,P_PHOTO2,P_PHOTO3,P_PHOTO4 ,P_I_LEVEL FROM MEMBER M  INNER  JOIN PETS_APPLY P ON(M.M_MEMBER_NO=P.P_NO) INNER JOIN PETSIT_INFO I ON(M.M_MEMBER_NO=I.P_I_NO) WHERE i.P_I_LEVEL= ? AND p.p_petage like ?";
+			//pstmt.setInt(1,searchService );
+			//pstmt.setInt(2,searchGrade );
+			//pstmt.setString(3, "%"+searchPet+"%");
+			
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1,searchGrade );
+			pstmt.setString(2, "%"+searchPet+"%");
+			
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {	
+				String name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level));
+			}
+			
 		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -220,10 +365,18 @@ public class BoardDao {
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
 		}
+		
 		return list;
 		
 		
 		
+	}
+
+	
+
+	public ArrayList<BoardVo> selectBoardAddList(Connection con, int index) {
+		
+		return null;
 	}
 
 	/*

@@ -6,6 +6,11 @@
 <%
 	ArrayList<BoardVo> boardList = (ArrayList<BoardVo>)request.getAttribute("boardList");
 %>
+
+<%
+	ArrayList<Integer> indexList = (ArrayList<Integer>)request.getAttribute("indexList");
+%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -38,6 +43,8 @@
 	 
 	
 		$(function(){
+			
+			
 			var $local_distribution = $("#local_distribution").children(":first").children().children();
 			 
 			if($local_distribution.text()==""){
@@ -60,21 +67,23 @@
 			}
 		
 			var iCheck=1;
-		
-		$(window).scroll(function(){
-			if(Math.round($(window).scrollTop()) + $(window).height() + 5 > $(document).height()){
-				if((iCheck*6)>=<%=boardList.size()%>){ 
-				var $testhide = $(".hide");
-				for(var i = 0 ;i<=$testhide.length;i++){
-					var $element = $testhide.eq(i);
-					if(i<5){
-						$element.removeClass("hide");	
+			
+			$(window).scroll(function(){
+				if(Math.round($(window).scrollTop()) + $(window).height() + 5 > $(document).height()){
+					if((iCheck*6)<=<%=boardList.size()%>){ 
+					var $testhide = $(".hide");
+					for(var i = 0 ;i<=$testhide.length;i++){
+						var $element = $testhide.eq(i);
+						if(i<5){
+							$element.removeClass("hide");	
+						}
+					}  
+					iCheck++;
 					}
-				}  
-				iCheck++;
 				}
-			}
-		});
+				
+				
+			});
 		
 		<%for(int i=0;i<boardList.size();i++){%>
 		var str = <%=i%>+"";
@@ -92,11 +101,15 @@
 		
 		<%}%>
 		
-		function vaildate(){
-			
-		}
-			  
-			
+		
+		
+		<%if(indexList!=null){ %>
+			var $fix = $(".fix-select");
+		<%for(int i =0;i<indexList.size();i++){%>
+			var $element = $fix.eq(<%=i%>);
+			$element.val(<%=indexList.get(i)%>);
+		<%}%>
+		<%}%>
 	});
 </script>
 <style>
@@ -688,15 +701,15 @@
 	<div class="fix">
      <dt>서비스</dt>
 	<select class="fix-select" name="searchService">
-    <option class=fix-option; value="0">모든 서비스</option>
+    <option class=fix-option; value="5">모든 서비스</option>
+    <option class=fix-option; value="0">24시간 돌봄</option>
     <option class=fix-option; value="1">데이케어</option>
-    <option class=fix-option; value="2">24시간 돌봄</option>
 	</select>
 	</div>
 	<div class="fix">
 	<dt>위탁 동물 종류</dt>
 	<select class="fix-select" name="searchPet">
-    <option class=fix-option; value="0">모든 반려동물</option>
+    <option class=fix-option; value="5">모든 반려동물</option>
     <option class=fix-option; value="1">강아지</option>
     <option class=fix-option; value="2">고양이</option>
     <option class=fix-option; value="3">기타</option>
@@ -705,10 +718,10 @@
 	<div class="fix">
 	<dt>펫시터 등급</dt>
 	<select class="fix-select" name="searchGrade">
-    <option class=fix-option; value="0">모든 등급</option>
-    <option class=fix-option; value="1">신규회원</option>
-    <option class=fix-option; value="2">일반회원</option>
-    <option class=fix-option; value="3">우수회원</option>
+    <option class=fix-option; value="5">모든 등급</option>
+    <option class=fix-option; value="0">신규회원</option>
+    <option class=fix-option; value="1">일반회원</option>
+    <option class=fix-option; value="2">우수회원</option>
 	</select>
 	</div>
 	
@@ -746,7 +759,7 @@
 	<div class="text_title">
 	
 				
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -779,7 +792,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -811,7 +824,7 @@
 	<div class="content_text">
 	<div class="text_title">
 
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -842,7 +855,7 @@
 	<div class="content_text ">
 	<div class="text_title">
 	
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -873,7 +886,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 						</a>
 							
 			</div>		
@@ -903,7 +916,7 @@
 	<div class="content_text hi">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -935,7 +948,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -968,7 +981,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1001,7 +1014,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1034,7 +1047,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1067,7 +1080,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1100,7 +1113,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1133,7 +1146,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1166,7 +1179,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1199,7 +1212,7 @@
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href=" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="<%=request.getContextPath() %>/views/board/boardDetail.jsp" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
