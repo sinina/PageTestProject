@@ -1,6 +1,7 @@
 package com.matajo.pitpet.board.model.vo;
 
 public class BoardVo {
+	private int no;
 	private String name;
 	private String address;
 	private String title;
@@ -26,11 +27,15 @@ public class BoardVo {
 		// TODO Auto-generated constructor stub
 	}
 
-	public BoardVo(String name, String address, String title, String photo1, String photo2, String photo3,
+	
+
+	
+	public BoardVo(int no, String name, String address, String title, String photo1, String photo2, String photo3,
 			String photo4, int level, String opportunity, String activityhisotry, String prcontext, int pickup,
 			int camera, String license1, String license2, String license3, String license4, int child, int jobstyle,
 			int animalcheck) {
 		super();
+		this.no = no;
 		this.name = name;
 		this.address = address;
 		this.title = title;
@@ -53,7 +58,23 @@ public class BoardVo {
 		this.animalcheck = animalcheck;
 	}
 
-	
+
+
+
+	public int getNo() {
+		return no;
+	}
+
+
+
+
+	public void setNo(int no) {
+		this.no = no;
+	}
+
+
+
+
 	public String getOpportunity() {
 		return opportunity;
 	}

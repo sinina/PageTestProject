@@ -691,7 +691,10 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 </body>
 <script>
 	$(".reserv-btn").click(function(){
-	<%-- 	<%if(member==null){%>
+		//보드의 디테일에 있는 M_MEMBER_NO값
+		<%=board.getNo()%> 
+	
+		<%if(member==null){%>
 		alert("로그인 이후 예약 가능합니다.");
 		<%}else{%>
 			var memberCode =<%=member.getCode()%>
@@ -700,12 +703,12 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 				alert("반려주만 예약 가능합니다.");
 		}else{
 			location.href="/ptp/insertReservation.do?memberNo="+<%=member.getNo()%>;
-		} --%>
-		<%-- <%=request.getContextPath()%> --%>
+		}
+		<%-- <%=request.getContextPath()%>
 		var start = $("#datetimepicker4").val();
 		var end = $("#datetimepicker5").val();
 		//예약 정보 저장할때 반려주No, 펫시터No 필요함!
-		location.href="/ptp/basicRes.do?start="+start+"&end="+end+"&memberNo="+<%=member.getNo()%>;
+		location.href="/ptp/basicRes.do?start="+start+"&end="+end+"&memberNo="+<%=member.getNo()%>; --%>
 	});
 </script>
 <script>

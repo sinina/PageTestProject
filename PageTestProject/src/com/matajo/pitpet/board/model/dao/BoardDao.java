@@ -124,7 +124,8 @@ public class BoardDao {
 				 int child= rs.getInt("p_child");
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+				list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 
 		} catch (SQLException e) {
@@ -273,7 +274,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			
 			JDBCTemplate.close(rs);
@@ -308,7 +310,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -343,7 +346,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -377,7 +381,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -414,7 +419,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -452,7 +458,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			JDBCTemplate.close(rs);
 			JDBCTemplate.close(pstmt);
@@ -494,7 +501,8 @@ public class BoardDao {
 				 int jobstyle= rs.getInt("p_jobstyle");
 				 int animalcheck= rs.getInt("p_animalcheck");
 				 
-				list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				 int memberNo =rs.getInt("m_member_no");
+					list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 			}
 			
 		}
@@ -559,7 +567,8 @@ public class BoardDao {
 					 int jobstyle= rs.getInt("p_jobstyle");
 					 int animalcheck= rs.getInt("p_animalcheck");
 					 
-					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+					 int memberNo =rs.getInt("m_member_no");
+						list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 				}
 				JDBCTemplate.close(rs);
 				JDBCTemplate.close(pstmt);
@@ -592,7 +601,8 @@ public class BoardDao {
 					 int jobstyle= rs.getInt("p_jobstyle");
 					 int animalcheck= rs.getInt("p_animalcheck");
 					 
-					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+					 int memberNo =rs.getInt("m_member_no");
+						list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 				}
 				JDBCTemplate.close(rs);
 				JDBCTemplate.close(pstmt);
@@ -626,7 +636,8 @@ public class BoardDao {
 					 int jobstyle= rs.getInt("p_jobstyle");
 					 int animalcheck= rs.getInt("p_animalcheck");
 					 
-					list.add(new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+					 int memberNo =rs.getInt("m_member_no");
+						list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
 				}
 				
 			}

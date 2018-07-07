@@ -57,8 +57,9 @@ public class SelectBoardServlet extends HttpServlet {
 		 int child= Integer.parseInt(request.getParameter("child"));
 		 int jobstyle= Integer.parseInt(request.getParameter("jobstyle"));
 		 int animalcheck= Integer.parseInt(request.getParameter("animalcheck"));
-		 
-		 board = new BoardVo(name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck);
+		
+		 int member = Integer.parseInt(request.getParameter("member"));
+		 board = new BoardVo(member, name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck);
 		
 		RequestDispatcher view = null;
 		
