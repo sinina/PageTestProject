@@ -775,7 +775,7 @@ function callDetail(index){
 	<div class="text_title">
 	
 					
-				<a href="javascript:void(0);"   class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a    class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -808,7 +808,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -840,7 +840,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -871,7 +871,7 @@ function callDetail(index){
 	<div class="content_text ">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -902,7 +902,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 						</a>
 							
 			</div>		
@@ -932,7 +932,7 @@ function callDetail(index){
 	<div class="content_text hi">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -964,7 +964,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -997,7 +997,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1030,7 +1030,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1063,7 +1063,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1096,7 +1096,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1129,7 +1129,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1162,7 +1162,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1195,7 +1195,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1228,7 +1228,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		

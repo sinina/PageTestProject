@@ -1,6 +1,7 @@
 package com.matajo.pitpet.petInfo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,12 +35,18 @@ public class SelectPetInfoServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		
 		if(pInfo!=null){
+			System.out.println("여기");
 			request.setAttribute("rv", rv);
 			request.setAttribute("pInfo", pInfo);
 			
 			//예약 정보 확인 창으로 이동
 			view = request.getRequestDispatcher("views/reservation/test.jsp");
 			view.forward(request, response);
+		}else{
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('리스트를 가져오던중 문제가 발생하였습니다.'); location.href='/ptp/boardListAdd.do';</script>"); 
+			out.flush();
+			out.close();
 		}
 		
 	}

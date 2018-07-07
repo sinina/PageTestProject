@@ -433,6 +433,7 @@ dt {
 		<%}else{%>
 		$textright.eq(5).append('없습니다.');
 		<%}%> 
+		console.log('<%=board.getLevel()%>');
 		
 		var licen2 = '<%=board.getLicense2()%>';
 		var licen3 = '<%=board.getLicense3()%>';
@@ -446,7 +447,7 @@ dt {
 			
 				
 				
-		
+
 		 		
 		
 
@@ -504,7 +505,7 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 					</a>
 				</div>
 
-				<ul class="detail-content-img-list"">
+				<ul class="detail-content-img-list">
 					<li class="col-xs-4"><a class="group3"
 						href="../../upload/petsitter/2.jpg" rel="example1"> <span
 							class="bg-size cover"
@@ -673,14 +674,14 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 							<span>3,000원</span>
 						</dd>
 						<dt class="reserv-dt" style="font-weight: bold;">총 합계</dt>
-						<dd class="reserv-dd result" style="font-weight: bold";>
+						<dd class="reserv-dd result" style="font-weight: bold">
 							<span>33,000원</span>
 						</dd>
 					</dl>
 
 				</div>
 
-				<button class="reserv-btn">예약요청하기</button>
+				<button class="reserv-btn" >예약요청하기</button>
 
 				<a class="reserv-btn-enq"> 예약문의하기 </a>
 
@@ -690,38 +691,39 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 
 </body>
 <script>
-	$(".reserv-btn").click(function(){
+
+$(".reserv-btn").click(function(){
 	
-		 <%if(member==null){%>
-		alert("로그인 이후 예약 가능합니다.");
-		return false;
-		<%}else{%>
-			var memberCode =<%=member.getCode()%>
-		<%}%>
-		
-		<%if(member!=null){%>
-			if(memberCode==2){
-				alert("반려주만 예약 가능합니다.");
-				return false;
-		}else{
-		//보드의 디테일에 있는 M_MEMBER_NO값
-		var petsNo= <%=board.getNo()%> ;
-		
-		var petoNo=<%=member.getNo()%>;
-		var start = $("#datetimepicker4").val();
-		var end = $("#datetimepicker5").val();
-		/* alert(start); */
-		//반려동물 정보 가져오는 서블릿으로 이동
-		location.href="ptp/selectPetInfo.do?petsNo="
-				+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;
-		/*  location.href="/ptp/insertReservation.do?petsNo="+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;  */
-		} <%}%>
-	});
+	 <%if(member==null){%>
+	alert("로그인 이후 예약 가능합니다.");
+	return false;
+	<%}else{%>
+		var memberCode =<%=member.getCode()%>
+	<%}%>
+	
+	<%if(member!=null){%>
+		if(memberCode==2){
+			alert("반려주만 예약 가능합니다.");
+			return false;
+	}else{
+	//보드의 디테일에 있는 M_MEMBER_NO값
+	var petsNo= <%=board.getNo()%> ;
+	var petoNo=<%=member.getNo()%>;
+	var start = $("#datetimepicker4").val();
+	var end = $("#datetimepicker5").val();
+	/* alert(start); */
+	//반려동물 정보 가져오는 서블릿으로 이동
+	  location.href="<%=request.getContextPath()%>/selectPetInfo.do?petsNo="
+			+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;  
+	/*  location.href="/ptp/insertReservation.do?petsNo="+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;  */
+	} <%}%>
+	return false;
+});
 </script>
 <script>
-	$(document)
+	 $(document)
 			.ready(
-
+					
 					function() {
 						//Examples of how to assign the Colorbox event to elements
 						$(".group3").colorbox({
@@ -797,6 +799,6 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 															"Open this window again and this message will still be here.");
 											return false;
 										});
-					});
+					}); 
 </script>
 </html>
