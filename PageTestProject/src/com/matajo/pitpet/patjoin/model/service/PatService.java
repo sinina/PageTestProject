@@ -63,4 +63,13 @@ public class PatService {
 		return pat;
 	}
 
+	//예약 신청할떄 반려주의 펫정보 가져오기위해 만듬
+	public PatVo patSelect(int petoNo) {
+		Connection con = JDBCTemplate.getConnection();
+		PatVo pInfo = new PatDao().patSelect(con,petoNo);
+		JDBCTemplate.close(con);
+		return pInfo;
+		
+	}
+
 }

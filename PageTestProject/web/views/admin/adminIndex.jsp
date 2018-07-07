@@ -18,7 +18,7 @@
 <script>
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
-	google.charts.setOnLoadCallback(drawChart1);
+	google.charts.setOnLoadCallback(salesData);
 	
 	
 	// 방문자 추이
@@ -115,11 +115,12 @@
 	
 	function salesData(){
 		$.ajax({
-			url:"",
+			url:"/salesData.do",
 			type:"get",
 			success:function(data){
 				var dataChart=[['month','sales']];
 				if(data.length!=0){
+					console.log("성고");
 					$.each(data,function(i,item){
 						datachart.push([item.item, item,number]);
 					});
@@ -131,7 +132,7 @@
                         width: 900, // 넓이 옵션
                         height: 300, // 높이 옵션
                 };
-                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                var chart = new google.visualization.PieChart(document.getElementById('linechart'));
                 chart.draw(view, options);
 			}
 		})

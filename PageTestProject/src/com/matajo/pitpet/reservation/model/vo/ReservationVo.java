@@ -136,5 +136,14 @@ public class ReservationVo {
 		this.resNo = resNo;
 	}
 	
+	
+	
+	public ReservationVo(int petoNo, int petsNo, String start, String end) {
+		super();
+		this.petoNo = petoNo;
+		this.petsNo = petsNo;
+		this.start = start;
+		this.end = end;
+	}
 	public ReservationVo(){}
 }

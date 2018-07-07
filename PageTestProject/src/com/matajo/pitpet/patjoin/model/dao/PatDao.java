@@ -171,4 +171,45 @@ public class PatDao {
 		
 		return pat;
 	}
+
+	
+	//예약 할때 펫 정보 회원번호로 가져오기
+	public PatVo patSelect(Connection con, int petoNo) {
+		PreparedStatement pstmt = null;
+		PatVo pInfo = null;
+		String query = "";
+		ResultSet rs = null;
+		
+		query = "SELECT * FROM PET_INFO WHERE P_OWNER_NO=?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, petoNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				pInfo = new PatVo();
+				pInfo.setPatName(rs.getString("P_NAME"));
+				pInfo.setPatkg(rs.getString("P_WEIGHT"));
+				pInfo.setPatImage(rs.getString("P_IMAGE"));
+				pInfo.setKinds(rs.getString("P_KINDS"));
+				pInfo.setKinds_of(rs.getString("P_KINDS_OF"));
+				pInfo.setPatage(rs.getInt("P_AGE"));
+				pInfo.setPatInfo(rs.getString("P_INFO"));
+				pInfo.setOwner_no(rs.getInt("P_OWNER_NO"));
+				pInfo.setPatgender(rs.getString("P_GENDER").charAt(0));
+				pInfo.setOperation(rs.getString("P_NE_OPERATION").charAt(0));
+				pInfo.setUniquness(rs.getString("P_UNIQUENESS"));
+				pInfo.setHospital(rs.getString("P_HOSPITAL"));
+				pInfo.setNo(rs.getInt("P_NO"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return pInfo;
+	}
 }
