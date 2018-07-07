@@ -21,7 +21,7 @@ public class BoardVo {
 	private int child;
 	private int jobstyle;
 	private int animalcheck;
-
+	
 	public BoardVo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -213,6 +213,7 @@ public class BoardVo {
 	public void setPhoto4(String photo4) {
 		this.photo4 = photo4;
 	}
+	
 
 	@Override
 	public String toString() {
