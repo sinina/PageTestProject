@@ -20,26 +20,31 @@ crossorigin="anonymous"></script>
 <body>
 <%@include file="/views/common/header.jsp"%>
 <br>
-	<%if(msgCode==0){%>
+	<%if(msgCode==2){%>
 		<h1 align="center">예약 승인이 되었습니다.</h1>
-	<%}else {%>
+	<%}else if(msgCode==1){%>
 	 	<h1 align="center">예약 요청이 들어왔습니다.</h1>
-		<% }%>
+		<% }else{%>
+		<h1 align="center">예약이 거절되었습니다.</h1>
+		<%} %>
 	<div class="inner" >
 		반려주 이름:<%=res.getPetoName() %><br>
 		 펫시팅 시간 :<%=res.getStart() %>~<%=res.getEnd() %><br>
 		반려동물 종류: <%=res.getAnimalKind() %><br>
 		결제 금액 : <%=res.getPrice() %><br>
 		요청 사항 : <%=res.getRequest() %><br><br>
+		펫시터 no : <%=res.getPetsNo() %>
 	<div class="btnWrapper">
-		<%if(msgCode==0){ %>
+		<%if(msgCode==2){ %>
 		<button onclick="kakaoPayment();">카카오 페이로 결제하기</button>
 		<button onclick="payment();">결제하기</button>
 		<button>취소</button>
-		<%}else{ %>
+		<%}else if(msgCode==1){ %>
 		<button onclick="confirmRes();">승인</button>
 		<button onclick="rejectRes();">거절</button>		
-		<%} %>
+		<%}else{%>
+			<button onclick="cancel();">목록으로</button>	
+			<% } %>
 	</div>
 </div>
 <script>
@@ -69,7 +74,7 @@ crossorigin="anonymous"></script>
 		                msg += '카드 승인번호 : ' + rsp.apply_num;
 		                
 		                alert(msg);
-		                location.href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>";
+		                location.href="<%=request.getContextPath() %>/insertPayment.do?petoNo=<%=res.getPetoNo() %>&petsNo=<%=res.getPetsNo()%>&price=<%=res.getPrice()%>&payKind=kakaoPay";
 		          jQuery.ajax({
 		             url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
 		             type: 'POST',
@@ -136,8 +141,9 @@ crossorigin="anonymous"></script>
 		    			msg += '\n결제 금액 : ' + rsp.paid_amount;
 		    			msg += '카드 승인번호 : ' + rsp.apply_num;
 		    			
+		    			location.href="<%=request.getContextPath() %>/insertPayment.do?petoNo=<%=res.getPetoNo() %>&petsNo=<%=res.getPetsNo()%>&price=<%=res.getPrice()%>&payKind=card";
 		    			alert(msg);
-		    			location.href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>";
+		    			//결제 완료시 결제 db저장하는 서블릿으로 이동
 		    		} else {
 		    			//[3] 아직 제대로 결제가 되지 않았습니다.
 		    			//[4] 결제된 금액이 요청한 금액과 달라 결제를 자동취소처리하였습니다.
@@ -158,9 +164,12 @@ crossorigin="anonymous"></script>
 		
 	}
 	function rejectRes(){
-		//accDny -승인(1), 거절(2)
-		location.herf="confirmRes.do?resNo="+<%=res.getResNo()%>+"&accDny=2";
+		location.href="confirmRes.do?resNo="+<%=res.getResNo()%>+"&accDny=2";
 	}
+	function cancel(){
+		location.href="<%=request.getContextPath() %>/selectMessage.do?memberNo=<%=member.getNo() %>";
+	}
+	
 </script>
 
 </body>

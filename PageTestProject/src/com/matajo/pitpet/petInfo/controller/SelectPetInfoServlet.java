@@ -30,12 +30,11 @@ public class SelectPetInfoServlet extends HttpServlet {
 		
 		ReservationVo rv = new ReservationVo(petsNo, petoNo, start, end);
 		PatVo pInfo = new PatService().patSelect(petoNo);
-		
+		System.out.println("반려주"+petoNo);
 		
 		RequestDispatcher view = null;
 		
 		if(pInfo!=null){
-			System.out.println("여기");
 			request.setAttribute("rv", rv);
 			request.setAttribute("pInfo", pInfo);
 			

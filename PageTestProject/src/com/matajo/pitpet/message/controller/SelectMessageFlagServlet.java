@@ -21,6 +21,7 @@ public class SelectMessageFlagServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//안읽은 메시지 확인하여 ajax로 메시지 아이콘 바뀌게함
 		int memberNo = Integer.parseInt(request.getParameter("memberNo"));
 		MessageVo count = new MessageService().getMessageFlag(memberNo);
 		RequestDispatcher view = null;

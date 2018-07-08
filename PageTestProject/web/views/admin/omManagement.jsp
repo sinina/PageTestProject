@@ -70,7 +70,7 @@
 		var td = tr.children();
 		var memberNo = td.eq(0).text();
 		
-		location.href="/ptp/modifyMember.do?memberNo="+memberNo+"&selectNo=1";
+		location.href="/ptp/selectMemberInfo.do?memberNo="+memberNo+"&selectNo=1";
 	});
 	
 </script>

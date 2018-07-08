@@ -138,6 +138,18 @@ public class ReservationVo {
 	
 	
 	
+	public ReservationVo(int petoNo, String animalKind, int petsNo, int price, int animalNo, String start, String end,
+			String request) {
+		super();
+		this.petoNo = petoNo;
+		this.animalKind = animalKind;
+		this.petsNo = petsNo;
+		this.price = price;
+		this.animalNo = animalNo;
+		this.start = start;
+		this.end = end;
+		this.request = request;
+	}
 	public ReservationVo(int petoNo, int petsNo, String start, String end) {
 		super();
 		this.petoNo = petoNo;

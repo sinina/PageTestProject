@@ -41,7 +41,7 @@
 					<td><%=m.getPhone() %></td>			
 					<td><%=m.getEnrollDate() %></td>			
 					<td>
-						<button onclick="modifyMember();">수정</button>
+						<button class="modifyMember">수정</button>
 						<button class="deleteMember">삭제</button>
 						
 					</td>			
@@ -65,5 +65,14 @@
 		location.href="/ptp/deleteMember.do?memberNo="+memberNo+"&selectNo=2";
 	});
 	
+	$(".modifyMember").click(function(){
+		var delBtn =$(this);
+		var tr = delBtn.parent().parent();
+		var td = tr.children();
+		var memberNo = td.eq(0).text();
+		
+		//회원 번호 가지고 db에 저장되어있는 정보 가져옴
+		location.href="/ptp/selectMemberInfo.do?memberNo="+memberNo+"&selectNo=2";
+	})
 </script>
 </html>

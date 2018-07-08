@@ -711,11 +711,12 @@ $(".reserv-btn").click(function(){
 	var petoNo=<%=member.getNo()%>;
 	var start = $("#datetimepicker4").val();
 	var end = $("#datetimepicker5").val();
-	/* alert(start); */
+	//예약 시간 선택 안되있으면  alert창 띄워야함 
+	//alert("예약 시간을 선택해주세요"); 
 	//반려동물 정보 가져오는 서블릿으로 이동
+	alert("반려주:"+petoNo+"펫시터:"+petsNo);
 	  location.href="<%=request.getContextPath()%>/selectPetInfo.do?petsNo="
 			+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;  
-	/*  location.href="/ptp/insertReservation.do?petsNo="+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end;  */
 	} <%}%>
 	return false;
 });

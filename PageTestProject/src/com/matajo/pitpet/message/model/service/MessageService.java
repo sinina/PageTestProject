@@ -75,9 +75,9 @@ public class MessageService {
 		
 	}
 
-	public int insertPetsMsg(int resNo, int accDny) {
+	public int insertPetsMsg(ReservationVo res) {
 		Connection con= JDBCTemplate.getConnection();
-		int result = new MessageDao().insertPetsMsg(con,resNo, accDny);
+		int result = new MessageDao().insertPetsMsg(con,res);
 		if(0<result){
 			JDBCTemplate.commit(con);
 		}else{
@@ -85,7 +85,8 @@ public class MessageService {
 		}
 		
 		JDBCTemplate.close(con);
-		return 0;
+		return result;
 	}
+
 
 }

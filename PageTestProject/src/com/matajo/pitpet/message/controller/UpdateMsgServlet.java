@@ -32,11 +32,7 @@ public class UpdateMsgServlet extends HttpServlet {
 		if(0<result){
 			System.out.println("플래그 변경 완료");
 			
-			//디테일 서블릿 구현 아직 안함
 			response.sendRedirect("/ptp/messageDetail.do?messageNo="+messageNo+"&msgCode="+msgCode);
-			//view = request.getRequestDispatcher("/messageDetail.do?messageNo="+messageNo+"&msgCode="+msgCode);
-			//view = request.getRequestDispatcher("views/message/messageDetail.jsp");
-			//view.forward(request, response);
 		}else{
 			
 		}

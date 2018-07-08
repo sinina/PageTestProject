@@ -27,12 +27,11 @@ public class SalesDao {
 			
 			list = new ArrayList<SalesVo>();
 			SalesVo temp = new SalesVo();
-			
 			while(rs.next()){
-				temp.setMonth(rs.getString("TO_CHAR(PAY_DAY,'MM')"));
+				temp.setMonth(rs.getInt("TO_CHAR(PAY_DAY,'MM')"));
 				temp.setNumber(rs.getInt("SUM(PAY_PRICE)"));
+				list.add(temp);
 			}
-			list.add(temp);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally{

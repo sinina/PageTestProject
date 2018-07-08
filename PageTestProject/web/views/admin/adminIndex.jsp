@@ -18,7 +18,7 @@
 <script>
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawChart);
-	google.charts.setOnLoadCallback(salesData);
+	
 	
 	
 	// 방문자 추이
@@ -56,32 +56,40 @@
       } 
 	
 	//매출 현황
-/* 	function drawChart1() {
-        var data = google.visualization.arrayToDataTable([
-          ['month', '매출(만원)'],
-          ['1월',  20],
-          ['2월',  10],
-          ['3월',  50],
-          ['4월',  15],
-          ['5월',  20],
-          ['6월',  20],
-          ['7월',  20],
-          ['8월',  20],
-          ['9월',  20],
-          ['10월',  20],
-          ['11월',  20],
-          ['12월',  20]
-        ]);
-
-        var options = {
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
+ 	function salesData() {
+ 		$.ajax({
+			url:"/ptp/salesData.do",
+			type:"get",
+			success:function(list){
+				google.charts.load('current', {'packages':['corechart']});
+				google.charts.setOnLoadCallback(drawChart1);
+				
+				function drawChart1(){
+					var dataChart=[['month','sales']];
+					
+						console.log("성공");
+						$.each(list,function(i,item){
+							dataChart.push([item.month, item.number]);
+						});
+					
+				var data=google.visualization.arrayToDataTable(dataChart);
+			 	var view =new google.visualization.DataView(data); 
+		        var options = {
+		        		pointSize:5,
+		        	curveType: 'function',
+		          legend: { position: 'bottom' }
+		        };
         var chart = new google.visualization.LineChart(document.getElementById('salesChart'));
+        chart.draw(view, options);
+				}
+        
+			},error:function(e){
+				console.log(e);
+			}
+		});
 
-        chart.draw(data, options);
-      } */
+
+      } ;
 	
 	
 	$(function(){
@@ -89,12 +97,12 @@
 				url:"/ptp/matchingTable.do",
 				type:"get",
 				success:function(data){
-					console.log(data);
+					//console.log(data);
 					$table = $(".matchingT");
 					var resultStr = "<tr><th>기간</th><th>예약 요청</th><th>예약 승인</th><th>결제 완료</th></tr>"
 					//보낼때 설정한 키값이 for에서 나옴
 					for(var key in data){
-						console.log(key);
+						//console.log(key);
 						var matching = data[key];
 						resultStr+="<tr>";
 						resultStr+="<td>"+matching.date1+"</td>";
@@ -113,30 +121,7 @@
 			salesData();
 	});
 	
-	function salesData(){
-		$.ajax({
-			url:"/salesData.do",
-			type:"get",
-			success:function(data){
-				var dataChart=[['month','sales']];
-				if(data.length!=0){
-					console.log("성고");
-					$.each(data,function(i,item){
-						datachart.push([item.item, item,number]);
-					});
-				}
-				var data=google.visualization.arrayToDataTable(dataChart);
-				var view =new google.visualization.DataView(data);
-                var options = {
-                        title: "제목옵션",
-                        width: 900, // 넓이 옵션
-                        height: 300, // 높이 옵션
-                };
-                var chart = new google.visualization.PieChart(document.getElementById('linechart'));
-                chart.draw(view, options);
-			}
-		})
-	}
+
 </script>
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %>

@@ -9,32 +9,25 @@ import java.util.ArrayList;
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.member.model.vo.MemberVo;
 import com.matajo.pitpet.message.model.vo.MessageVo;
+import com.matajo.pitpet.reservation.model.vo.ReservationVo;
 
 public class MessageDao {
 	public int insertMessage(Connection con, MessageVo message) {
 		PreparedStatement pstmt  = null;
 		int result = 0;
 		String query = "";
-		//0. 쿼리 작성(쿼리 틀)
-		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,?)";
+		query = "INSERT INTO MESSAGE VALUES('예약 요청이 들어왔습니다.',SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,1,?)";
 		try {
-			//1. 쿼리 전송 객체 생성(preparedstmt)
 			pstmt = con.prepareStatement(query);
-			//2. 쿼리 파라미터 설정 - ?의 갯수만큼
-			pstmt.setString(1, message.getContent());
-			pstmt.setInt(2, message.getSenderNo());
-			pstmt.setInt(3, message.getResverNo());
-			pstmt.setInt(4, message.getMsgCode());
-			//3. 쿼리 실행
+			pstmt.setInt(1, message.getSenderNo());
+			pstmt.setInt(2, message.getResverNo());
+			pstmt.setInt(3, message.getRes_no());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-		//4. 자원 반납
 			JDBCTemplate.close(pstmt);
 		}
-		//5. 결과 리턴
 		return result;
 	}
 
@@ -142,20 +135,35 @@ public class MessageDao {
 		}
 		
 		return result;
+	
 	}
 
-	public int insertPetsMsg(Connection con, int resNo, int accDny) {
+	public int insertPetsMsg(Connection con, ReservationVo res) {
+		PreparedStatement pstmt  = null;
 		int result = 0;
-		PreparedStatement pstmt = null;
-		String query="";
-		query="insert into message(?,?,?,?,?,?,?,?)";
-		
+		String query = "";
+		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,?,?)";
 		try {
-			pstmt= con.prepareStatement(query);
+			pstmt = con.prepareStatement(query);
+			System.out.println(res.getAccDny());
+			if(res.getAccDny()=='1'){
+				pstmt.setString(1, "예약 승인 되었습니다. 결제 해주세요.");
+				pstmt.setInt(4, 2);
+				
+			}else{
+				pstmt.setString(1, "예약이 거절 되었습니다.");
+				pstmt.setInt(4, 3);
+			}
+			pstmt.setInt(2, res.getPetsNo());
+			pstmt.setInt(3, res.getPetoNo());
+			pstmt.setInt(5, res.getResNo());
+			
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
 		}
-		
 		return result;
 	}
 }

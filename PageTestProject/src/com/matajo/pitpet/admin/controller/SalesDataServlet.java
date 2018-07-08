@@ -26,14 +26,15 @@ public class SalesDataServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<SalesVo> list = new SalesService().getSales();
 		
-		Map<String, SalesVo> result = new HashMap<String, SalesVo>();
+		//Map<String, SalesVo> result = new HashMap<String, SalesVo>();
 		
-		for(SalesVo s :list){
+		/*for(SalesVo s :list){
 			result.put(s.getMonth(), s);
-		}
+		}*/
 		
 		response.setContentType("application/json; charset=utf-8"); 
-		new Gson().toJson(result,response.getWriter());
+		new Gson().toJson(list,response.getWriter());
+		System.out.println(list.get(0).getMonth());
 	}
 
 }

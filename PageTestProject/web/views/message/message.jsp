@@ -61,7 +61,6 @@ $(".detail").click(function(){
 	var messageNo = td.eq(0).text(); 
 	
 	var msgCode = td.eq(6).text();
-	//alert(messageCode);
 	//플래그 바꾸는 서블릿으로 이동
 	location.href="/ptp/updateMsg.do?messageNo="+messageNo+"&msgCode="+msgCode;
 	

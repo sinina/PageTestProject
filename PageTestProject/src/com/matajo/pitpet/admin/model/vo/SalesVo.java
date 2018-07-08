@@ -2,14 +2,14 @@ package com.matajo.pitpet.admin.model.vo;
 
 public class SalesVo {
 	
-	private String month;
+	private int month;
 	private int number;
 
-	public String getMonth() {
+	public int getMonth() {
 		return month;
 	}
 
-	public void setMonth(String month) {
+	public void setMonth(int month) {
 		this.month = month;
 	}
 
@@ -21,7 +21,7 @@ public class SalesVo {
 		this.number = number;
 	}
 
-	public SalesVo(String month, int number) {
+	public SalesVo(int month, int number) {
 		super();
 		this.month = month;
 		this.number = number;

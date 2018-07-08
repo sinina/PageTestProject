@@ -14,6 +14,7 @@ public class MessageVo {
 	private String resverName;
 	private int nFlagCnt;
 	private int msgCode;
+	private int res_no;
 	
 	
 	public int getMsgNo() {
@@ -78,6 +79,15 @@ public class MessageVo {
 	}
 	public void setResverName(String resverName) {
 		this.resverName = resverName;
+	}
+	
+	
+	
+	public int getRes_no() {
+		return res_no;
+	}
+	public void setRes_no(int res_no) {
+		this.res_no = res_no;
 	}
 	public MessageVo(){}
 	public MessageVo(int msgNo, int senderNo, int resverNo, String content, Date writeDate, char msgFlag) {

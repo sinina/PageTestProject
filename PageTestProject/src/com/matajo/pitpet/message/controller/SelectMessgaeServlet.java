@@ -22,6 +22,7 @@ public class SelectMessgaeServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//메시지 리스트불러오기
 		int memberNo= Integer.parseInt(request.getParameter("memberNo"));
 		List<MessageVo> list = new MessageService().getMessageList(memberNo);
 		RequestDispatcher view = null;

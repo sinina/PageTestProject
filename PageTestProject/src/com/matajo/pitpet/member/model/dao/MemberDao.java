@@ -279,5 +279,66 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+	public MemberVo selectMemberInfo(Connection con, int memberNo) {
+		MemberVo result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String qeury="SELECT * FROM MEMBER WHERE M_MEMBER_NO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(qeury);
+			pstmt.setInt(1,memberNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				result = new MemberVo();
+				result.setId(rs.getString("m_userid"));
+				result.setPwd(rs.getString("m_password"));
+				result.setAddress(rs.getString("m_address"));
+				result.setAge(rs.getInt("m_age"));
+				result.setCode(rs.getString("m_member_code").charAt(0));
+				result.setGender(rs.getString("m_gender").charAt(0));
+				result.setName(rs.getString("m_username"));
+				result.setPhone(rs.getString("m_phone"));
+				result.setNo(rs.getInt("m_member_no"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public int updateMemberInfo(Connection con, MemberVo mv) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "";
+		query = "UPDATE MEMBER SET M_USERID= ?, M_PASSWORD=?, M_USERNAME=?, M_GENDER=?, M_AGE=?, M_PHONE=?, M_ADDRESS=? WHERE M_MEMBER_NO = ?";
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, mv.getId());
+			pstmt.setString(2, mv.getPwd());
+			pstmt.setString(3, mv.getName());
+			pstmt.setString(4, String.valueOf(mv.getGender()));
+			pstmt.setInt(5, mv.getAge());
+			pstmt.setString(6, mv.getPhone());
+			pstmt.setString(7, mv.getAddress());
+			pstmt.setInt(8, mv.getNo());
+			
+			result = pstmt.executeUpdate();
+			System.out.println(result);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }
 
