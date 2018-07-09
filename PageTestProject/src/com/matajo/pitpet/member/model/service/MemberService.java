@@ -184,6 +184,12 @@ public class MemberService {
 		}
 		return result;
 	}
+	public MemberVo selectPhone(String phone) {
+		Connection con = JDBCTemplate.getConnection();
+		MemberVo member = new MemberDao().SelectPhone(con, phone);
+		JDBCTemplate.close(con);
+		return member;
+	}
 
 
 }

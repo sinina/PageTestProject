@@ -37,7 +37,6 @@ public class JoinServlet extends HttpServlet {
 				+ request.getParameter("sample6_address") + ", "
 				+ request.getParameter("sample6_address2");
 		
-		
 		MemberVo member = new MemberVo();
 		
 		int year = new GregorianCalendar().get(Calendar.YEAR);

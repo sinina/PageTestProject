@@ -1,3 +1,4 @@
+<%@page import="com.matajo.pitpet.member.model.vo.MemberVo"%>
 <%@page import="com.matajo.pitpet.patjoin.model.vo.PatVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,9 +13,10 @@
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
 <style>
 #patpassword, #patpasswordcheck{
-	width:500px;
+	width:515px;
 	font-size:auto;
 }
 #container {
@@ -424,7 +426,7 @@ function sample6_execDaumPostcode() {
  //비밀번호 널값 체크
 	 
  	var patpassword = $("#patpassword").val();
- 	if(patpassword=""){
+ 	if(patpassword ==""){
  		patpassword.focus();
  		return false;
  	}
@@ -471,7 +473,6 @@ function sample6_execDaumPostcode() {
 </head>
 <body>
 	<!-- Header -->
-	<%@include file="../common/header.jsp"%>
 	<div id="container">
 		<div id="content">
 			<div class="join_content">
@@ -566,6 +567,5 @@ function sample6_execDaumPostcode() {
 		</div>
 	</div>
 	<!-- Footer -->
-	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

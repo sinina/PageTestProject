@@ -7,9 +7,10 @@
 <title>회원 가입</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main.css" />
 <style>
 #patpassword, #patpasswordcheck{
-	width:500px;
+	width:515px;
 	font-size:auto;
 }
 #mm{
@@ -178,21 +179,7 @@ div {
       
       -------------------------------------
       나이정규표현식
-      /* //년 널값체크
-     var birVal = $("#yy").val();
-      if(birVal == ""){
-		return false;
-     }
-//월 널값체크
-     var mmVal = $("#mm").val();
-     if(mmVal == ""){
-		return false;
-     }
-//일 널값체크
-     var ddVal = $("#dd").val();
-     if(ddVal == ""){
-		return false;
-     } */
+     
      -------------------------------------
      전화번호 정규표현식
      /* //전화번호 널값체크
@@ -257,6 +244,7 @@ function sample6_execDaumPostcode() {
 	//$('input[name="sex"]').val();
 });
  */
+ var phoneFlag;
  $(function(){
 	 $("#patId").change(function(){
 			var inputId = $("#patId").val();
@@ -275,8 +263,6 @@ function sample6_execDaumPostcode() {
 					}else{
 						$("#messageDiv").text("아이디가 중복 됨");		
 						$("#messageDiv").css("color", "red");			
-
-			
 					}
 				},error : function(e){
 					console.log(e);
@@ -284,7 +270,27 @@ function sample6_execDaumPostcode() {
 			});
 		 	 }
 });
-	 
+	//전화번호 중복확인
+	 	var patphoneVal = $("#patphone").val();
+		var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+	 	if(regExp.test(patphoneVal)){
+	 		$.ajax({
+	 			url : "ptp/phoneCheck.do",
+	 			type : "get",
+	 			data : {userPhone : patphoneVal},
+	 			success : function(data){
+	 				if(data ==1){
+	 					phoneFlag = true;
+	 					alert("가능합니다.");
+	 				}else{
+						phoneFlag = false;
+	 					alert("이미 있는 전화번호입니다.");
+	 				}
+	 			}, error : function(e){
+	 				console.log(e);
+	 			}
+	 		});
+	 	}
 	 //가입하기 이벤트
 	 $("#pat").hover(function(){
 		$("#pat").css("background", "#20d63b"); 
@@ -370,10 +376,16 @@ function sample6_execDaumPostcode() {
  
  function validate(){
 
+	if(!phoneFlag){
+		alert("이미 있는 전화번호입니다.");
+		return false;
+	}
+	 
+	 
  //비밀번호 널값 체크
 	 
  	var patpassword = $("#patpassword").val();
- 	if(patpassword=""){
+ 	if(patpassword==""){
  		patpassword.focus();
  		return false;
  	}
@@ -389,7 +401,21 @@ function sample6_execDaumPostcode() {
     	 patnameVal.focus();
 		return false;
      }
-
+//년 널값체크
+    if($("#yy").val() == ""){
+    	alert("년도를 입력해주세요.");
+    	return false;
+    }
+//월 널값체크
+     var mmVal = $("#mm").val();
+     if(mmVal == ""){
+		return false;
+     }
+//일 널값체크
+     var ddVal = $("#dd").val();
+     if(ddVal == ""){
+		return false;
+     } 
 //우편번호 널값체크
      var sample6_postcodeVal = $("#sample6_postcode").val();
      if(sample6_postcodeVal==""){
@@ -408,22 +434,39 @@ function sample6_execDaumPostcode() {
 } 
 
  function pat(){
-	  $("#joinForm").submit();
+	//아이디 중복확인
+	 var inputId = $("#patId").val();
+	 var reExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	 var patIdVal = $("#patId").val();
+
+	 	if (reExp.test(inputId)) {
+	 		 	$.ajax({
+	 				url : "/ptp/idCheck.do",
+	 				type : "get",
+	 				data : {userId : inputId},
+	 				success : function(data){
+	 					if(data ==1){
+	 						$("#joinForm").submit();
+	 					}
+	 				},error : function(e){
+	 					console.log(e);
+	 				}
+	 			});
+	 		 	 }else{
+	 		 		 alert("아이디가 중복되었습니다.")
+	 		 	 }
 } 
 
 </script>
 </head>
 <body>
 	<!-- Header -->
-	<%@include file="../common/header.jsp"%>
 	<div id="container">
 		<div id="content">
 			<div class="join_content">
 				<div class="join_form">
 					<form id="joinForm" method="post" action="/ptp/join.do"
-						onsubmit="return 
-
-validate();">
+						onsubmit="return validate();">
 						<div id="ul">
 							<div class="ide">
 								<div id="patIde">
@@ -470,7 +513,7 @@ validate();">
 							<div>
 								<div id="patPhone">
 									<input type="text" maxlength="13" name="patPhone" id="patphone"
-										placeholder="전화번호" />
+										placeholder="XXX-XXXX-XXXX" />
 								</div>
 								<div id="phonemessDiv"></div>
 								<br>
@@ -481,52 +524,23 @@ validate();">
 									readonly />
 							</div>
 							<div class="line">
-								<input type="text" id="yy" name="yy" maxlength="4" value=""
-									placeholder="년(4자)" class="int">
+								<input type="text" id="yy" name="yy" maxlength="4" placeholder="년(4자)" class="int">
 							</div>
 							<div class="line">
 								<span> <select id="mm" name="mm" title="월" class="sel">
-
-
 										<option value="">월</option>
-
-
 										<option value="1">1</option>
-
-
 										<option value="2">2</option>
-
-
 										<option value="3">3</option>
-
-
 										<option value="4">4</option>
-
-
 										<option value="5">5</option>
-
-
 										<option value="6">6</option>
-
-
 										<option value="7">7</option>
-
-
 										<option value="8">8</option>
-
-
 										<option value="9">9</option>
-
-
 										<option value="10">10</option>
-
-
 										<option value="11">11</option>
-
-
 										<option value="12">12</option>
-
-
 								</select></span>
 							</div>
 							<div class="line">
@@ -559,7 +573,7 @@ validate();">
 			</div>
 		</div>
 	</div>
+	
 	<!-- Footer -->
-	<%@include file="../common/footer.jsp"%>
 </body>
 </html>

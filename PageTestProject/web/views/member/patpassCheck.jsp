@@ -117,10 +117,8 @@ $(function(){
 function pat(){
 	
 			var inputpass = $("#edamilSearch").val();
-			console.log($("#edamilSearch").val());
 			var req = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
 		 	var patIdVal = $("#edamilSearch").val();
-		 	console.log(req.test(inputpass));
 		 	if (req.test(inputpass)) {
 		 	$.ajax({
 				url : "/ptp/pwssCheck.do",

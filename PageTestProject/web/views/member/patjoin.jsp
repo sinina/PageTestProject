@@ -141,7 +141,7 @@ $(function(){
 		$("#img").css("background", "url('/ptp/images/img"+i+".jpg') no-repeat");
 		$("#img").css("background-size", "cover");
 		i++;
-	}, 10000);
+	}, 5000);
 });
 function pat(){
 	$.ajax({
