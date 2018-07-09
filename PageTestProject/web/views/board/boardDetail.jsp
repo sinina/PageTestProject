@@ -366,20 +366,24 @@ dt {
 			var $element = $group3.eq(i);
 			 switch(i){
 				case 0 :
-					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
+						$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
 					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto1()%>');
 					 break;
 				case 1 :
 					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto2()%>');
 					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto2()%>');
+					
+					 $element.children().eq(0).css('background-image', 'url("' +'<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto2()%>'+ '")');
 					 break;
 				case 2 :
 					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto3()%>');
 					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto3()%>');
+					 $element.children().eq(0).css('background-image', 'url("' +'<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto3()%>'+ '")');
 					 break;
 				case 3 :
 					$element.attr('href','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto4()%>');
 					 $element.children().eq(0).attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto4()%>');
+					 $element.children().eq(0).css('background-image', 'url("' +'<%=request.getContextPath()%>/upload/petsitter/<%=board.getPhoto4()%>'+ '")');
 					 break;		 
 			} 
 			 
@@ -507,19 +511,19 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 
 				<ul class="detail-content-img-list">
 					<li class="col-xs-4"><a class="group3"
-						href="../../upload/petsitter/2.jpg" rel="example1"> <span
+						href="" rel="example1"> <span
 							class="bg-size cover"
-							style="background-image: url(../../upload/petsitter/2.jpg)"></span>
+							style="background-image"></span>
 					</a></li>
 					<li class="col-xs-4"><a class="group3"
-						href="../../upload/petsitter/3.jpg" rel="example1"> <span
-							class="bg-size cover"
-							style="background-image: url(../../upload/petsitter/3.jpg)"></span>
+						href="" rel="example1"> <span
+							class="bg-size cover:"
+							style=""></span>
 					</a></li>
 					<li class="col-xs-4"><a class="group3"
-						href="../../upload/petsitter/4.jpg" rel="example1"> <span
+						href="" rel="example1"> <span
 							class="bg-size cover"
-							style="background-image: url(../../upload/petsitter/4.jpg)"></span>
+							style="background-image: "></span>
 					</a></li>
 				</ul>
 

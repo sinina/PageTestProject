@@ -318,7 +318,7 @@ public class BoardDao {
 			
 		} if(searchService!=5){
 			list = new ArrayList<BoardVo>();
-			query  =sql +" WHERE i.P_I_LEVEL= ?";
+			query  =sql +" WHERE p.P_LONG_TERM =?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1,searchService );
 			
