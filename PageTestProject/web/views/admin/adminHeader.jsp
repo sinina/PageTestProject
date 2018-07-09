@@ -34,13 +34,13 @@
 					<li><a href="#">우수 펫시터 관리</a></li>
 				</ul>
 			</li>
-			<li><a href="#">게시글 관리</a>
+			<!-- <li><a href="#">게시글 관리</a>
 				<ul>
 					<li><a href="/ptp/adminBoardList.do?postN=0">펫시팅 글 관리</a></li>
 					<li><a href="/ptp/adminReviewList.do?postN=1">후기글 관리</a></li>
 					<li><a href="#">신고 관리</a></li>
 				</ul>
-			</li>
+			</li> -->
 			<li><a href="#">펫시터 신청자 관리</a>
 				<ul>
 					<li><a href="/ptp/applyList.do?okayN=0">미승인된 펫시터 신청자</a></li>

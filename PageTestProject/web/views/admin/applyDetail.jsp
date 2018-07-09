@@ -88,7 +88,9 @@
 	top: 0;
 	width: 1em;
 	} */
-	
+	.image{
+	width: 300px;
+	}
 }
 }
 </style>
@@ -148,6 +150,12 @@
 		var license4='<%=apply.getLicense4()%>'.split(',');
 		$("#license4").val(license4[0]).prop("selected",true);
 		$("#licenseInfo4").val(license4[1]);
+	
+		var photo1=$("#petsitterImage1").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=apply.getPhoto1()%>');
+		var photo2=$("#petsitterImage2").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=apply.getPhoto2()%>');
+		var photo3=$("#petsitterImage3").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=apply.getPhoto3()%>');
+		var photo4=$("#petsitterImage4").attr('src','<%=request.getContextPath()%>/upload/petsitter/<%=apply.getPhoto4()%>');
+		
 	});
 	
 	
@@ -380,23 +388,15 @@
 
 			<h4>펫시터 활동 사진</h4>
 			<ul class="info-list none address">
-				<li class="dub"><label> 펫시터의 활동 사진을 등록해주세요. <br /> <span>
-							이미지 확장자는 꼭 <span style="color: #FF4A63;">jpg</span>로만
-							등록해주세요. (예시) image.jpg
-					</span> <span>최적의 사이즈는 <span style="color: #FF4A63;">가로
-								376px 세로 320px</span> 입니다.
-					</span>
+				<li class="dub"><label> 펫시터의 활동 사진 <br />
 				</label>
 				
 						<div id="fileArea">
-				<input type="file" id="petsitterImage1" name="petsitterImage1" 
-							/> 
-				<input type="file" id="petsitterImage2" name="petsitterImage2" 
-							/> 
-				<input type="file" id="petsitterImage3" name="petsitterImage3" 
-							/> 
-				<input type="file" id="petsitterImage4" name="petsitterImage4" 
-							/> 
+							<div ><img id="petsitterImage1" class="image" src="" >
+							<img id="petsitterImage2" class="image" src="" >
+							<img id="petsitterImage3" class="image" src="" >
+							<img id="petsitterImage4" class="image" src="" >
+							</div>
 				</div>	
 				<div class="btnArea" align="center">
 			

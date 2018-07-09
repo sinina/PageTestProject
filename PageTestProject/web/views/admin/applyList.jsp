@@ -9,6 +9,13 @@
 <% ArrayList<PetsitterApplyVo> list = (ArrayList<PetsitterApplyVo>)request.getAttribute("list"); %>
 <%int okayN =(int)request.getAttribute("okayN"); %>
 <title>Insert title here</title>
+<style>
+
+	a:hover{
+		font-weight: bold;
+		
+	}
+</style>
 </head>
 <body>
 <%@ include file="/views/admin/adminHeader.jsp" %>
