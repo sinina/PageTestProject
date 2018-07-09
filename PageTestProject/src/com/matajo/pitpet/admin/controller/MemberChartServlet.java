@@ -1,6 +1,8 @@
 package com.matajo.pitpet.admin.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+
 import com.google.gson.Gson;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,17 +24,15 @@ public class MemberChartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher view = null;
 		String area = request.getParameter("area");
-        int oList = new memberChartService().getOMemberCount(area);
-        int pList = new memberChartService().getPSMemberCount(area);
-
+        int oList = new MemberChartService().getOMemberCount(area);
+        int pList = new MemberChartService().getPSMemberCount(area);
+System.out.println(oList+","+pList);
         HashMap<String, Integer> resultMap = new HashMap<String, Integer>();
         resultMap.put("oList", oList);
         resultMap.put("pList", pList);
 
-        if(pList != 0){
-            response.setContentType("application/json");
-            new Gson().toJson(resultMap, response.getWriter());
-        	}
+        response.setContentType("application/json");
+        new Gson().toJson(resultMap, response.getWriter());
 	}
 
 }

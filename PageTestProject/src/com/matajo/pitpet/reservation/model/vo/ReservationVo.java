@@ -19,6 +19,7 @@ public class ReservationVo {
 	private String petoName;
 	private String petsName;
 	private String request;
+	private String animalNos;
 	
 	
 	
@@ -150,12 +151,29 @@ public class ReservationVo {
 		this.end = end;
 		this.request = request;
 	}
-	public ReservationVo(int petoNo, int petsNo, String start, String end) {
+	public ReservationVo(int petoNo, int petsNo, String start, String end, int price, String petsName, String petoName) {
 		super();
 		this.petoNo = petoNo;
 		this.petsNo = petsNo;
 		this.start = start;
 		this.end = end;
+		this.petsName = petsName;
+		this.petoName=petoName;
+		this.price=price;
 	}
 	public ReservationVo(){}
+	public ReservationVo(int petoNo, String animalKind, int petsNo, int price, String start, String end, String request,
+			String animalNos) {
+		super();
+		this.petoNo = petoNo;
+		this.animalKind = animalKind;
+		this.petsNo = petsNo;
+		this.price = price;
+		this.start = start;
+		this.end = end;
+		this.request = request;
+		this.animalNos = animalNos;
+	}
+	
+	
 }

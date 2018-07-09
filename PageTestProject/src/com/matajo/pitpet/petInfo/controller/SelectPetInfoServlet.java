@@ -2,6 +2,7 @@ package com.matajo.pitpet.petInfo.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,12 +26,18 @@ public class SelectPetInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int petsNo = Integer.parseInt(request.getParameter("petsNo"));
 		int petoNo = Integer.parseInt(request.getParameter("petoNo"));
+		String petsName= request.getParameter("petsName");
+		String petoName=request.getParameter("petoName");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
+		int price = Integer.parseInt(request.getParameter("price"));
+		System.out.println(price);
 		
-		ReservationVo rv = new ReservationVo(petsNo, petoNo, start, end);
-		PatVo pInfo = new PatService().patSelect(petoNo);
-		System.out.println("반려주"+petoNo);
+		ReservationVo rv = new ReservationVo(petsNo, petoNo, start, end, price, petsName, petoName);
+		//펫시터 정보 리스트로 불러오기
+		/*PatVo pInfo = new PatService().patSelect(petoNo);*/
+		List<PatVo> pInfo = new PatService().patSelect(petoNo);
+		
 		
 		RequestDispatcher view = null;
 		
@@ -39,7 +46,7 @@ public class SelectPetInfoServlet extends HttpServlet {
 			request.setAttribute("pInfo", pInfo);
 			
 			//예약 정보 확인 창으로 이동
-			view = request.getRequestDispatcher("views/reservation/test.jsp");
+			view = request.getRequestDispatcher("views/reservation/reservationConfirm.jsp");
 			view.forward(request, response);
 		}else{
 			PrintWriter out = response.getWriter();

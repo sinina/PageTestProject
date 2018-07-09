@@ -32,11 +32,15 @@ public class InsertReservationServlet extends HttpServlet {
 		int price = Integer.parseInt(request.getParameter("price"));
 		int petsNo = Integer.parseInt(request.getParameter("petsNo"));
 		int petoNo = Integer.parseInt(request.getParameter("petoNo"));
-		int animalNo = Integer.parseInt(request.getParameter("animalNo"));
-		String animalKind = request.getParameter("animalKind");
+		String[] animalNos = request.getParameterValues("animalNo[]");
+		String[] animalKind = request.getParameterValues("animalKind[]");
 		String msg = request.getParameter("msg");
+		
+		String animalNoCommon=String.join(",", animalNos);
+		String animalKindCommon=String.join("/", animalKind);
+		
 		//System.out.println(end);
-		ReservationVo res = new ReservationVo(petoNo, animalKind, petsNo, price, animalNo, start, end, msg);
+		ReservationVo res = new ReservationVo(petoNo, animalKindCommon, petsNo, price, start, end, msg, animalNoCommon);
 		int result = new ReservationService().insertReservation(res);
 		int resNo = new ReservationService().selectResNo(res);
 		

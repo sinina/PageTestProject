@@ -67,8 +67,10 @@
 				function drawChart1(){
 					var dataChart=[['month','sales']];
 					
-						console.log("성공");
+						/* console.log("성공");
+						console.log(list); */
 						$.each(list,function(i,item){
+							/* console.log(item) */
 							dataChart.push([item.month, item.number]);
 						});
 					
@@ -77,7 +79,8 @@
 		        var options = {
 		        		pointSize:5,
 		        	curveType: 'function',
-		          legend: { position: 'bottom' }
+		          legend: { position: 'bottom' },
+		          hAxis: {maxValue:12,minValue:1, ticks: [1,2,3,4,5,6,7,8,9,10,11,12]} 
 		        };
         var chart = new google.visualization.LineChart(document.getElementById('salesChart'));
         chart.draw(view, options);

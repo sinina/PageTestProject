@@ -10,7 +10,7 @@ public class MemberChartService {
     public int getOMemberCount(String area) {
 
         Connection con = JDBCTemplate.getConnection();
-        int result = new memberChartDao().getOwnerCount(con, area);
+        int result = new MemberChartDao().getOwnerCount(con, area);
 
         if (0 < result) {
             JDBCTemplate.commit(con);
@@ -24,7 +24,7 @@ public class MemberChartService {
     public int getPSMemberCount(String area) {
 
         Connection con = JDBCTemplate.getConnection();
-        int result = new memberChartDao().getPetsCount(con, area);
+        int result = new MemberChartDao().getPetsCount(con, area);
 
         if (0 < result) {
             JDBCTemplate.commit(con);

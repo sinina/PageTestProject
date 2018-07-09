@@ -17,7 +17,7 @@ public class SalesDao {
 		ResultSet rs = null;
 		String query="";
 		
-		query="SELECT TO_CHAR(PAY_DAY,'MM'), SUM(PAY_PRICE) "
+		query="SELECT TO_CHAR(PAY_DAY,'MM') AS MONTH, SUM(PAY_PRICE) AS PRICE "
 				+ "FROM PAYMENT "
 				+ "WHERE TO_CHAR(PAY_DAY, 'YYYY') = TO_CHAR(SYSDATE, 'YYYY') "
 				+ "GROUP BY TO_CHAR(PAY_DAY,'MM')";
@@ -28,8 +28,9 @@ public class SalesDao {
 			list = new ArrayList<SalesVo>();
 			SalesVo temp = new SalesVo();
 			while(rs.next()){
-				temp.setMonth(rs.getInt("TO_CHAR(PAY_DAY,'MM')"));
-				temp.setNumber(rs.getInt("SUM(PAY_PRICE)"));
+				temp = new SalesVo();
+				temp.setMonth(rs.getInt("MONTH"));
+				temp.setNumber(rs.getInt("PRICE"));
 				list.add(temp);
 			}
 		} catch (SQLException e) {

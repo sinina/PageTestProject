@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
 		반려동물 종류: <%=res.getAnimalKind() %><br>
 		결제 금액 : <%=res.getPrice() %><br>
 		요청 사항 : <%=res.getRequest() %><br><br>
-		펫시터 no : <%=res.getPetsNo() %>
+		<%-- 펫시터 no : <%=res.getPetsNo() %> --%>
 	<div class="btnWrapper">
 		<%if(msgCode==2){ %>
 		<button onclick="kakaoPayment();">카카오 페이로 결제하기</button>

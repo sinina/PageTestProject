@@ -41,14 +41,22 @@ public class LoginServlet extends HttpServlet {
 			String url ="views/member/memberLogin.jsp";
 			RequestDispatcher view = request.getRequestDispatcher(url);
 			
+			int memberCode = (int)member.getCode();
+			
 			if(null==member){
 				request.setAttribute("flag", "false");
 				view.forward(request, response);
 			}else{
 				if(userPwd.equals(member.getPwd())){
+					if(memberCode=='0'){
+						System.out.println(member.getCode());
+						response.sendRedirect("/ptp/selectMonth.do");
+					}else{
 					HttpSession session = request.getSession();
 					session.setAttribute("user", member);
 					response.sendRedirect("index.jsp");
+					}
+				//관리자로 로그인할때 관리자 페이지로 넘어가게함
 				}else{
 					request.setAttribute("flag", "false");
 					view.forward(request, response);

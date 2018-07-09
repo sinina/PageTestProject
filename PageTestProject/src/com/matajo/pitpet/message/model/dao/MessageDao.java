@@ -16,7 +16,7 @@ public class MessageDao {
 		PreparedStatement pstmt  = null;
 		int result = 0;
 		String query = "";
-		query = "INSERT INTO MESSAGE VALUES('예약 요청이 들어왔습니다.',SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,1,?)";
+		query = "INSERT INTO MESSAGE VALUES('예약 요청이 들어왔습니다.',SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,1,default,?)";
 		try {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, message.getSenderNo());
@@ -142,7 +142,7 @@ public class MessageDao {
 		PreparedStatement pstmt  = null;
 		int result = 0;
 		String query = "";
-		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,DEFAULT,?,?)";
+		query = "INSERT INTO MESSAGE VALUES(?,SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,?,default,?)";
 		try {
 			pstmt = con.prepareStatement(query);
 			System.out.println(res.getAccDny());

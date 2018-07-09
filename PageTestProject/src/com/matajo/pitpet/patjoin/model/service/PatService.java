@@ -2,10 +2,13 @@ package com.matajo.pitpet.patjoin.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.member.model.dao.MemberDao;
 import com.matajo.pitpet.member.model.vo.MemberVo;
+import com.matajo.pitpet.message.model.dao.MessageDao;
+import com.matajo.pitpet.message.model.vo.MessageVo;
 import com.matajo.pitpet.patjoin.model.dao.PatDao;
 import com.matajo.pitpet.patjoin.model.vo.PatVo;
 
@@ -76,5 +79,15 @@ public class PatService {
 		JDBCTemplate.close(con);
 		return result;
 	}
+
+	public List<PatVo> patSelect(int petoNo) {
+		Connection con = JDBCTemplate.getConnection();
+		ArrayList<PatVo> pInfo = new PatDao().selectPatinfo(con,petoNo);
+		JDBCTemplate.close(con);
+		return pInfo;
+		
+	}
+
+	
 
 }

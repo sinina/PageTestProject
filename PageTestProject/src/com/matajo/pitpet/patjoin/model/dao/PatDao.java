@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.matajo.pitpet.common.JDBCTemplate;
 import com.matajo.pitpet.member.model.vo.MemberVo;
+import com.matajo.pitpet.message.model.vo.MessageVo;
 import com.matajo.pitpet.patjoin.model.vo.PatVo;
 
 public class PatDao {
@@ -286,5 +287,50 @@ public class PatDao {
 		}
 		
 		return result;
+	}
+
+	//예약 할때 펫 정보리스트 회원번호로 가져오기
+	public ArrayList<PatVo> selectPatinfo(Connection con, int petoNo) {
+		ArrayList<PatVo> pInfo = new ArrayList<PatVo>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		
+		try {
+			query = "SELECT * "
+					+ "FROM PET_INFO "
+					+ "WHERE P_OWNER_NO = ?";
+
+			pstmt= con.prepareStatement(query);
+			pstmt.setInt(1, petoNo);
+			rs= pstmt.executeQuery();
+			
+			PatVo temp= null;
+			while(rs.next()){
+				temp= new PatVo();
+				temp.setPatName(rs.getString("P_NAME"));
+				temp.setPatkg(rs.getString("P_WEIGHT"));
+				temp.setPatImage(rs.getString("P_IMAGE"));
+				temp.setKinds(rs.getString("P_KINDS"));
+				temp.setKinds_of(rs.getString("P_KINDS_OF"));
+				temp.setPatage(rs.getInt("P_AGE"));
+				temp.setPatInfo(rs.getString("P_INFO"));
+				temp.setOwner_no(rs.getInt("P_OWNER_NO"));
+				temp.setPatgender(rs.getString("P_GENDER").charAt(0));
+				temp.setOperation(rs.getString("P_NE_OPERATION").charAt(0));
+				temp.setUniquness(rs.getString("P_UNIQUENESS"));
+				temp.setHospital(rs.getString("P_HOSPITAL"));
+				temp.setNo(rs.getInt("P_NO"));
+			
+				pInfo.add(temp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+	}
+		return pInfo;
 	}
 }

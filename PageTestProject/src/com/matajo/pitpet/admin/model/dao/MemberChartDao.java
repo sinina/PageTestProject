@@ -18,8 +18,8 @@ public class MemberChartDao {
 
             try {
                 stmt= con.createStatement();
-                query="select count(*)" +
-                        "  from MEMBER" +
+                query="select count(*) as TotalOwnerCnt" +
+                        "  from MEMBER " +
                         "where M_MEMBER_CODE = '1' and M_ADDRESS like '%"+area+"%'";
                 rs= stmt.executeQuery(query);
 
@@ -46,8 +46,8 @@ public class MemberChartDao {
 
         try {
             stmt= con.createStatement();
-            query="select count(*)" +
-                    "  from MEMBER" +
+            query="select count(*) as TotalPetsCnt" +
+                    "  from MEMBER " +
                     "where M_MEMBER_CODE = '2' and M_ADDRESS like '%"+area+"%'";
             rs= stmt.executeQuery(query);
 

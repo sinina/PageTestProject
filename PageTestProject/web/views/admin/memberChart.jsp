@@ -255,8 +255,8 @@
                     console.log(data);
                     var content = '<div class="info">' +
                     '   <div class="title">' + area.name + '</div>' +
-                    '   <div class="size">PetSitter : ' + Math.floor(polygon.getArea()) + '</br>' + // 펫시터 인원 넣기
-                    '   <div class="size">PetOwner : ' + data + '</br>' + // 반려주 인원 넣기 ajax success if flag parameter(Area)
+                    '   <div class="size">PetSitter : ' + data.pList + '</br>' + // 펫시터 인원 넣기
+                    '   <div class="size">PetOwner : ' + data.oList + '</br>' + // 반려주 인원 넣기 ajax success if flag parameter(Area)
                     '</div>';
 
                 infowindow.setContent(content);
