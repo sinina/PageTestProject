@@ -45,6 +45,13 @@ public class BoardService {
 		return list;
 	}
 
+	public BoardVo selectBoard(int no, String name) {
+		Connection con =JDBCTemplate.getConnection(); 
+		BoardVo board = new BoardDao().selectBoard(no,name,con);
+		JDBCTemplate.close(con);	
+		return board;
+	}
+
 	
 	/*public ArrayList<BoardVo> selectBoardList(){
 		//1. 커넥션 연결

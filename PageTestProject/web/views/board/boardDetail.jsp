@@ -385,13 +385,13 @@ dt {
 			 
 		}
 		$(".detail-content-intro-t").append('<%=board.getTitle()%>');
-		
+		var opper = "<%=board.getOpportunity()%>";
 		$question =$(".question");
 		for(var i = 0 ;i<$group3.length;i++){
 			var $element = $question.eq(i);
 			switch(i){
 			case 0:
-				$element.append('<%=board.getOpportunity()%>');
+				$element.append(opper);
 				break;
 			case 1:
 				$element.append('<%=board.getActivityhisotry()%>');

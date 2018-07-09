@@ -659,6 +659,64 @@ public class BoardDao {
 		return list;
 	}
 
+	public BoardVo selectBoard(int no, String name, Connection con) {
+		BoardVo board=null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query="";
+		
+		try {
+			String filePath 
+			= JDBCTemplate.class.getResource("/oracleSql.properties").getPath();
+			Properties prop = new Properties();
+			prop.load(new FileReader(filePath));
+			String sql = prop.getProperty("selectboardlist");
+			query  =sql +" WHERE M.M_MEMBER_NO=? AND M.M_USERNAME =? "; 	
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, no);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				
+				String m_name = rs.getString("m_username");
+				String address = rs.getString("m_address");
+				String title = rs.getString("p_adcomment");
+				String photo1 = rs.getString("p_photo1");
+				String photo2 = rs.getString("p_photo2");
+				String photo3 = rs.getString("p_photo3");
+				String photo4 = rs.getString("p_photo4");
+				int level = rs.getInt("p_i_level");	
+				String opportunity =rs.getString("p_opportunity");
+				 String activityhisotry=rs.getString("p_activityhisotry");
+				 String prcontext=rs.getString("p_prcontext");
+				 int pickup = rs.getInt("p_pickup");
+				 int camera= rs.getInt("p_camera");
+				 String license1=rs.getString("p_license1");
+				 String license2=rs.getString("p_license2");
+				 String license3=rs.getString("p_license3");
+				 String license4=rs.getString("p_license4");
+				 int child= rs.getInt("p_child");
+				 int jobstyle= rs.getInt("p_jobstyle");
+				 int animalcheck= rs.getInt("p_animalcheck");
+				 
+				 int memberNo =rs.getInt("m_member_no");
+				
+				 board = new BoardVo(memberNo, m_name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return board;
+	}
+
 	/*
 	 * public ArrayList<BoardVo> selectBoardList(Connection con){
 	 * ArrayList<BoardVo> list = null; Statement stmt = null; ResultSet rs =

@@ -46,7 +46,9 @@
 			
 			
 			var $local_distribution = $("#local_distribution").children(":first").children().children();
-			 
+			
+			
+			
 			if($local_distribution.text()==""){
 				 $.ajax({
 						url : "/ptp/localdistri.do",
@@ -121,8 +123,9 @@ function callDetail(index){
 	<%if(boardList!=null){%>
 	<%for(int i=0;i<boardList.size();i++){%>
 		if(index==<%=i%>){
-			location.href="<%=request.getContextPath()%>/selectBoard.do?name=<%=boardList.get(i).getName()%>&address=<%=boardList.get(i).getAddress()%>&title=<%=boardList.get(i).getTitle()%>&photo1=<%=boardList.get(i).getPhoto1()%>&photo2=<%=boardList.get(i).getPhoto2()%>&photo3=<%=boardList.get(i).getPhoto3()%>&photo4=<%=boardList.get(i).getPhoto4()%>&level=<%=boardList.get(i).getLevel()%>&opportunity=<%=boardList.get(i).getOpportunity()%>&activityhisotry=<%=boardList.get(i).getActivityhisotry()%>&prcontext=<%=boardList.get(i).getPrcontext()%>&pickup=<%=boardList.get(i).getPickup()%>&camera=<%=boardList.get(i).getCamera()%>&license1=<%=boardList.get(i).getLicense1()%>&license2=<%=boardList.get(i).getLicense2()%>&license3=<%=boardList.get(i).getLicense3()%>&license4=<%=boardList.get(i).getLicense4()%>&child=<%=boardList.get(i).getChild()%>&jobstyle=<%=boardList.get(i).getJobstyle()%>&animalcheck=<%=boardList.get(i).getAnimalcheck()%>&member=<%=boardList.get(i).getNo()%>";
+			location.href ="<%=request.getContextPath()%>/selectBoard.do?name=<%=boardList.get(i).getName()%>&p_no=<%=boardList.get(i).getNo()%>";
 		}
+		
 	<%}%>
 	<%}%>
 }
@@ -775,7 +778,7 @@ function callDetail(index){
 	<div class="text_title">
 	
 					
-				<a    class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);"  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -808,7 +811,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -840,7 +843,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -871,7 +874,7 @@ function callDetail(index){
 	<div class="content_text ">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -902,7 +905,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 						</a>
 							
 			</div>		
@@ -932,7 +935,7 @@ function callDetail(index){
 	<div class="content_text hi">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -964,7 +967,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -997,7 +1000,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1030,7 +1033,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);"  class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1063,7 +1066,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1096,7 +1099,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1129,7 +1132,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1162,7 +1165,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1195,7 +1198,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		
@@ -1228,7 +1231,7 @@ function callDetail(index){
 	<div class="content_text">
 	<div class="text_title">
 	
-				<a  class="hidden-xs" style="color:#696969; font-weight: bold; ">
+				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
 							</a>
 							
 			</div>		

@@ -234,12 +234,21 @@ public class BoardVo {
 	public void setPhoto4(String photo4) {
 		this.photo4 = photo4;
 	}
-	
+
+
+
 
 	@Override
 	public String toString() {
-		return "BoardVo [name=" + name + ", address=" + address + ", title=" + title + ", photo1=" + photo1
-				+ ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", level=" + level + "]";
+		return "BoardVo [no=" + no + ", name=" + name + ", address=" + address + ", title=" + title + ", photo1="
+				+ photo1 + ", photo2=" + photo2 + ", photo3=" + photo3 + ", photo4=" + photo4 + ", level=" + level
+				+ ", opportunity=" + opportunity + ", activityhisotry=" + activityhisotry + ", prcontext=" + prcontext
+				+ ", pickup=" + pickup + ", camera=" + camera + ", license1=" + license1 + ", license2=" + license2
+				+ ", license3=" + license3 + ", license4=" + license4 + ", child=" + child + ", jobstyle=" + jobstyle
+				+ ", animalcheck=" + animalcheck + "]";
 	}
+	
+
+
 
 }
