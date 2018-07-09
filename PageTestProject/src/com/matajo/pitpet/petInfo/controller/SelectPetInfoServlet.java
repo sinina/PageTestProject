@@ -42,6 +42,14 @@ public class SelectPetInfoServlet extends HttpServlet {
 		RequestDispatcher view = null;
 		
 		if(pInfo!=null){
+			System.out.println(pInfo.size());
+			if(pInfo.size()==0){
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('반려동물을 등록해주세요.'); location.href='/ptp/boardListAdd.do';</script>"); 
+				out.flush();
+				out.close();
+				
+			}
 			request.setAttribute("rv", rv);
 			request.setAttribute("pInfo", pInfo);
 			
