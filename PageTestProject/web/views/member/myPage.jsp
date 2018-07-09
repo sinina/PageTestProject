@@ -3,7 +3,6 @@
 	pageEncoding="UTF-8"%>
 <%
 	MemberVo mv = (MemberVo) session.getAttribute("user");
-	PatVo pv = (PatVo)request.getAttribute("su");
 %>
 <!DOCTYPE html>
 <html>
@@ -14,6 +13,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
+#patpassword, #patpasswordcheck{
+	width:515px;
+	font-size:auto;
+}
 #container {
 	min-height: 900px;
 	padding-top: 52px;
@@ -182,7 +185,7 @@ div {
 	border-radius: 0%;
 }
 #patId, #patpassword, #patpasswordcheck, #patname, #man, #woman, #patphone, #patage, #yy, #mm, #dd, #sample6_postcode, #sample6_address, #sample6_address2{
-	border-color: #00e870;
+	border-color: skyblue;
 }
 </style>
 <!--정규표현식
@@ -290,33 +293,6 @@ function sample6_execDaumPostcode() {
 		$("#sample6_postcode").val(addr[0]);
 		$("#sample6_address").val(addr[1]);
 		$("#sample6_address2").val(addr[2]);
-		
-	 $("#patId").change(function(){
-			var inputId = $("#patId").val();
-		 	var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		 	var patIdVal = $("#patId").val();
-		 	
-		 	if (regExp.test(inputId)) {
-		 	$.ajax({
-				url : "/ptp/idCheck.do",
-				type : "get",
-				data : {userId : inputId},
-				success : function(data){
-					if(data ==1){
-						$("#messageDiv").text("사용가능한 아이디입니다.");		
-						$("#messageDiv").css("color", "green");
-					}else{
-						$("#messageDiv").text("아이디가 중복 됨");		
-						$("#messageDiv").css("color", "red");			
-
-			
-					}
-				},error : function(e){
-					console.log(e);
-				}
-			});
-		 	 }
-});
 	 
 	 //수정하기 이벤트
 	 $("#pat").hover(function(){
@@ -489,12 +465,8 @@ function sample6_execDaumPostcode() {
 	location.href = "/ptp/memberDelete.do?userId=<%=mv.getId()%>";
  }
  function patinout(){
-	 location.href = "views/member/patjoin.jsp";
+	 location.href = "/ptp/patList.do?userId=<%=mv.getId()%>";
  }
- function patin(){
-	 location.href = "/ptp/patjoinsu.do?userId=<%=mv.getId()%>";
- }
-
 </script>
 </head>
 <body>
@@ -587,10 +559,7 @@ function sample6_execDaumPostcode() {
 						<br>
 						<div id="pat" onclick="pat();">수정</div>
 						<div id="out" onclick="out();">탈퇴</div>
-						<div id="patinout" onclick="patinout();">애완동물 관리</div>
-						<%if(pv!= null){ %>
-						<div id="patin" onclick="patin();">애완동물 수정</div>
-						<%} %>
+						<div id="patinout" onclick="patinout();">반려동물 관리</div>
 					</form>
 				</div>
 			</div>

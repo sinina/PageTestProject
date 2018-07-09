@@ -212,4 +212,79 @@ public class PatDao {
 		
 		return pInfo;
 	}
+
+	public ArrayList<PatVo> SelectPatcon(Connection con, String id) {
+		ArrayList<PatVo> list = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		
+		query = "SELECT P_NAME, P_WEIGHT, P_IMAGE, P_KINDS, P_KINDS_OF, P_AGE, P_INFO, P_OWNER_NO, P_GENDER, P_NE_OPERATION, P_UNIQUENESS, P_HOSPITAL, P_NO"
+				+ " FROM PET_INFO"
+				+ " JOIN MEMBER ON (P_OWNER_NO = M_MEMBER_NO)"
+				+ " WHERE M_USERID = ?";
+			
+		try {
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<PatVo>();
+			PatVo pat = null;
+			while(rs.next()){
+				pat = new PatVo();
+				pat.setPatName(rs.getString("P_NAME"));
+				pat.setPatkg(rs.getString("P_WEIGHT"));
+				pat.setPatImage(rs.getString("P_IMAGE"));
+				pat.setKinds(rs.getString("P_KINDS"));
+				pat.setKinds_of(rs.getString("P_KINDS_OF"));
+				pat.setPatage(rs.getInt("P_AGE"));
+				pat.setPatInfo(rs.getString("P_INFO"));
+				pat.setOwner_no(rs.getInt("P_OWNER_NO"));
+				pat.setPatgender(rs.getString("P_GENDER").charAt(0));
+				pat.setOperation(rs.getString("P_NE_OPERATION").charAt(0));
+				pat.setUniquness(rs.getString("P_UNIQUENESS"));
+				pat.setHospital(rs.getString("P_HOSPITAL"));
+				pat.setNo(rs.getInt("P_NO"));
+				
+				list.add(pat);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public int patSelect2(Connection con, String id) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		ResultSet rs = null;
+		query = "SELECT COUNT(*) AS PATCOUNT"
+				+ " FROM PET_INFO"
+				+ " JOIN MEMBER ON (P_OWNER_NO = M_MEMBER_NO)"
+				+ " WHERE M_USERID = ?";
+		
+		
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				result = rs.getInt("PATCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 }

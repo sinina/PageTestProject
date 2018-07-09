@@ -9,9 +9,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>애완동물 정보</title>
+<title>반려동물 정보</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <style>
+body{
+		background:url("/ptp/images/image.jpg") no-repeat;
+		background-size:cover;
+	}
 table.type08 {
 	border-collapse: collapse;
 	text-align: left;
@@ -101,6 +105,7 @@ textarea{
 </style>
 <script>
 $(function(){
+
 	//수정하기 이벤트
 	$("#pat").hover(function(){
 		$("#pat").css("background", "#20d63b"); 
@@ -167,12 +172,12 @@ function setImage(obj){
 	}
 }
 function patearlse(){
-	location.href = "/ptp/patearlse.do?userId=<%=pv.getOwner_no()%>";
+	location.href = "/ptp/patearlse.do?userId=<%=pv.getNo()%>";
  }
 </script>
 </head>
 <body>
-	<h1>애완동물 정보</h1>
+	<h1>반려동물 정보</h1>
 	<div id="container">
 		<div id="content">
 			<form id="patjoinForm" method="post" action="/ptp/patpage.do" enctype="multipart/form-data" onsubmit="return validate();">
@@ -198,7 +203,7 @@ function patearlse(){
 						</td>
 					</tr>
 					<tr>
-						<td>애완동물 종류<select name="kind">
+						<td>반려동물 종류<select name="kind">
 						<option selected value="강아지" <%=pv.getKinds()=="강아지"?"selected":"" %>>강아지</option>
 						<option value="고양이" <%=pv.getKinds()=="고양이"?"selected":"" %>>고양이</option>
 						<option value="그외"<%=pv.getKinds()=="그외"?"selected":"" %>>그외</option>

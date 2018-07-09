@@ -25,9 +25,7 @@ public class PatJoinabServlet extends HttpServlet {
 		String id = request.getParameter("userId");
 		PatVo pat = new PatService().patSelect(id);
 		
-		
-		request.setAttribute("su", pat);
-		RequestDispatcher view = request.getRequestDispatcher("views/member/myPage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("views/member/patpassCheck.jsp");
 		view.forward(request, response);
 	}
 

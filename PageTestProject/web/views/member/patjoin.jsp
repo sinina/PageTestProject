@@ -5,15 +5,39 @@
 	<%
 		PatVo pv = (PatVo)request.getAttribute("pat");
 		MemberVo user = (MemberVo)session.getAttribute("user");
-		System.out.println(user.getNo());
 	%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>애완동물 정보</title>
+<title>반려동물 정보</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <style>
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+	
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+	
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+#img{
+		background:url("/ptp/images/image.jpg") no-repeat;
+		background-size:cover;
+	}
 table.type08 {
 	border-collapse: collapse;
 	text-align: left;
@@ -65,7 +89,7 @@ table.type08 td {
 
 #content {
 	display: block;
-	border: 3px solid #00ff43;
+	border: 3px solid skyblue;
 	border-radius: 20px;
 	width: auto;
 	height: 1000px;
@@ -110,18 +134,26 @@ $(function(){
 	}, function(){
 		 $("#pat").css("background", "#e52770");
 	});
+	var i = 1;
+	setInterval(function(){
+		//background:url("/ptp/images/image.jpg") no-repeat;
+		i %= 10;
+		$("#img").css("background", "url('/ptp/images/img"+i+".jpg') no-repeat");
+		$("#img").css("background-size", "cover");
+		i++;
+	}, 10000);
 });
 function pat(){
 	$.ajax({
 		url : "/ptp/patCheck.do",
 		type : "get",
-		data : {userId : <%=user.getNo()%>},
+		data : {userId : '<%=user.getId()%>'},
 		success : function(data){
 			console.log(data);
-			 if(data ==1){
+			 if(data < 10){
 				 $("#patjoinForm").submit();
 			}else{
-				alert("애완동물 정보가 이미 존재합니다.");
+				alert("애완동물 10개까지가 최대입니다.");
 			} 
 		},error : function(e){
 		}
@@ -178,7 +210,8 @@ function setImage(obj){
 </script>
 </head>
 <body>
-	<h1>애완동물 정보</h1>
+<div id="img">
+	<h1>반려동물 정보</h1>
 	<div id="container">
 		<div id="content">
 			<form id="patjoinForm" method="post" action="/ptp/patjoin.do" enctype="multipart/form-data" onsubmit="return validate();">
@@ -236,6 +269,7 @@ function setImage(obj){
 				<div id="pat" onclick="pat();">등록하기</div>
 				</form>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

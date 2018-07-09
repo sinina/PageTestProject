@@ -9,6 +9,13 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
+#patpassword, #patpasswordcheck{
+	width:515px;
+	font-size:auto;
+}
+#mm{
+	width:113px;
+}
 #container {
 	min-height: 900px;
 	padding-top: 52px;
@@ -90,19 +97,17 @@ form {
 
 #mm {
 	margin-left: 60px;
-	height: 50px;;
+	height: 55px;
 }
 
 #dd {
 	margin-left: 52px;
 }
-
 #styl {
 	width: 500px;
 	height: 30px;
 	background: yellow;
 }
-
 #patIde {
 	
 }
@@ -156,6 +161,9 @@ div {
 
 #woman+label:before {
 	border-radius: 0%;
+}
+#patId, #patpassword, #patpasswordcheck, #patname, #man, #woman, #patphone, #patage, #yy, #mm, #dd, #sample6_postcode, #sample6_address, #sample6_address2{
+	border-color: skyblue;
 }
 </style>
 <!--정규표현식
@@ -251,7 +259,6 @@ function sample6_execDaumPostcode() {
 });
  */
  $(function(){
-	  
 	 $("#patId").change(function(){
 			var inputId = $("#patId").val();
 		 	var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -276,7 +283,7 @@ function sample6_execDaumPostcode() {
 					console.log(e);
 				}
 			});
-	}
+		 	 }
 });
 	 
 	 //가입하기 이벤트
@@ -306,7 +313,7 @@ function sample6_execDaumPostcode() {
 	 	 if(req.test(pass)){
 	 		$("#passMessageDiv").empty();
 	 	 }else{
-	 		$("#passMessageDiv").text("비밀번호가 입력되지 않았습니다.");
+	 		$("#passMessageDiv").text("비밀번호를 입력하지 않았거나 형식에 맞지 않습니다.");
 	 	 }
 	 });
 	 
@@ -317,7 +324,7 @@ function sample6_execDaumPostcode() {
 	 	 if(regExp.test(patphoneVal)){
 	 		$("#phonemessDiv").empty();
 	 	 }else{
-	 		$("#phonemessDiv").text("전화번호가 입력되지 않았습니다.");
+	 		$("#phonemessDiv").text("전화번호를 입력하지 않았거나 잘못된 전화번호 입니다.");
 	 	 }
 	 });
 	 
@@ -338,7 +345,7 @@ function sample6_execDaumPostcode() {
 		 if(pattern.test(Name)){
 			 $("#NameMessageDiv").empty();
 		 }else{
-			 $("#NameMessageDiv").text("이름을 입력해주십시오.");			 
+			 $("#NameMessageDiv").text("2~4글자의 이름을 입력해주세요.");			 
 		 }
 	 });
 	 //비밀번호 일치여부 포커스
@@ -364,27 +371,6 @@ function sample6_execDaumPostcode() {
  
  function validate(){
 
-	 //아이디 널값체크
-	 var patIdVal = $.trim($("#patId").val());
-	  if(patIdVal == "" || null == patIdVal){
-		  alert("아이디를 입력해주십시오.");
-		  $("#messageDiv").text("아이디를 입력해주십시오");
-		  return false;
-	  }
-	//아이디 정규표현 리턴확인
-	 var inputId = $("#patId").val();
-	 var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	 var idMessage = $("#messageDiv").text();
-	 if (!regExp.test(inputId)||idMessage=="아이디가 중복 됨") {
-		 return false;
-		 }
-	 
-//아이디 정규표현식
- 	 /*  var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-	  if (!regExp.test(patIdVal)) {
-		return false;
-	  } */
-	  
  //비밀번호 널값 체크
 	 
  	var patpassword = $("#patpassword").val();

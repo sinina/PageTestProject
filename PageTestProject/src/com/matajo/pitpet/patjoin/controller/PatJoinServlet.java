@@ -1,6 +1,7 @@
 package com.matajo.pitpet.patjoin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -76,10 +77,14 @@ public class PatJoinServlet extends HttpServlet {
 		
 		int result = new PatService().insertPat(pat);
 		
-		String url="/index.jsp";
-		RequestDispatcher rd = request.getRequestDispatcher(url);
+		
+		ArrayList<PatVo> list = new PatService().Selectpat(mv.getId());
+		
+		RequestDispatcher rd = null;
 		if(0<result){
 			request.setAttribute("pat", "예");
+			request.setAttribute("list", list);
+			rd = request.getRequestDispatcher("views/member/patList.jsp");
 		}else{
 			request.setAttribute("exit", "아니요");
 		}

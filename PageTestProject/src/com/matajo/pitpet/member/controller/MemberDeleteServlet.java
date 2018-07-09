@@ -40,7 +40,7 @@ public class MemberDeleteServlet extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}else{
 			request.setAttribute("msg", "회원 탈퇴중 문제가 발생하였습니다.");
-			RequestDispatcher rs = request.getRequestDispatcher("views/common/errorPage.jsp");
+			RequestDispatcher rs = request.getRequestDispatcher("views/member/error.jsp");
 			rs.forward(request, response);
 		}
 	}

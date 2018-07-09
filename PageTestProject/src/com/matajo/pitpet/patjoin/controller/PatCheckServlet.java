@@ -23,12 +23,7 @@ public class PatCheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("userId");
-		PatVo pat = new PatService().patSelect(id);
-		
-		int result = 0;
-		if(null == pat){
-			result =1;
-		}
+		int  result = new PatService().patSelect2(id);
 		
 		response.getWriter().println(result);
 	}
