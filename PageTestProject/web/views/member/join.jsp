@@ -7,10 +7,9 @@
 <title>회원 가입</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
 #patpassword, #patpasswordcheck{
-	width:515px;
+	width:500px;
 	font-size:auto;
 }
 #mm{
@@ -152,7 +151,7 @@ div {
 
 #jenderCheck {
 	padding-top: 15px;
-	height: 70px;
+	height: 80px;
 }
 
 #man+label:before {

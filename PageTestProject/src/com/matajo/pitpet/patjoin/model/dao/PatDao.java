@@ -97,7 +97,7 @@ public class PatDao {
 		query = "SELECT P_NAME, P_WEIGHT, P_IMAGE, P_KINDS, P_KINDS_OF, P_AGE, P_INFO, P_OWNER_NO, P_GENDER, P_NE_OPERATION, P_UNIQUENESS, P_HOSPITAL, P_NO"
 				+ " FROM PET_INFO"
 				+ " JOIN MEMBER ON (P_OWNER_NO = M_MEMBER_NO)"
-				+ " WHERE M_USERID = ?";
+				+ " WHERE P_NO = ?";
 		
 		try {
 			pstmt = con.prepareStatement(query);

@@ -29,7 +29,6 @@ public class MemberService {
 		Connection con = JDBCTemplate.getConnection();
 		
 		int result = new MemberDao().insertMember(con, member);
-		System.out.println(result);
 		//결과 처리(트랜젝션)
 		if(0 < result){
 			JDBCTemplate.commit(con);
@@ -163,6 +162,22 @@ public class MemberService {
 		Connection con = JDBCTemplate.getConnection();
 		int result = new MemberDao().updateMemberInfo(con,mv);
 		if(0<result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		return result;
+	}
+	public MemberVo selectPass(String id, String pwd) {
+		Connection con = JDBCTemplate.getConnection();
+		MemberVo member = new MemberDao().SelectPass(con,id, pwd);
+		JDBCTemplate.close(con);
+		return member;
+	}
+	public int UpdateMember(MemberVo member) {
+		Connection con = JDBCTemplate.getConnection();
+		int result = new MemberDao().updatepassMember(con, member);
+		if(0 < result){
 			JDBCTemplate.commit(con);
 		}else{
 			JDBCTemplate.rollback(con);

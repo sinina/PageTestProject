@@ -340,5 +340,40 @@ public class MemberDao {
 		}
 		return result;
 	}
+
+	public MemberVo SelectPass(Connection con, String id, String pwd) {
+		MemberVo result = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String qeury="SELECT * FROM MEMBER WHERE M_USERID = ? AND M_PASSWORD = ?";
+		
+		try {
+			pstmt = con.prepareStatement(qeury);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				result = new MemberVo();
+				result.setPwd(rs.getString("m_password"));
+				result.setAddress(rs.getString("m_address"));
+				result.setAge(rs.getInt("m_age"));
+				result.setCode(rs.getString("m_member_code").charAt(0));
+				result.setEnrollDate(rs.getDate("m_enrolldate"));
+				result.setGender(rs.getString("m_gender").charAt(0));
+				result.setId(id);
+				result.setName(rs.getString("m_username"));
+				result.setNo(rs.getInt("m_member_no"));
+				result.setPhone(rs.getString("m_phone"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rs);
+			JDBCTemplate.close(pstmt);
+		}
+	
+		return result;
+	}
 }
 

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/join.css">
 <style>
 #patpassword, #patpasswordcheck{
-	width:515px;
+	width:500px;
 	font-size:auto;
 }
 #container {
@@ -174,7 +174,7 @@ div {
 
 #jenderCheck {
 	padding-top: 15px;
-	height: 70px;
+	height: 80px;
 }
 
 #man+label:before {
