@@ -22,7 +22,6 @@ public class MemberPhoneServlet extends HttpServlet {
 
 		String phone = request.getParameter("userPhone");
 		MemberVo member = new MemberService().selectPhone(phone);
-		
 		int result = 0;
 		if(null == member){
 			result =1;

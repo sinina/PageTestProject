@@ -1,12 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
 
+	String petsitremit = request.getParameter("petsitremit");
+
+%>
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<title>MATAZO</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<script src="/ptp/js/jquery-3.3.1.min.js"></script>
+		<script>
+			$(function(){
+				if('<%=petsitremit%>'=='yes'){
+					var key = 'yes';
+					var value = 0;
+					localStorage.setItem(key, value);
+				}
+			});
+		</script>	
 	</head>
 	<body>
 

@@ -98,7 +98,7 @@ public class BoardDao {
 			prop.load(new FileReader(filePath));
 			String sql = prop.getProperty("selectboardlist");
 			stmt = con.createStatement();
-			query = sql+" WHERE P_OKAY =1";
+			query = sql+" WHERE P_OKAY =1 order by I.P_I_LEVEL desc";
 			
 			rs = stmt.executeQuery(query);
 			
@@ -226,7 +226,7 @@ public class BoardDao {
 	}
 
 	public ArrayList<BoardVo> selectBoardAddList(Connection con, int searchService, int searchPet, int searchGrade) {
-				//찾는 서비스 5 전체  0 장기 1데이케어 
+				//찾는 서비스 5 전체 장기 1데이케어 0 
 				//종류 모든5  강아지1고양2그외3
 				//모든 5 등급 신규0  일반1 우수2
 		ArrayList<BoardVo> list = null;
@@ -613,6 +613,42 @@ public class BoardDao {
 				pstmt.setString(1, "%서울%");
 				pstmt.setString(2, "%경기%");
 				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {	
+					String name = rs.getString("m_username");
+					String address = rs.getString("m_address");
+					String title = rs.getString("p_adcomment");
+					String photo1 = rs.getString("p_photo1");
+					String photo2 = rs.getString("p_photo2");
+					String photo3 = rs.getString("p_photo3");
+					String photo4 = rs.getString("p_photo4");
+					int level = rs.getInt("p_i_level");	
+					String opportunity =rs.getString("p_opportunity");
+					 String activityhisotry=rs.getString("p_activityhisotry");
+					 String prcontext=rs.getString("p_prcontext");
+					 int pickup = rs.getInt("p_pickup");
+					 int camera= rs.getInt("p_camera");
+					 String license1=rs.getString("p_license1");
+					 String license2=rs.getString("p_license2");
+					 String license3=rs.getString("p_license3");
+					 String license4=rs.getString("p_license4");
+					 int child= rs.getInt("p_child");
+					 int jobstyle= rs.getInt("p_jobstyle");
+					 int animalcheck= rs.getInt("p_animalcheck");
+					 
+					 int memberNo =rs.getInt("m_member_no");
+						list.add(new BoardVo(memberNo,name, address, title, photo1, photo2, photo3, photo4, level, opportunity, activityhisotry, prcontext, pickup, camera, license1, license2, license3, license4, child, jobstyle, animalcheck));
+				}
+				JDBCTemplate.close(rs);
+				JDBCTemplate.close(pstmt);
+				
+			}
+			if(index==4){
+				query = sql +"  WHERE m_address not like ? AND m_address not like ?  AND m_address not like ?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, "%서울%");
+				pstmt.setString(2, "%경기%");
+				pstmt.setString(3, "%인천%");
 				rs = pstmt.executeQuery();
 				while (rs.next()) {	
 					String name = rs.getString("m_username");

@@ -37,18 +37,21 @@ public class LoginServlet extends HttpServlet {
 			String userPwd = request.getParameter("userPwd");
 			
 			MemberVo member = new MemberService().selectMember(userId);
-			
+			int memberCode=5;
 			String url ="views/member/memberLogin.jsp";
-			RequestDispatcher view = request.getRequestDispatcher(url);
 			
-			int memberCode = (int)member.getCode();
+			RequestDispatcher view = request.getRequestDispatcher(url);
+			if(member!=null){
+				memberCode = (int)member.getCode();
+			}
+			 
 			
 			if(null==member){
 				request.setAttribute("flag", "false");
 				view.forward(request, response);
 			}else{
 				if(userPwd.equals(member.getPwd())){
-					if(memberCode=='0'){
+					if(memberCode==0){
 						System.out.println(member.getCode());
 						response.sendRedirect("/ptp/selectMonth.do");
 					}else{

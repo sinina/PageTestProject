@@ -16,13 +16,13 @@ public class MemberDao {
 		MemberVo result = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String qeury="SELECT * FROM MEMBER WHERE M_USERID = ?";
+		String qeury="SELECT M_USERID ,M_PASSWORD ,M_USERNAME ,M_GENDER ,M_AGE ,M_PHONE ,M_ADDRESS ,M_ENROLLDATE ,M_MEMBER_CODE ,M_MEMBER_NO, NVL((select p_okay from member m join pets_apply p on((select m_member_no from member where m_userid=?)=p.p_no)where m_member_code = '1'),5) as p_no  FROM MEMBER where  M_USERID = ?";
 		
 		try {
 			pstmt = con.prepareStatement(qeury);
 			pstmt.setString(1, userId);
+			pstmt.setString(2, userId);
 			rs = pstmt.executeQuery();
-			
 			while(rs.next()){
 				result = new MemberVo();
 				result.setPwd(rs.getString("m_password"));
@@ -35,6 +35,7 @@ public class MemberDao {
 				result.setName(rs.getString("m_username"));
 				result.setNo(rs.getInt("m_member_no"));
 				result.setPhone(rs.getString("m_phone"));
+				result.setP_okay(rs.getInt("p_no"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

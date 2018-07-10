@@ -1,15 +1,33 @@
+<%@page import="com.matajo.pitpet.member.model.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+		MemberVo user = (MemberVo)session.getAttribute("user");
+	%>
 <!DOCTYPE html >
 <html>
 <head>
 <meta charset="UTF-8">
 <title>돌보미등록하기</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<script>
+function insert(){
+	
+	var yes = localStorage.getItem('yes');
+	
+	if(<%=user.getP_okay()%>==0||yes==0){
+		alert('이미 펫시터 신청을 하셨습니다.!');
+		return false;
+	}
+	if(<%=user.getP_okay()==5%>){
+		return true;
+	}
+}
+</script>
 </head>
 <body>
 		  <%@include file="../common/header.jsp" %>
-		
+			
 		<!-- wrapper starts -->
 <div class="wrapper">
     <div class="banner-inner join"> <!-- 배경이미지 서비스 안내 일때 클래스명 join 따로 제어 -->
@@ -120,15 +138,15 @@
                     <ul>
                         <li>
                             <img src="http://clara051.cdn3.cafe24.com/service/badge-safe-small.png" alt="안심펫시터" />
-                            <strong>안심 펫시터</strong>
+                            <strong>우수 펫시터</strong>
                         </li>
                         <li class="license-badge" style="margin:0 110px;">
                             <img src="http://clara051.cdn3.cafe24.com/service/badge-pro-small.png" alt="전문펫시터" />
-                            <strong>전문 펫시터</strong>
+                            <strong>일반 펫시터</strong>
                         </li>
                         <li>
                             <img src="http://clara051.cdn3.cafe24.com/service/badge-super-small.png" alt="우수펫시터" />
-                            <strong>우수 펫시터</strong>
+                            <strong>신규 펫시터</strong>
                         </li>
                     </ul>
                     </dt>
@@ -146,7 +164,7 @@
                         </ul>
                     </dd>
                 </dl>
-                <a class="btn-pink" href="<%=request.getContextPath()%>/views/member/petsitterprofile.jsp">"펫시터 등록하러 가기</a>
+                <a class="btn-pink" onClick="return insert();" href="<%=request.getContextPath()%>/views/member/petsitterprofile.jsp">"펫시터 등록하러 가기</a>
             </div>
         </div>
         <!-- // 뱃지 시스템 -->

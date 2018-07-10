@@ -14,6 +14,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
+
 <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
@@ -44,10 +45,10 @@ padding:0px;
 			var memberCode = <%=member.getCode()%>;	
 		<%}%>
 		
-		if(memberCode==2){
+		 if(memberCode==2){
 			alert("이미 펫시터 이십니다.");
 			return false;	
-		}
+		} 
 		return true;
 	}
 	

@@ -40,9 +40,26 @@
 
 <script type="text/javascript">
 
-	 
+	
 	
 		$(function(){
+			
+		
+			var e = $('.add');
+			
+			<%for(int i=1;i<boardList.size();i++){%>
+				var i = <%=boardList.size()%>-<%=i%>;
+				console.log(i);
+				if(5<i){
+					e.attr('class','content hide add'+parseInt(i));	
+				}else{
+					e.attr('class','content add'+parseInt(i));	
+				}
+				e.clone().insertAfter(e);
+		    <%}%>
+			e.attr('class','content add'+0);
+			
+			
 			
 			
 			var $local_distribution = $("#local_distribution").children(":first").children().children();
@@ -56,7 +73,6 @@
 						data : null,
 						dataType: "json",
 						success : function(data){
-
 							 $local_distribution.append(data.all);
 							 $("#local_distribution").children().eq(1).children().children().append(data.soul);
 							 $("#local_distribution").children().eq(2).children().children().append(data.gyeonggi);
@@ -68,20 +84,18 @@
 					}); 
 			}
 		
-			var iCheck=1;
 			
 			$(window).scroll(function(){
 				if(Math.round($(window).scrollTop()) + $(window).height() + 5 > $(document).height()){
-					if((iCheck*6)<=<%=boardList.size()%>){ 
 					var $testhide = $(".hide");
+					console.log($testhide.length);
 					for(var i = 0 ;i<=$testhide.length;i++){
 						var $element = $testhide.eq(i);
 						if(i<5){
 							$element.removeClass("hide");	
 						}
 					}  
-					iCheck++;
-					}
+					
 				}
 				
 				
@@ -687,7 +701,7 @@ function callDetail(index){
        <li role="presentation"><a href="boardFilter.do?index=1">서울<span></span></a></li>
        <li role="presentation"><a href="boardFilter.do?index=2">경기<span></span></a></li>
        <li role="presentation"><a href="boardFilter.do?index=3">인천<span></span></a></li>
-       
+         
       <li role="presentation" class="dropdown"><a id="stateTabDrop0" data-toggle="dropdown" aria-controls="stateTabDrop1-contents" class="dropdown-toggle">그 외 지역<span></span></a>
       <div id="stateTabDrop0-contents" role="menu" aria-controls="stateTabDrop0" class="dropdown-menu">
       <ul class="clearfix">
@@ -706,8 +720,6 @@ function callDetail(index){
       <li class="pull-left"><input type="checkbox" name="states[]" id="state18" class="checkbox" value="18"><label for="state18">충북</label></li>
       <li class="pull-left"><input type="checkbox" name="states[]" id="state53" class="checkbox" value="53"><label for="state53">제주</label></li></ul>
       <button type="button" data-loading="검색 중..." class="btn btn-mint">확인</button><button type="button" class="btn btn-link">선택 초기화</button>
-      
-      </div></li>
       </ul>
     	
 			
@@ -766,7 +778,7 @@ function callDetail(index){
 	 
 
 	
-	<div class="content add0">
+	<div class="content hide add" >
 	<div class= "img_wrapper" >
 		<img class="content_img" src=""/>
 		
@@ -800,462 +812,14 @@ function callDetail(index){
 	 
 	
 	
-	<div class="content add1">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	
-	</div>
-	<div class="content add2">
-	
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	
-	</div>
-	<div class="content add3">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text ">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	
-	</div>
-	<div class="content add4" >
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-						</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	<div class="content add5">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text hi">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	<div class="content add6 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-		
-	
-	
-	<div class="content add7 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
 	
 	
 	
-	<div class="content add8 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);"  class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add9 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add10 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add11 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add12 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add13 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="content add14 hide">
-	<div class= "img_wrapper" >
-		<img class="content_img" src=""/>
-		<div class="content_location">
-	<img src="<%=request.getContextPath()%>/images/common/navi_map_icon.png" style="margin-right: -10px; margin-bottom: -15px;"/>
-	
-	</div>
-	</div>
-	<div class="content_text">
-	<div class="text_title">
-	
-				<a  href="javascript:void(0);" class="hidden-xs" style="color:#696969; font-weight: bold; ">
-							</a>
-							
-			</div>		
-			<div class="text_pay_block">
-							<label class="text_pay" style="color:#696969; margin-left:10px;">
-								</label>
-							<label class="text_pay" style="color:#fac058; margin-left:20px;">
-								</label>
-			</div>			
-			
-			<div class="text_name_block">	
-							<label class="name1" style="color:#696969; margin-left:5px;">
-								</label>
-							<label class="name1" style="color:#696969; margin-left:145px;">
-								</label>
-	</div>	
-	</div>
-	</div>
 	
 	
 	</div>
 	</div>
 
-	
 	
 
 

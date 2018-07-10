@@ -271,11 +271,13 @@ function sample6_execDaumPostcode() {
 		 	 }
 });
 	//전화번호 중복확인
+	$("#patphone").change(function(){
 	 	var patphoneVal = $("#patphone").val();
 		var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+		
 	 	if(regExp.test(patphoneVal)){
 	 		$.ajax({
-	 			url : "ptp/phoneCheck.do",
+	 			url : "/ptp/phoneCheck.do",
 	 			type : "get",
 	 			data : {userPhone : patphoneVal},
 	 			success : function(data){
@@ -291,6 +293,7 @@ function sample6_execDaumPostcode() {
 	 			}
 	 		});
 	 	}
+	});
 	 //가입하기 이벤트
 	 $("#pat").hover(function(){
 		$("#pat").css("background", "#20d63b"); 

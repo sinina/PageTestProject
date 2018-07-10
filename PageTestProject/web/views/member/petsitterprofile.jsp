@@ -126,7 +126,7 @@
 			return;
 		}
 		
-		if($adComment.val().length>200){
+		if($adComment.val().length>25){
 			alert("펫시터 소개 제목은 20자를 넘을수 없습니다.");
 			$adComment.focus();
 			return;

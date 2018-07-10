@@ -13,8 +13,11 @@ public class MemberVo {
 	private Date enrollDate;
 	private char code;
 	private int no;
+	private int p_okay;
 	
-	 public MemberVo() {
+
+
+	public MemberVo() {
 	
 	}
 
@@ -48,7 +51,14 @@ public class MemberVo {
 		this.no = no;
 	}
 
+	 public int getP_okay() {
+			return p_okay;
+	}
 
+
+	public void setP_okay(int p_okay) {
+			this.p_okay = p_okay;
+	}
 	public String getId() {
 		return id;
 	}

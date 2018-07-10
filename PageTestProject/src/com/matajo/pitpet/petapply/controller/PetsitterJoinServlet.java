@@ -130,7 +130,7 @@ public class PetsitterJoinServlet extends HttpServlet {
 		
 		if(0<result){
 			out = response.getWriter();
-			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='/ptp/index.jsp';</script>"); 
+			out.println("<script>alert('신청이 정상적으로 되었습니다.'); location.href='/ptp/index.jsp?petsitremit=yes';</script>"); 
 			out.flush();
 			out.close();
 		}else{
