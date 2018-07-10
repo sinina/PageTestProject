@@ -352,29 +352,6 @@ dt {
 	border-top: 1px solid #F0F0F0;
 	line-height: 200%;
 }
-
-.reserv-input-group{
-
-float:right;
- width:50px;
- height:25px;
- display: table;
- border-collapse: separate;
--webkit-border-radius: 0.5em;
-
-}
-
-.form-quantity{
-font-size:12px;
-width:40px;
-height:25px;
--webkit-border-radius: 0.5em;
-border: 2px solid #D8D8D8;
-text-align:center;
-    color: #7d7d7d;
-}
-
-
 </style>
 
 <script>
@@ -644,45 +621,6 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 						<input type='text' class="date-input" id='datetimepicker5'
 							placeholder="  마침날짜 00:00" />
 					</div>
-					
-					<script type="text/javascript">
-						$(function() {
-							$('#datetimepicker4').datetimepicker({
-								format : "YYYY-MM-DD HH:mm",
-								locale : 'ko',
-								minDate : 'moment',
-								useCurrent : false,
-								enabledHours: [09,10,11,12,13,14,15,16,17,18,19,20,21],
-								showClose: true
-							 
-							});
-						});
-
-
-						$(function() {
-							
-							
-							$('#datetimepicker5').datetimepicker({
-								
-								format : "YYYY-MM-DD HH:mm",
-								locale : 'ko',
-								minDate : 'moment',
-								useCurrent : false,
-								enabledHours: [09,10,11,12,13,14,15,16,17,18,19,20,21],
-								showClose: true
-							});
-
-							$('#datetimepicker4').keyup(function() {
-								$(this).val('');
-							});
-							$('#datetimepicker5').keyup(function() {
-								$(this).val('');
-							});
-							});
-						
-						
-						
-					</script>
 
 				</div>
 
@@ -694,34 +632,27 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 						</div>
 					</div>
 					<dl class="reserv-form-price-detail">
-						<dt class="reserv-dt">반려견 추가
-						<div class="reserv-input-group">
-																
-                                <input id="txtDOGNUM" class="form-quantity" type="number" value="0" min="0" max="5" maxlength="1" onchange="txtdd();" onclick="txtdd();">
-																
-															</div></dt>
-						
-						
+						<dt class="reserv-dt">반려견 추가</dt>
 						<dd class="reserv-dd">
 							<span id="ctlADDSUM">0원</span>
 						</dd>
 						<dt class="reserv-dt">
-							<span id="daycare">1박</span>
+							<span>1박</span>
 						</dt>
 						<dd class="reserv-dd">
-							<span id="dayprice">30,000원</span>
+							<span>30,000원</span>
 						</dd>
 						<dt class="reserv-dt">초과금액</dt>
 						<dd class="reserv-dd">
-							<span id="overpay">0원</span>
+							<span>0원</span>
 						</dd>
 						<dt class="reserv-dt">부가세</dt>
 						<dd class="reserv-dd">
-							<span id="tax">3,000원</span>
+							<span>3,000원</span>
 						</dd>
 						<dt class="reserv-dt" style="font-weight: bold;">총 합계</dt>
-						<dd class="reserv-dd result" style="font-weight: bold";>
-							<span id="totalprice">33,000원</span>
+						<dd class="reserv-dd result" style="font-weight: bold">
+							<span id="price">33,000원</span>
 						</dd>
 					</dl>
 
@@ -729,7 +660,8 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 
 				<button class="reserv-btn" >예약요청하기</button>
 
-				
+				<a class="reserv-btn-enq"> 예약문의하기 </a>
+
 			</form>
 		</div>
 	</div>
@@ -857,6 +789,7 @@ $(".reserv-btn").click(function(){
 										});
 					}); 
 </script>
+
 
 
 <script>

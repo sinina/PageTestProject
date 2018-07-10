@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%request.setCharacterEncoding("UTF-8"); %>
 <meta charset="UTF-8">
 <title>회원 가입</title>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
@@ -283,7 +284,6 @@ function sample6_execDaumPostcode() {
 	 			success : function(data){
 	 				if(data ==1){
 	 					phoneFlag = true;
-	 					alert("가능합니다.");
 	 				}else{
 						phoneFlag = false;
 	 					alert("이미 있는 전화번호입니다.");
@@ -441,8 +441,8 @@ function sample6_execDaumPostcode() {
 	 var inputId = $("#patId").val();
 	 var reExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 	 var patIdVal = $("#patId").val();
-
-	 	if (reExp.test(inputId)) {
+	alert($('#patname').val())
+	 if (reExp.test(inputId)) {
 	 		 	$.ajax({
 	 				url : "/ptp/idCheck.do",
 	 				type : "get",
@@ -458,6 +458,7 @@ function sample6_execDaumPostcode() {
 	 		 	 }else{
 	 		 		 alert("아이디가 중복되었습니다.")
 	 		 	 }
+	 	
 } 
 
 </script>

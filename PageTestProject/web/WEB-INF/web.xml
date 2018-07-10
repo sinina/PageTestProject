@@ -13,6 +13,7 @@
     <listener-class>com.matajo.pitpet.visitCounter.controller.SesstionListener</listener-class>
   </listener>
   <filter>
+  
    <filter-name>encoding</filter-name>
    <filter-class>com.matajo.pitpet.common.EncodingFilter</filter-class>
   </filter>
@@ -60,5 +61,15 @@
   <filter-mapping>
    <filter-name>encriptFilter4</filter-name>
    <url-pattern>/pwssCheck.do</url-pattern>
+  </filter-mapping>
+  
+   <filter>
+   <filter-name>encriptFilter5</filter-name>
+   <filter-class>com.matajo.pitpet.common.EncryptFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+   <filter-name>encriptFilter5</filter-name>
+   <url-pattern>/MemberUpdate.do</url-pattern>
   </filter-mapping>
 </web-app>
