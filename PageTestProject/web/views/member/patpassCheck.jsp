@@ -123,7 +123,7 @@ function pat(){
 		 	$.ajax({
 				url : "/ptp/pwssCheck.do",
 				type : "post",
-				data : {userId : inputpass},
+				data : {userPwd : inputpass},
 				success : function(data){
 					if(data ==1){
 						alert("비밀번호가 일치하지 않습니다.");

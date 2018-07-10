@@ -21,7 +21,7 @@ public class PassCheckServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String pass = request.getParameter("userId");
+		String pass = request.getParameter("userPwd");
 		MemberVo user = (MemberVo)(request.getSession().getAttribute("user"));
 		MemberVo member = new MemberService().selectPass(user.getId(), pass);
 		
