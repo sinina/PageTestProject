@@ -20,6 +20,9 @@ public class ReservationVo {
 	private String petsName;
 	private String request;
 	private String animalNos;
+	private int phone;
+	
+	
 	
 	
 	
@@ -118,6 +121,20 @@ public class ReservationVo {
 	}
 	public void setPetsName(String petsName) {
 		this.petsName = petsName;
+	}
+	
+	
+	public String getAnimalNos() {
+		return animalNos;
+	}
+	public void setAnimalNos(String animalNos) {
+		this.animalNos = animalNos;
+	}
+	public int getPhone() {
+		return phone;
+	}
+	public void setPhone(int phone) {
+		this.phone = phone;
 	}
 	@Override
 	public String toString() {

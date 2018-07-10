@@ -1,6 +1,8 @@
 package com.matajo.pitpet.payment.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,15 +24,26 @@ public class InsertPaymentServlet extends HttpServlet {
 		int petoNo = Integer.parseInt(request.getParameter("petoNo"));
 		int petsNo = Integer.parseInt(request.getParameter("petsNo"));
 		int price = Integer.parseInt(request.getParameter("price"));
+		int resNo= Integer.parseInt(request.getParameter("resNo"));
 		String payKind=request.getParameter("payKind");
 		
 		System.out.println("서블릿"+petsNo);
 		PaymentVo pv = new PaymentVo(payKind, petoNo, petsNo, price);
 		
 		int result = new PaymentService().insertPayment(pv);
-		
+		RequestDispatcher view= null;
 		if(result>0){
-			response.sendRedirect("/ptp/selectMessage.do?memberNo="+petoNo);
+			
+			//결제 됐다는 insertmessage 서블릿으로 이동 후 메시지 목록으로 이동
+			request.setAttribute("resNo", resNo);
+			request.setAttribute("petoNo", petoNo);
+			request.setAttribute("petsNo", petsNo);
+			
+			view = request.getRequestDispatcher("/paymentMsg.do");
+			view.forward(request, response);
+			
+			
+			
 		}
 	}
 

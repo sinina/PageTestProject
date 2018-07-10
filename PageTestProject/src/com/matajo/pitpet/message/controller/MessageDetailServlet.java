@@ -34,9 +34,9 @@ public class MessageDetailServlet extends HttpServlet {
 		if(res!=null){
 			request.setAttribute("res", res);
 			request.setAttribute("msgCode", msgCode);
-			System.out.println("디테일 서블릿"+msgCode);
+			//System.out.println("디테일 서블릿"+msgCode);
 			//System.out.println(res.getEnd());
-			System.out.println(messageNo);
+			//System.out.println(messageNo);
 			view = request.getRequestDispatcher("views/message/messageDetail.jsp");
 			view.forward(request, response);
 		}

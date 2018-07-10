@@ -166,4 +166,25 @@ public class MessageDao {
 		}
 		return result;
 	}
+
+	public int insertPaymentMsg(Connection con, MessageVo message) {
+		PreparedStatement pstmt  = null;
+		int result = 0;
+		String query = "";
+		query = "INSERT INTO MESSAGE VALUES('결제가 완료 되었습니다.',SYSDATE,SEQ_MESSAGE.NEXTVAL,?,?,4,default,?)";
+		try {
+			pstmt = con.prepareStatement(query);
+			
+			pstmt.setInt(1, message.getSenderNo());
+			pstmt.setInt(2, message.getResverNo());
+			pstmt.setInt(3, message.getRes_no());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

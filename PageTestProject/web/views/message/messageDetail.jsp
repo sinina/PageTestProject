@@ -24,21 +24,27 @@ crossorigin="anonymous"></script>
 		<h1 align="center">예약 승인이 되었습니다.</h1>
 	<%}else if(msgCode==1){%>
 	 	<h1 align="center">예약 요청이 들어왔습니다.</h1>
-		<% }else{%>
+		<% }else if(msgCode==3){%>
 		<h1 align="center">예약이 거절되었습니다.</h1>
-		<%} %>
+		<%}else{ %>
+		<h1 align="center">결제가 완료되었습니다.</h1>
+		<% }%>
 	<div class="inner" >
+	
 		반려주 이름:<%=res.getPetoName() %><br>
-		 펫시팅 시간 :<%=res.getStart() %>~<%=res.getEnd() %><br>
+		펫시팅 시간 :<%=res.getStart() %>~<%=res.getEnd() %><br>
 		반려동물 종류: <%=res.getAnimalKind() %><br>
 		결제 금액 : <%=res.getPrice() %><br>
+		<%if(msgCode==1||msgCode==4){%>
+		반려주 핸드폰 번호:<%=res.getPhone() %>
+		<%} %>
 		요청 사항 : <%=res.getRequest() %><br><br>
 		<%-- 펫시터 no : <%=res.getPetsNo() %> --%>
 	<div class="btnWrapper">
 		<%if(msgCode==2){ %>
 		<button onclick="kakaoPayment();">카카오 페이로 결제하기</button>
 		<button onclick="payment();">결제하기</button>
-		<button>취소</button>
+		<button onclick="cancel();">목록으로</button>
 		<%}else if(msgCode==1){ %>
 		<button onclick="confirmRes();">승인</button>
 		<button onclick="rejectRes();">거절</button>		
@@ -74,7 +80,7 @@ crossorigin="anonymous"></script>
 		                msg += '카드 승인번호 : ' + rsp.apply_num;
 		                
 		                alert(msg);
-		                location.href="<%=request.getContextPath() %>/insertPayment.do?petoNo=<%=res.getPetoNo() %>&petsNo=<%=res.getPetsNo()%>&price=<%=res.getPrice()%>&payKind=kakaoPay";
+		                location.href="<%=request.getContextPath() %>/insertPayment.do?petoNo=<%=res.getPetoNo() %>&petsNo=<%=res.getPetsNo()%>&price=<%=res.getPrice()%>&resNo=<%=res.getResNo()%>&payKind=kakaoPay";
 		          jQuery.ajax({
 		             url: "/payments/complete", //cross-domain error가 발생하지 않도록 주의해주세요
 		             type: 'POST',

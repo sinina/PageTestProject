@@ -20,7 +20,7 @@ public class MatchingDao {
 		
 		//최근 한달간 예약 요청/승인/거절 카운트 
 		query="SELECT COUNT(MES_CODE), MES_CODE FROM MESSAGE "
-				+ "WHERE MES_ENROLLDATE<=(SELECT TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYY-MM-DD')FROM DUAL) "
+				+ "WHERE MES_ENROLLDATE>=(SELECT TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYY-MM-DD')FROM DUAL) "
 				+ "GROUP BY MES_CODE";
 		try {
 			pstmt= con.prepareStatement(query);

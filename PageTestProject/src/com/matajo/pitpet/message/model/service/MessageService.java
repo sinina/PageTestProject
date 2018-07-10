@@ -88,5 +88,18 @@ public class MessageService {
 		return result;
 	}
 
+	public int paymentMsg(MessageVo message) {
+		Connection con= JDBCTemplate.getConnection();
+		int result = new MessageDao().insertPaymentMsg(con,message);
+		if(0<result){
+			JDBCTemplate.commit(con);
+		}else{
+			JDBCTemplate.rollback(con);
+		}
+		
+		JDBCTemplate.close(con);
+		return result;
+	}
+
 
 }

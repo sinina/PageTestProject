@@ -14,6 +14,41 @@
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Archivo+Narrow:400,700" rel="stylesheet" type="text/css">
 <link href="/ptp/css/default.css" rel="stylesheet" type="text/css" media="all" /> 
 <script type="text/javascript" src="/ptp/js/jquery-3.3.1.min.js"></script>
+
+<style>
+        table.matchingT {
+            border-collapse: collapse;
+            text-align: left;
+            line-height: 1.5;
+            border-left: 1px solid #ccc;
+            margin: 20px 10px;
+        }
+
+        table.matchingT thead th {
+            padding: 10px;
+            font-weight: bold;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-bottom: 2px solid #c00;
+            background: #dcdcd1;
+        }
+        table.matchingT tbody th {
+            width: 150px;
+            padding: 10px;
+            font-weight: bold;
+            vertical-align: top;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            background: #ececec;
+        }
+        table.matchingT td {
+            width: 350px;
+            padding: 10px;
+            vertical-align: top;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
 </head>
 <script>
 	google.charts.load('current', {'packages':['corechart']});
@@ -146,7 +181,7 @@
 	
 	 <div class="matching">
 		<h1>매칭 현황</h1><br>
-	 <table class="matchingT" border="1" cellpadding="5" cellspacing="3"></table>
+	 <table class="matchingT"></table>
 		<p><a href="<%=request.getContextPath() %>/views/admin/reservationCalendar.jsp">더보기</a></p>
 	</div>
 	

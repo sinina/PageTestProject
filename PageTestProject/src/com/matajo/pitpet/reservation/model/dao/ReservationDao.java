@@ -47,9 +47,9 @@ public class ReservationDao {
 		ResultSet rs = null;
 		String query="";
 		
-		if(msgCode==1){
+		if(msgCode==1 || msgCode==4){
 			query="SELECT SUBSTR(R.RES_START_TIME,1,14),  SUBSTR(R.RES_END_TIME,1,14), R.RES_PETO_ANIMAL_KINDS, "
-					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST, R.RES_NO, R.RES_PETO_NO, R.RES_PETS_NO  "
+					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST, R.RES_NO, R.RES_PETO_NO, R.RES_PETS_NO, M2.M_PHONE  "
 					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETO_NO=M1.MES_SENDER_NO)"
 					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_CODE=("
@@ -57,7 +57,7 @@ public class ReservationDao {
 					+ "WHERE MES_MSG_NO=?)";
 		}else{
 			query= "SELECT  SUBSTR(R.RES_START_TIME,1,14),  SUBSTR(R.RES_END_TIME,1,14), R.RES_PETO_ANIMAL_KINDS, "
-					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST, R.RES_NO, R.RES_PETO_NO, R.RES_PETS_NO  "
+					+ "R.RES_PRICE, M2.M_USERNAME, R.RES_REQUEST, R.RES_NO, R.RES_PETO_NO, R.RES_PETS_NO, M2.M_PHONE  "
 					+ "FROM RESERVATION R INNER JOIN MESSAGE M1 ON(R.RES_PETS_NO=M1.MES_SENDER_NO)"
 					+ "INNER JOIN MEMBER M2 ON(R.RES_PETO_NO=M2.M_MEMBER_NO) "
 					+ "WHERE M1.MES_CODE=("
@@ -83,6 +83,7 @@ public class ReservationDao {
 				res.setPetoNo(rs.getInt("RES_PETO_NO"));
 				res.setPetsNo(rs.getInt("RES_PETS_NO"));
 				res.setResNo(rs.getInt("RES_NO"));
+				res.setPhone(rs.getInt("M_PHONE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
