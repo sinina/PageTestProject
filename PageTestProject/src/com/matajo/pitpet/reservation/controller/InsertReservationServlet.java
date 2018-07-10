@@ -38,7 +38,9 @@ public class InsertReservationServlet extends HttpServlet {
 		
 		String animalNoCommon=String.join(",", animalNos);
 		String animalKindCommon=String.join("/", animalKind);
-		
+		System.out.println(animalKindCommon);
+		System.out.println(animalNoCommon);
+		System.out.println(start);
 		//System.out.println(end);
 		ReservationVo res = new ReservationVo(petoNo, animalKindCommon, petsNo, price, start, end, msg, animalNoCommon);
 		int result = new ReservationService().insertReservation(res);

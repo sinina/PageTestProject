@@ -2,7 +2,6 @@ package com.matajo.pitpet.member.controller;
 
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
@@ -25,6 +24,7 @@ public class JoinServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		
 		String id = request.getParameter("uid");
 		String pwd = request.getParameter("userPwd");
@@ -50,6 +50,7 @@ public class JoinServlet extends HttpServlet {
 		member.setAddress(address);
 		member.setGender(jender==0?'M':'F');
 	
+		System.out.println(userName);
 		int result = new MemberService().insertMember(member);
 		
 		String url="/index.jsp";
