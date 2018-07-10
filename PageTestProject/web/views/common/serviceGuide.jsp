@@ -11,9 +11,11 @@
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 60px;
+		margin-botton:50px;
 	}
 	.service{
 		font-family: 20px;
+		margin-botton:50px;
 	}
 </style>
 </head>
@@ -26,7 +28,7 @@
 
  1. 로그인 먼저 해주세요<br>
  <img src="/ptp/images/service/login.png"/><br>
- 2. 마음에 다는 펫시터를 찾으셨다면 맡기는 날짜를 선택하고 예약 요청버튼을 눌러주세요.<br>
+ 2. 마음에 드는 펫시터를 찾으셨다면 맡기는 날짜를 선택하고 예약 요청버튼을 눌러주세요.<br>
  3. 예약 정보가 맞는지 한번 더 확인해주세요.<br>
  4. 펫시터에게 답변이 도착하면 홈페이지 상단의 메시지 아이콘이 변경 되어 답변을 확인 가능합니다.<br>
   <img src="/ptp/images/service/messageIcon.PNG" width= 400px/><br>
@@ -37,5 +39,6 @@
  MATAJO 서비스를 통해 이제 반려동물을 외롭게 하지 마세요:)<br>
  </div>
  </div>
+ <%@include file="../../views/common/footer.jsp"%>
 </body>
 </html>
