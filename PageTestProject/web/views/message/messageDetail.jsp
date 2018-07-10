@@ -36,7 +36,7 @@ crossorigin="anonymous"></script>
 		반려동물 종류: <%=res.getAnimalKind() %><br>
 		결제 금액 : <%=res.getPrice() %><br>
 		<%if(msgCode==1||msgCode==4){%>
-		반려주 핸드폰 번호:<%=res.getPhone() %>
+		반려주 핸드폰 번호:<%=res.getPhone() %><br>
 		<%} %>
 		요청 사항 : <%=res.getRequest() %><br><br>
 		<%-- 펫시터 no : <%=res.getPetsNo() %> --%>

@@ -20,7 +20,7 @@ public class ReservationVo {
 	private String petsName;
 	private String request;
 	private String animalNos;
-	private int phone;
+	private String phone;
 	
 	
 	
@@ -130,10 +130,10 @@ public class ReservationVo {
 	public void setAnimalNos(String animalNos) {
 		this.animalNos = animalNos;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	@Override

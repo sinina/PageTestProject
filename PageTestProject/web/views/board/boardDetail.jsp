@@ -759,7 +759,7 @@ $(".reserv-btn").click(function(){
 		var start = $("#datetimepicker4").val();
 		var end = $("#datetimepicker5").val();
 		//가격정보가져오기
-		var price= $("#price").text();
+		var price= $("#totalprice").text();
 		var price1=price.substring(0,price.indexOf(',')) +price.substring(price.indexOf(',')+1,price.indexOf('원'));
 		
 		//예약 시간 선택 안되있으면  alert창 띄워야함 
@@ -884,7 +884,7 @@ $(".reserv-btn").click(function(){
 			petadd = txtDOGNUM*25000;
 			
 			
-			if(calselect==true){
+			
 			if(days3==0){
 				
 				
@@ -990,7 +990,7 @@ $(".reserv-btn").click(function(){
 				document.getElementById("totalprice").innerHTML = totalprice2+"원";
 			}
 			}
-			}
+			
 		};
 		
 		
