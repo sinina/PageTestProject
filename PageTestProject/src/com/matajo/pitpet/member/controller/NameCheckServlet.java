@@ -31,9 +31,9 @@ public class NameCheckServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = (String) request.getParameter("userName");
+		String userPhone = (String) request.getParameter("userPhone");
 		
-		MemberVo member = new MemberService().searchMember(name);
+		MemberVo member = new MemberService().searchMember(userPhone);
 		String WrappName="";
 		if(null!=member){
 			member.getId().substring(member.getId().lastIndexOf("@")/2,member.getId().lastIndexOf("@"));

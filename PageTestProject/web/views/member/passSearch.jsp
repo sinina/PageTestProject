@@ -79,11 +79,11 @@ $(function(){
 	var tempPass="";
 	var id = "";
 	$("#idSearchBtn").on('click',function(){
-		var name = $("#idSearch").val();
+		var phone = $("#idSearch").val();
 		$.ajax({
 			url : "/ptp/nameCheck.do",
 			type : "post",
-			data : {userName : name},
+			data : {userPhone : phone},
 			dataType: "text",
 			success : function(data){
 				$("#idDiv").text(data);
@@ -130,7 +130,8 @@ $(function(){
     	 }  
     
     	var emailC = {
-    	reply_to : $reciveEmail,
+    			
+    	email_to : $reciveEmail.val(),
         from_name : '안녕하세요 맡아조 입니다. 임시 비밀번호를 드립니다.',
         message_html:tempPass
      	}
@@ -145,7 +146,7 @@ $(function(){
    		
    		
    		setTimeout(function() {
-   			location.href="/ptp/passUpdate.do?tempPass="+tempPass+"&id="+id;
+   			location.href="/ptp/passUpdate.do?userPwd="+tempPass+"&id="+id;
    		}, 3000);
     	
 	});
@@ -166,8 +167,8 @@ $(function(){
 	<div class="idsearch">
 	<div class="idsearchInner" style="width:100%;">
 		<div style="border-bottom:1px solid skyblue;">아이디 찾기</div>  
-		<div style="float:left; line-height:2em; padding-top:23px ">이름 :</div>
-		<div style=" width: 300px; float:left; line-height:2em; padding:25px"><input type="text" name="idSearch" id="idSearch" style="width:200px"></div>
+		<div style="float:left; line-height:2em; padding-top:23px ">전화번호 :</div>
+		<div style=" width: 300px; float:left; line-height:2em; padding:25px"><input type="text" name="idSearch" id="idSearch" style="width:200px" placeholder="###-####-####" ></div>
 		<div  style="padding-top:15px"><button type="button" id="idSearchBtn" style="margin-bottom:20px;width:170px; text-align:center ">아이디 찾기</button></div>
 	</div>	
 		<div id="idDiv"></div>

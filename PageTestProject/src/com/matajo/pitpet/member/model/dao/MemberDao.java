@@ -16,7 +16,7 @@ public class MemberDao {
 		MemberVo result = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String qeury="SELECT M_USERID ,M_PASSWORD ,M_USERNAME ,M_GENDER ,M_AGE ,M_PHONE ,M_ADDRESS ,M_ENROLLDATE ,M_MEMBER_CODE ,M_MEMBER_NO, NVL((select p_okay from member m join pets_apply p on((select m_member_no from member where m_userid=?)=p.p_no)where m_member_code = '1' and ROWNUM=1),5) as p_no  FROM MEMBER where  M_USERID = ?";
+		String qeury="SELECT M_USERID ,M_PASSWORD ,M_USERNAME ,M_GENDER ,M_AGE ,M_PHONE ,M_ADDRESS ,M_ENROLLDATE ,M_MEMBER_CODE ,M_MEMBER_NO, NVL((select p_okay from member m join pets_apply p on((select m_member_no from member where m_userid=?)=p.p_no)where  ROWNUM=1),5) as p_no  FROM MEMBER where  M_USERID = ?";
 		
 		try {
 			pstmt = con.prepareStatement(qeury);
@@ -179,15 +179,15 @@ public class MemberDao {
 		return result;
 	}
 
-	public MemberVo selectSearchMember(Connection con, String name) {
+	public MemberVo selectSearchMember(Connection con, String userPhone) {
 		MemberVo result = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String qeury="SELECT * FROM MEMBER WHERE M_USERNAME = ?";
+		String qeury="SELECT * FROM MEMBER WHERE M_PHONE = ?";
 		
 		try {
 			pstmt = con.prepareStatement(qeury);
-			pstmt.setString(1, name);
+			pstmt.setString(1, userPhone);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){

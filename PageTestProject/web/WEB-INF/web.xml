@@ -12,4 +12,33 @@
   <listener>
     <listener-class>com.matajo.pitpet.visitCounter.controller.SesstionListener</listener-class>
   </listener>
+  <filter>
+   <filter-name>encriptFilter1</filter-name>
+   <filter-class>com.matajo.pitpet.common.EncryptFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+   <filter-name>encriptFilter1</filter-name>
+   <url-pattern>/passUpdate.do</url-pattern>
+  </filter-mapping>
+
+  <filter>
+   <filter-name>encriptFilter2</filter-name>
+   <filter-class>com.matajo.pitpet.common.EncryptFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+   <filter-name>encriptFilter2</filter-name>
+   <url-pattern>/login.do</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+   <filter-name>encriptFilter3</filter-name>
+   <filter-class>com.matajo.pitpet.common.EncryptFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+   <filter-name>encriptFilter3</filter-name>
+   <url-pattern>/join.do</url-pattern>
+  </filter-mapping>
 </web-app>

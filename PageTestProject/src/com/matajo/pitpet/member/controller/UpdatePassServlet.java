@@ -31,10 +31,10 @@ public class UpdatePassServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String tempPass =request.getParameter("tempPass");
+		String userPwd =request.getParameter("userPwd");
 		String id =request.getParameter("id");
 		
-		int result = new MemberService().updatePass(id,tempPass);
+		int result = new MemberService().updatePass(id,userPwd);
 		PrintWriter out=null;
 		if(0<result){
 			out = response.getWriter();

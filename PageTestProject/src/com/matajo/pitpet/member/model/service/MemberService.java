@@ -18,9 +18,9 @@ public class MemberService {
 		JDBCTemplate.close(con);
 		return member;
 	}
-	public MemberVo searchMember(String name) {
+	public MemberVo searchMember(String userPhone) {
 		Connection con = JDBCTemplate.getConnection();
-		MemberVo member = new MemberDao().selectSearchMember(con,name);
+		MemberVo member = new MemberDao().selectSearchMember(con,userPhone);
 		JDBCTemplate.close(con);
 		return member;
 	}

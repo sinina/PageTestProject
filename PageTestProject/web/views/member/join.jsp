@@ -480,7 +480,7 @@ function sample6_execDaumPostcode() {
 
 							<div>
 								<div id="pass">
-									<input type="password" name="upass" maxlength="10"
+									<input type="password" name="userPwd" maxlength="10"
 										id="patpassword" placeholder="비밀번호" />
 								</div>
 								<div id="passMessageDiv"></div>
