@@ -16,7 +16,7 @@ public class MemberDao {
 		MemberVo result = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String qeury="SELECT M_USERID ,M_PASSWORD ,M_USERNAME ,M_GENDER ,M_AGE ,M_PHONE ,M_ADDRESS ,M_ENROLLDATE ,M_MEMBER_CODE ,M_MEMBER_NO, NVL((select p_okay from member m join pets_apply p on((select m_member_no from member where m_userid=?)=p.p_no)where m_member_code = '1'),5) as p_no  FROM MEMBER where  M_USERID = ?";
+		String qeury="SELECT M_USERID ,M_PASSWORD ,M_USERNAME ,M_GENDER ,M_AGE ,M_PHONE ,M_ADDRESS ,M_ENROLLDATE ,M_MEMBER_CODE ,M_MEMBER_NO, NVL((select p_okay from member m join pets_apply p on((select m_member_no from member where m_userid=?)=p.p_no)where m_member_code = '1' and ROWNUM=1),5) as p_no  FROM MEMBER where  M_USERID = ?";
 		
 		try {
 			pstmt = con.prepareStatement(qeury);

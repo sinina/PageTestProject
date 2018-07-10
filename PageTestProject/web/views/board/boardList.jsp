@@ -701,25 +701,7 @@ function callDetail(index){
        <li role="presentation"><a href="boardFilter.do?index=1">서울<span></span></a></li>
        <li role="presentation"><a href="boardFilter.do?index=2">경기<span></span></a></li>
        <li role="presentation"><a href="boardFilter.do?index=3">인천<span></span></a></li>
-         
-      <li role="presentation" class="dropdown"><a id="stateTabDrop0" data-toggle="dropdown" aria-controls="stateTabDrop1-contents" class="dropdown-toggle">그 외 지역<span></span></a>
-      <div id="stateTabDrop0-contents" role="menu" aria-controls="stateTabDrop0" class="dropdown-menu">
-      <ul class="clearfix">
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state10" class="checkbox" value="10"><label for="state10">부산</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state59" class="checkbox" value="59"><label for="state59">대구</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state35" class="checkbox" value="35"><label for="state35">광주</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state24" class="checkbox" value="24"><label for="state24">대전</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state51" class="checkbox" value="51"><label for="state51">울산</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state43" class="checkbox" value="43"><label for="state43">세종</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state49" class="checkbox" value="49"><label for="state49">강원</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state31" class="checkbox" value="31"><label for="state31">경남</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state20" class="checkbox" value="20"><label for="state20">경북</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state13" class="checkbox" value="13"><label for="state13">전남</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state26" class="checkbox" value="26"><label for="state26">전북</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state17" class="checkbox" value="17"><label for="state17">충남</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state18" class="checkbox" value="18"><label for="state18">충북</label></li>
-      <li class="pull-left"><input type="checkbox" name="states[]" id="state53" class="checkbox" value="53"><label for="state53">제주</label></li></ul>
-      <button type="button" data-loading="검색 중..." class="btn btn-mint">확인</button><button type="button" class="btn btn-link">선택 초기화</button>
+         <li role="presentation"><a href="boardFilter.do?index=4">그외지역<span></span></a></li>
       </ul>
     	
 			
