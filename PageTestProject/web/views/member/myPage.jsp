@@ -30,6 +30,7 @@
 	width: 768px;
 	min-width: 460px;
 	margin: 0 auto;
+
 }
 
 #content {
@@ -37,7 +38,8 @@
 }
 
 .join_content {
-	width: 500px;
+	
+	width: 100%;
 	margin: auto;
 }
 
@@ -58,6 +60,7 @@ li {
 div.line {
 	list-style: none;
 	display: inline-block;
+	width:200px;
 }
 
 form {
@@ -66,25 +69,13 @@ form {
 }
 
 #pat{
-	text-align: center;
-	width: 540px;
-	margin-left: auto;
-	margin-right: auto;
-	background: #e52770;
+	
 }
 #out{
-	text-align: center;
-	width: 540px;
-	margin-left: auto;
-	margin-right: auto;
-	background: #f442f4;
+	
 }
 #patinout{
-	text-align: center;
-	width: 540px;
-	margin-left: auto;
-	margin-right: auto;
-	background: #e900ff;
+	
 }
 #patin{
 	text-align: center;
@@ -158,7 +149,9 @@ form {
 }
 
 div {
+	
 	margin-top: -3px;
+	width:100%;
 }
 
 #messageDiv, #passMessageDiv, #passCheckMessDiv, #NameMessageDiv,
@@ -189,6 +182,24 @@ div {
 #patId, #patpassword, #patpasswordcheck, #patname, #man, #woman, #patphone, #patage, #yy, #mm, #dd, #sample6_postcode, #sample6_address, #sample6_address2{
 	border-color: skyblue;
 }
+
+.reserv-btn {
+	display:inline-block;
+	width: 30%;
+	margin: 5px;
+	font-size: 25px; 
+	text-align:center;
+	color:white;
+	background-color: #ff5050 !important;
+	-webkit-border-radius: 0.5em;
+	padding: 10px 0;;
+}
+
+.reserv-btn:hover {
+	background-color: #FE9A2E  !important;
+}
+
+
 </style>
 <!--정규표현식
 	아이디 정규표현식
@@ -472,6 +483,7 @@ function sample6_execDaumPostcode() {
 </script>
 </head>
 <body>
+<%@include file="../common/header.jsp"%>
 	<!-- Header -->
 	<div id="container">
 		<div id="content">
@@ -479,9 +491,10 @@ function sample6_execDaumPostcode() {
 				<div class="join_form">
 					<form id="MemberUpdateForm" method="post" action="/ptp/MemberUpdate.do"
 						onsubmit="return validate();">
-						<div id="ul">
+						<div id="ul" style="margin-left:20px;">
 							<div class="ide">
-								<div id="patIde">
+							<div style="width:20%; font-weight:bold; float:left; ">아이디 </div>
+								<div id="patIde" style="width:66%;; font-weight:bold; float:left;">
 									<input type="text" id="patId" name="uid" placeholder="아이디"
 										readonly  value="<%=mv.getId()%>"/>
 								</div>
@@ -489,6 +502,8 @@ function sample6_execDaumPostcode() {
 							</div>
 
 							<div>
+							
+								<div style="width:20%; font-weight:bold; float:left;margin-top:10px;">비밀번호 </div>
 								<div id="pass">
 									<input type="password" name="upass" maxlength="10"
 										id="patpassword" placeholder="비밀번호" />
@@ -497,23 +512,24 @@ function sample6_execDaumPostcode() {
 							</div>
 
 							<div>
-								<div id="passCheck">
+								<div id="passCheck"  style="margin-left:20%;">
 									<input type="password" name="upassCheck" maxlength="10"
 										id="patpasswordcheck" placeholder="비밀번호 확인" />
 								</div>
-								<div id="passCheckMessDiv"></div>
+								<div id="passCheckMessDiv" style="margin-left:20%;"></div>
 								<br>
 							</div>
 
-							<div>
-								<div id="patName">
+							<div style="display:block; height:70px;">
+								<div style="width:80px; font-weight:bold; float:left;">이름 </div>
+								<div id="patName" style="width:200px; float:left;">
 									<input type="text" maxlength="15" name="patName" id="patname"
 										placeholder="이름" value="<%=mv.getName()%>"/>
 								</div>
 								<div id="NameMessageDiv"></div>
 							</div>
 							<div>
-								<div id="jenderCheck">
+								<div id="jenderCheck" style="display:block;">
 									<span class="jender"> <input type="radio" id="man"
 										<%=mv.getGender() == 'M'?"checked":"" %> readonly name="sex" value="0"><label
 										id="manLb" for="man">남자 </label>
@@ -524,22 +540,23 @@ function sample6_execDaumPostcode() {
 								</div>
 							</div>
 							<div>
-								<div id="patPhone">
+							<div style="width:20%; font-weight:bold; float:left;">전화번호 </div>
+								<div id="patPhone" style="width:50%; float:left;">
 									<input type="text" maxlength="13" name="patPhone" id="patphone"
 										placeholder="전화번호" value="<%=mv.getPhone()%>"/>
 								</div>
 								<div id="phonemessDiv"></div>
 								<br>
 							</div>
-
-							<div id="age" class="line">
+							<div style="margin-top:20px;">
+							<div id="age" class="line" >
 								<input type="text" id="patage" name="patAge" placeholder="나이"
 									readonly />
 							</div>
 							<div class="line">
 								<input type="text" id="yy" name="yy" maxlength="4" value="<%=mv.getAge() %>" readonly>
 							</div><br>
-							
+							</div>
 							<div id="addr">
 								<input type="text" id="sample6_postcode" name="sample6_postcode"
 									placeholder="우편번호">
@@ -550,17 +567,19 @@ function sample6_execDaumPostcode() {
 							</div>
 							<div>
 								<input type="text" id="sample6_address" name="sample6_address"
-									placeholder="주소">
+									placeholder="주소" style="width:700px;">
 							</div>
 							<div>
 								<input type="text" id="sample6_address2" name="sample6_address2"
-									placeholder="상세주소">
+									placeholder="상세주소"  style="width:700px;">
 							</div>
 						</div>
 						<br>
-						<div id="pat" onclick="pat();">수정</div>
-						<div id="out" onclick="out();">탈퇴</div>
-						<div id="patinout" onclick="patinout();">반려동물 관리</div>
+						<div style="margin-left:20px;">
+						<div class="reserv-btn"  id="pat" onclick="pat();">수정</div>
+						<div  class="reserv-btn"  id="out" onclick="out();">탈퇴</div>
+						<div class="reserv-btn"  id="patinout" onclick="patinout();">반려동물 관리</div>
+						</div>
 					</form>
 				</div>
 			</div>

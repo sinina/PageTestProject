@@ -737,44 +737,7 @@ onclick="alert('신고하시겠습니까?')">신고</button> -->
 </body>
 <script>
 
-$(".reserv-btn").click(function(){
-	
-	 <%if(member==null){%>
-		alert("로그인 이후 예약 가능합니다.");
-		return false;
-		<%}else{%>
-			var memberCode =<%=member.getCode()%>
-		<%}%>
-		
-		<%if(member!=null){%>
-			if(memberCode==2){
-				alert("반려주만 예약 가능합니다.");
-				return false;
-		}else{
-		//보드의 디테일에 있는 M_MEMBER_NO값
-		var petsNo= <%=board.getNo()%> ;
-		var petoNo=<%=member.getNo()%>;
-		var petsName='<%=board.getName()%>';
-		var petoName='<%=member.getName()%>';
-		var start = $("#datetimepicker4").val();
-		var end = $("#datetimepicker5").val();
-		//가격정보가져오기
-		var price= $("#totalprice").text();
-		var price1=price.substring(0,price.indexOf(',')) +price.substring(price.indexOf(',')+1,price.indexOf('원'));
-		
-		//예약 시간 선택 안되있으면  alert창 띄워야함 
-		if(!start || !end){
-			alert("예약 시간을 선택해주세요.");
-			return false;
-			
-		}
-		
-		//반려동물 정보 가져오는 서블릿으로 이동
-		  location.href="<%=request.getContextPath()%>/selectPetInfo.do?petsNo="
-				+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end+"&price="+price1+"&petsName="+petsName+"&petoName="+petoName;  
-		} <%}%>
-		return false;
-});
+
 </script>
 <script>
 	 $(document)
@@ -1138,6 +1101,50 @@ $(".reserv-btn").click(function(){
 
 			});
 		});
+		
+		
+		$(".reserv-btn").click(function(){
+			
+			 <%if(member==null){%>
+				alert("로그인 이후 예약 가능합니다.");
+				return false;
+				<%}else{%>
+					var memberCode =<%=member.getCode()%>
+				<%}%>
+				
+				<%if(member!=null){%>
+					if(memberCode==2){
+						alert("반려주만 예약 가능합니다.");
+						return false;
+				}else{
+				//보드의 디테일에 있는 M_MEMBER_NO값
+				var petsNo= <%=board.getNo()%> ;
+				var petoNo=<%=member.getNo()%>;
+				var petsName='<%=board.getName()%>';
+				var petoName='<%=member.getName()%>';
+				var start = $("#datetimepicker4").val();
+				var end = $("#datetimepicker5").val();
+				//가격정보가져오기
+				
+				
+				
+				//예약 시간 선택 안되있으면  alert창 띄워야함 
+				if(!start || !end){
+					alert("예약 시간을 선택해주세요.");
+					return false;
+					
+				}
+				
+				//반려동물 정보 가져오는 서블릿으로 이동
+				  location.href="<%=request.getContextPath()%>/selectPetInfo.do?petsNo="
+						+petsNo+"&petoNo="+petoNo+"&start="+start+"&end="+end+"&dayprice="+dayprice+ 
+						 "&tax="+tax+"&overpay="+overpay+"&price="+totalprice+"&petsName="+petsName+"&petoName="+petoName;  
+				} <%}%>
+				return false;
+		});
+		
+		
+		
 		
 		
 </script>

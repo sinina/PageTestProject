@@ -17,6 +17,32 @@
 	margin-left:auto;
 	margin-right:auto;
 }
+
+.reserv-btn {
+	display:inline-block;
+	width: 300px;
+	margin: 5px;
+	font-size: 30px; 
+	text-align:center;
+	color:white;
+	background-color: #ff5050 !important;
+	-webkit-border-radius: 0.5em;
+	padding: 10px 0;;
+}
+
+.reserv-btn:hover {
+	background-color: #FE9A2E  !important;
+}
+
+
+.tableArea{
+	display:inline-block;
+	float:right;
+	margin-right:30%;
+}
+
+
+
 </style>
 <script src="/ptp/js/jquery-3.3.1.min.js"></script>
 <script>
@@ -78,6 +104,7 @@ function stopVideo() {
 </script>
 </head>
 <body>
+
 	<div class="tableArea">
 		<table align="center" class="table">
 		<%if(list.size() == 0){ %>
@@ -95,9 +122,11 @@ function stopVideo() {
 			<%} %>
 		<%} %>
 		</table>
-		<div id="player"></div>
-	</div>
-	<button id="pat" onclick="pat();">등록하기</button>
+		</div>
+		<div style="margin:50px 50px;">
+		<div id="player" ></div>
+	
+	<div style="height:300px; width:300px; margin:50px 200px;">
 	<img class="mySlides" src="/ptp/images/banner/image1.jpg">
 	<img class="mySlides" src="/ptp/images/banner/image2.jpg">
 	<img class="mySlides" src="/ptp/images/banner/image3.jpg">
@@ -113,6 +142,12 @@ function stopVideo() {
 	<img class="mySlides" src="/ptp/images/banner/image13.jpg">
 	<img class="mySlides" src="/ptp/images/banner/image14.jpg">
 	<img class="mySlides" src="/ptp/images/banner/image15.jpg">
+	</div>
+	<div  style="width:300px; margin-left:200px;">
+	<dt style="margin-left:60px; font-weight:bold; font-size:30px; ">반려동물 등록</dt>
+	<button class="reserv-btn"  id="pat" onclick="pat();">등록하기</button>
+	</div>
+	</div>
 	 <script>
   var slideIndex = 1;
 showDivs(slideIndex);

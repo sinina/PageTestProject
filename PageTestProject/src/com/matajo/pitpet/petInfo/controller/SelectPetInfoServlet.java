@@ -31,9 +31,12 @@ public class SelectPetInfoServlet extends HttpServlet {
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
 		int price = Integer.parseInt(request.getParameter("price"));
+		int dayprice = Integer.parseInt(request.getParameter("dayprice"));
+		int tax = Integer.parseInt(request.getParameter("tax"));
+		int overpay = Integer.parseInt(request.getParameter("overpay"));
 		System.out.println(price);
 		
-		ReservationVo rv = new ReservationVo(petsNo, petoNo, start, end, price, petsName, petoName);
+		ReservationVo rv = new ReservationVo(petsNo, petoNo, start, end, dayprice, tax, overpay, price, petsName, petoName);
 		//펫시터 정보 리스트로 불러오기
 		/*PatVo pInfo = new PatService().patSelect(petoNo);*/
 		List<PatVo> pInfo = new PatService().patSelect(petoNo);

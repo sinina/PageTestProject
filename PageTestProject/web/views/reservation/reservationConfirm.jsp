@@ -227,22 +227,38 @@ font-size:25px;
 							<span>1박</span>
 						</dt>
 						<dd class="reserv-dd">
-							<span>30,000원</span>
+							<span  id="dayprice">원</span>
 						</dd>
 						<dt class="reserv-dt">초과금액</dt>
 						<dd class="reserv-dd">
-							<span>0원</span>
+							<span  id="overpay">0원</span>
 						</dd>
 						<dt class="reserv-dt">부가세</dt>
 						<dd class="reserv-dd">
-							<span>3,000원</span>
+							<span  id="tax">3,000원</span>
 						</dd>
 						<dt class="reserv-dt result" >최종금액</dt>
 						<dd class="reserv-dd result">
-							<span><%=rv.getPrice() %>원</span>
+							<span id="totalprice">0원</span>
 						</dd>
 					</dl>
-
+	<script>
+	
+	function numberConvert(x) {                                                   // 금액 콤마 표시
+		 return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		}
+	
+	var totalpay = numberConvert(<%=rv.getPrice() %>);
+	var dayprice = numberConvert(<%=rv.getDayprice() %>);
+	var overpay = numberConvert(<%=rv.getOverpay() %>);
+	var tax = numberConvert(<%=rv.getTax() %>);
+	
+	document.getElementById("dayprice").innerHTML = dayprice+"원";
+	document.getElementById("overpay").innerHTML = overpay+"원";
+	document.getElementById("tax").innerHTML = tax+"원";
+	document.getElementById("totalprice").innerHTML = totalpay+"원";
+	
+	</script>
 
 
 </div>
