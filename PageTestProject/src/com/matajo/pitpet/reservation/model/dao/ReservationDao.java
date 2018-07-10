@@ -83,7 +83,7 @@ public class ReservationDao {
 				res.setPetoNo(rs.getInt("RES_PETO_NO"));
 				res.setPetsNo(rs.getInt("RES_PETS_NO"));
 				res.setResNo(rs.getInt("RES_NO"));
-				res.setPhone(rs.getInt("M_PHONE"));
+				res.setPhone(rs.getString("M_PHONE"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
