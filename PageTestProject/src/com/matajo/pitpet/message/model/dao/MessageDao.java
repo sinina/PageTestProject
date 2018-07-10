@@ -103,11 +103,9 @@ public class MessageDao {
 				pstmt.setInt(1, memberNo);
 				rs = pstmt.executeQuery();
 				
-				/*MessageVo temp= null;*/
 				if(rs.next()){
 					count= new MessageVo();
 					count.setnFlagCnt(rs.getInt("COUNT(M1.MES_FLAG)"));
-					//System.out.println(count.getnFlagCnt());
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

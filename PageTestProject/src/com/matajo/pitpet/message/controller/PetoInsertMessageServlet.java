@@ -32,7 +32,6 @@ public class PetoInsertMessageServlet extends HttpServlet {
 		message.setResverNo(resverNo);
 		message.setRes_no(resNo);
 		
-		
 		//객체로 값 전달
 		int result = new MessageService().writeMsg(message);
 		

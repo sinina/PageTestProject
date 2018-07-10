@@ -27,8 +27,7 @@ public class InsertReservationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String start =request.getParameter("start");
 		String end = request.getParameter("end");
-		//날짜만 저장되고 시간은 저장이 안됨
-		//System.out.println(start);
+
 		int price = Integer.parseInt(request.getParameter("price"));
 		int petsNo = Integer.parseInt(request.getParameter("petsNo"));
 		int petoNo = Integer.parseInt(request.getParameter("petoNo"));
@@ -38,25 +37,20 @@ public class InsertReservationServlet extends HttpServlet {
 		
 		String animalNoCommon=String.join(",", animalNos);
 		String animalKindCommon=String.join("/", animalKind);
-		System.out.println(animalKindCommon);
-		System.out.println(animalNoCommon);
-		System.out.println(start);
-		//System.out.println(end);
+		
 		ReservationVo res = new ReservationVo(petoNo, animalKindCommon, petsNo, price, start, end, msg, animalNoCommon);
 		int result = new ReservationService().insertReservation(res);
 		int resNo = new ReservationService().selectResNo(res);
 		
-		System.out.println("selectRes:"+resNo);
 		
 		RequestDispatcher view =null;
 		if(result>0){
+			//예약정보 db저장 성공시, 예약정보 가지고 예약 요청 메시지 서블릿으로 이동
 			request.setAttribute("res", res);
 			request.setAttribute("resNo",resNo);
 			view=request.getRequestDispatcher("/petoInsert.do");
 			view.forward(request, response);
-			//예약 요청 메시지insert 서블릿으로 이동
 		}
-		
 	}
 
 }
